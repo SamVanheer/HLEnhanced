@@ -417,6 +417,8 @@ add_sources( "${SHARED_SRCS}" )
 
 #Add in the server directories
 add_subdirectory( game/server )
+add_subdirectory( shared/game/server )
+add_subdirectory( shared/engine/server )
 
 preprocess_sources()
 
@@ -443,6 +445,8 @@ include_directories(
 	game_shared
 	game/shared
 	game/shared/entities/player
+	shared/game/server
+	shared/engine/server
 	pm_shared
 	game/server
 	external

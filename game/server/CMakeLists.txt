@@ -13,6 +13,8 @@ add_sources(
 	CMultiDamage.cpp
 	CServerGameInterface.h
 	CServerGameInterface.cpp
+	CServerGameLib.h
+	CServerGameLib.cpp
 	Decals.h
 	Decals.cpp
 	Effects.h
