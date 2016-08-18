@@ -78,6 +78,15 @@ public:
 	*	@return The server's Steam ID.
 	*/
 	virtual const CSteamID* GetServerSteamID() = 0;
+
+	/**
+	*	Converts a Steam3 Steam ID into a Steam2 auth string.
+	*	@param steamID Steam ID to convert.
+	*	@param[ out ] pszDestBuffer Destination buffer to store the string in.
+	*	@param uiBufferSize Size of the buffer, in bytes.
+	*	@return If the conversion succeeded and the buffer was large enough, returns a pointer to the buffer. Otherwise, returns null.
+	*/
+	virtual const char* Steam3IDToAuthID( const CSteamID& steamID, char* pszDestBuffer, const size_t uiBufferSize ) = 0;
 };
 
 #define ISERVERENGINE_NAME "IServerEngineV001"
