@@ -3,6 +3,7 @@
 
 #include "interface.h"
 
+class Vector;
 class CSteamID;
 
 /**
@@ -47,6 +48,19 @@ public:
 	*	Checks whether the given generic file has been precached.
 	*/
 	virtual bool IsGenericPrecached( const char* const pszFileName ) const = 0;
+
+	/**
+	*	Plays a sound for the given entity at the given location.
+	*	@param ent Entity index.
+	*	@param vecOrigin Origin.
+	*	@param channel Channel to play on. @see SoundChannel
+	*	@param iSoundIndex Index of the sound to play.
+	*	@param volume Volume. [ 0, 1 ].
+	*	@param attenuation.
+	*	@param fFlags Sound flags.
+	*	@param pitch Pitch. [ 0, 255 ].
+	*/
+	virtual void PlaySoundByIndex( int ent, const Vector& vecOrigin, int channel, const int iSoundIndex, float volume, float attenuation, int fFlags, int pitch ) = 0;
 
 	/**
 	*	Gets the Steam ID of this client.
