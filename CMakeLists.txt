@@ -264,6 +264,7 @@ add_sources( "${SHARED_SRCS}" )
 #Add in the client directories
 add_subdirectory( game/client )
 add_subdirectory( vgui_utils )
+add_subdirectory( shared/game/client )
 add_subdirectory( shared/engine/client )
 
 preprocess_sources()
@@ -288,6 +289,7 @@ include_directories(
 	game/client/ui/hud
 	game/client/ui/vgui
 	game/server
+	shared/game/client
 	external
 	source_sdk/public/tier1
 	source_sdk/public

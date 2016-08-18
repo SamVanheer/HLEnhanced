@@ -2,6 +2,7 @@ add_sources(
 	cl_entity.h
 	demo_api.h
 	event_api.h
+	IClientEngine.h
 	ivoicetweak.h
 	net_api.h
 	r_efx.h

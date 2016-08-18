@@ -1,6 +1,8 @@
 add_sources(
 	CClientGameInterface.h
 	CClientGameInterface.cpp
+	CClientGameLib.h
+	CClientGameLib.cpp
 	cdll_int.cpp
 	cl_dll.h
 	cl_util.h
