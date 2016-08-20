@@ -345,12 +345,11 @@ Vector CBaseEntity::FireBulletsPlayer( const unsigned int cShots,
 				pEntity->TraceAttack( CTakeDamageInfo( pAttacker, gSkillData.plrDmgBuckshot, DMG_BULLET ), vecDir, &tr );
 				break;
 
+#if USE_OPFOR
 			case BULLET_PLAYER_357:
 				pEntity->TraceAttack( CTakeDamageInfo( pAttacker, gSkillData.plrDmg357, DMG_BULLET ), vecDir, &tr );
 				break;
-
-			case BULLET_PLAYER_762:
-				pEntity->TraceAttack( CTakeDamageInfo( pAttacker, gSkillData.plrDmg762, DMG_BULLET | DMG_NEVERGIB ), vecDir, &tr );
+#endif
 
 			case BULLET_NONE: // FIX 
 				pEntity->TraceAttack( CTakeDamageInfo( pAttacker, 50, DMG_CLUB ), vecDir, &tr );
