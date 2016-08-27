@@ -5,6 +5,8 @@
 
 class CSteamID;
 
+typedef struct cvar_s cvar_t;
+
 /**
 *	General purpose server engine functions.
 *	Based on Source's IVEngineServer interface.
@@ -87,6 +89,11 @@ public:
 	*	@return If the conversion succeeded and the buffer was large enough, returns a pointer to the buffer. Otherwise, returns null.
 	*/
 	virtual const char* Steam3IDToAuthID( const CSteamID& steamID, char* pszDestBuffer, const size_t uiBufferSize ) = 0;
+
+	/**
+	*	@return The first cvar of the engine's list.
+	*/
+	virtual cvar_t* GetFirstCvarPtr() = 0;
 };
 
 #define ISERVERENGINE_NAME "IServerEngineV001"
