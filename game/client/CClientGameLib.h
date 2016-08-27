@@ -39,6 +39,8 @@ public:
 	void GameFrame() override;
 
 	void EndFrame() override;
+
+	void OnCvarChanged( cvar_t* pCvar, const char* pszOldValue, float flOldValue ) override;
 };
 
 extern IClientEngine* g_pEngine;

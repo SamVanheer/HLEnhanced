@@ -5,6 +5,8 @@
 
 class CSteamID;
 
+typedef struct cvar_s cvar_t;
+
 /**
 *	This interface is exposed by the client to allow the engine to set up newer interfaces and invoke callbacks at appropriate moments.
 *	Based on Source's IBaseClientDLL interface.
@@ -111,6 +113,14 @@ public:
 	*	@see StartFrame
 	*/
 	virtual void EndFrame() = 0;
+
+	/**
+	*	Called whenever a cvar changes.
+	*	@param pCvar Cvar whose value was changed.
+	*	@param pszOldValue Old string value.
+	*	@param flOldValue Old float value.
+	*/
+	virtual void OnCvarChanged( cvar_t* pCvar, const char* pszOldValue, float flOldValue ) = 0;
 };
 
 #define ICLIENTGAMELIB_NAME "IClientGameLibV001"

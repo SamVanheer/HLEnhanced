@@ -85,3 +85,7 @@ void CClientGameLib::GameFrame()
 void CClientGameLib::EndFrame()
 {
 }
+
+void CClientGameLib::OnCvarChanged( cvar_t* pCvar, const char* pszOldValue, float flOldValue )
+{
+}
