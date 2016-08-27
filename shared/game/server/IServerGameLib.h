@@ -3,6 +3,8 @@
 
 #include "interface.h"
 
+typedef struct cvar_s cvar_t;
+
 /**
 *	This interface is exposed by the server to allow the engine to set up newer interfaces and invoke callbacks at appropriate moments.
 *	Based on Source's IServerGameDLL interface.
@@ -120,6 +122,14 @@ public:
 	*	@see IServerEngine::GetClientSteamID
 	*/
 	virtual void OnClientFullyAuthenticated( edict_t* pClientEdict ) = 0;
+
+	/**
+	*	Called whenever a cvar changes.
+	*	@param pCvar Cvar whose value was changed.
+	*	@param pszOldValue Old string value.
+	*	@param flOldValue Old float value.
+	*/
+	virtual void OnCvarChanged( cvar_t* pCvar, const char* pszOldValue, float flOldValue ) = 0;
 };
 
 /**

@@ -95,3 +95,7 @@ void CServerGameLib::PostRestore()
 void CServerGameLib::OnClientFullyAuthenticated( edict_t* pClientEdict )
 {
 }
+
+void CServerGameLib::OnCvarChanged( cvar_t* pCvar, const char* pszOldValue, float flOldValue )
+{
+}

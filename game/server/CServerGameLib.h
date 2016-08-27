@@ -46,6 +46,8 @@ public:
 
 	void OnClientFullyAuthenticated( edict_t* pClientEdict ) override;
 
+	void OnCvarChanged( cvar_t* pCvar, const char* pszOldValue, float flOldValue ) override;
+
 private:
 	CServerGameLib( const CServerGameLib& ) = delete;
 	CServerGameLib& operator=( const CServerGameLib& ) = delete;
