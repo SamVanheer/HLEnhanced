@@ -1,0 +1,811 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{69DDADC0-97F4-419E-86EB-C91781A0D2E0}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>hldll</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>NotSet</CharacterSet>
+    <PlatformToolset>v140_xp</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>NotSet</CharacterSet>
+    <PlatformToolset>v140_xp</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="Game_Shared.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="Game_Shared.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>.\Debug\hldll\</OutDir>
+    <IntDir>$(Configuration)\$(ProjectName)\int\</IntDir>
+    <TargetName>hl</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SteamCommon)\Half-Life\hlenhanced\dlls\</OutDir>
+    <IntDir>$(Configuration)\$(ProjectName)\int\</IntDir>
+    <TargetName>hl</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS;SERVER_DLL;_DEBUG;_WINDOWS;QUIVER;VOXEL;QUAKE2;VALVE_DLL;CLIENT_WEAPONS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <AdditionalIncludeDirectories>..\..\external\SQLite\include;..\..\external\MariaDB\include;..\..\external\CTPL\include;..\..\external\ASSQL\include;..\..\external\Angelscript\include;..\..\game\shared\entities\player;..\..\game\server;..\..\game\shared;..\..\dlls;..\..\engine;..\..\common;..\..\pm_shared;..\..\game_shared;..\..\public;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ModuleDefinitionFile>$(ProjectDir)hl.def</ModuleDefinitionFile>
+      <AdditionalLibraryDirectories>$(SolutionDir)..\..\external\Angelscript\lib;$(SolutionDir)..\..\external\ASSQL\lib;$(SolutionDir)..\..\external\MariaDB\lib;$(SolutionDir)..\..\lib\public;$(SolutionDir)..\..\external\SQLite\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>AngelscriptUtils.lib;Angelscript.lib;AngelscriptSQL.lib;mariadbclient.lib;sqlite3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions>
+      </AdditionalOptions>
+    </Link>
+    <PostBuildEvent />
+    <PostBuildEvent />
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS;SERVER_DLL;NDEBUG;_WINDOWS;QUIVER;VOXEL;QUAKE2;VALVE_DLL;CLIENT_WEAPONS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\game\shared\entities\player;..\..\external\Angelscript\include;..\..\game\server;..\..\game\shared;..\..\dlls;..\..\engine;..\..\common;..\..\pm_shared;..\..\game_shared;..\..\public;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ModuleDefinitionFile>$(ProjectDir)hl.def</ModuleDefinitionFile>
+      <AdditionalLibraryDirectories>$(SolutionDir)..\..\external\Angelscript\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Angelscript.lib;AngelscriptUtils.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent />
+    <PostBuildEvent />
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\common\beamdef.h" />
+    <ClInclude Include="..\..\common\BSPIO.h" />
+    <ClInclude Include="..\..\common\CAutoString.h" />
+    <ClInclude Include="..\..\common\CFile.h" />
+    <ClInclude Include="..\..\common\CHashStringPool.h" />
+    <ClInclude Include="..\..\common\Color.h" />
+    <ClInclude Include="..\..\common\com_model.h" />
+    <ClInclude Include="..\..\common\const.h" />
+    <ClInclude Include="..\..\common\con_nprint.h" />
+    <ClInclude Include="..\..\common\CPlane.h" />
+    <ClInclude Include="..\..\common\crc.h" />
+    <ClInclude Include="..\..\common\cvardef.h" />
+    <ClInclude Include="..\..\common\director_cmds.h" />
+    <ClInclude Include="..\..\common\dlight.h" />
+    <ClInclude Include="..\..\common\dll_state.h" />
+    <ClInclude Include="..\..\common\entity_state.h" />
+    <ClInclude Include="..\..\common\entity_types.h" />
+    <ClInclude Include="..\..\common\enums.h" />
+    <ClInclude Include="..\..\common\event_args.h" />
+    <ClInclude Include="..\..\common\event_flags.h" />
+    <ClInclude Include="..\..\common\Game.h" />
+    <ClInclude Include="..\..\common\hltv.h" />
+    <ClInclude Include="..\..\common\in_buttons.h" />
+    <ClInclude Include="..\..\common\MiniBSPFile.h" />
+    <ClInclude Include="..\..\common\MinMax.h" />
+    <ClInclude Include="..\..\common\netadr.h" />
+    <ClInclude Include="..\..\common\parsemsg.h" />
+    <ClInclude Include="..\..\common\particledef.h" />
+    <ClInclude Include="..\..\common\Platform.h" />
+    <ClInclude Include="..\..\common\pmtrace.h" />
+    <ClInclude Include="..\..\common\qfont.h" />
+    <ClInclude Include="..\..\common\screenfade.h" />
+    <ClInclude Include="..\..\common\Sequence.h" />
+    <ClInclude Include="..\..\common\simple_checksum.h" />
+    <ClInclude Include="..\..\common\steam_util.h" />
+    <ClInclude Include="..\..\common\StringUtils.h" />
+    <ClInclude Include="..\..\common\studio_event.h" />
+    <ClInclude Include="..\..\common\usercmd.h" />
+    <ClInclude Include="..\..\common\UTFUtils.h" />
+    <ClInclude Include="..\..\common\weaponinfo.h" />
+    <ClInclude Include="..\..\common\winsani_in.h" />
+    <ClInclude Include="..\..\common\winsani_out.h" />
+    <ClInclude Include="..\..\engine\anorms.h" />
+    <ClInclude Include="..\..\engine\APIProxy.h" />
+    <ClInclude Include="..\..\engine\cdll_int.h" />
+    <ClInclude Include="..\..\engine\custom.h" />
+    <ClInclude Include="..\..\engine\customentity.h" />
+    <ClInclude Include="..\..\engine\edict.h" />
+    <ClInclude Include="..\..\engine\eiface.h" />
+    <ClInclude Include="..\..\engine\IClientVGUI.h" />
+    <ClInclude Include="..\..\engine\IGameUIFuncs.h" />
+    <ClInclude Include="..\..\engine\kbutton.h" />
+    <ClInclude Include="..\..\engine\progdefs.h" />
+    <ClInclude Include="..\..\engine\progs.h" />
+    <ClInclude Include="..\..\engine\server\client_t.h" />
+    <ClInclude Include="..\..\engine\server\Server.h" />
+    <ClInclude Include="..\..\engine\shake.h" />
+    <ClInclude Include="..\..\engine\studio.h" />
+    <ClInclude Include="..\..\game\server\Angelscript\CHLASServerInitializer.h" />
+    <ClInclude Include="..\..\game\server\Angelscript\CHLASServerManager.h" />
+    <ClInclude Include="..\..\game\server\Angelscript\ScriptAPI\ASGameRules.h" />
+    <ClInclude Include="..\..\game\server\Angelscript\ScriptAPI\Extensions\CASGameRules.h" />
+    <ClInclude Include="..\..\game\server\Angelscript\ScriptAPI\SQL\ASHLSQL.h" />
+    <ClInclude Include="..\..\game\server\animation.h" />
+    <ClInclude Include="..\..\game\server\ButtonSounds.h" />
+    <ClInclude Include="..\..\game\server\CGlobalState.h" />
+    <ClInclude Include="..\..\game\server\client.h" />
+    <ClInclude Include="..\..\game\server\CMap.h" />
+    <ClInclude Include="..\..\game\server\CMultiDamage.h" />
+    <ClInclude Include="..\..\game\server\CServerGameInterface.h" />
+    <ClInclude Include="..\..\game\server\Decals.h" />
+    <ClInclude Include="..\..\game\server\Effects.h" />
+    <ClInclude Include="..\..\game\server\entities\ammo\CAmmo556.h" />
+    <ClInclude Include="..\..\game\server\entities\ammo\CBasePlayerAmmo.h" />
+    <ClInclude Include="..\..\game\server\entities\ammo\CSporeAmmo.h" />
+    <ClInclude Include="..\..\game\server\entities\bmodels\CFuncConveyor.h" />
+    <ClInclude Include="..\..\game\server\entities\bmodels\CFuncIllusionary.h" />
+    <ClInclude Include="..\..\game\server\entities\bmodels\CFuncMonsterClip.h" />
+    <ClInclude Include="..\..\game\server\entities\bmodels\CFuncRotating.h" />
+    <ClInclude Include="..\..\game\server\entities\bmodels\CFuncWall.h" />
+    <ClInclude Include="..\..\game\server\entities\bmodels\CFuncWallToggle.h" />
+    <ClInclude Include="..\..\game\server\entities\bmodels\CPendulum.h" />
+    <ClInclude Include="..\..\game\server\entities\cycler\CCycler.h" />
+    <ClInclude Include="..\..\game\server\entities\cycler\CCyclerSprite.h" />
+    <ClInclude Include="..\..\game\server\entities\cycler\CGenericCycler.h" />
+    <ClInclude Include="..\..\game\server\entities\cycler\CWeaponCycler.h" />
+    <ClInclude Include="..\..\game\server\entities\effects\CBeam.h" />
+    <ClInclude Include="..\..\game\server\entities\effects\CBlood.h" />
+    <ClInclude Include="..\..\game\server\entities\effects\CBubbling.h" />
+    <ClInclude Include="..\..\game\server\entities\effects\CEnvBeverage.h" />
+    <ClInclude Include="..\..\game\server\entities\effects\CEnvExplosion.h" />
+    <ClInclude Include="..\..\game\server\entities\effects\CEnvFunnel.h" />
+    <ClInclude Include="..\..\game\server\entities\effects\CEnvShooter.h" />
+    <ClInclude Include="..\..\game\server\entities\effects\CEnvSpark.h" />
+    <ClInclude Include="..\..\game\server\entities\effects\CFade.h" />
+    <ClInclude Include="..\..\game\server\entities\effects\CGib.h" />
+    <ClInclude Include="..\..\game\server\entities\effects\CGibShooter.h" />
+    <ClInclude Include="..\..\game\server\entities\effects\CGlow.h" />
+    <ClInclude Include="..\..\game\server\entities\effects\CItemSoda.h" />
+    <ClInclude Include="..\..\game\server\entities\effects\CLaser.h" />
+    <ClInclude Include="..\..\game\server\entities\effects\CLightning.h" />
+    <ClInclude Include="..\..\game\server\entities\effects\CMessage.h" />
+    <ClInclude Include="..\..\game\server\entities\effects\CShake.h" />
+    <ClInclude Include="..\..\game\server\entities\effects\CShower.h" />
+    <ClInclude Include="..\..\game\server\entities\effects\CSmoker.h" />
+    <ClInclude Include="..\..\game\server\entities\effects\CSpiral.h" />
+    <ClInclude Include="..\..\game\server\entities\effects\CSprite.h" />
+    <ClInclude Include="..\..\game\server\entities\effects\CWreckage.h" />
+    <ClInclude Include="..\..\game\server\entities\items\CAirtank.h" />
+    <ClInclude Include="..\..\game\server\entities\items\CHealthKit.h" />
+    <ClInclude Include="..\..\game\server\entities\items\CItem.h" />
+    <ClInclude Include="..\..\game\server\entities\items\CItemAntidote.h" />
+    <ClInclude Include="..\..\game\server\entities\items\CItemBattery.h" />
+    <ClInclude Include="..\..\game\server\entities\items\CItemLongJump.h" />
+    <ClInclude Include="..\..\game\server\entities\items\CItemSecurity.h" />
+    <ClInclude Include="..\..\game\server\entities\items\CItemSuit.h" />
+    <ClInclude Include="..\..\game\server\entities\items\CRecharge.h" />
+    <ClInclude Include="..\..\game\server\entities\items\CWallHealth.h" />
+    <ClInclude Include="..\..\game\server\entities\items\CWorldItem.h" />
+    <ClInclude Include="..\..\game\server\entities\lights\CEnvLight.h" />
+    <ClInclude Include="..\..\game\server\entities\lights\CLight.h" />
+    <ClInclude Include="..\..\game\server\entities\maprules\CGameCounter.h" />
+    <ClInclude Include="..\..\game\server\entities\maprules\CGameCounterSet.h" />
+    <ClInclude Include="..\..\game\server\entities\maprules\CGameEnd.h" />
+    <ClInclude Include="..\..\game\server\entities\maprules\CGamePlayerEquip.h" />
+    <ClInclude Include="..\..\game\server\entities\maprules\CGamePlayerHurt.h" />
+    <ClInclude Include="..\..\game\server\entities\maprules\CGamePlayerTeam.h" />
+    <ClInclude Include="..\..\game\server\entities\maprules\CGamePlayerZone.h" />
+    <ClInclude Include="..\..\game\server\entities\maprules\CGameScore.h" />
+    <ClInclude Include="..\..\game\server\entities\maprules\CGameTeamMaster.h" />
+    <ClInclude Include="..\..\game\server\entities\maprules\CGameTeamSet.h" />
+    <ClInclude Include="..\..\game\server\entities\maprules\CGameText.h" />
+    <ClInclude Include="..\..\game\server\entities\maprules\CRuleBrushEntity.h" />
+    <ClInclude Include="..\..\game\server\entities\maprules\CRuleEntity.h" />
+    <ClInclude Include="..\..\game\server\entities\maprules\CRulePointEntity.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\Activity.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CAGrunt.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CApache.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CApacheHVR.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CBabyCrab.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CBarnacle.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CBarney.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CBaseMonster.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CBaseTurret.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CBigMomma.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CBloater.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CBMortar.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CBullsquid.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CController.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CControllerHeadBall.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CControllerZapBall.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CDeadBarney.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CDeadHGrunt.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CDeadScientist.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CFlockingFlyer.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CFlockingFlyerFlock.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CFlyingMonster.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CFurniture.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CGargantua.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CGenericMonster.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CGMan.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CHAssassin.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CHeadCrab.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CHGrunt.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CHGruntRepel.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CHornet.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CHoundeye.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CIchthyosaur.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CInfoBM.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CISlave.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CLeech.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CMiniTurret.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CMonsterMaker.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CNihilanth.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CNihilanthHVR.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\COsprey.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CPenguinGrenade.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CRat.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CRoach.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CScientist.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CSentry.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CSittingScientist.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CSquadMonster.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CSquidSpit.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CStomp.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CTalkMonster.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CTentacle.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CTentacleMaw.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CTurret.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\CZombie.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\DefaultAI.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\Monsters.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\Schedule.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\scripted\CCineAI.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\scripted\CCineMonster.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\scripted\CScriptedSentence.h" />
+    <ClInclude Include="..\..\game\server\entities\NPCs\scripted\Scripted.h" />
+    <ClInclude Include="..\..\game\server\entities\plats\CBasePlatTrain.h" />
+    <ClInclude Include="..\..\game\server\entities\plats\CFuncPlat.h" />
+    <ClInclude Include="..\..\game\server\entities\plats\CFuncPlatRot.h" />
+    <ClInclude Include="..\..\game\server\entities\plats\CFuncTrackAuto.h" />
+    <ClInclude Include="..\..\game\server\entities\plats\CFuncTrackChange.h" />
+    <ClInclude Include="..\..\game\server\entities\plats\CFuncTrackTrain.h" />
+    <ClInclude Include="..\..\game\server\entities\plats\CFuncTrain.h" />
+    <ClInclude Include="..\..\game\server\entities\plats\CFuncTrainControls.h" />
+    <ClInclude Include="..\..\game\server\entities\plats\CGunTarget.h" />
+    <ClInclude Include="..\..\game\server\entities\plats\CPathCorner.h" />
+    <ClInclude Include="..\..\game\server\entities\plats\CPathTrack.h" />
+    <ClInclude Include="..\..\game\server\entities\plats\CPlatTrigger.h" />
+    <ClInclude Include="..\..\game\server\entities\rope\CElectrifiedWire.h" />
+    <ClInclude Include="..\..\game\server\entities\rope\CRope.h" />
+    <ClInclude Include="..\..\game\server\entities\rope\CRopeSample.h" />
+    <ClInclude Include="..\..\game\server\entities\rope\CRopeSegment.h" />
+    <ClInclude Include="..\..\game\server\entities\sound\CAmbientGeneric.h" />
+    <ClInclude Include="..\..\game\server\entities\sound\CEnvSound.h" />
+    <ClInclude Include="..\..\game\server\entities\sound\CSpeaker.h" />
+    <ClInclude Include="..\..\game\server\entities\spawnpoints\CBaseDMStart.h" />
+    <ClInclude Include="..\..\game\server\entities\spawnpoints\CBaseSpawnPoint.h" />
+    <ClInclude Include="..\..\game\server\entities\spawnpoints\CInfoPlayerStart.h" />
+    <ClInclude Include="..\..\game\server\entities\tanks\CFuncTank.h" />
+    <ClInclude Include="..\..\game\server\entities\tanks\CFuncTankControls.h" />
+    <ClInclude Include="..\..\game\server\entities\tanks\CFuncTankGun.h" />
+    <ClInclude Include="..\..\game\server\entities\tanks\CFuncTankLaser.h" />
+    <ClInclude Include="..\..\game\server\entities\tanks\CFuncTankMortar.h" />
+    <ClInclude Include="..\..\game\server\entities\tanks\CFuncTankRocket.h" />
+    <ClInclude Include="..\..\game\server\entities\triggers\CAutoTrigger.h" />
+    <ClInclude Include="..\..\game\server\entities\triggers\CBaseTrigger.h" />
+    <ClInclude Include="..\..\game\server\entities\triggers\CChangeLevel.h" />
+    <ClInclude Include="..\..\game\server\entities\triggers\CFireAndDie.h" />
+    <ClInclude Include="..\..\game\server\entities\triggers\CFrictionModifier.h" />
+    <ClInclude Include="..\..\game\server\entities\triggers\CLadder.h" />
+    <ClInclude Include="..\..\game\server\entities\triggers\CRenderFxManager.h" />
+    <ClInclude Include="..\..\game\server\entities\triggers\CTargetCDAudio.h" />
+    <ClInclude Include="..\..\game\server\entities\triggers\CTriggerCamera.h" />
+    <ClInclude Include="..\..\game\server\entities\triggers\CTriggerCDAudio.h" />
+    <ClInclude Include="..\..\game\server\entities\triggers\CTriggerChangeTarget.h" />
+    <ClInclude Include="..\..\game\server\entities\triggers\CTriggerCounter.h" />
+    <ClInclude Include="..\..\game\server\entities\triggers\CTriggerEndSection.h" />
+    <ClInclude Include="..\..\game\server\entities\triggers\CTriggerGravity.h" />
+    <ClInclude Include="..\..\game\server\entities\triggers\CTriggerHurt.h" />
+    <ClInclude Include="..\..\game\server\entities\triggers\CTriggerMonsterJump.h" />
+    <ClInclude Include="..\..\game\server\entities\triggers\CTriggerMultiple.h" />
+    <ClInclude Include="..\..\game\server\entities\triggers\CTriggerOnce.h" />
+    <ClInclude Include="..\..\game\server\entities\triggers\CTriggerPush.h" />
+    <ClInclude Include="..\..\game\server\entities\triggers\CTriggerRelay.h" />
+    <ClInclude Include="..\..\game\server\entities\triggers\CTriggerSave.h" />
+    <ClInclude Include="..\..\game\server\entities\triggers\CTriggerTeleport.h" />
+    <ClInclude Include="..\..\game\server\entities\triggers\CTriggerVolume.h" />
+    <ClInclude Include="..\..\game\server\entities\triggers\CTriggerXenReturn.h" />
+    <ClInclude Include="..\..\game\server\entities\weapons\CDesertEagleLaser.h" />
+    <ClInclude Include="..\..\game\server\entities\weapons\CDisplacerBall.h" />
+    <ClInclude Include="..\..\game\server\entities\weapons\CShockBeam.h" />
+    <ClInclude Include="..\..\game\server\entities\weapons\CSpore.h" />
+    <ClInclude Include="..\..\game\server\entities\weapons\CWeaponBox.h" />
+    <ClInclude Include="..\..\game\server\entities\weather\CWeather.h" />
+    <ClInclude Include="..\..\game\server\entities\xen\CXenHair.h" />
+    <ClInclude Include="..\..\game\server\entities\xen\CXenPLight.h" />
+    <ClInclude Include="..\..\game\server\entities\xen\CXenSpore.h" />
+    <ClInclude Include="..\..\game\server\entities\xen\CXenTree.h" />
+    <ClInclude Include="..\..\game\server\entities\xen\CXenTreeTrigger.h" />
+    <ClInclude Include="..\..\game\server\gamerules\CGameRules.h" />
+    <ClInclude Include="..\..\game\server\gamerules\CHalfLifeMultiplay.h" />
+    <ClInclude Include="..\..\game\server\gamerules\CHalfLifeRules.h" />
+    <ClInclude Include="..\..\game\server\gamerules\CHalfLifeTeamplay.h" />
+    <ClInclude Include="..\..\game\server\gamerules\GameRules.h" />
+    <ClInclude Include="..\..\game\server\nodes\CGraph.h" />
+    <ClInclude Include="..\..\game\server\nodes\CLink.h" />
+    <ClInclude Include="..\..\game\server\nodes\CNode.h" />
+    <ClInclude Include="..\..\game\server\nodes\CNodeEnt.h" />
+    <ClInclude Include="..\..\game\server\nodes\CNodeViewer.h" />
+    <ClInclude Include="..\..\game\server\nodes\CQueue.h" />
+    <ClInclude Include="..\..\game\server\nodes\CQueuePriority.h" />
+    <ClInclude Include="..\..\game\server\nodes\CStack.h" />
+    <ClInclude Include="..\..\game\server\nodes\CTestHull.h" />
+    <ClInclude Include="..\..\game\server\nodes\NodeConstants.h" />
+    <ClInclude Include="..\..\game\server\nodes\Nodes.h" />
+    <ClInclude Include="..\..\game\server\SaveRestore.h" />
+    <ClInclude Include="..\..\game\server\saverestore\CRestore.h" />
+    <ClInclude Include="..\..\game\server\saverestore\CSave.h" />
+    <ClInclude Include="..\..\game\server\saverestore\CSaveRestoreBuffer.h" />
+    <ClInclude Include="..\..\game\server\Server.h" />
+    <ClInclude Include="..\..\game\server\ServerInterface.h" />
+    <ClInclude Include="..\..\game\server\Skill.h" />
+    <ClInclude Include="..\..\game\server\sound\Sound.h" />
+    <ClInclude Include="..\..\game\server\SVC.h" />
+    <ClInclude Include="..\..\game\server\TempEntity.h" />
+    <ClInclude Include="..\..\game\server\UserMessages.h" />
+    <ClInclude Include="..\..\game\server\voice_gamemgr.h" />
+    <ClInclude Include="..\..\game\shared\Angelscript\CASBaseModuleBuilder.h" />
+    <ClInclude Include="..\..\game\shared\Angelscript\CASMapModuleBuilder.h" />
+    <ClInclude Include="..\..\game\shared\Angelscript\CHLASBaseInitializer.h" />
+    <ClInclude Include="..\..\game\shared\Angelscript\CHLASManager.h" />
+    <ClInclude Include="..\..\game\shared\Angelscript\HLASConstants.h" />
+    <ClInclude Include="..\..\game\shared\Angelscript\ScriptAPI\ASCGlobalVars.h" />
+    <ClInclude Include="..\..\game\shared\Angelscript\ScriptAPI\CASEngine.h" />
+    <ClInclude Include="..\..\game\shared\Angelscript\ScriptAPI\Entities\ASCBaseEntity.h" />
+    <ClInclude Include="..\..\game\shared\cbase.h" />
+    <ClInclude Include="..\..\game\shared\CBaseGameInterface.h" />
+    <ClInclude Include="..\..\game\shared\cdll_dll.h" />
+    <ClInclude Include="..\..\game\shared\CReplacementCache.h" />
+    <ClInclude Include="..\..\game\shared\CReplacementMap.h" />
+    <ClInclude Include="..\..\game\shared\CTakeDamageInfo.h" />
+    <ClInclude Include="..\..\game\shared\CWeaponInfo.h" />
+    <ClInclude Include="..\..\game\shared\CWeaponInfoCache.h" />
+    <ClInclude Include="..\..\game\shared\Damage.h" />
+    <ClInclude Include="..\..\game\shared\enginecallback.h" />
+    <ClInclude Include="..\..\game\shared\entities\CBaseCombatCharacter.h" />
+    <ClInclude Include="..\..\game\shared\entities\CBaseEntity.shared.h" />
+    <ClInclude Include="..\..\game\shared\entities\CEntityDictionary.h" />
+    <ClInclude Include="..\..\game\shared\entities\CEntityRegistry.h" />
+    <ClInclude Include="..\..\game\shared\entities\DataMapping.h" />
+    <ClInclude Include="..\..\game\shared\entities\EHandle.h" />
+    <ClInclude Include="..\..\game\shared\entities\player\CBasePlayer.h" />
+    <ClInclude Include="..\..\game\shared\entities\weapons\CAmmoTypes.h" />
+    <ClInclude Include="..\..\game\shared\entities\weapons\CBarnacleGrapple.h" />
+    <ClInclude Include="..\..\game\shared\entities\weapons\CBarnacleGrappleTip.h" />
+    <ClInclude Include="..\..\game\shared\entities\weapons\CBasePlayerWeapon.h" />
+    <ClInclude Include="..\..\game\shared\entities\weapons\CCrossbow.h" />
+    <ClInclude Include="..\..\game\shared\entities\weapons\CCrowbar.h" />
+    <ClInclude Include="..\..\game\shared\entities\weapons\CDesertEagle.h" />
+    <ClInclude Include="..\..\game\shared\entities\weapons\CDisplacer.h" />
+    <ClInclude Include="..\..\game\shared\entities\weapons\CEgon.h" />
+    <ClInclude Include="..\..\game\shared\entities\weapons\CGauss.h" />
+    <ClInclude Include="..\..\game\shared\entities\weapons\CGlock.h" />
+    <ClInclude Include="..\..\game\shared\entities\weapons\CHandGrenade.h" />
+    <ClInclude Include="..\..\game\shared\entities\weapons\CHornetGun.h" />
+    <ClInclude Include="..\..\game\shared\entities\weapons\CKnife.h" />
+    <ClInclude Include="..\..\game\shared\entities\weapons\CM249.h" />
+    <ClInclude Include="..\..\game\shared\entities\weapons\CMP5.h" />
+    <ClInclude Include="..\..\game\shared\entities\weapons\CPenguin.h" />
+    <ClInclude Include="..\..\game\shared\entities\weapons\CPipewrench.h" />
+    <ClInclude Include="..\..\game\shared\entities\weapons\CPython.h" />
+    <ClInclude Include="..\..\game\shared\entities\weapons\CRpg.h" />
+    <ClInclude Include="..\..\game\shared\entities\weapons\CSatchel.h" />
+    <ClInclude Include="..\..\game\shared\entities\weapons\CShockRifle.h" />
+    <ClInclude Include="..\..\game\shared\entities\weapons\CShotgun.h" />
+    <ClInclude Include="..\..\game\shared\entities\weapons\CSniperRifle.h" />
+    <ClInclude Include="..\..\game\shared\entities\weapons\CSporeLauncher.h" />
+    <ClInclude Include="..\..\game\shared\entities\weapons\CSqueak.h" />
+    <ClInclude Include="..\..\game\shared\entities\weapons\CTripmine.h" />
+    <ClInclude Include="..\..\game\shared\extdll.h" />
+    <ClInclude Include="..\..\game\shared\GameConstants.h" />
+    <ClInclude Include="..\..\game\shared\HudColors.h" />
+    <ClInclude Include="..\..\game\shared\materials\CMaterialsList.h" />
+    <ClInclude Include="..\..\game\shared\materials\Materials.h" />
+    <ClInclude Include="..\..\game\shared\materials\MaterialsConst.h" />
+    <ClInclude Include="..\..\game\shared\ScriptEvent.h" />
+    <ClInclude Include="..\..\game\shared\shared_game_utils.h" />
+    <ClInclude Include="..\..\game\shared\util.h" />
+    <ClInclude Include="..\..\game\shared\voice_common.h" />
+    <ClInclude Include="..\..\game\shared\Weapons.h" />
+    <ClInclude Include="..\..\game\shared\WeaponsConst.h" />
+    <ClInclude Include="..\..\game\shared\Weather.h" />
+    <ClInclude Include="..\..\pm_shared\pm_debug.h" />
+    <ClInclude Include="..\..\pm_shared\pm_defs.h" />
+    <ClInclude Include="..\..\pm_shared\pm_info.h" />
+    <ClInclude Include="..\..\pm_shared\pm_movevars.h" />
+    <ClInclude Include="..\..\pm_shared\pm_shared.h" />
+    <ClInclude Include="..\..\public\interface.h" />
+    <ClInclude Include="..\..\public\math\mathlib.h" />
+    <ClInclude Include="..\..\public\math\vector.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\common\BSPIO.cpp" />
+    <ClCompile Include="..\..\common\CHashStringPool.cpp" />
+    <ClCompile Include="..\..\common\CPlane.cpp" />
+    <ClCompile Include="..\..\common\parsemsg.cpp" />
+    <ClCompile Include="..\..\common\Platform.cpp" />
+    <ClCompile Include="..\..\common\UTFUtils.cpp" />
+    <ClCompile Include="..\..\game\server\Angelscript\CHLASServerInitializer.cpp" />
+    <ClCompile Include="..\..\game\server\Angelscript\CHLASServerManager.cpp" />
+    <ClCompile Include="..\..\game\server\Angelscript\ScriptAPI\ASGameRules.cpp" />
+    <ClCompile Include="..\..\game\server\Angelscript\ScriptAPI\SQL\ASHLSQL.cpp" />
+    <ClCompile Include="..\..\game\server\animation.cpp" />
+    <ClCompile Include="..\..\game\server\ButtonSounds.cpp" />
+    <ClCompile Include="..\..\game\server\CGlobalState.cpp" />
+    <ClCompile Include="..\..\game\server\client.cpp" />
+    <ClCompile Include="..\..\game\server\CMap.cpp" />
+    <ClCompile Include="..\..\game\server\CMultiDamage.cpp" />
+    <ClCompile Include="..\..\game\server\CServerGameInterface.cpp" />
+    <ClCompile Include="..\..\game\server\Decals.cpp" />
+    <ClCompile Include="..\..\game\server\entities\ammo\CAmmo556.cpp" />
+    <ClCompile Include="..\..\game\server\entities\ammo\CBasePlayerAmmo.cpp" />
+    <ClCompile Include="..\..\game\server\entities\ammo\CSporeAmmo.cpp" />
+    <ClCompile Include="..\..\game\server\entities\bmodels\CFuncConveyor.cpp" />
+    <ClCompile Include="..\..\game\server\entities\bmodels\CFuncIllusionary.cpp" />
+    <ClCompile Include="..\..\game\server\entities\bmodels\CFuncMonsterClip.cpp" />
+    <ClCompile Include="..\..\game\server\entities\bmodels\CFuncRotating.cpp" />
+    <ClCompile Include="..\..\game\server\entities\bmodels\CFuncWall.cpp" />
+    <ClCompile Include="..\..\game\server\entities\bmodels\CFuncWallToggle.cpp" />
+    <ClCompile Include="..\..\game\server\entities\bmodels\CPendulum.cpp" />
+    <ClCompile Include="..\..\game\server\entities\CActAnimating.cpp" />
+    <ClCompile Include="..\..\game\server\entities\CBaseAnimating.cpp" />
+    <ClCompile Include="..\..\game\server\entities\CBaseButton.cpp" />
+    <ClCompile Include="..\..\game\server\entities\CBaseCombatCharacter.server.cpp" />
+    <ClCompile Include="..\..\game\server\entities\CBaseDelay.cpp" />
+    <ClCompile Include="..\..\game\server\entities\CBaseDoor.cpp" />
+    <ClCompile Include="..\..\game\server\entities\CBaseEntity.combat.cpp" />
+    <ClCompile Include="..\..\game\server\entities\CBaseEntity.server.cpp" />
+    <ClCompile Include="..\..\game\server\entities\CBaseEntity.subs.cpp" />
+    <ClCompile Include="..\..\game\server\entities\CBaseSpectator.cpp" />
+    <ClCompile Include="..\..\game\server\entities\CBaseToggle.cpp" />
+    <ClCompile Include="..\..\game\server\entities\CBloodSplat.cpp" />
+    <ClCompile Include="..\..\game\server\entities\CBreakable.cpp" />
+    <ClCompile Include="..\..\game\server\entities\CButtonTarget.cpp" />
+    <ClCompile Include="..\..\game\server\entities\CCorpse.cpp" />
+    <ClCompile Include="..\..\game\server\entities\CDeadHEV.cpp" />
+    <ClCompile Include="..\..\game\server\entities\CDecal.cpp" />
+    <ClCompile Include="..\..\game\server\entities\CEnvGlobal.cpp" />
+    <ClCompile Include="..\..\game\server\entities\CFuncMortarField.cpp" />
+    <ClCompile Include="..\..\game\server\entities\CGrenade.cpp" />
+    <ClCompile Include="..\..\game\server\entities\CInfoIntermission.cpp" />
+    <ClCompile Include="..\..\game\server\entities\CLaserSpot.cpp" />
+    <ClCompile Include="..\..\game\server\entities\CMomentaryDoor.cpp" />
+    <ClCompile Include="..\..\game\server\entities\CMomentaryRotButton.cpp" />
+    <ClCompile Include="..\..\game\server\entities\CMortar.cpp" />
+    <ClCompile Include="..\..\game\server\entities\CMultiManager.cpp" />
+    <ClCompile Include="..\..\game\server\entities\CMultiSource.cpp" />
+    <ClCompile Include="..\..\game\server\entities\CNullEntity.cpp" />
+    <ClCompile Include="..\..\game\server\entities\CPlayerHudColors.cpp" />
+    <ClCompile Include="..\..\game\server\entities\CPointEntity.cpp" />
+    <ClCompile Include="..\..\game\server\entities\CPushable.cpp" />
+    <ClCompile Include="..\..\game\server\entities\CRevertSaved.cpp" />
+    <ClCompile Include="..\..\game\server\entities\CRotButton.cpp" />
+    <ClCompile Include="..\..\game\server\entities\CRotDoor.cpp" />
+    <ClCompile Include="..\..\game\server\entities\CRpgRocket.cpp" />
+    <ClCompile Include="..\..\game\server\entities\CSoundEnt.cpp" />
+    <ClCompile Include="..\..\game\server\entities\CSprayCan.cpp" />
+    <ClCompile Include="..\..\game\server\entities\CStripWeapons.cpp" />
+    <ClCompile Include="..\..\game\server\entities\CWorld.cpp" />
+    <ClCompile Include="..\..\game\server\entities\cycler\CCycler.cpp" />
+    <ClCompile Include="..\..\game\server\entities\cycler\CCyclerSprite.cpp" />
+    <ClCompile Include="..\..\game\server\entities\cycler\CGenericCycler.cpp" />
+    <ClCompile Include="..\..\game\server\entities\cycler\CWeaponCycler.cpp" />
+    <ClCompile Include="..\..\game\server\entities\effects\CBeam.cpp" />
+    <ClCompile Include="..\..\game\server\entities\effects\CBlood.cpp" />
+    <ClCompile Include="..\..\game\server\entities\effects\CBubbling.cpp" />
+    <ClCompile Include="..\..\game\server\entities\effects\CEnvBeverage.cpp" />
+    <ClCompile Include="..\..\game\server\entities\effects\CEnvExplosion.cpp" />
+    <ClCompile Include="..\..\game\server\entities\effects\CEnvFunnel.cpp" />
+    <ClCompile Include="..\..\game\server\entities\effects\CEnvShooter.cpp" />
+    <ClCompile Include="..\..\game\server\entities\effects\CEnvSpark.cpp" />
+    <ClCompile Include="..\..\game\server\entities\effects\CFade.cpp" />
+    <ClCompile Include="..\..\game\server\entities\effects\CGib.cpp" />
+    <ClCompile Include="..\..\game\server\entities\effects\CGibShooter.cpp" />
+    <ClCompile Include="..\..\game\server\entities\effects\CGlow.cpp" />
+    <ClCompile Include="..\..\game\server\entities\effects\CItemSoda.cpp" />
+    <ClCompile Include="..\..\game\server\entities\effects\CLaser.cpp" />
+    <ClCompile Include="..\..\game\server\entities\effects\CLightning.cpp" />
+    <ClCompile Include="..\..\game\server\entities\effects\CMessage.cpp" />
+    <ClCompile Include="..\..\game\server\entities\effects\CShake.cpp" />
+    <ClCompile Include="..\..\game\server\entities\effects\CShower.cpp" />
+    <ClCompile Include="..\..\game\server\entities\effects\CSmoker.cpp" />
+    <ClCompile Include="..\..\game\server\entities\effects\CSpiral.cpp" />
+    <ClCompile Include="..\..\game\server\entities\effects\CSprite.cpp" />
+    <ClCompile Include="..\..\game\server\entities\effects\CWreckage.cpp" />
+    <ClCompile Include="..\..\game\server\entities\items\CAirtank.cpp" />
+    <ClCompile Include="..\..\game\server\entities\items\CHealthKit.cpp" />
+    <ClCompile Include="..\..\game\server\entities\items\CItem.cpp" />
+    <ClCompile Include="..\..\game\server\entities\items\CItemAntidote.cpp" />
+    <ClCompile Include="..\..\game\server\entities\items\CItemBattery.cpp" />
+    <ClCompile Include="..\..\game\server\entities\items\CItemLongJump.cpp" />
+    <ClCompile Include="..\..\game\server\entities\items\CItemSecurity.cpp" />
+    <ClCompile Include="..\..\game\server\entities\items\CItemSuit.cpp" />
+    <ClCompile Include="..\..\game\server\entities\items\CRecharge.cpp" />
+    <ClCompile Include="..\..\game\server\entities\items\CWallHealth.cpp" />
+    <ClCompile Include="..\..\game\server\entities\items\CWorldItem.cpp" />
+    <ClCompile Include="..\..\game\server\entities\lights\CEnvLight.cpp" />
+    <ClCompile Include="..\..\game\server\entities\lights\CLight.cpp" />
+    <ClCompile Include="..\..\game\server\entities\maprules\CGameCounter.cpp" />
+    <ClCompile Include="..\..\game\server\entities\maprules\CGameCounterSet.cpp" />
+    <ClCompile Include="..\..\game\server\entities\maprules\CGameEnd.cpp" />
+    <ClCompile Include="..\..\game\server\entities\maprules\CGamePlayerEquip.cpp" />
+    <ClCompile Include="..\..\game\server\entities\maprules\CGamePlayerHurt.cpp" />
+    <ClCompile Include="..\..\game\server\entities\maprules\CGamePlayerTeam.cpp" />
+    <ClCompile Include="..\..\game\server\entities\maprules\CGamePlayerZone.cpp" />
+    <ClCompile Include="..\..\game\server\entities\maprules\CGameScore.cpp" />
+    <ClCompile Include="..\..\game\server\entities\maprules\CGameTeamMaster.cpp" />
+    <ClCompile Include="..\..\game\server\entities\maprules\CGameTeamSet.cpp" />
+    <ClCompile Include="..\..\game\server\entities\maprules\CGameText.cpp" />
+    <ClCompile Include="..\..\game\server\entities\maprules\CRuleBrushEntity.cpp" />
+    <ClCompile Include="..\..\game\server\entities\maprules\CRuleEntity.cpp" />
+    <ClCompile Include="..\..\game\server\entities\maprules\CRulePointEntity.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\Activity.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CAGrunt.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CApache.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CApacheHVR.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CBabyCrab.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CBarnacle.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CBarney.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CBaseMonster.ai.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CBaseMonster.combat.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CBaseMonster.schedule.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CBaseMonster.scripted.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CBaseMonster.state.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CBaseTurret.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CBigMomma.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CBloater.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CBMortar.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CBullsquid.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CController.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CControllerHeadBall.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CControllerZapBall.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CDeadBarney.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CDeadHGrunt.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CDeadScientist.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CFlockingFlyer.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CFlockingFlyerFlock.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CFlyingMonster.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CFurniture.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CGargantua.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CGenericMonster.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CGMan.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CHAssassin.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CHeadCrab.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CHGrunt.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CHGruntRepel.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CHornet.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CHoundeye.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CIchthyosaur.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CInfoBM.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CISlave.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CLeech.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CMiniTurret.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CMonsterMaker.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CNihilanth.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CNihilanthHVR.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\COsprey.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CPenguinGrenade.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CRat.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CRoach.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CScientist.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CSentry.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CSittingScientist.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CSquadMonster.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CSquidSpit.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CStomp.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CTalkMonster.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CTentacle.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CTentacleMaw.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CTurret.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\CZombie.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\DefaultAI.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\Monsters.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\scripted\CCineAI.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\scripted\CCineMonster.cpp" />
+    <ClCompile Include="..\..\game\server\entities\NPCs\scripted\CScriptedSentence.cpp" />
+    <ClCompile Include="..\..\game\server\entities\plats\CBasePlatTrain.cpp" />
+    <ClCompile Include="..\..\game\server\entities\plats\CFuncPlat.cpp" />
+    <ClCompile Include="..\..\game\server\entities\plats\CFuncPlatRot.cpp" />
+    <ClCompile Include="..\..\game\server\entities\plats\CFuncTrackAuto.cpp" />
+    <ClCompile Include="..\..\game\server\entities\plats\CFuncTrackChange.cpp" />
+    <ClCompile Include="..\..\game\server\entities\plats\CFuncTrackTrain.cpp" />
+    <ClCompile Include="..\..\game\server\entities\plats\CFuncTrain.cpp" />
+    <ClCompile Include="..\..\game\server\entities\plats\CFuncTrainControls.cpp" />
+    <ClCompile Include="..\..\game\server\entities\plats\CGunTarget.cpp" />
+    <ClCompile Include="..\..\game\server\entities\plats\CPathCorner.cpp" />
+    <ClCompile Include="..\..\game\server\entities\plats\CPathTrack.cpp" />
+    <ClCompile Include="..\..\game\server\entities\plats\CPlatTrigger.cpp" />
+    <ClCompile Include="..\..\game\server\entities\player\CBasePlayer.frame.cpp" />
+    <ClCompile Include="..\..\game\server\entities\player\CBasePlayer.networking.cpp" />
+    <ClCompile Include="..\..\game\server\entities\player\CBasePlayer.observer.cpp" />
+    <ClCompile Include="..\..\game\server\entities\player\CBasePlayer.server.cpp" />
+    <ClCompile Include="..\..\game\server\entities\player\CBasePlayer.server.game.cpp" />
+    <ClCompile Include="..\..\game\server\entities\player\CBasePlayer.weapons.cpp" />
+    <ClCompile Include="..\..\game\server\entities\rope\CElectrifiedWire.cpp" />
+    <ClCompile Include="..\..\game\server\entities\rope\CRope.cpp" />
+    <ClCompile Include="..\..\game\server\entities\rope\CRopeSample.cpp" />
+    <ClCompile Include="..\..\game\server\entities\rope\CRopeSegment.cpp" />
+    <ClCompile Include="..\..\game\server\entities\sound\CAmbientGeneric.cpp" />
+    <ClCompile Include="..\..\game\server\entities\sound\CEnvSound.cpp" />
+    <ClCompile Include="..\..\game\server\entities\sound\CSpeaker.cpp" />
+    <ClCompile Include="..\..\game\server\entities\spawnpoints\CBaseDMStart.cpp" />
+    <ClCompile Include="..\..\game\server\entities\spawnpoints\CBaseSpawnPoint.cpp" />
+    <ClCompile Include="..\..\game\server\entities\spawnpoints\CInfoPlayerStart.cpp" />
+    <ClCompile Include="..\..\game\server\entities\tanks\CFuncTank.cpp" />
+    <ClCompile Include="..\..\game\server\entities\tanks\CFuncTankControls.cpp" />
+    <ClCompile Include="..\..\game\server\entities\tanks\CFuncTankGun.cpp" />
+    <ClCompile Include="..\..\game\server\entities\tanks\CFuncTankLaser.cpp" />
+    <ClCompile Include="..\..\game\server\entities\tanks\CFuncTankMortar.cpp" />
+    <ClCompile Include="..\..\game\server\entities\tanks\CFuncTankRocket.cpp" />
+    <ClCompile Include="..\..\game\server\entities\triggers\CAutoTrigger.cpp" />
+    <ClCompile Include="..\..\game\server\entities\triggers\CBaseTrigger.cpp" />
+    <ClCompile Include="..\..\game\server\entities\triggers\CChangeLevel.cpp" />
+    <ClCompile Include="..\..\game\server\entities\triggers\CFireAndDie.cpp" />
+    <ClCompile Include="..\..\game\server\entities\triggers\CFrictionModifier.cpp" />
+    <ClCompile Include="..\..\game\server\entities\triggers\CLadder.cpp" />
+    <ClCompile Include="..\..\game\server\entities\triggers\CRenderFxManager.cpp" />
+    <ClCompile Include="..\..\game\server\entities\triggers\CTargetCDAudio.cpp" />
+    <ClCompile Include="..\..\game\server\entities\triggers\CTriggerCamera.cpp" />
+    <ClCompile Include="..\..\game\server\entities\triggers\CTriggerCDAudio.cpp" />
+    <ClCompile Include="..\..\game\server\entities\triggers\CTriggerChangeTarget.cpp" />
+    <ClCompile Include="..\..\game\server\entities\triggers\CTriggerCounter.cpp" />
+    <ClCompile Include="..\..\game\server\entities\triggers\CTriggerEndSection.cpp" />
+    <ClCompile Include="..\..\game\server\entities\triggers\CTriggerGravity.cpp" />
+    <ClCompile Include="..\..\game\server\entities\triggers\CTriggerHurt.cpp" />
+    <ClCompile Include="..\..\game\server\entities\triggers\CTriggerMonsterJump.cpp" />
+    <ClCompile Include="..\..\game\server\entities\triggers\CTriggerMultiple.cpp" />
+    <ClCompile Include="..\..\game\server\entities\triggers\CTriggerOnce.cpp" />
+    <ClCompile Include="..\..\game\server\entities\triggers\CTriggerPush.cpp" />
+    <ClCompile Include="..\..\game\server\entities\triggers\CTriggerRelay.cpp" />
+    <ClCompile Include="..\..\game\server\entities\triggers\CTriggerSave.cpp" />
+    <ClCompile Include="..\..\game\server\entities\triggers\CTriggerTeleport.cpp" />
+    <ClCompile Include="..\..\game\server\entities\triggers\CTriggerVolume.cpp" />
+    <ClCompile Include="..\..\game\server\entities\triggers\CTriggerXenReturn.cpp" />
+    <ClCompile Include="..\..\game\server\entities\weapons\CBasePlayerWeapon.server.cpp" />
+    <ClCompile Include="..\..\game\server\entities\weapons\CDesertEagleLaser.cpp" />
+    <ClCompile Include="..\..\game\server\entities\weapons\CDisplacerBall.cpp" />
+    <ClCompile Include="..\..\game\server\entities\weapons\CShockBeam.cpp" />
+    <ClCompile Include="..\..\game\server\entities\weapons\CSpore.cpp" />
+    <ClCompile Include="..\..\game\server\entities\weapons\CWeaponBox.cpp" />
+    <ClCompile Include="..\..\game\server\entities\weather\CWeather.cpp" />
+    <ClCompile Include="..\..\game\server\entities\xen\CXenHair.cpp" />
+    <ClCompile Include="..\..\game\server\entities\xen\CXenPLight.cpp" />
+    <ClCompile Include="..\..\game\server\entities\xen\CXenSpore.cpp" />
+    <ClCompile Include="..\..\game\server\entities\xen\CXenTree.cpp" />
+    <ClCompile Include="..\..\game\server\entities\xen\CXenTreeTrigger.cpp" />
+    <ClCompile Include="..\..\game\server\gamerules\CGameRules.cpp" />
+    <ClCompile Include="..\..\game\server\gamerules\CHalfLifeMultiplay.cpp" />
+    <ClCompile Include="..\..\game\server\gamerules\CHalfLifeRules.cpp" />
+    <ClCompile Include="..\..\game\server\gamerules\CHalfLifeTeamplay.cpp" />
+    <ClCompile Include="..\..\game\server\gamerules\GameRules.cpp" />
+    <ClCompile Include="..\..\game\server\globals.cpp" />
+    <ClCompile Include="..\..\game\server\nodes\CGraph.cpp" />
+    <ClCompile Include="..\..\game\server\nodes\CNodeEnt.cpp" />
+    <ClCompile Include="..\..\game\server\nodes\CNodeViewer.cpp" />
+    <ClCompile Include="..\..\game\server\nodes\CQueue.cpp" />
+    <ClCompile Include="..\..\game\server\nodes\CQueuePriority.cpp" />
+    <ClCompile Include="..\..\game\server\nodes\CStack.cpp" />
+    <ClCompile Include="..\..\game\server\nodes\CTestHull.cpp" />
+    <ClCompile Include="..\..\game\server\saverestore\CRestore.cpp" />
+    <ClCompile Include="..\..\game\server\saverestore\CSave.cpp" />
+    <ClCompile Include="..\..\game\server\saverestore\CSaveRestoreBuffer.cpp" />
+    <ClCompile Include="..\..\game\server\Server.cpp" />
+    <ClCompile Include="..\..\game\server\ServerEngineOverride.cpp" />
+    <ClCompile Include="..\..\game\server\ServerInterface.cpp" />
+    <ClCompile Include="..\..\game\server\Skill.cpp" />
+    <ClCompile Include="..\..\game\server\sound\Sound.cpp" />
+    <ClCompile Include="..\..\game\server\TempEntity.cpp" />
+    <ClCompile Include="..\..\game\server\UserMessages.cpp" />
+    <ClCompile Include="..\..\game\server\util.cpp" />
+    <ClCompile Include="..\..\game\server\voice_gamemgr.cpp" />
+    <ClCompile Include="..\..\game\server\Weapons.cpp" />
+    <ClCompile Include="..\..\game\shared\Angelscript\CASBaseModuleBuilder.cpp" />
+    <ClCompile Include="..\..\game\shared\Angelscript\CASMapModuleBuilder.cpp" />
+    <ClCompile Include="..\..\game\shared\Angelscript\CHLASBaseInitializer.cpp" />
+    <ClCompile Include="..\..\game\shared\Angelscript\CHLASManager.cpp" />
+    <ClCompile Include="..\..\game\shared\Angelscript\ScriptAPI\ASCGlobalVars.cpp" />
+    <ClCompile Include="..\..\game\shared\Angelscript\ScriptAPI\CASEngine.cpp" />
+    <ClCompile Include="..\..\game\shared\Angelscript\ScriptAPI\Entities\ASCBaseEntity.cpp" />
+    <ClCompile Include="..\..\game\shared\CBaseGameInterface.cpp" />
+    <ClCompile Include="..\..\game\shared\CReplacementCache.cpp" />
+    <ClCompile Include="..\..\game\shared\CReplacementMap.cpp" />
+    <ClCompile Include="..\..\game\shared\CWeaponInfo.cpp" />
+    <ClCompile Include="..\..\game\shared\CWeaponInfoCache.cpp" />
+    <ClCompile Include="..\..\game\shared\entities\CBaseCombatCharacter.shared.cpp" />
+    <ClCompile Include="..\..\game\shared\entities\CBaseEntity.shared.cpp" />
+    <ClCompile Include="..\..\game\shared\entities\CEntityDictionary.cpp" />
+    <ClCompile Include="..\..\game\shared\entities\CEntityRegistry.cpp" />
+    <ClCompile Include="..\..\game\shared\entities\EHandle.cpp" />
+    <ClCompile Include="..\..\game\shared\entities\player\CBasePlayer.shared.cpp" />
+    <ClCompile Include="..\..\game\shared\entities\weapons\CAmmoTypes.cpp" />
+    <ClCompile Include="..\..\game\shared\entities\weapons\CBarnacleGrapple.cpp" />
+    <ClCompile Include="..\..\game\shared\entities\weapons\CBarnacleGrappleTip.cpp" />
+    <ClCompile Include="..\..\game\shared\entities\weapons\CBasePlayerWeapon.shared.cpp" />
+    <ClCompile Include="..\..\game\shared\entities\weapons\CCrossbow.cpp" />
+    <ClCompile Include="..\..\game\shared\entities\weapons\CCrowbar.cpp" />
+    <ClCompile Include="..\..\game\shared\entities\weapons\CDesertEagle.cpp" />
+    <ClCompile Include="..\..\game\shared\entities\weapons\CDisplacer.cpp" />
+    <ClCompile Include="..\..\game\shared\entities\weapons\CEgon.cpp" />
+    <ClCompile Include="..\..\game\shared\entities\weapons\CGauss.cpp" />
+    <ClCompile Include="..\..\game\shared\entities\weapons\CGlock.cpp" />
+    <ClCompile Include="..\..\game\shared\entities\weapons\CHandGrenade.cpp" />
+    <ClCompile Include="..\..\game\shared\entities\weapons\CHornetGun.cpp" />
+    <ClCompile Include="..\..\game\shared\entities\weapons\CKnife.cpp" />
+    <ClCompile Include="..\..\game\shared\entities\weapons\CM249.cpp" />
+    <ClCompile Include="..\..\game\shared\entities\weapons\CMP5.cpp" />
+    <ClCompile Include="..\..\game\shared\entities\weapons\CPenguin.cpp" />
+    <ClCompile Include="..\..\game\shared\entities\weapons\CPipewrench.cpp" />
+    <ClCompile Include="..\..\game\shared\entities\weapons\CPython.cpp" />
+    <ClCompile Include="..\..\game\shared\entities\weapons\CRpg.cpp" />
+    <ClCompile Include="..\..\game\shared\entities\weapons\CSatchel.cpp" />
+    <ClCompile Include="..\..\game\shared\entities\weapons\CShockRifle.cpp" />
+    <ClCompile Include="..\..\game\shared\entities\weapons\CShotgun.cpp" />
+    <ClCompile Include="..\..\game\shared\entities\weapons\CSniperRifle.cpp" />
+    <ClCompile Include="..\..\game\shared\entities\weapons\CSporeLauncher.cpp" />
+    <ClCompile Include="..\..\game\shared\entities\weapons\CSqueak.cpp" />
+    <ClCompile Include="..\..\game\shared\entities\weapons\CTripmine.cpp" />
+    <ClCompile Include="..\..\game\shared\materials\CMaterialsList.cpp" />
+    <ClCompile Include="..\..\game\shared\materials\Materials.cpp" />
+    <ClCompile Include="..\..\game\shared\shared_game_utils.cpp" />
+    <ClCompile Include="..\..\game\shared\WeaponsConst.cpp" />
+    <ClCompile Include="..\..\game\shared\Weapons_Shared.cpp" />
+    <ClCompile Include="..\..\pm_shared\pm_debug.cpp" />
+    <ClCompile Include="..\..\pm_shared\pm_shared.cpp" />
+    <ClCompile Include="..\..\public\interface.cpp" />
+    <ClCompile Include="..\..\public\math\interpolation.cpp" />
+    <ClCompile Include="..\..\public\math\mathlib.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

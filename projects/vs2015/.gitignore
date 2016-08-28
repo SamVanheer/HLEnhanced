@@ -1,0 +1,10 @@
+# ignore uneeded files and folders:
+Debug/
+Release/
+ipch/
+*.sdf
+*.suo
+*.user
+*.db
+*.opendb
+UpgradeLog*.htm
