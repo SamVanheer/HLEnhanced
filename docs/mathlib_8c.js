@@ -1,0 +1,27 @@
+var mathlib_8c =
+[
+    [ "_DotProduct", "mathlib_8c.html#ad445f7919d542dfa4b3331c390ec5879", null ],
+    [ "_VectorAdd", "mathlib_8c.html#ab2736823aa80d36a4693d3e449409cae", null ],
+    [ "_VectorCopy", "mathlib_8c.html#a320e922d83e64c85ddcbb25b2fbeadf2", null ],
+    [ "_VectorScale", "mathlib_8c.html#a160b2fa5fc9388a24fed5c62e0b74272", null ],
+    [ "_VectorSubtract", "mathlib_8c.html#af7b5413aa6d9bd5079fbd2d64af2f5ef", null ],
+    [ "AddPointToBounds", "mathlib_8c.html#aa9655894a91462c3ddd6388d1f0afba3", null ],
+    [ "AngleIMatrix", "mathlib_8c.html#aa9fedd8c99b6a6dfb6ca94ca39c44579", null ],
+    [ "AngleMatrix", "mathlib_8c.html#a95ec9092bb2169cd4cb62b4ccc2c4100", null ],
+    [ "AngleQuaternion", "mathlib_8c.html#ae815286604fb8254dc1c53329609b665", null ],
+    [ "ClearBounds", "mathlib_8c.html#a14808b68c28d0a9eb463557dee6117de", null ],
+    [ "CrossProduct", "mathlib_8c.html#a14e024e61bcacfbd63f6e5cfca665faa", null ],
+    [ "Q_rint", "mathlib_8c.html#a100d227329f793b778425c138b47fbb8", null ],
+    [ "QuaternionMatrix", "mathlib_8c.html#a42ba318c755c2437ba19115cfaf38ab2", null ],
+    [ "QuaternionSlerp", "mathlib_8c.html#a9b615902f3a1771e0e8bc78841047334", null ],
+    [ "R_ConcatTransforms", "mathlib_8c.html#af2d66099a3aaea45c59063fb84e67991", null ],
+    [ "VectorCompare", "mathlib_8c.html#a1acaf37342d8f427b3fa08506f04b81b", null ],
+    [ "VectorInverse", "mathlib_8c.html#a84ab1f6dd4d73432cbe9357a4a8ac1ff", null ],
+    [ "VectorIRotate", "mathlib_8c.html#a9c57b6822ea90b9a60f19f8c99ab880b", null ],
+    [ "VectorLength", "mathlib_8c.html#a8cf0505ab78be0af23aba80ce26577e1", null ],
+    [ "VectorMA", "mathlib_8c.html#a15e205f312b7b9e085e6a9f699419a0d", null ],
+    [ "VectorNormalize", "mathlib_8c.html#a26718fcd5642348914fa0bd49d19694c", null ],
+    [ "VectorRotate", "mathlib_8c.html#a764189098cdbdef3c9ef809e0ebae106", null ],
+    [ "VectorTransform", "mathlib_8c.html#a74dbf6ec065a609406c9aa27a7d8583c", null ],
+    [ "vec3_origin", "mathlib_8c.html#a3908446890b894f65fcd556040fddccc", null ]
+];

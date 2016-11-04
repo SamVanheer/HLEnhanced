@@ -1,0 +1,28 @@
+var struct_b_e_a_m =
+[
+    [ "amplitude", "struct_b_e_a_m.html#a14720cfdf15f73c3d415c2bc2eb40001", null ],
+    [ "b", "struct_b_e_a_m.html#acf4a2b5f04e3733d17e55f7f365cf48f", null ],
+    [ "brightness", "struct_b_e_a_m.html#ac24c3438b4d34ac7945fe42b866bce94", null ],
+    [ "delta", "struct_b_e_a_m.html#a2feb5a16a40d248a8498299eed648448", null ],
+    [ "die", "struct_b_e_a_m.html#ab423a3a8eafa7c518329d16f12c48dfd", null ],
+    [ "endEntity", "struct_b_e_a_m.html#a6b55861a76f4bb5d9e236d8af2edf590", null ],
+    [ "flags", "struct_b_e_a_m.html#a02d6a2121d10ea2eb101df03831ed192", null ],
+    [ "frame", "struct_b_e_a_m.html#ad6a1fc3b3caad8ab35e1bfa32c095171", null ],
+    [ "frameCount", "struct_b_e_a_m.html#ad02aa8fecd313689304ca2379d7dac01", null ],
+    [ "frameRate", "struct_b_e_a_m.html#aec46eb4337780741efa3b8f782ea6066", null ],
+    [ "freq", "struct_b_e_a_m.html#a47dd3b852e0a08b8fdb85b72208a464d", null ],
+    [ "g", "struct_b_e_a_m.html#a376710a05b6a4cbd3544c4647278350c", null ],
+    [ "modelIndex", "struct_b_e_a_m.html#a8847b5950787e5842fc6591de5a2a772", null ],
+    [ "next", "struct_b_e_a_m.html#adce71c5aef91323d4bbd808cff28b3db", null ],
+    [ "particles", "struct_b_e_a_m.html#a0f3b4dcdee04351f3505f06869426e07", null ],
+    [ "pFollowModel", "struct_b_e_a_m.html#ae6645a2b35d9fa6a183b80af643f8e6d", null ],
+    [ "r", "struct_b_e_a_m.html#a6ba83c3895bcb34f2e90d3e08d5fc0dd", null ],
+    [ "segments", "struct_b_e_a_m.html#a04566adc571af2253d877715bd07dc52", null ],
+    [ "source", "struct_b_e_a_m.html#ac2898e89f82ed1dc92c7d8ead8cc1e29", null ],
+    [ "speed", "struct_b_e_a_m.html#a6a47c576df8d38f41aa576a244a0a9c8", null ],
+    [ "startEntity", "struct_b_e_a_m.html#a0d0b610ce6e0c44ef10cf3b39f0ef105", null ],
+    [ "t", "struct_b_e_a_m.html#ab6b7c45c25a3975127a6f10346043f22", null ],
+    [ "target", "struct_b_e_a_m.html#a655d455f679a6ebcb0a96f45c05d8c55", null ],
+    [ "type", "struct_b_e_a_m.html#ad137f2bf09f1da1c645c048d51ca5f69", null ],
+    [ "width", "struct_b_e_a_m.html#a2b80a5f55d9fc0db7299542ce6b699a0", null ]
+];

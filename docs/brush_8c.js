@@ -1,0 +1,27 @@
+var brush_8c =
+[
+    [ "expand_t", "structexpand__t.html", "structexpand__t" ],
+    [ "ANGLEEPSILON", "brush_8c.html#aa8bb14a1705a8126c2da6ac9fc25848b", null ],
+    [ "MAX_HULL_EDGES", "brush_8c.html#a8b075a64c4b4986528defc1a0913f9e2", null ],
+    [ "MAX_HULL_POINTS", "brush_8c.html#a803031b6aa4eb1b25671cf6b0368dc38", null ],
+    [ "AddBrushPlane", "brush_8c.html#a695be6abd22c57722c5e36319bb1f943", null ],
+    [ "AddHullEdge", "brush_8c.html#af4a066f4c57fdabb93b6c5e3f3bcca1e", null ],
+    [ "AddHullPoint", "brush_8c.html#afd37fc0a405227800a9047f169267a2a", null ],
+    [ "BaseWindingForIPlane", "brush_8c.html#a33ff339c494a924f133e6686266d01f0", null ],
+    [ "BrushContents", "brush_8c.html#a6f734a6f9e626594d436986498d32a35", null ],
+    [ "CreateBrush", "brush_8c.html#ae5378bcb323306e760f94ba612c5f796", null ],
+    [ "ExpandBrush", "brush_8c.html#ad1ab86b16b30ad18c6bf47b757ff96a3", null ],
+    [ "FindGCD", "brush_8c.html#a347733884b663f7bb6c6cd18e02adbdc", null ],
+    [ "FindIntPlane", "brush_8c.html#a8447e891a84fce2e0cfcec2303dce200", null ],
+    [ "IPlaneEquiv", "brush_8c.html#ab16f5f5ce709d8bfc41479b282e1e46c", null ],
+    [ "MakeBrushPlanes", "brush_8c.html#a77da3295240a6599122d046b36a6b72d", null ],
+    [ "MakeHullFaces", "brush_8c.html#af717ee46065192ce350ca597b2cec89f", null ],
+    [ "PlaneFromPoints", "brush_8c.html#a25fe101465b59754af617375f069a789", null ],
+    [ "PlaneTypeForNormal", "brush_8c.html#a0959e782a8fd4f5f2c3ddcfbcc14eb0a", null ],
+    [ "ScaleUpIVector", "brush_8c.html#a0f348fd86a2dd6e4a4f20f366f953b34", null ],
+    [ "TestAddPlane", "brush_8c.html#a68806c0e3a8e63e30ff3395d04be1502", null ],
+    [ "TextureContents", "brush_8c.html#a8732d2268a0e2cfc0cb0651af149f096", null ],
+    [ "hull_size", "brush_8c.html#a225870478b11318f4ea4986da0ecb47a", null ],
+    [ "mapplanes", "brush_8c.html#a96bc6daec10415736aeb6de8fb0530d2", null ],
+    [ "nummapplanes", "brush_8c.html#a93bb5bb34fdafa05117fc02d44831c6a", null ]
+];

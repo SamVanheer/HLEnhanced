@@ -1,0 +1,25 @@
+var surfaces_8c =
+[
+    [ "hashvert_s", "structhashvert__s.html", "structhashvert__s" ],
+    [ "NUM_HASH", "surfaces_8c.html#a79e105f6313e4d465a2fa40468fef864", null ],
+    [ "POINT_EPSILON", "surfaces_8c.html#afe019bc8ffd07d1311e9b29b5b58bcec", null ],
+    [ "hashvert_t", "surfaces_8c.html#a9c0d4777d7f7f1b962f03c1a9b3d13e4", null ],
+    [ "CheckEdges", "surfaces_8c.html#a1230849317c0db976abf379a18d7f948", null ],
+    [ "CheckVertexes", "surfaces_8c.html#aa9d74d4b9bd48872161ca01f8128934c", null ],
+    [ "GetEdge", "surfaces_8c.html#a49da37b2d01b75357eb95764c2ad1b61", null ],
+    [ "GetVertex", "surfaces_8c.html#a5eb2e51eaf61d5a09626d630a3a9b78a", null ],
+    [ "MakeFaceEdges", "surfaces_8c.html#a4bf7fb481cd10799a5fd890a80023ed5", null ],
+    [ "SubdivideFace", "surfaces_8c.html#a3d628c303c6e89f09f4e410e4dc4e32f", null ],
+    [ "TexelDelta", "surfaces_8c.html#ac426e30edfa191bdaadf920f4499e2e1", null ],
+    [ "TexelSize", "surfaces_8c.html#ac3da142f370309b432eb2f65aa3d9910", null ],
+    [ "c_cornerverts", "surfaces_8c.html#a797172ae2fb8d937a99f34f1268e5f18", null ],
+    [ "c_tryedges", "surfaces_8c.html#a5dfa7fa2bc358dff74124fca63c11d78", null ],
+    [ "edgefaces", "surfaces_8c.html#abc554e0a853e7d1a0e1b86d6062af127", null ],
+    [ "firstmodeledge", "surfaces_8c.html#a36d3f280a5d435cb36f1a9e38914f09f", null ],
+    [ "firstmodelface", "surfaces_8c.html#a6d196091c150229c61289bb525d4fffa", null ],
+    [ "hashverts", "surfaces_8c.html#a7280f5c2012f938aaea6f8c548498fcb", null ],
+    [ "hvert_p", "surfaces_8c.html#a50fb1761fcc7ab04f11bbc85ac0b4a6b", null ],
+    [ "hvertex", "surfaces_8c.html#af2fc4d419c5d60864e2e18c154479f65", null ],
+    [ "newcopy_t", "surfaces_8c.html#a9e8dfe543aa5fffbcddb9fd2d0a5df7e", null ],
+    [ "subdivides", "surfaces_8c.html#a0ec8d821c473feb1511dcc7de328f9f9", null ]
+];

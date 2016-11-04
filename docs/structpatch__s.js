@@ -1,0 +1,25 @@
+var structpatch__s =
+[
+    [ "area", "structpatch__s.html#aa5739b89b3659e2f9c7d1020373239db", null ],
+    [ "baselight", "structpatch__s.html#aba54f5596a42d7a0abfe4a129896412a", null ],
+    [ "chop", "structpatch__s.html#aa01409fde2d6d5a9d2b45a36de0b846a", null ],
+    [ "directlight", "structpatch__s.html#a4f2e2667fb3a2343a2759d5c53c77d3d", null ],
+    [ "face_maxs", "structpatch__s.html#aa2defe445b8e50fb2f4313bb32813032", null ],
+    [ "face_mins", "structpatch__s.html#a9bcda2afb2bf4b3480174518f923a319", null ],
+    [ "faceNumber", "structpatch__s.html#a900678ac4692b8e09b59ebfb9cf96cbf", null ],
+    [ "maxs", "structpatch__s.html#a0d12a8510940b69c0962f1e41bdc4bef", null ],
+    [ "mins", "structpatch__s.html#a60e94af9fa9db35d7ea01232b7946547", null ],
+    [ "next", "structpatch__s.html#a88cc376ccf8da1583e1a23db7ce79b9c", null ],
+    [ "normal", "structpatch__s.html#a1dea184f354ec3ab91ad5c0891b0359a", null ],
+    [ "numtransfers", "structpatch__s.html#a6e1394f515b88002dc39936c01b446d0", null ],
+    [ "origin", "structpatch__s.html#a9e6b33c57c717aa105bbde18221107f5", null ],
+    [ "plane", "structpatch__s.html#abf224a5a7055dfc8cb690429975f6a02", null ],
+    [ "reflectivity", "structpatch__s.html#a44fda515d54809924371d6d6bb69cc42", null ],
+    [ "samplelight", "structpatch__s.html#a6749168d16700988d258a1e8ef7fcb92", null ],
+    [ "samples", "structpatch__s.html#a04fedaefd7da01d476643a40ef41a2c8", null ],
+    [ "scale", "structpatch__s.html#a4d3b6ebdc8717d497e4afe463cb8511d", null ],
+    [ "sky", "structpatch__s.html#a788b321535908f60a6412bf72d555a0d", null ],
+    [ "totallight", "structpatch__s.html#a840a55ef6d060465971f3f197363dace", null ],
+    [ "transfers", "structpatch__s.html#a15f98cbc27ae3abae9e4f78d0bb615ab", null ],
+    [ "winding", "structpatch__s.html#a7193bd71f5706d938c1414c670aad26f", null ]
+];

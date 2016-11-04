@@ -1,0 +1,26 @@
+var _server_interface_8h =
+[
+    [ "GIVEFNPTRS_DLLEXPORT", "_server_interface_8h.html#ab50065fc73ee8461972588ba8a63db5e", null ],
+    [ "CvarValue", "_server_interface_8h.html#a0901bdafb22653ce127690a20911b2bd", null ],
+    [ "CvarValue2", "_server_interface_8h.html#acf5b613a2ab7cbf0579b3fbaf730f318", null ],
+    [ "DispatchBlocked", "_server_interface_8h.html#a0f287b8edc8589e57b194f87967a1e58", null ],
+    [ "DispatchKeyValue", "_server_interface_8h.html#a321c6f352ba98d0b444a860784a910fc", null ],
+    [ "DispatchObjectCollisionBox", "_server_interface_8h.html#afc724000c5552793d629a8ebdc928451", null ],
+    [ "DispatchRestore", "_server_interface_8h.html#a28d62ac92a1ba4cfb587a60c412d6926", null ],
+    [ "DispatchSave", "_server_interface_8h.html#a2dedfd03e4954377e6917418bb8a5297", null ],
+    [ "DispatchSpawn", "_server_interface_8h.html#a6326ab643fb365c162e4d5e636fb820e", null ],
+    [ "DispatchThink", "_server_interface_8h.html#a2d0b9696080ccc24754290cd9e73f575", null ],
+    [ "DispatchTouch", "_server_interface_8h.html#a19125f4a72f08bd9b49dc56794c8b105", null ],
+    [ "DispatchUse", "_server_interface_8h.html#af2273350e19e122512f9df4fae073f5f", null ],
+    [ "GetEntityAPI", "_server_interface_8h.html#aa90875b4588cdce03aa7117f7016b2b9", null ],
+    [ "GetEntityAPI2", "_server_interface_8h.html#a2ab0481bde916464471c14755a577526", null ],
+    [ "GetNewDLLFunctions", "_server_interface_8h.html#ae76dd333e9f759b6ceb0aa1199c6b46a", null ],
+    [ "GiveFnptrsToDll", "_server_interface_8h.html#a25655a401977ebd1c6cbe8f3fdeb2b5d", null ],
+    [ "OnFreeEntPrivateData", "_server_interface_8h.html#a2262d05bc68c49a72e4c2d139d0a0850", null ],
+    [ "ResetGlobalState", "_server_interface_8h.html#a6810bdf14d245e9f34df1ff69bb6994c", null ],
+    [ "RestoreGlobalState", "_server_interface_8h.html#a00fbf02202736175c440598f46abdb6b", null ],
+    [ "SaveGlobalState", "_server_interface_8h.html#ad737503693cec604012ccb3a2a8cf2cc", null ],
+    [ "SaveReadFields", "_server_interface_8h.html#a894d33e6a1c3eac7199b8454e355c8bd", null ],
+    [ "SaveWriteFields", "_server_interface_8h.html#aafe4353e0a9284fa1efc508d5ad26c4f", null ],
+    [ "ShouldCollide", "_server_interface_8h.html#a9c9f8191cf44606b45a6eb25a118bb01", null ]
+];

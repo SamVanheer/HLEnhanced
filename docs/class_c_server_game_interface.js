@@ -1,0 +1,27 @@
+var class_c_server_game_interface =
+[
+    [ "CServerGameInterface", "class_c_server_game_interface.html#afa4e42ed271fc25c3f6b80f9eea06eaf", null ],
+    [ "~CServerGameInterface", "class_c_server_game_interface.html#a8bb30b95a7478020fa9bf42c0c3b78da", null ],
+    [ "Activate", "class_c_server_game_interface.html#a24242920ef6e0e35c71ec1683b42bb06", null ],
+    [ "ClientCommand", "class_c_server_game_interface.html#a3ab512fb4c4014dec2234a8bec505550", null ],
+    [ "ClientConnect", "class_c_server_game_interface.html#a5cda52f2088698dac49823d2434530d6", null ],
+    [ "ClientDisconnect", "class_c_server_game_interface.html#a0a024daa03ad757cdc4cbff1d667dada", null ],
+    [ "ClientKill", "class_c_server_game_interface.html#a50fd514f046089cd23f870e45df4ab15", null ],
+    [ "ClientPrecache", "class_c_server_game_interface.html#a3c93c3721a74f8def1ec1a28fc1d0dd3", null ],
+    [ "ClientPutInServer", "class_c_server_game_interface.html#ad6c9dcf2d232940d3e21b045356d6ca6", null ],
+    [ "ClientUserInfoChanged", "class_c_server_game_interface.html#ae2e8578acf041bc188fda147943289d3", null ],
+    [ "Deactivate", "class_c_server_game_interface.html#ac8e920d81f4bf2e7f3871fe2546387f5", null ],
+    [ "EntityCreated", "class_c_server_game_interface.html#abad6cc1a3c28144a946f6729907c9de0", null ],
+    [ "GetGameDescription", "class_c_server_game_interface.html#a5ad344292d74f0fa49fc2debb1da9b0c", null ],
+    [ "Initialize", "class_c_server_game_interface.html#ac8e8635756dbd5bf136ce15eec0b443b", null ],
+    [ "IsActive", "class_c_server_game_interface.html#a234d3e3968a0ff2383be14b6fbfd7d49", null ],
+    [ "ParmsChangeLevel", "class_c_server_game_interface.html#a1c86adce2a573ef0e898993f96400f57", null ],
+    [ "ParmsNewLevel", "class_c_server_game_interface.html#a5e19f6b415fccfce94d5f4f369b4fa95", null ],
+    [ "PlayerCustomization", "class_c_server_game_interface.html#af93ee00d5d7808beb564af546bc1354e", null ],
+    [ "Shutdown", "class_c_server_game_interface.html#a8c023bb57d1aa0e97bfe2056ad0817dc", null ],
+    [ "SpectatorConnect", "class_c_server_game_interface.html#af43c3fa6c5402304bae70841583094a3", null ],
+    [ "SpectatorDisconnect", "class_c_server_game_interface.html#a9ed2924a7d16bd30788fc08142c960f3", null ],
+    [ "SpectatorThink", "class_c_server_game_interface.html#a09b7aa7a78ce58d9f67c78b6d585c525", null ],
+    [ "StartFrame", "class_c_server_game_interface.html#aabe00446bed3cb465645b6e3c4682943", null ],
+    [ "Sys_Error", "class_c_server_game_interface.html#a12a6ad9b61fb83ac39b125cf94c0b3d3", null ]
+];

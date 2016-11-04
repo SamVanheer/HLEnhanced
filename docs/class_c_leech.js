@@ -1,0 +1,25 @@
+var class_c_leech =
+[
+    [ "Activate", "class_c_leech.html#aff2c135058453cd3ce7143ca131f3cd6", null ],
+    [ "AlertSound", "class_c_leech.html#afd2c79767afa5083314edce791482987", null ],
+    [ "AttackSound", "class_c_leech.html#a3931922aa17f142df39d508a56a05277", null ],
+    [ "BloodColor", "class_c_leech.html#a85bf16a9399afbbd63efedce2a4bd542", null ],
+    [ "Classify", "class_c_leech.html#a2da321da428bee43b48983979e021d80", null ],
+    [ "DeadThink", "class_c_leech.html#a090ab01489b17151fcb8cb83d9a05866", null ],
+    [ "DECLARE_CLASS", "class_c_leech.html#a42c990154f2013b79e0579d1f1016908", null ],
+    [ "DECLARE_DATADESC", "class_c_leech.html#aa77e649626bdc6ad17590724bc123453", null ],
+    [ "HandleAnimEvent", "class_c_leech.html#a416e1a93f3db604ac5b750b334f8a1c5", null ],
+    [ "IRelationship", "class_c_leech.html#a901ff7b9f915fd8f57a2df28224e33fd", null ],
+    [ "Killed", "class_c_leech.html#ad074cfe1baaef623e193f24c5e028738", null ],
+    [ "MakeVectors", "class_c_leech.html#a29fe41d6f8a505b2668dd456985868a0", null ],
+    [ "ObstacleDistance", "class_c_leech.html#a8d7e6284aad472f1d20b55015b08dd03", null ],
+    [ "OnTakeDamage", "class_c_leech.html#ab9157531a1d34c408295c1bf7988df09", null ],
+    [ "Precache", "class_c_leech.html#aadb34a1de8fac0aa7ebf86b3e9924fab", null ],
+    [ "RecalculateWaterlevel", "class_c_leech.html#adbe0cb8478ef9758d809a659196dbe95", null ],
+    [ "SetObjectCollisionBox", "class_c_leech.html#ac1d4b4b23f7c2218b36fe4ac3c581160", null ],
+    [ "Spawn", "class_c_leech.html#a052298bc41d6b7f8eaa26063ede1cd34", null ],
+    [ "SwimThink", "class_c_leech.html#a5169ac45eeb1da2fec1903695f16b5b8", null ],
+    [ "SwitchLeechState", "class_c_leech.html#a990a0f4bc1bd4f677981b5434cf48264", null ],
+    [ "Touch", "class_c_leech.html#ae787624764aa6af9c0930c8ee1733ffc", null ],
+    [ "UpdateMotion", "class_c_leech.html#afc4932a50686ee9f41a87e29aebe8cc7", null ]
+];

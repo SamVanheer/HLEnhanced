@@ -1,0 +1,28 @@
+var class_i_particle_man =
+[
+    [ "~IParticleMan", "class_i_particle_man.html#ac3bf49f20696534355d52eb753929372", null ],
+    [ "AddCustomParticleClassSize", "class_i_particle_man.html#a2a747041753dcf8a48464855c45caca2", null ],
+    [ "ApplyForce", "class_i_particle_man.html#ada93fdf4472920c53efd8ac2badc7a32", null ],
+    [ "CoreAnimate", "class_i_particle_man.html#ac6a0c3737987033762d98b828868c1e9", null ],
+    [ "CoreAnimateAndDie", "class_i_particle_man.html#a8c659342b50f0c43055b3910bd5a2507", null ],
+    [ "CoreCalculateVelocity", "class_i_particle_man.html#a10244c88a8ec410331dfbbe99c27a22e", null ],
+    [ "CoreCheckCollision", "class_i_particle_man.html#a66c5b0fc23e9af292dacb5d7cee1ea39", null ],
+    [ "CoreCheckVisibility", "class_i_particle_man.html#ae165a2cc7a130e9bad51b02f0115c335", null ],
+    [ "CoreContract", "class_i_particle_man.html#a56c9ec037ad800c01fdaf29f5a533567", null ],
+    [ "CoreDie", "class_i_particle_man.html#a780d1d45151990a1a899c0b70b107afc", null ],
+    [ "CoreDraw", "class_i_particle_man.html#ad5282ea87aa99102b8bf3c5694b7348e", null ],
+    [ "CoreExpand", "class_i_particle_man.html#a099f4070743dc448f81bd1ce3fc47562", null ],
+    [ "CoreFade", "class_i_particle_man.html#a8d2b7fdb6d28bd7db9c04639f5921b7b", null ],
+    [ "CoreForce", "class_i_particle_man.html#a4b0165e82adee2132e93e78fd756002c", null ],
+    [ "CoreInitializeSprite", "class_i_particle_man.html#a7f6ff46e3870af0aaa09c92c4f2ecb96", null ],
+    [ "CoreSpin", "class_i_particle_man.html#a4973a52dc23016f0b69156e994643882", null ],
+    [ "CoreThink", "class_i_particle_man.html#a95ed65af3e4d84d23b886202a07f7a50", null ],
+    [ "CoreTouch", "class_i_particle_man.html#a0b9fb0950fdc7df441d5aa8e2fff3176", null ],
+    [ "CreateParticle", "class_i_particle_man.html#af3245d9b2616c430c70fea2a03dbe61f", null ],
+    [ "RequestNewMemBlock", "class_i_particle_man.html#a2f9259b1a06762c4b527405e431f445a", null ],
+    [ "ResetParticles", "class_i_particle_man.html#ab8cb176b55ae1a578dc3dd886c6c651d", null ],
+    [ "SetRender", "class_i_particle_man.html#af2f1a7b412f554a202b2554da9a93ac5", null ],
+    [ "SetUp", "class_i_particle_man.html#adf763e0986bf77db50a62a415822ae0b", null ],
+    [ "SetVariables", "class_i_particle_man.html#ac2c7c24bb31706996b94a85b4bec61cf", null ],
+    [ "Update", "class_i_particle_man.html#a75ca264b675d793216b24badb9bb514c", null ]
+];

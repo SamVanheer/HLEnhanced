@@ -1,0 +1,26 @@
+var vismat_8c =
+[
+    [ "HALFBIT", "vismat_8c.html#a5734c0c359e490618fd103ec73f973a9", null ],
+    [ "BuildVisLeafs", "vismat_8c.html#a1bd67ae206a15dc9e3e7c140b3984527", null ],
+    [ "BuildVisMatrix", "vismat_8c.html#a4b4dae4ba77027d27bbcc2d7b4eb8044", null ],
+    [ "BuildVisRow", "vismat_8c.html#a18888f5492fcd6ab41e4e291147af4d5", null ],
+    [ "CheckVisBit", "vismat_8c.html#a0f34fc5909c5296d38e827390ec1f1e8", null ],
+    [ "FreeVisMatrix", "vismat_8c.html#a905a710479f1be96bc4d9587d144517a", null ],
+    [ "getfiledata", "vismat_8c.html#a22b4867169899228ba91b9d63de0bb85", null ],
+    [ "getfilesize", "vismat_8c.html#a5b616023a42d16b11d1e5d5f42a2f5c2", null ],
+    [ "getfiletime", "vismat_8c.html#a44b8cfb982141908d7723abed75a2be4", null ],
+    [ "getfreespace", "vismat_8c.html#a197a32d56b2d1b2af67981e8edbdb214", null ],
+    [ "IsIncremental", "vismat_8c.html#aca548080cf8a78f5a4dd88a62c2a3d23", null ],
+    [ "PatchPlaneDist", "vismat_8c.html#a3b8a4edd4caca5436b53ad6198af4a63", null ],
+    [ "PointInLeaf", "vismat_8c.html#a4ede1120c47535b5064340759e90ecbf", null ],
+    [ "putfiledata", "vismat_8c.html#a52a83c5c72d353a4d3e346b10a2a9af9", null ],
+    [ "PvsForOrigin", "vismat_8c.html#a13fde5e66cda3db000d24546f5cc1cac", null ],
+    [ "SaveIncremental", "vismat_8c.html#aa1a4a4d76b2b5424e77469d7f7846483", null ],
+    [ "TestPatchToFace", "vismat_8c.html#a9006c5d41b7fd80a57e473e56d4c81d9", null ],
+    [ "TouchFile", "vismat_8c.html#ac2e5fb2ab7bba367ca15cafe7e8a1d0f", null ],
+    [ "incremental", "vismat_8c.html#af3c2cb679852f9b69d6083aa47b46ea4", null ],
+    [ "incrementfile", "vismat_8c.html#a3a81ddde24c1566eb828fe81f499699c", null ],
+    [ "source", "vismat_8c.html#a54f0754d5bb46d36dfb88725c4672da8", null ],
+    [ "vismatfile", "vismat_8c.html#ab4a6a033ea5b6f3863cba5613ff82706", null ],
+    [ "vismatrix", "vismat_8c.html#a244497fc34c3278d4899d2a48025c23a", null ]
+];

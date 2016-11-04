@@ -1,0 +1,37 @@
+var _sound_8h =
+[
+    [ "SENTENCEG", "struct_s_e_n_t_e_n_c_e_g.html", "struct_s_e_n_t_e_n_c_e_g" ],
+    [ "CBSENTENCENAME_MAX", "_sound_8h.html#ad0cb3dad4dfee54ef05ce58e5b0c1c4b", null ],
+    [ "CSENTENCE_LRU_MAX", "_sound_8h.html#a2cae8ba0390d8ebab399f5c980b7dc94", null ],
+    [ "CVOXFILESENTENCEMAX", "_sound_8h.html#ac286117f07e60cc69e8e021e8a3632b5", null ],
+    [ "EMIT_SOUND_ARRAY_DYN", "_sound_8h.html#a27f1c608245da00be00bb4b230ece393", null ],
+    [ "PRECACHE_SOUND_ARRAY", "_sound_8h.html#a0aa7411b121137ba5b2cedd04d3d50be", null ],
+    [ "RANDOM_SOUND_ARRAY", "_sound_8h.html#a06bf6ebd0eadfc976f9a45fc7eafcbdb", null ],
+    [ "SoundFlag", "_sound_8h.html#a5491e1d72ed60b9d2a887ce6ceddb1f6", [
+      [ "SND_SPAWNING", "_sound_8h.html#a5491e1d72ed60b9d2a887ce6ceddb1f6a61ab58ed3b4450cd493ec6e5f00ab0f1", null ],
+      [ "SND_STOP", "_sound_8h.html#a5491e1d72ed60b9d2a887ce6ceddb1f6a5ad099a80279882cfd6f39634271489a", null ],
+      [ "SND_CHANGE_VOL", "_sound_8h.html#a5491e1d72ed60b9d2a887ce6ceddb1f6a09093b269b9d66027cd99b14e4b8006d", null ],
+      [ "SND_CHANGE_PITCH", "_sound_8h.html#a5491e1d72ed60b9d2a887ce6ceddb1f6ab6ece834beb593d1cb53c72a1f9deae5", null ]
+    ] ],
+    [ "EMIT_GROUPID_SUIT", "_sound_8h.html#a4649dd9d42cd5ff0a4ea41cf033b8525", null ],
+    [ "EMIT_GROUPNAME_SUIT", "_sound_8h.html#a290e934bd86af88a7218bd47d046f616", null ],
+    [ "EMIT_SOUND", "_sound_8h.html#ae006d8b0d873dd277ddb4dd80c0d4ca5", null ],
+    [ "EMIT_SOUND_DYN", "_sound_8h.html#a924cbd081e06d6565e0682397e5c367a", null ],
+    [ "EMIT_SOUND_SUIT", "_sound_8h.html#a1ce6dfb38c6e955736945f368f738f18", null ],
+    [ "SENTENCEG_GetIndex", "_sound_8h.html#a324ca73aee027d798048663a84fdc457", null ],
+    [ "SENTENCEG_Init", "_sound_8h.html#a3c8d89864a250fdfbe7e365a7710af12", null ],
+    [ "SENTENCEG_Lookup", "_sound_8h.html#a2a1c9925f864923cf6fbecdcdbbd7e44", null ],
+    [ "SENTENCEG_PlayRndI", "_sound_8h.html#ab66cac4f4dffef33bf174fc8c31adea9", null ],
+    [ "SENTENCEG_PlayRndSz", "_sound_8h.html#ac27c2f740a2b68bf0ab964d6ee871e0e", null ],
+    [ "SENTENCEG_PlaySequentialSz", "_sound_8h.html#a7ca45c6960cc14d1db2c8f1663d6bd18", null ],
+    [ "SENTENCEG_Stop", "_sound_8h.html#ac79afe004d04a77228d1f6690f5f6006", null ],
+    [ "STOP_SOUND", "_sound_8h.html#a38eb3ed9e76f7308909c493520ac9e14", null ],
+    [ "TEXTURETYPE_PlaySound", "_sound_8h.html#a767decf1eaa3fa124e27a9f347d8a1de", null ],
+    [ "USENTENCEG_InitLRU", "_sound_8h.html#a57fa29b2f0199ba8b97999f6be440b76", null ],
+    [ "USENTENCEG_Pick", "_sound_8h.html#aae0ad5b2266f4050c68b37d8477281fd", null ],
+    [ "USENTENCEG_PickSequential", "_sound_8h.html#a41843d7821f0bb8ed3615e81fc187a4a", null ],
+    [ "UTIL_EmitAmbientSound", "_sound_8h.html#ac4599337a40ee0058218935a6f50a90d", null ],
+    [ "gcallsentences", "_sound_8h.html#a25c455a68a6f3eaae0ac06fc3de199ea", null ],
+    [ "gszallsentencenames", "_sound_8h.html#a58b5f80af353da66b026e789c41739fb", null ],
+    [ "SENTENCEG_INVALID_INDEX", "_sound_8h.html#a727f7ab73d4462eab4ed96a2d8ec14d4", null ]
+];

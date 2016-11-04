@@ -1,0 +1,55 @@
+var _c_base_monster_8h =
+[
+    [ "WayPoint_t", "struct_way_point__t.html", "struct_way_point__t" ],
+    [ "CBaseMonster", "class_c_base_monster.html", "class_c_base_monster" ],
+    [ "bits_CAP_AUTO_DOORS", "_c_base_monster_8h.html#a0937c0cd58d3cf559115fa09f1445642", null ],
+    [ "bits_CAP_CLIMB", "_c_base_monster_8h.html#ae3e3660a90891fb8711ad78b6a84d0ba", null ],
+    [ "bits_CAP_DOORS_GROUP", "_c_base_monster_8h.html#a80ae0f4bfd41db82e23d6d72fa406b55", null ],
+    [ "bits_CAP_DUCK", "_c_base_monster_8h.html#aa8d9d66c558e335ccd2c36a958c8252a", null ],
+    [ "bits_CAP_FLY", "_c_base_monster_8h.html#a8129f944c51f1c45845d707022edde62", null ],
+    [ "bits_CAP_HEAR", "_c_base_monster_8h.html#a77f6a9de5dd384e32b3db631aaaa0309", null ],
+    [ "bits_CAP_JUMP", "_c_base_monster_8h.html#a9477dfe3189cfdf08478ef7a4c13c66b", null ],
+    [ "bits_CAP_MELEE_ATTACK1", "_c_base_monster_8h.html#ae0c322ae842c5a29deb5ae068ea7f858", null ],
+    [ "bits_CAP_MELEE_ATTACK2", "_c_base_monster_8h.html#afcb77af19d3d00d91a0b26af44c9d4a8", null ],
+    [ "bits_CAP_OPEN_DOORS", "_c_base_monster_8h.html#adbbe8d3a5fd1e56c0feea05f97bf0096", null ],
+    [ "bits_CAP_RANGE_ATTACK1", "_c_base_monster_8h.html#a10b5440ba66a866cd82e73f9750838c8", null ],
+    [ "bits_CAP_RANGE_ATTACK2", "_c_base_monster_8h.html#afb1ee2e1dacc5ef4d53cac5c51d0d3b0", null ],
+    [ "bits_CAP_SQUAD", "_c_base_monster_8h.html#a88b44fdc46750db92b3337949c61e17e", null ],
+    [ "bits_CAP_STRAFE", "_c_base_monster_8h.html#ae313dbf02d09ba71b7940d4dffab4052", null ],
+    [ "bits_CAP_SWIM", "_c_base_monster_8h.html#a139a2e9be978adfd78cca915b7a3dd44", null ],
+    [ "bits_CAP_TURN_HEAD", "_c_base_monster_8h.html#a9be0bdb42b216c1e28f86cba14fe1b34", null ],
+    [ "bits_CAP_USE", "_c_base_monster_8h.html#a307f8e4b997847dffeaf403c2ba7021f", null ],
+    [ "MAX_OLD_ENEMIES", "_c_base_monster_8h.html#aa3ca854e0a372cb9ff70ec0c07fb1208", null ],
+    [ "ROUTE_SIZE", "_c_base_monster_8h.html#a2f85264fb49ca8342ca686d9fa3be68b", null ],
+    [ "MONSTERSTATE", "_c_base_monster_8h.html#adb4804cc1b143f8a09ee068ce305581e", [
+      [ "MONSTERSTATE_NONE", "_c_base_monster_8h.html#adb4804cc1b143f8a09ee068ce305581ea9e73166ea231aedf0506fa082b286215", null ],
+      [ "MONSTERSTATE_IDLE", "_c_base_monster_8h.html#adb4804cc1b143f8a09ee068ce305581ea3501fd82187d59bf3e09b27c1516d5b9", null ],
+      [ "MONSTERSTATE_COMBAT", "_c_base_monster_8h.html#adb4804cc1b143f8a09ee068ce305581ea92b7b0a209ce9610866b5daa66f532c7", null ],
+      [ "MONSTERSTATE_ALERT", "_c_base_monster_8h.html#adb4804cc1b143f8a09ee068ce305581ea568c2506f1481cd7350714e6aac10b41", null ],
+      [ "MONSTERSTATE_HUNT", "_c_base_monster_8h.html#adb4804cc1b143f8a09ee068ce305581ea35a1c05ba0117a5ec1151b519b94c405", null ],
+      [ "MONSTERSTATE_PRONE", "_c_base_monster_8h.html#adb4804cc1b143f8a09ee068ce305581eaf86318d5eb8b1446e00ca2c2de2c2fb0", null ],
+      [ "MONSTERSTATE_SCRIPT", "_c_base_monster_8h.html#adb4804cc1b143f8a09ee068ce305581ea2d4ed1be0cbe7a497ccec00e897bca03", null ],
+      [ "MONSTERSTATE_PLAYDEAD", "_c_base_monster_8h.html#adb4804cc1b143f8a09ee068ce305581ea673d62d180e764e791c0dd74baddfeb5", null ],
+      [ "MONSTERSTATE_DEAD", "_c_base_monster_8h.html#adb4804cc1b143f8a09ee068ce305581ea337c21ec0528c466ae29aede154daba7", null ]
+    ] ],
+    [ "MoveFlag", "_c_base_monster_8h.html#a7e1d200778d8c8a345fe6c9000adbbbb", [
+      [ "bits_MF_TO_TARGETENT", "_c_base_monster_8h.html#a7e1d200778d8c8a345fe6c9000adbbbbaf4a256756aed042a33699e4b67d62e6f", null ],
+      [ "bits_MF_TO_ENEMY", "_c_base_monster_8h.html#a7e1d200778d8c8a345fe6c9000adbbbba1833fa2ad658574cc298aec9ba1244d4", null ],
+      [ "bits_MF_TO_COVER", "_c_base_monster_8h.html#a7e1d200778d8c8a345fe6c9000adbbbbaf2358f5ba1d77e04dd52cfd2c62cf104", null ],
+      [ "bits_MF_TO_DETOUR", "_c_base_monster_8h.html#a7e1d200778d8c8a345fe6c9000adbbbbae483f8b4a1fcd60002fd3b4202aaba46", null ],
+      [ "bits_MF_TO_PATHCORNER", "_c_base_monster_8h.html#a7e1d200778d8c8a345fe6c9000adbbbba17048a9eb2b97f556bef2ed9fb24acbd", null ],
+      [ "bits_MF_TO_NODE", "_c_base_monster_8h.html#a7e1d200778d8c8a345fe6c9000adbbbba0cbabc66ce2ebdf97d34aa3696b0e571", null ],
+      [ "bits_MF_TO_LOCATION", "_c_base_monster_8h.html#a7e1d200778d8c8a345fe6c9000adbbbba90a7d231f4ebd621173968148ef9f20c", null ],
+      [ "bits_MF_IS_GOAL", "_c_base_monster_8h.html#a7e1d200778d8c8a345fe6c9000adbbbba22411ee9d615fd2ae5843ad34c79b0f7", null ],
+      [ "bits_MF_DONT_SIMPLIFY", "_c_base_monster_8h.html#a7e1d200778d8c8a345fe6c9000adbbbba4dd78c7897b442e835d8d0e6e8ca7dc4", null ],
+      [ "bits_MF_NOT_TO_MASK", "_c_base_monster_8h.html#a7e1d200778d8c8a345fe6c9000adbbbbaeb8127debe71bbfde154a7ba76ffee0b", null ]
+    ] ],
+    [ "MoveGoal", "_c_base_monster_8h.html#a1f1a08bd10de9e3af32e92962ecac491", [
+      [ "MOVEGOAL_NONE", "_c_base_monster_8h.html#a1f1a08bd10de9e3af32e92962ecac491a59d3fc6d09d4816c656781b50cf19140", null ],
+      [ "MOVEGOAL_TARGETENT", "_c_base_monster_8h.html#a1f1a08bd10de9e3af32e92962ecac491a03f773e66f34a18dbd6ce2cc93bb017d", null ],
+      [ "MOVEGOAL_ENEMY", "_c_base_monster_8h.html#a1f1a08bd10de9e3af32e92962ecac491a1c83a4d288f78477d34eedfc77bd1923", null ],
+      [ "MOVEGOAL_PATHCORNER", "_c_base_monster_8h.html#a1f1a08bd10de9e3af32e92962ecac491a8caf8b548dfc2a31c906642921ca5e70", null ],
+      [ "MOVEGOAL_LOCATION", "_c_base_monster_8h.html#a1f1a08bd10de9e3af32e92962ecac491ac3e5c87495ec2f5a5d106b22633eee37", null ],
+      [ "MOVEGOAL_NODE", "_c_base_monster_8h.html#a1f1a08bd10de9e3af32e92962ecac491a5ded016f6f51cdcf143209b1d9a64dad", null ]
+    ] ]
+];

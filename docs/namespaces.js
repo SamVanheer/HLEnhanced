@@ -1,0 +1,28 @@
+var namespaces =
+[
+    [ "BlockedType", "namespace_blocked_type.html", null ],
+    [ "bsp", "namespacebsp.html", null ],
+    [ "Coop", "namespace_coop.html", null ],
+    [ "CustomEnts", "namespace_custom_ents.html", null ],
+    [ "Effects", "namespace_effects.html", null ],
+    [ "engine", "namespaceengine.html", null ],
+    [ "Entity", "namespace_entity.html", null ],
+    [ "EntTableFlag", "namespace_ent_table_flag.html", null ],
+    [ "GameRules", "namespace_game_rules.html", null ],
+    [ "Hull", "namespace_hull.html", null ],
+    [ "keyvalues", "namespacekeyvalues.html", null ],
+    [ "mat", "namespacemat.html", null ],
+    [ "ModuleAccessMask", "namespace_module_access_mask.html", null ],
+    [ "PluginFlag", "namespace_plugin_flag.html", null ],
+    [ "PreThinkFlag", "namespace_pre_think_flag.html", null ],
+    [ "SayType", "namespace_say_type.html", null ],
+    [ "std", "namespacestd.html", null ],
+    [ "String", "namespace_string.html", null ],
+    [ "studio", "namespacestudio.html", null ],
+    [ "TypeDescFlag", "namespace_type_desc_flag.html", null ],
+    [ "UseFlag", "namespace_use_flag.html", null ],
+    [ "Util", "namespace_util.html", null ],
+    [ "vgui", "namespacevgui.html", null ],
+    [ "vgui2", "namespacevgui2.html", null ],
+    [ "WeatherType", "namespace_weather_type.html", null ]
+];

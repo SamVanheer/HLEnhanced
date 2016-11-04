@@ -1,0 +1,25 @@
+var struct_complex =
+[
+    [ "Complex", "struct_complex.html#a5b4f3b2d5af3afb342260d5f5da542a7", null ],
+    [ "Complex", "struct_complex.html#a466cd7b664cc6a864937ceb3dead1323", null ],
+    [ "Complex", "struct_complex.html#abf4adbeef095c563a202d74a26e2e2d7", null ],
+    [ "get_ir", "struct_complex.html#a934359156ad8d2130203f4afa54396a3", null ],
+    [ "get_ri", "struct_complex.html#ae7f215ddd79e868594aa5da59da701fe", null ],
+    [ "length", "struct_complex.html#af53f3575888e505059c1d8ccb2a542ca", null ],
+    [ "operator!=", "struct_complex.html#a00add9a2853db7f0da28a9e07bbabcdf", null ],
+    [ "operator*", "struct_complex.html#ab58f3edb4c5ed3dd7d1f4bc23dce3095", null ],
+    [ "operator*=", "struct_complex.html#a88c2efcd86488de884da018a36b926c2", null ],
+    [ "operator+", "struct_complex.html#a1041d65f0752fbee909254e0bc245fef", null ],
+    [ "operator+=", "struct_complex.html#aae6fdd5b1c287b517e2a19df7df0ad15", null ],
+    [ "operator-", "struct_complex.html#a8e6f1ef3a38ade1fd2937e831a67287a", null ],
+    [ "operator-=", "struct_complex.html#ad564b39e1ee7a3f5135dd20a7bbd6eaa", null ],
+    [ "operator/", "struct_complex.html#a9493a8fcf4341aa99f089967585f149d", null ],
+    [ "operator/=", "struct_complex.html#ac9f5bef4d1c52dc32a3c15e019898ab8", null ],
+    [ "operator=", "struct_complex.html#a3c57cf8e8be7a9314a20cb3d770f71cf", null ],
+    [ "operator==", "struct_complex.html#a44e7c6456eb4f59293dddc621f91d745", null ],
+    [ "set_ir", "struct_complex.html#af1ad9fa07f0886c08fc2d60fd2fd5fe0", null ],
+    [ "set_ri", "struct_complex.html#a836ebac6a3507c1f89de2faddfc8e670", null ],
+    [ "squaredLength", "struct_complex.html#a1b0c83258e32eff53f7a06c01275cdb5", null ],
+    [ "i", "struct_complex.html#ad64f4aa1d5e37061c106f6d739a2dd7b", null ],
+    [ "r", "struct_complex.html#a66a574ca3e39bd1476a7fc1670980052", null ]
+];

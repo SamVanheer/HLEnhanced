@@ -1,0 +1,57 @@
+var dir_b8076a4cb681e2f7837b41b28b4c92e4 =
+[
+    [ "Angelscript", "dir_3682cf6c546ef87669c4b5ea010030d6.html", "dir_3682cf6c546ef87669c4b5ea010030d6" ],
+    [ "engine", "dir_e1b532c8dee75f6a983b77e395cd2571.html", "dir_e1b532c8dee75f6a983b77e395cd2571" ],
+    [ "entities", "dir_d639fdd90d9972ce4e1a46c62899e04c.html", "dir_d639fdd90d9972ce4e1a46c62899e04c" ],
+    [ "gamerules", "dir_d17adda6387472a2b2f08e9ef838c3e0.html", "dir_d17adda6387472a2b2f08e9ef838c3e0" ],
+    [ "nodes", "dir_0b5da4ebba75655378aa28b46c53a5e3.html", "dir_0b5da4ebba75655378aa28b46c53a5e3" ],
+    [ "saverestore", "dir_c29edc4f6f3b2c7f149fe69ab1fc0b6a.html", "dir_c29edc4f6f3b2c7f149fe69ab1fc0b6a" ],
+    [ "sound", "dir_b3515c08a78411e013ace1ef47313bd1.html", "dir_b3515c08a78411e013ace1ef47313bd1" ],
+    [ "animation.cpp", "animation_8cpp.html", "animation_8cpp" ],
+    [ "animation.h", "animation_8h.html", "animation_8h" ],
+    [ "ButtonSounds.cpp", "_button_sounds_8cpp.html", "_button_sounds_8cpp" ],
+    [ "ButtonSounds.h", "_button_sounds_8h.html", "_button_sounds_8h" ],
+    [ "CGlobalState.cpp", "_c_global_state_8cpp.html", "_c_global_state_8cpp" ],
+    [ "CGlobalState.h", "_c_global_state_8h.html", "_c_global_state_8h" ],
+    [ "client.cpp", "client_8cpp.html", "client_8cpp" ],
+    [ "client.h", "client_8h.html", "client_8h" ],
+    [ "CMap.cpp", "_c_map_8cpp.html", "_c_map_8cpp" ],
+    [ "CMap.h", "_c_map_8h.html", [
+      [ "CMap", "class_c_map.html", "class_c_map" ]
+    ] ],
+    [ "CMultiDamage.cpp", "_c_multi_damage_8cpp.html", null ],
+    [ "CMultiDamage.h", "_c_multi_damage_8h.html", [
+      [ "CMultiDamage", "class_c_multi_damage.html", "class_c_multi_damage" ]
+    ] ],
+    [ "CServerGameInterface.cpp", "_c_server_game_interface_8cpp.html", "_c_server_game_interface_8cpp" ],
+    [ "CServerGameInterface.h", "_c_server_game_interface_8h.html", "_c_server_game_interface_8h" ],
+    [ "CStudioBlending.cpp", "_c_studio_blending_8cpp.html", "_c_studio_blending_8cpp" ],
+    [ "CStudioBlending.h", "_c_studio_blending_8h.html", "_c_studio_blending_8h" ],
+    [ "Decals.cpp", "_decals_8cpp.html", "_decals_8cpp" ],
+    [ "Decals.h", "_decals_8h.html", "_decals_8h" ],
+    [ "Effects.h", "_effects_8h.html", null ],
+    [ "globals.cpp", "globals_8cpp.html", "globals_8cpp" ],
+    [ "MapCycle.cpp", "_map_cycle_8cpp.html", "_map_cycle_8cpp" ],
+    [ "MapCycle.h", "_map_cycle_8h.html", "_map_cycle_8h" ],
+    [ "SaveRestore.h", "_save_restore_8h.html", null ],
+    [ "Server.cpp", "_server_8cpp.html", "_server_8cpp" ],
+    [ "Server.h", "game_2server_2_server_8h.html", "game_2server_2_server_8h" ],
+    [ "ServerEngineOverride.cpp", "_server_engine_override_8cpp.html", "_server_engine_override_8cpp" ],
+    [ "ServerEngineOverride.h", "_server_engine_override_8h.html", "_server_engine_override_8h" ],
+    [ "ServerInterface.cpp", "_server_interface_8cpp.html", "_server_interface_8cpp" ],
+    [ "ServerInterface.h", "_server_interface_8h.html", "_server_interface_8h" ],
+    [ "Skill.cpp", "_skill_8cpp.html", "_skill_8cpp" ],
+    [ "Skill.h", "_skill_8h.html", "_skill_8h" ],
+    [ "SVC.h", "_s_v_c_8h.html", "_s_v_c_8h" ],
+    [ "TempEntity.cpp", "_temp_entity_8cpp.html", "_temp_entity_8cpp" ],
+    [ "TempEntity.h", "_temp_entity_8h.html", "_temp_entity_8h" ],
+    [ "UserMessages.cpp", "_user_messages_8cpp.html", "_user_messages_8cpp" ],
+    [ "UserMessages.h", "_user_messages_8h.html", "_user_messages_8h" ],
+    [ "util.cpp", "util_8cpp.html", "util_8cpp" ],
+    [ "voice_gamemgr.cpp", "voice__gamemgr_8cpp.html", "voice__gamemgr_8cpp" ],
+    [ "voice_gamemgr.h", "voice__gamemgr_8h.html", [
+      [ "IVoiceGameMgrHelper", "class_i_voice_game_mgr_helper.html", "class_i_voice_game_mgr_helper" ],
+      [ "CVoiceGameMgr", "class_c_voice_game_mgr.html", "class_c_voice_game_mgr" ]
+    ] ],
+    [ "Weapons.cpp", "_weapons_8cpp.html", "_weapons_8cpp" ]
+];

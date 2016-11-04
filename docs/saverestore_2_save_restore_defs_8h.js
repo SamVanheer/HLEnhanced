@@ -1,0 +1,47 @@
+var saverestore_2_save_restore_defs_8h =
+[
+    [ "TYPEDESCRIPTION", "struct_t_y_p_e_d_e_s_c_r_i_p_t_i_o_n.html", "struct_t_y_p_e_d_e_s_c_r_i_p_t_i_o_n" ],
+    [ "CMethodNameList", "class_c_method_name_list.html", "class_c_method_name_list" ],
+    [ "_BASEENT_FIELD", "saverestore_2_save_restore_defs_8h.html#afe5055e0e8a5d86d393878f2475cf776", null ],
+    [ "_FIELD", "saverestore_2_save_restore_defs_8h.html#a3ac3e8f37ea59fd2e772a763f1f66bd9", null ],
+    [ "DEFINE_ARRAY", "saverestore_2_save_restore_defs_8h.html#ae607ade3b89845b7d4ed7cee21d4ff6c", null ],
+    [ "DEFINE_BLOCKEDFUNC", "saverestore_2_save_restore_defs_8h.html#a54ca01f5ea3ebf358c125334cd554584", null ],
+    [ "DEFINE_ENTITY_FIELD", "saverestore_2_save_restore_defs_8h.html#a0b94f67574f0f8dc569beeae95c168ba", null ],
+    [ "DEFINE_ENTITY_GLOBAL_FIELD", "saverestore_2_save_restore_defs_8h.html#a00140e91872b8146a3e30aa38c0d2fa2", null ],
+    [ "DEFINE_FIELD", "saverestore_2_save_restore_defs_8h.html#a38f817d775bb9111d67d86bd10e18d97", null ],
+    [ "DEFINE_FUNCTION", "saverestore_2_save_restore_defs_8h.html#ad3823ef68e64b64db2e8e862c6ad345f", null ],
+    [ "DEFINE_GLOBAL_FIELD", "saverestore_2_save_restore_defs_8h.html#a6b8b2616c808156e91dd87301b723a9f", null ],
+    [ "DEFINE_KEYFIELD", "saverestore_2_save_restore_defs_8h.html#a9fa8fb4d73f8ad23c64929a803b94bae", null ],
+    [ "DEFINE_THINKFUNC", "saverestore_2_save_restore_defs_8h.html#adf36b2047495a417f9324bb60480ced0", null ],
+    [ "DEFINE_TOUCHFUNC", "saverestore_2_save_restore_defs_8h.html#ac9bfdc6a2786afd174823351130d9f4f", null ],
+    [ "DEFINE_USEFUNC", "saverestore_2_save_restore_defs_8h.html#a916dfd2c9dddf10de19d7d4d7c276a88", null ],
+    [ "TypeDescFlags_t", "saverestore_2_save_restore_defs_8h.html#a14dafe0b3133da71cce7e7c0e7d7fdaf", null ],
+    [ "FIELDTYPE", "saverestore_2_save_restore_defs_8h.html#a52552181731959a4e9ae73510aa978ea", [
+      [ "FIELD_FLOAT", "saverestore_2_save_restore_defs_8h.html#a52552181731959a4e9ae73510aa978eaaeef13ac1055fabb0d9507aca7bf20b98", null ],
+      [ "FIELD_STRING", "saverestore_2_save_restore_defs_8h.html#a52552181731959a4e9ae73510aa978eaa55e3b71dad1511f80bbd26cdfba24809", null ],
+      [ "FIELD_ENTITY", "saverestore_2_save_restore_defs_8h.html#a52552181731959a4e9ae73510aa978eaaafa96a654dcbad58f25ac5d0f08b8d46", null ],
+      [ "FIELD_CLASSPTR", "saverestore_2_save_restore_defs_8h.html#a52552181731959a4e9ae73510aa978eaaf54ff3624d782a14b809c127335097ff", null ],
+      [ "FIELD_EHANDLE", "saverestore_2_save_restore_defs_8h.html#a52552181731959a4e9ae73510aa978eaa713655b7df324a09f466f832a802351b", null ],
+      [ "FIELD_EVARS", "saverestore_2_save_restore_defs_8h.html#a52552181731959a4e9ae73510aa978eaa057012e75a37bee720514de34f6399cd", null ],
+      [ "FIELD_EDICT", "saverestore_2_save_restore_defs_8h.html#a52552181731959a4e9ae73510aa978eaa58d727af554c147cedb19df46061d3e2", null ],
+      [ "FIELD_VECTOR", "saverestore_2_save_restore_defs_8h.html#a52552181731959a4e9ae73510aa978eaa196cad71442e3fcb855e30652adb5c9c", null ],
+      [ "FIELD_POSITION_VECTOR", "saverestore_2_save_restore_defs_8h.html#a52552181731959a4e9ae73510aa978eaa16e5edd6536505f36244a300c185ff79", null ],
+      [ "FIELD_INTEGER", "saverestore_2_save_restore_defs_8h.html#a52552181731959a4e9ae73510aa978eaa1e8c2e6b7c0c7e7758a7be97e95748f9", null ],
+      [ "FIELD_FUNCPTR", "saverestore_2_save_restore_defs_8h.html#a52552181731959a4e9ae73510aa978eaa933f6052133f8052ebcadb07b42beafb", null ],
+      [ "FIELD_FUNCTION", "saverestore_2_save_restore_defs_8h.html#a52552181731959a4e9ae73510aa978eaa9710cdd4545a24c70db6a09372b6def4", null ],
+      [ "FIELD_BOOLEAN", "saverestore_2_save_restore_defs_8h.html#a52552181731959a4e9ae73510aa978eaa5bb6ea9f229b9be2817e71ab7371ce74", null ],
+      [ "FIELD_SHORT", "saverestore_2_save_restore_defs_8h.html#a52552181731959a4e9ae73510aa978eaacce9c1bb684399862ed77710675b2ed2", null ],
+      [ "FIELD_CHARACTER", "saverestore_2_save_restore_defs_8h.html#a52552181731959a4e9ae73510aa978eaafb091775e7463a0a8973f2bb46ee2112", null ],
+      [ "FIELD_TIME", "saverestore_2_save_restore_defs_8h.html#a52552181731959a4e9ae73510aa978eaa2573c0117a7b12a40cf46326c1686881", null ],
+      [ "FIELD_MODELNAME", "saverestore_2_save_restore_defs_8h.html#a52552181731959a4e9ae73510aa978eaa0b3b05b196dbdad6ff7cbfc53cffada4", null ],
+      [ "FIELD_SOUNDNAME", "saverestore_2_save_restore_defs_8h.html#a52552181731959a4e9ae73510aa978eaa1bf644ed015c9dea2e3b4e0c6ef50c05", null ],
+      [ "FIELD_TYPECOUNT", "saverestore_2_save_restore_defs_8h.html#a52552181731959a4e9ae73510aa978eaadcfdc6fb8ae0f7cb93225a416744e6b1", null ]
+    ] ],
+    [ "TypeDescFlag", "saverestore_2_save_restore_defs_8h.html#a0cad3ed7f54a70f01f58d9751ec59639", [
+      [ "NONE", "saverestore_2_save_restore_defs_8h.html#a0cad3ed7f54a70f01f58d9751ec59639abad1d72359407d903844873eb3d3a66b", null ],
+      [ "GLOBAL", "saverestore_2_save_restore_defs_8h.html#a0cad3ed7f54a70f01f58d9751ec59639aacf7fca4d9d946b1819d1eadd0133c61", null ],
+      [ "SAVE", "saverestore_2_save_restore_defs_8h.html#a0cad3ed7f54a70f01f58d9751ec59639a36af3a4b88523dacb5aea1e07a0cc305", null ],
+      [ "KEY", "saverestore_2_save_restore_defs_8h.html#a0cad3ed7f54a70f01f58d9751ec59639a2db63b2ecb802ee1ca13df170cbc2722", null ]
+    ] ],
+    [ "_DEFINE_KEYFIELD_FLAGS", "saverestore_2_save_restore_defs_8h.html#a094c32c58893a567ae7b4223c9a717dc", null ]
+];

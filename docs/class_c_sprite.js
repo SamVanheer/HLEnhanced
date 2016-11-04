@@ -1,0 +1,25 @@
+var class_c_sprite =
+[
+    [ "Animate", "class_c_sprite.html#a3b4a06d55a75cb8827c515d10f538d16", null ],
+    [ "AnimateAndDie", "class_c_sprite.html#abed3fdb6430f8b0da1f1a65127439a8d", null ],
+    [ "AnimateThink", "class_c_sprite.html#ac8cf5a109300050a48f5ab1f7c64ce7b", null ],
+    [ "AnimateUntilDead", "class_c_sprite.html#ad8dfff35afeb4f735aa872fcd630dc5f", null ],
+    [ "DECLARE_CLASS", "class_c_sprite.html#ab24d4bff619c1216f354fba41c5e3341", null ],
+    [ "DECLARE_DATADESC", "class_c_sprite.html#ab526086786d68dbfff5381b421c1a650", null ],
+    [ "Expand", "class_c_sprite.html#ac3deb1ce65fc86f888ad074ad676c3a1", null ],
+    [ "ExpandThink", "class_c_sprite.html#a8d277b02bc82f6824bae646bddf70809", null ],
+    [ "Frames", "class_c_sprite.html#a4bb51e452b892cbb8c6b6d65da96d80f", null ],
+    [ "ObjectCaps", "class_c_sprite.html#a942aafa888f77cfd74e7fae6e4c946db", null ],
+    [ "Precache", "class_c_sprite.html#af2694fee9df18ef08602ad6753118ceb", null ],
+    [ "SetAttachment", "class_c_sprite.html#a5e8b21c29076b5a77bd68387a093f2b7", null ],
+    [ "SetBrightness", "class_c_sprite.html#a9b08724159d3ef5d536048a517d5ee9e", null ],
+    [ "SetColor", "class_c_sprite.html#abfc74b5f1dcb4c12bd685e2d8ce8c7a8", null ],
+    [ "SetScale", "class_c_sprite.html#af7264c407da299959284579c089f8a8a", null ],
+    [ "SetTexture", "class_c_sprite.html#a0b697bb21fb656470e414c30eeeaaadf", null ],
+    [ "SetTransparency", "class_c_sprite.html#aa542e654d0bc965f2d6e0744eb220c62", null ],
+    [ "Spawn", "class_c_sprite.html#a2c47a75daab2db6e720cda46edd672fd", null ],
+    [ "SpriteInit", "class_c_sprite.html#a2ff7fab088c166f3b7c9b1b2990e0b29", null ],
+    [ "TurnOff", "class_c_sprite.html#a1ceacbcb997d27b2d1cdc7f65cf98a8b", null ],
+    [ "TurnOn", "class_c_sprite.html#a30f4a630078c8e0b7eb8abd7dc2f0271", null ],
+    [ "Use", "class_c_sprite.html#a6a79bd0abab97eab0cda6b89dc3318e9", null ]
+];

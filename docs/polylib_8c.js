@@ -1,0 +1,25 @@
+var polylib_8c =
+[
+    [ "BOGUS_RANGE", "polylib_8c.html#a7d46a74fc10e3d7818103cd34d5537f2", null ],
+    [ "AllocWinding", "polylib_8c.html#a6392c1d06e110f31303db20ad4d8924c", null ],
+    [ "BaseWindingForPlane", "polylib_8c.html#aba92026ff6c694811451ab1e193132ba", null ],
+    [ "CheckWinding", "polylib_8c.html#a065a43fa65d9ea2a97892752e95a009d", null ],
+    [ "ChopWinding", "polylib_8c.html#ad05ece64cfe9a1800248a28774418c1d", null ],
+    [ "ChopWindingNoFree", "polylib_8c.html#ad3d4654a4f6bb14c8f30f5949799abf4", null ],
+    [ "ClipWinding", "polylib_8c.html#a0f55cf96083242023f3670451b8927ea", null ],
+    [ "ClipWindingNoCopy", "polylib_8c.html#afe16b9ead903239da3840741ad3f63ae", null ],
+    [ "CopyWinding", "polylib_8c.html#a0fe0583eaa53b8e76ff36565c511851c", null ],
+    [ "FreeWinding", "polylib_8c.html#a0c9a3eb5c7459e9e86958e482fb190ed", null ],
+    [ "pw", "polylib_8c.html#a6fbeb7618473f16d8eb9dc392d39e178", null ],
+    [ "RemoveColinearPoints", "polylib_8c.html#a41092b4fded03759516fa51f1f86bfad", null ],
+    [ "WindingArea", "polylib_8c.html#a565e897607b1823da1eb0e5dcc38c484", null ],
+    [ "WindingBounds", "polylib_8c.html#a5406bac3bb31648c55979a7844f95cf5", null ],
+    [ "WindingCenter", "polylib_8c.html#a23a053827f33f15dda4f314f859d07e0", null ],
+    [ "WindingOnPlaneSide", "polylib_8c.html#a7aee33ac72d4089f3c8ceee3b43e45ae", null ],
+    [ "WindingPlane", "polylib_8c.html#acbc76f24c06ec1b1639a41059a71d0db", null ],
+    [ "c_active_windings", "polylib_8c.html#a3b70bbff9d99793bdcb5daae1aa3c0a7", null ],
+    [ "c_peak_windings", "polylib_8c.html#af83f328487c66c31bf020b2e5a99276b", null ],
+    [ "c_removed", "polylib_8c.html#a60c0985e7c3d2892ab957b713a9f8afa", null ],
+    [ "c_winding_allocs", "polylib_8c.html#a9ccfd73a8a70b5ad7545ed2ddee2ff7b", null ],
+    [ "c_winding_points", "polylib_8c.html#a3760ff6629f9e9d15cb97b33f6443b19", null ]
+];
