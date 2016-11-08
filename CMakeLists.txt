@@ -223,6 +223,7 @@ set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y" )
 #Shared directories
 
 add_subdirectory( common )
+add_subdirectory( shared/engine )
 add_subdirectory( game/shared )
 add_subdirectory( pm_shared )
 add_subdirectory( public )
@@ -278,6 +279,7 @@ include_directories(
 	public
 	public/math
 	engine
+	shared/engine
 	shared/engine/client
 	game_shared
 	game/shared
@@ -448,6 +450,7 @@ include_directories(
 	game/shared
 	game/shared/entities/player
 	shared/game/server
+	shared/engine
 	shared/engine/server
 	pm_shared
 	game/server

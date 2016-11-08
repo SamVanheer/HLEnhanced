@@ -4,6 +4,7 @@
 #include "IClientGameLib.h"
 
 class IClientEngine;
+class IEngineModel;
 
 class CClientGameLib : public IClientGameLib
 {
@@ -44,6 +45,8 @@ public:
 };
 
 extern IClientEngine* g_pEngine;
+
+extern IEngineModel* g_pEngineModel;
 
 extern CClientGameLib g_ClientLib;
 

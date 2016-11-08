@@ -2,10 +2,13 @@
 #include "util.h"
 
 #include "IServerEngine.h"
+#include "IEngineModel.h"
 
 #include "CServerGameLib.h"
 
 IServerEngine* g_pEngine = nullptr;
+
+IEngineModel* g_pEngineModel = nullptr;
 
 CServerGameLib g_ServerLib;
 
@@ -19,11 +22,20 @@ bool CServerGameLib::LibInit( const CreateInterfaceFn* pFactories, const size_t 
 
 		if( !g_pEngine )
 			g_pEngine = static_cast<IServerEngine*>( pFactory( ISERVERENGINE_NAME, nullptr ) );
+
+		if( !g_pEngineModel )
+			g_pEngineModel = static_cast<IEngineModel*>( pFactory( IENGINEMODEL_NAME, nullptr ) );
 	}
 
 	if( !g_pEngine )
 	{
 		Alert( at_error, "CServerGameLib::LibInit: Couldn't load interface \"%s\"\n", ISERVERENGINE_NAME );
+		return false;
+	}
+
+	if( !g_pEngineModel )
+	{
+		Alert( at_error, "CServerGameLib::LibInit: Couldn't load interface \"%s\"\n", IENGINEMODEL_NAME );
 		return false;
 	}
 

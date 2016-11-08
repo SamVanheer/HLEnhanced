@@ -4,6 +4,7 @@
 #include "IServerGameLib.h"
 
 class IServerEngine;
+class IEngineModel;
 
 class CServerGameLib final : public IServerGameLib
 {
@@ -54,6 +55,8 @@ private:
 };
 
 extern IServerEngine* g_pEngine;
+
+extern IEngineModel* g_pEngineModel;
 
 extern CServerGameLib g_ServerLib;
 

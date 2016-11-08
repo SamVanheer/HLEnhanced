@@ -2,10 +2,13 @@
 #include "cl_util.h"
 
 #include "IClientEngine.h"
+#include "IEngineModel.h"
 
 #include "CClientGameLib.h"
 
 IClientEngine* g_pEngine = nullptr;
+
+IEngineModel* g_pEngineModel = nullptr;
 
 CClientGameLib g_ClientLib;
 
@@ -19,11 +22,20 @@ bool CClientGameLib::LibInit( const CreateInterfaceFn* pFactories, const size_t 
 
 		if( !g_pEngine )
 			g_pEngine = static_cast<IClientEngine*>( pFactory( ICLIENTENGINE_NAME, nullptr ) );
+
+		if( !g_pEngineModel )
+			g_pEngineModel = static_cast<IEngineModel*>( pFactory( IENGINEMODEL_NAME, nullptr ) );
 	}
 
 	if( !g_pEngine )
 	{
 		Alert( at_error, "CClientGameLib::LibInit: Couldn't load interface \"%s\"\n", ICLIENTENGINE_NAME );
+		return false;
+	}
+
+	if( !g_pEngineModel )
+	{
+		Alert( at_error, "CClientGameLib::LibInit: Couldn't load interface \"%s\"\n", IENGINEMODEL_NAME );
 		return false;
 	}
 
