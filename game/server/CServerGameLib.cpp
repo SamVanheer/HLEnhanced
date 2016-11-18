@@ -50,6 +50,10 @@ void CServerGameLib::PostInit()
 {
 }
 
+void CServerGameLib::OnFileSystemInit()
+{
+}
+
 void CServerGameLib::GameInit()
 {
 }

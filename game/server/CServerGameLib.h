@@ -17,6 +17,8 @@ public:
 
 	void PostInit() override;
 
+	void OnFileSystemInit() override;
+
 	void GameInit() override;
 
 	void GameShutdown() override;

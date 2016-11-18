@@ -50,6 +50,10 @@ void CClientGameLib::PostInit()
 {
 }
 
+void CClientGameLib::OnFileSystemInit()
+{
+}
+
 bool CClientGameLib::ConnectedToServer( const char* const pszIP, const char* const pszHostName, const char* const pszTags )
 {
 	return true;

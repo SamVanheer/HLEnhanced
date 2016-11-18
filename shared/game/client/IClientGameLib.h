@@ -36,6 +36,11 @@ public:
 	virtual void PostInit() = 0;
 
 	/**
+	*	Called when the engine's filesystem is (re)initialized.
+	*/
+	virtual void OnFileSystemInit() = 0;
+
+	/**
 	*	Called when this client has connected to a server and has received the server info packet.
 	*	IClientEngine::GetServerSteamID should be used to retrieve the server's Steam ID if necessary.
 	*	@param pszIP Server IP.

@@ -16,6 +16,8 @@ public:
 
 	void PostInit() override;
 
+	void OnFileSystemInit() override;
+
 	bool ConnectedToServer( const char* const pszIP, const char* const pszHostName, const char* const pszTags ) override;
 
 	void DisconnectedFromServer( const char* const pszIP ) override;

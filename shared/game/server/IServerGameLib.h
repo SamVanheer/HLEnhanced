@@ -34,6 +34,11 @@ public:
 	virtual void PostInit() = 0;
 
 	/**
+	*	Called when the engine's filesystem is (re)initialized.
+	*/
+	virtual void OnFileSystemInit() = 0;
+
+	/**
 	*	Called whenever a new game is started.
 	*	E.g. new map started, restarted map. Does not get called for level transitions.
 	*/
