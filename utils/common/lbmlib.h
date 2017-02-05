@@ -10,6 +10,10 @@
 
 // lbmlib.h
 
+#ifdef __cplusplus
+extern "C"
+{
+#endif
 typedef unsigned char	UBYTE;
 
 #ifndef _WINDOWS_
@@ -55,3 +59,6 @@ void WriteLBMfile (char *filename, byte *data, int width, int height
 	, byte *palette);
 int WriteBMPfile (char *szFile, byte *pbBits, int width, int height, byte *pbPalette);
 
+#ifdef __cplusplus
+}
+#endif

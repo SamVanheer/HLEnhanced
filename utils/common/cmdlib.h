@@ -28,14 +28,16 @@ extern "C"
 
 #ifndef __CMDUTIL__
 #define __CMDUTIL__
-#ifndef _NOENUMQBOOL
+#if !defined( _NOENUMQBOOL ) && !defined( __cplusplus )
 typedef enum {false, true} qboolean;
 #else
 typedef int qboolean;
+#ifndef __cplusplus
 #undef true
 #undef false
 #define true 1
 #define false 0
+#endif
 #endif
 
 typedef unsigned char byte;

@@ -42,6 +42,15 @@ extern vec3_t vec3_origin;
 
 int VectorCompare (vec3_t v1, vec3_t v2);
 
+#ifdef __cplusplus
+//TODO: remove once vec3_t is removed - Solokiller
+//Workaround to have non-macro math functions.
+inline vec_t DotProduct( const vec_t* lhs, const vec_t* rhs )
+{
+	return ( ( lhs )[ 0 ] * ( rhs )[ 0 ] + ( lhs )[ 1 ] * ( rhs )[ 1 ] + ( lhs )[ 2 ] * ( rhs )[ 2 ] );
+}
+#endif
+
 #define DotProduct(x,y) ((x)[0]*(y)[0]+(x)[1]*(y)[1]+(x)[2]*(y)[2])
 #define VectorFill(a,b) { (a)[0]=(b); (a)[1]=(b); (a)[2]=(b);}
 #define VectorAvg(a) ( ( (a)[0] + (a)[1] + (a)[2] ) / 3 )

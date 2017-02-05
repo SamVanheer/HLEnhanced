@@ -16,6 +16,10 @@
 
 #define	MAXTOKEN	512
 
+#ifdef __cplusplus
+extern "C"
+{
+#endif
 extern	char	token[MAXTOKEN];
 extern	char	*scriptbuffer,*script_p,*scriptend_p;
 extern	int		grabbed;
@@ -30,4 +34,6 @@ qboolean GetToken (qboolean crossline);
 void UnGetToken (void);
 qboolean TokenAvailable (void);
 
-
+#ifdef __cplusplus
+}
+#endif
