@@ -26,10 +26,15 @@ target_include_directories( ${UTIL_NAME} PRIVATE
 	${CMAKE_SOURCE_DIR}/common
 	${CMAKE_SOURCE_DIR}/public/math
 	${CMAKE_CURRENT_SOURCE_DIR}
+	${EXTERNAL_DIR}/SDL2/include
 )
 
 target_compile_definitions( ${UTIL_NAME} PRIVATE
 	${SHARED_DEFS}
+)
+
+target_link_libraries( ${UTIL_NAME} PRIVATE
+	${SDL2}
 )
 
 if( MSVC )
@@ -37,4 +42,18 @@ if( MSVC )
 		opengl32.lib
 		glu32.lib
 	)
+endif()
+
+if( MSVC )
+	set( SDL2_LIBNAME ${EXTERNAL_DIR}/SDL2/lib/SDL2.dll )
+else()
+	set( SDL2_LIBNAME ${EXTERNAL_DIR}/SDL2/lib/libSDL2-2.0.0.${CMAKE_SHARED_LIBRARY_SUFFIX} )
+endif()
+
+if( MSVC )
+	foreach( CONFIG in LISTS ${CMAKE_CONFIGURATION_TYPES} )
+		file( COPY ${SDL2_LIBNAME} DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/${CONFIG} )
+	endforeach()
+else()
+	file( COPY ${SDL2_LIBNAME} DESTINATION ${CMAKE_CURRENT_BINARY_DIR} )
 endif()

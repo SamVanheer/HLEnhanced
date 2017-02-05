@@ -6,15 +6,22 @@
 // updates:
 // 1-4-98	fixed initialization
 
+#include <chrono>
+#include <thread>
+
 #include <stdio.h>
 
 #include <windows.h>
 
 #include <gl\gl.h>
 #include <gl\glu.h>
-#include <gl\glut.h>
+
+#define SDL_MAIN_HANDLED
+#include <SDL2/SDL.h>
 
 #include "mathlib.h"
+#undef DotProduct
+#include "vector.h"
 #include "../../public/steam/steamtypes.h" // defines int32, required by studio.h
 #include "..\..\engine\studio.h"
 #include "mdlviewer.h"
@@ -29,6 +36,9 @@ float		g_lambert = 1.5;
 float		gldepthmin = 0;
 float		gldepthmax = 10.0;
 
+SDL_Window* g_pWindow = nullptr;
+
+SDL_GLContext g_GLContext = NULL;
 
 /*
 =============
@@ -51,9 +61,9 @@ void mdlviewer_display( )
 	tempmodel.SetBlending( 0, 0.0 );
 	tempmodel.SetBlending( 1, 0.0 );
 
-	static float prev;
-	float curr = GetTickCount( ) / 1000.0;
-	tempmodel.AdvanceFrame( curr - prev );
+	static long long prev;
+	auto curr = std::chrono::duration_cast<std::chrono::milliseconds>( std::chrono::system_clock::now().time_since_epoch() ).count();
+	tempmodel.AdvanceFrame( ( curr - prev ) / 1000.0 );
 	prev = curr;
 
 	tempmodel.DrawModel( );
@@ -116,14 +126,14 @@ void pan(int x, int y)
     transx +=  (x-ox)/500.;
     transy -= (y-oy)/500.;
     ox = x; oy = y;
-    glutPostRedisplay();
+    //glutPostRedisplay();
 }
 
 void zoom(int x, int y) 
 {
     transz +=  (x-ox)/20.;
     ox = x;
-    glutPostRedisplay();
+    //glutPostRedisplay();
 }
 
 void rotate(int x, int y) 
@@ -135,7 +145,7 @@ void rotate(int x, int y)
     if (roty > 360.) roty -= 360.;
     else if (roty < -360.) roty += 360.;
     ox = x; oy = y;
-    glutPostRedisplay();
+    //glutPostRedisplay();
 }
 
 void motion(int x, int y) 
@@ -148,22 +158,22 @@ void motion(int x, int y)
 		zoom( x, y );
 }
 
-void mouse(int button, int state, int x, int y) 
+void mouse( const SDL_MouseButtonEvent& event ) 
 {
-    if(state == GLUT_DOWN) {
-	switch(button) {
-	case GLUT_LEFT_BUTTON:
+    if( event.type == SDL_MOUSEBUTTONDOWN ) {
+	switch( event.button ) {
+	case SDL_BUTTON_LEFT:
 	    mot = PAN;
-	    motion(ox = x, oy = y);
+	    motion(ox = event.x, oy = event.y);
 	    break;
-	case GLUT_RIGHT_BUTTON:
+	case SDL_BUTTON_RIGHT:
 		mot = ROT;
-	    motion(ox = x, oy = y);
+	    motion(ox = event.x, oy = event.y);
 	    break;
-	case GLUT_MIDDLE_BUTTON:
+	case SDL_BUTTON_MIDDLE:
 	    break;
 	}
-    } else if (state == GLUT_UP) {
+    } else if ( event.type == SDL_MOUSEBUTTONUP ) {
 	mot = 0;
     }
 }
@@ -194,6 +204,18 @@ void display(void)
 {
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 
+	//Need to reset the perspective matrix if the size of the window changes, so set it up here.
+	int w, h;
+
+	SDL_GetWindowSize( g_pWindow, &w, &h );
+
+	glMatrixMode( GL_PROJECTION );
+	glLoadIdentity();
+	gluPerspective( 50.0, static_cast<double>( w ) / h, 0.1, 10.0 );
+
+	glMatrixMode( GL_MODELVIEW );
+	glLoadIdentity();
+
     glPushMatrix();
 
     glTranslatef(transx, transy, transz);
@@ -208,9 +230,8 @@ void display(void)
 	mdlviewer_display( );
 
     glPopMatrix();
-    glutSwapBuffers();
-
-    glutPostRedisplay();
+	SDL_GL_SwapWindow( g_pWindow );
+    //glutPostRedisplay();
 }
 
 void reshape(int w, int h) 
@@ -219,31 +240,34 @@ void reshape(int w, int h)
 }
 
 /*ARGSUSED1*/
-void key(unsigned char key, int x, int y) 
+void key(SDL_Keycode key, int x, int y) 
 {
     switch(key) 
 	{
-		case 'h': 
+		case SDLK_h: 
 			help(); 
 		break;
 
-		case 'p':
+		case SDLK_p:
 			printf("Translation: %f, %f %f\n", transx, transy, transz );
 		break;
 
-		case '\033':	// Escape
+		case SDLK_ESCAPE:	// Escape
 			exit(EXIT_SUCCESS); 
 		break;
 
-		case ' ':
+		case SDLK_SPACE:
 			mdlviewer_nextsequence( );
 		break;
 
 		default: 
 		break;
     }
-    glutPostRedisplay();
+   // glutPostRedisplay();
 }
+
+#define WIN_SIZE 512
+#define FRAMERATE 60
 
 int main(int argc, char** argv) 
 {
@@ -253,17 +277,117 @@ int main(int argc, char** argv)
 		exit(1);
 	}
 
-    glutInitWindowSize(512, 512);
-    glutInit(&argc, argv);
-    glutInitDisplayMode(GLUT_RGBA|GLUT_DOUBLE);
-    (void)glutCreateWindow(argv[0]);
+	if( SDL_Init( SDL_INIT_VIDEO ) )
+	{
+		printf( "Couldn't initialize SDL2\n" );
+		exit( EXIT_FAILURE );
+	}
+
+	g_pWindow = SDL_CreateWindow( argv[ 0 ], SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIN_SIZE, WIN_SIZE, SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE );
+
+	if( !g_pWindow )
+	{
+		printf( "Failed to create SDL Window\n" );
+		exit( EXIT_FAILURE );
+	}
+
+	SDL_GL_SetAttribute( SDL_GL_RED_SIZE, 8 );
+	SDL_GL_SetAttribute( SDL_GL_GREEN_SIZE, 8 );
+	SDL_GL_SetAttribute( SDL_GL_BLUE_SIZE, 8 );
+	SDL_GL_SetAttribute( SDL_GL_ALPHA_SIZE, 8 );
+	SDL_GL_SetAttribute( SDL_GL_DOUBLEBUFFER, true );
+
+	g_GLContext = SDL_GL_CreateContext( g_pWindow );
+
+	SDL_GL_MakeCurrent( g_pWindow, g_GLContext );
+
     init( argv[1] );
-    glutDisplayFunc(display);
-    glutKeyboardFunc(key);
-    glutReshapeFunc(reshape);
-    glutMouseFunc(mouse);
-    glutMotionFunc(motion);
-    glutMainLoop();
+
+	SDL_Event event;
+
+	bool bQuit = false;
+
+	auto prev = std::chrono::system_clock::now();
+
+	while( !bQuit )
+	{
+		while( SDL_PollEvent( &event ) )
+		{
+			switch( event.type )
+			{
+			case SDL_QUIT:
+				{
+					bQuit = true;
+					break;
+				}
+
+			case SDL_WINDOWEVENT:
+				{
+					switch( event.window.event )
+					{
+					case SDL_WINDOWEVENT_RESIZED:
+						{
+							reshape( event.window.data1, event.window.data2 );
+							break;
+						}
+
+					case SDL_WINDOWEVENT_CLOSE:
+						{
+							bQuit = true;
+							break;
+						}
+					}
+					break;
+				}
+
+			case SDL_KEYUP:
+				{
+					int x, y;
+					SDL_GetMouseState( &x, &y );
+					key( event.key.keysym.sym, x, y );
+					break;
+				}
+
+			case SDL_MOUSEMOTION:
+				{
+					motion( event.motion.x, event.motion.y );
+					break;
+				}
+
+			case SDL_MOUSEBUTTONDOWN:
+			case SDL_MOUSEBUTTONUP:
+				{
+					mouse( event.button );
+					break;
+				}
+
+			default: break;
+			}
+		}
+
+		//Quit immediately.
+		if( bQuit )
+			break;
+
+		auto now = std::chrono::system_clock::now();
+
+		if( std::chrono::duration_cast<std::chrono::milliseconds>( now - prev ).count() >= ( 1000 / FRAMERATE ) )
+		{
+			display();
+
+			prev = now;
+		}
+
+		std::this_thread::sleep_for( std::chrono::milliseconds( 1 ) );
+	}
+
+	SDL_GL_DeleteContext( g_GLContext );
+	g_GLContext = NULL;
+	SDL_DestroyWindow( g_pWindow );
+	g_pWindow = nullptr;
+
+	SDL_Quit();
+
     return 0;
 }
 
