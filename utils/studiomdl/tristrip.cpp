@@ -24,6 +24,8 @@
 #include "lbmlib.h"
 #include "scriplib.h"
 #include "mathlib.h"
+#undef DotProduct
+#include "vector.h"
 #include "..\..\engine\studio.h"
 #include "studiomdl.h"
 
