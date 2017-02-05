@@ -56,6 +56,12 @@ SDL_GLContext g_GLContext = NULL;
 
 void InitWindow (void)
 {
+	if( SDL_Init( SDL_INIT_VIDEO ) )
+	{
+		printf( "Couldn't initialize SDL2\n" );
+		exit( EXIT_FAILURE );
+	}
+
 	g_pWindow = SDL_CreateWindow( "qbsp", 0, 0, WIN_SIZE, WIN_SIZE, SDL_WINDOW_OPENGL );
 
 	if( !g_pWindow )
