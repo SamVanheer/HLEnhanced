@@ -15,6 +15,11 @@
 #include "bspfile.h"
 #include "threads.h"
 
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+
 //#define	ON_EPSILON	0.05
 #define	BOGUS_RANGE	18000
 
@@ -265,3 +270,6 @@ node_t *AllocNode (void);
 
 void CullStuff (void);
 
+#ifdef __cplusplus
+}
+#endif
