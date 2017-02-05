@@ -18,6 +18,11 @@
 
 #include <windows.h>
 
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+
 #ifndef DOUBLEVEC_T
 #error you must add -dDOUBLEVEC_T to the project!
 #endif
@@ -142,3 +147,6 @@ extern	qboolean	drawflag;
 void Draw_ClearWindow (void);
 void DrawWinding (winding_t *w);
 
+#ifdef __cplusplus
+}
+#endif
