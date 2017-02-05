@@ -5,11 +5,9 @@
 #
 
 #Avoid doing this more than once.
-if( WINXP_SUPPORT_CHECKED OR NOT MSVC )
+if( NOT MSVC OR CMAKE_CXX_FLAGS MATCHES ".*/Zc:threadSafeInit-.*" )
 	return()
 endif()
-
-set( WINXP_SUPPORT_CHECKED 1 )
 
 #Verify that we have the data we need.
 if( NOT MSVC_VERSION OR NOT CMAKE_VS_PLATFORM_TOOLSET )
@@ -19,5 +17,6 @@ endif()
 if( NOT "${MSVC_VERSION}" LESS 1900 AND CMAKE_VS_PLATFORM_TOOLSET MATCHES ".*_xp$" )
 	MESSAGE( STATUS "Disabling Thread-safe initialization for Windows XP support" )
 	#Disable thread-safe init so Windows XP users don't get crashes.
+	set( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /Zc:threadSafeInit-" )
 	set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /Zc:threadSafeInit-" )
 endif()
