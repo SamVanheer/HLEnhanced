@@ -202,7 +202,7 @@ add_subdirectory( public )
 add_subdirectory( shared/engine )
 add_subdirectory( utility )
 
-#Save the shares sources into SHARED_SRCS
+#Save the shared sources into SHARED_SRCS
 get_property(SHARED_SRCS GLOBAL PROPERTY SRCS_LIST)
 
 clear_sources()
@@ -542,6 +542,4 @@ clear_sources()
 #End server library
 #
 
-#TODO: add utility exes here
-
-#project( HLEnhanced_Utils )
+add_subdirectory( utils )
