@@ -38,8 +38,8 @@ target_compile_definitions( ${UTIL_NAME} PRIVATE
 )
 
 target_link_libraries( ${UTIL_NAME} PRIVATE
-		${SDL2}
-	)
+	${SDL2}
+)
 
 if( MSVC )
 	target_link_libraries( ${UTIL_NAME} PRIVATE
@@ -49,15 +49,15 @@ if( MSVC )
 endif()
 
 if( MSVC )
-		set( SDL2_LIBNAME ${EXTERNAL_DIR}/SDL2/lib/SDL2.dll )
-	else()
-		set( SDL2_LIBNAME ${EXTERNAL_DIR}/SDL2/lib/libSDL2-2.0.0.${CMAKE_SHARED_LIBRARY_SUFFIX} )
-	endif()
-	
-	if( MSVC )
-		foreach( CONFIG in LISTS ${CMAKE_CONFIGURATION_TYPES} )
-			file( COPY ${SDL2_LIBNAME} DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/${CONFIG} )
-		endforeach()
-	else()
-		file( COPY ${SDL2_LIBNAME} DESTINATION ${CMAKE_CURRENT_BINARY_DIR} )
-	endif()
+	set( SDL2_LIBNAME ${EXTERNAL_DIR}/SDL2/lib/SDL2.dll )
+else()
+	set( SDL2_LIBNAME ${EXTERNAL_DIR}/SDL2/lib/libSDL2-2.0.0.${CMAKE_SHARED_LIBRARY_SUFFIX} )
+endif()
+
+if( MSVC )
+	foreach( CONFIG in LISTS ${CMAKE_CONFIGURATION_TYPES} )
+		file( COPY ${SDL2_LIBNAME} DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/${CONFIG} )
+	endforeach()
+else()
+	file( COPY ${SDL2_LIBNAME} DESTINATION ${CMAKE_CURRENT_BINARY_DIR} )
+endif()
