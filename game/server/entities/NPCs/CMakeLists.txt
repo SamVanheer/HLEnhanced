@@ -1,6 +1,7 @@
 add_sources(
 	Activity.h
 	Activity.cpp
+	ActivityMap.h
 	CAGrunt.h
 	CAGrunt.cpp
 	CApache.h
