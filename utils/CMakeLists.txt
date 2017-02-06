@@ -6,6 +6,11 @@ project( HLEnhanced_Utils )
 
 include( ${CMAKE_SOURCE_DIR}/cmake/WinXPSupport.cmake )
 
+if( MSVC )
+	#Warning level 4 for extra warnings.
+	set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4" )
+endif()
+
 set( SHARED_UTIL_INCLUDES
 	${CMAKE_CURRENT_SOURCE_DIR}/common
 )
