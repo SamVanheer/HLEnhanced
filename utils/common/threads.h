@@ -8,6 +8,11 @@
 *
 ****/
 
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+
 extern	int		numthreads;
 
 void ThreadSetDefault (void);
@@ -22,3 +27,6 @@ void ThreadUnlock (void);
 #define RunThreadsOnIndividual(n,p,f) { if (p) printf("%-20s ", #f ":"); RunThreadsOnIndividual(n,p,f); }
 #endif
 
+#ifdef __cplusplus
+}
+#endif

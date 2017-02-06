@@ -8,10 +8,10 @@ add_sources(
 	${SHARED_UTIL_SRCS}
 	${BSPLIB_SRCS}
 	${THREADS_SRCS}
-	light.c
+	light.cpp
 	light.h
-	ltface.c
-	trace.c
+	ltface.cpp
+	trace.cpp
 )
 
 preprocess_sources()
@@ -24,6 +24,7 @@ clear_sources()
 
 target_include_directories( ${UTIL_NAME} PRIVATE
 	${SHARED_UTIL_INCLUDES}
+	${CMAKE_SOURCE_DIR}/common
 	${CMAKE_CURRENT_SOURCE_DIR}
 )
 

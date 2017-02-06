@@ -68,7 +68,7 @@ void MakeTnodes (dmodel_t *bm)
 {
 	if (!numnodes)
 		Error ("Map has no nodes\n");
-	tnode_p = tnodes = malloc(numnodes * sizeof(tnode_t));
+	tnode_p = tnodes = reinterpret_cast<tnode_t*>( malloc(numnodes * sizeof(tnode_t)) );
 	
 	MakeTnode (0);
 }
