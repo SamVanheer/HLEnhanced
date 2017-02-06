@@ -8,6 +8,10 @@
 *
 ****/
 
+#ifdef __cplusplus
+extern "C"
+{
+#endif
 
 typedef struct
 {
@@ -34,3 +38,7 @@ void	RemoveColinearPoints (winding_t *w);
 int		WindingOnPlaneSide (winding_t *w, vec3_t normal, vec_t dist);
 void	FreeWinding (winding_t *w);
 void	WindingBounds (winding_t *w, vec3_t mins, vec3_t maxs);
+
+#ifdef __cplusplus
+}
+#endif
