@@ -9,11 +9,11 @@ add_sources(
 	${BSPLIB_SRCS}
 	${POLYLIB_SRCS}
 	${THREADS_SRCS}
-	lightmap.c
-	qrad.c
+	lightmap.cpp
+	qrad.cpp
 	qrad.h
-	trace.c
-	vismat.c
+	trace.cpp
+	vismat.cpp
 )
 
 preprocess_sources()
