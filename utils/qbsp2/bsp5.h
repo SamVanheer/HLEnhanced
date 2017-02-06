@@ -15,11 +15,6 @@
 #include "bspfile.h"
 #include "threads.h"
 
-#ifdef __cplusplus
-extern "C"
-{
-#endif
-
 //#define	ON_EPSILON	0.05
 #define	BOGUS_RANGE	18000
 
@@ -116,8 +111,9 @@ void SplitFace (face_t *in, dplane_t *split, face_t **front, face_t **back);
 
 //=============================================================================
 
-// solidbsp.c
+// solidbsp.cpp
 
+int FaceSide( face_t *in, dplane_t *split );
 void DivideFacet (face_t *in, dplane_t *split, face_t **front, face_t **back);
 void CalcSurfaceInfo (surface_t *surf);
 void SubdivideFace (face_t *f, face_t **prevptr);
@@ -125,7 +121,7 @@ node_t *SolidBSP (surfchain_t *surfhead);
 
 //=============================================================================
 
-// merge.c
+// merge.cpp
 
 void MergePlaneFaces (surface_t *plane);
 face_t *MergeFaceToList (face_t *face, face_t *list);
@@ -134,7 +130,7 @@ void MergeAll (surface_t *surfhead);
 
 //=============================================================================
 
-// surfaces.c
+// surfaces.cpp
 
 extern	int		c_cornerverts;
 extern	int		c_tryedges;
@@ -149,9 +145,11 @@ surfchain_t *GatherNodeFaces (node_t *headnode);
 
 void MakeFaceEdges (node_t *headnode);
 
+int GetEdge( vec3_t p1, vec3_t p2, face_t *f );
+
 //=============================================================================
 
-// portals.c
+// portals.cpp
 
 typedef struct portal_s
 {
@@ -167,24 +165,25 @@ extern	node_t	outside_node;		// portals outside the world face this
 void AddPortalToNodes (portal_t *p, node_t *front, node_t *back);
 void RemovePortalFromNode (portal_t *portal, node_t *l);
 void MakeHeadnodePortals (node_t *node, vec3_t mins, vec3_t maxs);
+void FreePortals( node_t *node );
 
 void WritePortalfile (node_t *headnode);
 
 //=============================================================================
 
-// region.c
+// region.cpp
 
 void GrowNodeRegions (node_t *headnode);
 
 //=============================================================================
 
-// tjunc.c
+// tjunc.cpp
 
 void tjunc (node_t *headnode);
 
 //=============================================================================
 
-// writebsp.c
+// writebsp.cpp
 
 void WriteNodePlanes (node_t *headnode);
 void WriteClipNodes (node_t *headnode);
@@ -195,7 +194,7 @@ void FinishBSPFile (void);
 
 //=============================================================================
 
-// draw.c
+// draw.cpp
 
 extern	vec3_t	draw_mins, draw_maxs;
 
@@ -218,7 +217,7 @@ void DrawTri (vec3_t p1, vec3_t p2, vec3_t p3);
 
 //=============================================================================
 
-// outside.c
+// outside.cpp
 
 node_t *FillOutside (node_t *node, qboolean leakfile);
 
@@ -266,10 +265,12 @@ node_t *AllocNode (void);
 
 //=============================================================================
 
-// cull.c
+// cull.cpp
 
 void CullStuff (void);
 
-#ifdef __cplusplus
-}
-#endif
+//=============================================================================
+
+// qbsp.cpp
+
+void SplitFaceTmp( face_t *in, dplane_t *split, face_t **front, face_t **back );

@@ -9,15 +9,15 @@ add_sources(
 	${BSPLIB_SRCS}
 	${THREADS_SRCS}
 	bsp5.h
-	cull.c
-	merge.c
-	outside.c
-	portals.c
-	qbsp.c
-	solidbsp.c
-	surfaces.c
-	tjunc.c
-	writebsp.c
+	cull.cpp
+	merge.cpp
+	outside.cpp
+	portals.cpp
+	qbsp.cpp
+	solidbsp.cpp
+	surfaces.cpp
+	tjunc.cpp
+	writebsp.cpp
 )
 
 set( ENABLE_3D_DRAWING ON CACHE BOOL "Whether to enable 3D drawing of the map" )
@@ -28,7 +28,7 @@ if( ENABLE_3D_DRAWING )
 	)
 else()
 	add_sources(
-		nodraw.c
+		nodraw.cpp
 	)
 endif()
 
