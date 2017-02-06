@@ -995,7 +995,7 @@ int main (int argc, char **argv)
 
 	ThreadSetDefault ();
 
-	SetQdirFromPath (argv[i]);	
+	SetQdirFromPath();	
 	strcpy (bspfilename, ExpandArg(argv[i]));
 	StripExtension (bspfilename);
 

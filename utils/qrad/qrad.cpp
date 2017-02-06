@@ -1502,7 +1502,7 @@ int main (int argc, char **argv)
 
 	strcpy (source, argv[i]);
 	StripExtension (source);
-	SetQdirFromPath (source);
+	SetQdirFromPath();
 
 	// Set the required global lights filename
 	strcat( strcpy( global_lights, gamedir ), "lights.rad" );
