@@ -10,6 +10,6 @@
 #pragma once
 
 int		PROC_GetSpeed( void );
-int		PROC_IsMMX( void );
+bool	PROC_IsMMX( void );
 
 #endif // PROCINFOH

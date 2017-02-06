@@ -150,40 +150,43 @@ int PROC_GetSpeed(void)
 
 #pragma optimize( "", off )
 // --------------------------------------------------------------------------
-int PROC_IsMMX(void)
+bool PROC_IsMMX( void )
 {
-    int retval = 1;
-    DWORD RegEDX;
+	DWORD RegEDX;
 
-    __try
+	__try
 	{
-        _asm
+		_asm
 		{
-            mov eax, 1      // set up CPUID to return processor version and features
-                            //      0 = vendor string, 1 = version info, 2 = cache info
-            CPUID           // code bytes = 0fh,  0a2h
-            mov RegEDX, edx // features returned in edx
+			mov eax, 1      // set up CPUID to return processor version and features
+							//      0 = vendor string, 1 = version info, 2 = cache info
+			CPUID           // code bytes = 0fh,  0a2h
+			mov RegEDX, edx // features returned in edx
 		}
-    } __except(EXCEPTION_EXECUTE_HANDLER) { retval = FALSE; }
+	}
+	__except( EXCEPTION_EXECUTE_HANDLER )
+	{
+		// processor does not support CPUID
+		return false;
+	}
 
-    if (retval == FALSE)
-            return 0;           // processor does not support CPUID
+	if( RegEDX & 0x800000 )          // bit 23 is set for MMX technology
+	{
+		__try
+		{
+			EMMS // _asm emms 
+		}          // try executing the MMX instruction "emms"
+		__except( EXCEPTION_EXECUTE_HANDLER )
+		{
+			// if we get here, it means the processor has MMX technology but
+			// floating-point emulation is on; so MMX technology is unavailable
+			return false;
+		}
+	}
+	else
+		return false;           // processor supports CPUID but does not support MMX technology
 
-    if (RegEDX & 0x800000)          // bit 23 is set for MMX technology
-    {
-       __try { 
-		   EMMS // _asm emms 
-	   }          // try executing the MMX instruction "emms"
-       __except(EXCEPTION_EXECUTE_HANDLER) { retval = FALSE; }
-    }
-
-    else
-            return 0;           // processor supports CPUID but does not support MMX technology
-
-    // if retval == 0 here, it means the processor has MMX technology but
-    // floating-point emulation is on; so MMX technology is unavailable
-
-    return retval;
+	return true;
 }
 // --------------------------------------------------------------------------
 #pragma optimize( "", on )
