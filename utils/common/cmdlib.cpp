@@ -13,10 +13,13 @@
 #include "cmdlib.h"
 #include <sys/types.h>
 #include <sys/stat.h>
-#include <io.h>
 
 #ifdef WIN32
 #include <direct.h>
+#include <io.h>
+#define access _access
+#else
+#include <unistd.h>
 #endif
 
 #ifdef NeXT
@@ -246,7 +249,7 @@ void Q_mkdir (char *path)
 
 bool FS_FileExists( const char* pszFilename )
 {
-	return _access( pszFilename, 0x04 ) != -1;
+	return access( pszFilename, 0x04 ) != -1;
 }
 
 /*
