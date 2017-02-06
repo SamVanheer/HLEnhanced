@@ -7,7 +7,7 @@ set( UTIL_NAME sprgen )
 add_sources(
 	${SHARED_UTIL_SRCS}
 	${LBMLIB_SRCS}
-	sprgen.c
+	sprgen.cpp
 	spritegn.h
 )
 
