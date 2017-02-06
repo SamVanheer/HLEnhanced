@@ -5,7 +5,7 @@
 set( UTIL_NAME mkmovie )
 
 add_sources(
-	mkmovie.c
+	mkmovie.cpp
 )
 
 preprocess_sources()
