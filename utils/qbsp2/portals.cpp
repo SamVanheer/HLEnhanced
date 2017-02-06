@@ -181,8 +181,8 @@ void CheckWindingArea (winding_t *w)
 		VectorSubtract (w->points[i], w->points[0], v1);
 		VectorSubtract (w->points[i+1], w->points[0], v2);
 		CrossProduct (v1, v2, cross);
-		add = VectorLength (cross);
-		total += add*0.5;
+		add = static_cast<float>( VectorLength (cross) );
+		total += add*0.5f;
 	}
 	if (total < 16)
 		printf ("WARNING: winding area %f\n", total);

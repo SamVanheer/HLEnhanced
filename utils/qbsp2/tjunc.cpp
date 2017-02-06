@@ -69,7 +69,7 @@ static	void InitHash (vec3_t mins, vec3_t maxs)
 	
 	volume = size[0]*size[1];
 	
-	scale = sqrt(volume / NUM_HASH);
+	scale = static_cast<vec_t>( sqrt(volume / NUM_HASH) );
 
 	newsize[0] = static_cast<int>( size[0] / scale );
 	newsize[1] = static_cast<int>( size[1] / scale );
@@ -495,9 +495,9 @@ void tjunc (node_t *headnode)
 	for (i=0 ; i<3 ; i++)
 	{
 		if ( fabs(headnode->maxs[i]) > fabs(headnode->mins[i]) )
-			maxs[i] = fabs(headnode->maxs[i]);
+			maxs[i] = static_cast<vec_t>( fabs(headnode->maxs[i]) );
 		else
-			maxs[i] = fabs(headnode->mins[i]);
+			maxs[i] = static_cast<vec_t>( fabs(headnode->mins[i]) );
 	}
 	VectorSubtract (vec3_origin, maxs, mins);
 	

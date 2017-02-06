@@ -145,7 +145,7 @@ void CalcAmbientSounds (void)
 				vol = 1.0;
 			else
 			{
-				vol = 1.0 - dists[2]*0.002;
+				vol = static_cast<float>( 1.0 - dists[2]*0.002 );
 				if (vol < 0)
 					vol = 0;
 			}

@@ -290,7 +290,7 @@ winding_t	*ClipToSeperators (winding_t *source, winding_t *pass, winding_t *targ
 			if (length < ON_EPSILON)
 				continue;
 
-			length = 1/sqrt(length);
+			length = static_cast<vec_t>( 1/sqrt(length) );
 			
 			plane.normal[0] *= length;
 			plane.normal[1] *= length;

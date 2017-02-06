@@ -134,7 +134,7 @@ void CalcFaceVectors (lightinfo_t *l)
 
 	for (i=0 ; i<2 ; i++)
 	{
-		len = VectorLength (l->worldtotex[i]);
+		len = static_cast<vec_t>( VectorLength (l->worldtotex[i]) );
 		dist = DotProduct (l->worldtotex[i], l->facenormal);
 		dist *= distscale;
 		VectorMA (l->worldtotex[i], -dist, texnormal, l->textoworld[i]);
@@ -247,8 +247,8 @@ void CalcPoints (lightinfo_t *l)
 	{	// extra filtering
 		h = (l->texsize[1]+1)*2;
 		w = (l->texsize[0]+1)*2;
-		starts = (l->texmins[0]-0.5)*16;
-		startt = (l->texmins[1]-0.5)*16;
+		starts = static_cast<vec_t>( (l->texmins[0]-0.5)*16 );
+		startt = static_cast<vec_t>( (l->texmins[1]-0.5)*16 );
 		step = 8;
 	}
 	else
@@ -362,7 +362,7 @@ void SingleLightFace (lightentity_t *light, lightinfo_t *l)
 		return;
 		
 // don't bother with light too far away
-	intensity = ( light->light[ 0 ] + light->light[ 1 ] + light->light[ 2 ] ) / 3.0;
+	intensity = static_cast<float>( ( light->light[ 0 ] + light->light[ 1 ] + light->light[ 2 ] ) / 3.0 );
 	if( dist > intensity )
 	{
 		c_culldistplane++;
@@ -374,9 +374,9 @@ void SingleLightFace (lightentity_t *light, lightinfo_t *l)
 		VectorSubtract (light->targetorigin, light->origin, spotvec);
 		VectorNormalize (spotvec);
 		if (!light->angle)
-			falloff = -cos(20*Q_PI/180);	
+			falloff = static_cast<vec_t>( -cos(20*Q_PI/180) );
 		else
-			falloff = -cos(light->angle/2*Q_PI/180);
+			falloff = static_cast<vec_t>( -cos(light->angle/2*Q_PI/180) );
 	}
 	else
 		falloff = 0;	// shut up compiler warnings
@@ -424,7 +424,7 @@ void SingleLightFace (lightentity_t *light, lightinfo_t *l)
 				continue;
 		}
 
-		angle = (1.0-scalecos) + scalecos*angle;
+		angle = static_cast<vec_t>( (1.0-scalecos) + scalecos*angle );
 		for( i=0; i<3; i++ )
 		{
 			add = light->light[i] - dist;
@@ -436,7 +436,7 @@ void SingleLightFace (lightentity_t *light, lightinfo_t *l)
 		}
 		
 		// check intensity
-		intensity = ( lightsamp[ c ][ 0 ] + lightsamp[ c ][ 1 ] + lightsamp[ c ][ 2 ] ) / 3.0;
+		intensity = static_cast<float>( ( lightsamp[ c ][ 0 ] + lightsamp[ c ][ 1 ] + lightsamp[ c ][ 2 ] ) / 3.0 );
 		if( intensity > 1 )		// ignore real tiny lights
 			hit = true;
 	}
@@ -488,7 +488,7 @@ void FixMinlight (lightinfo_t *l)
 	{
 		for (j=0 ; j<l->numsurfpt ; j++)
 		{
-			float intensity = ( l->lightmaps[i][j][0] + l->lightmaps[i][j][1] + l->lightmaps[i][j][2] ) / 3.0;
+			float intensity = static_cast<float>( ( l->lightmaps[i][j][0] + l->lightmaps[i][j][1] + l->lightmaps[i][j][2] ) / 3.0 );
 
 			if ( intensity < minlight )
 			{

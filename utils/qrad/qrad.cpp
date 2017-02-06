@@ -172,9 +172,9 @@ void ReadLightFile (char *filename)
 		else if ( argCnt == 5 )
 		{
 			// With 1+4 args, the R,G,B values are "scaled" by the fourth numeric value i;
-			r *= i / 255.0;
-			g *= i / 255.0;
-			b *= i / 255.0;
+			r *= static_cast<vec_t>( i / 255.0 );
+			g *= static_cast<vec_t>( i / 255.0 );
+			b *= static_cast<vec_t>( i / 255.0 );
 		}
 		else if( argCnt != 4 )
 		{
@@ -379,7 +379,7 @@ void MakePatchForFace (int fn, winding_t *w)
 				patch->scale[i] = 0.0;
 				for( j=0; j<3; j++ )
 					patch->scale[i] += tx->vecs[i][j] * tx->vecs[i][j];
-				patch->scale[i] = sqrt( patch->scale[i] );
+				patch->scale[i] = static_cast<vec_t>( sqrt( patch->scale[i] ) );
 				}
 			}
 		else
@@ -497,9 +497,9 @@ void MakePatches (void)
 			double	v1, v2, v3;
 			if ( sscanf (s, "%lf %lf %lf", &v1, &v2, &v3) == 3 )
 			{
-				origin[0] = v1;
-				origin[1] = v2;
-				origin[2] = v3;
+				origin[0] = static_cast<vec_t>( v1 );
+				origin[1] = static_cast<vec_t>( v2 );
+				origin[2] = static_cast<vec_t>( v3 );
 			}
 		}
 
@@ -1258,7 +1258,7 @@ int main (int argc, char **argv)
 	printf ("----- Radiosity ----\n");
 
 	verbose = true;  // Originally FALSE
-	smoothing_threshold = cos(45.0*(Q_PI/180)); // Originally zero.
+	smoothing_threshold = static_cast<float>( cos(45.0*(Q_PI/180)) ); // Originally zero.
 
 	for (i=1 ; i<argc ; i++)
 	{

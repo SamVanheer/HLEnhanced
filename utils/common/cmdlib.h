@@ -54,7 +54,10 @@ int Q_strcasecmp (char *s1, char *s2);
 void Q_getwd (char *out);
 
 int filelength (FILE *f);
-int	FileTime (char *path);
+
+const time_t INVALID_FILE_TIME = time_t( -1 );
+
+time_t	FileTime (char *path);
 
 void	Q_mkdir (char *path);
 

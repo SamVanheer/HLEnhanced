@@ -45,15 +45,65 @@ inline vec_t DotProduct( const vec_t* lhs, const vec_t* rhs )
 {
 	return ( ( lhs )[ 0 ] * ( rhs )[ 0 ] + ( lhs )[ 1 ] * ( rhs )[ 1 ] + ( lhs )[ 2 ] * ( rhs )[ 2 ] );
 }
+
+//Use this so we can eliminate type conversion warnings. - Solokiller
+template<typename SRC, typename DEST>
+inline void VectorCopy( const SRC* src, DEST* dest )
+{
+	dest[ 0 ] = static_cast<DEST>( src[ 0 ] );
+	dest[ 1 ] = static_cast<DEST>( src[ 1 ] );
+	dest[ 2 ] = static_cast<DEST>( src[ 2 ] );
+}
+
+//Needs overloads for Vector until we can simplify this. - Solokiller
+template<typename SRC, typename DEST>
+inline void VectorCopy( const SRC* src, DEST& dest )
+{
+	dest[ 0 ] = src[ 0 ];
+	dest[ 1 ] = src[ 1 ];
+	dest[ 2 ] = src[ 2 ];
+}
+
+template<typename SRC, typename DEST>
+inline void VectorCopy( const SRC& src, DEST* dest )
+{
+	dest[ 0 ] = static_cast<DEST>( src[ 0 ] );
+	dest[ 1 ] = static_cast<DEST>( src[ 1 ] );
+	dest[ 2 ] = static_cast<DEST>( src[ 2 ] );
+}
+
+template<typename SRC, typename SRC2, typename DEST>
+inline void VectorSubtract( const SRC* src, const SRC2* src2, DEST* dest )
+{
+	dest[ 0 ] = static_cast<DEST>( src[ 0 ] - src2[ 0 ] );
+	dest[ 1 ] = static_cast<DEST>( src[ 1 ] - src2[ 1 ] );
+	dest[ 2 ] = static_cast<DEST>( src[ 2 ] - src2[ 2 ] );
+}
+
+template<typename SRC, typename SRC2, typename DEST>
+inline void VectorAdd( const SRC* src, const SRC2* src2, DEST* dest )
+{
+	dest[ 0 ] = static_cast<DEST>( src[ 0 ] + src2[ 0 ] );
+	dest[ 1 ] = static_cast<DEST>( src[ 1 ] + src2[ 1 ] );
+	dest[ 2 ] = static_cast<DEST>( src[ 2 ] + src2[ 2 ] );
+}
+
+template<typename SRC, typename SCALE, typename DEST>
+inline void VectorScale( const SRC* src, SCALE scale, DEST* dest )
+{
+	dest[ 0 ] = static_cast<DEST>( scale * src[ 0 ] );
+	dest[ 1 ] = static_cast<DEST>( scale * src[ 1 ] );
+	dest[ 2 ] = static_cast<DEST>( scale * src[ 2 ] );
+}
 #endif
 
 #define DotProduct(x,y) ((x)[0]*(y)[0]+(x)[1]*(y)[1]+(x)[2]*(y)[2])
 #define VectorFill(a,b) { (a)[0]=(b); (a)[1]=(b); (a)[2]=(b);}
 #define VectorAvg(a) ( ( (a)[0] + (a)[1] + (a)[2] ) / 3 )
-#define VectorSubtract(a,b,c) {(c)[0]=(a)[0]-(b)[0];(c)[1]=(a)[1]-(b)[1];(c)[2]=(a)[2]-(b)[2];}
-#define VectorAdd(a,b,c) {(c)[0]=(a)[0]+(b)[0];(c)[1]=(a)[1]+(b)[1];(c)[2]=(a)[2]+(b)[2];}
-#define VectorCopy(a,b) {(b)[0]=(a)[0];(b)[1]=(a)[1];(b)[2]=(a)[2];}
-#define VectorScale(a,b,c) {(c)[0]=(b)*(a)[0];(c)[1]=(b)*(a)[1];(c)[2]=(b)*(a)[2];}
+//#define VectorSubtract(a,b,c) {(c)[0]=(a)[0]-(b)[0];(c)[1]=(a)[1]-(b)[1];(c)[2]=(a)[2]-(b)[2];}
+//#define VectorAdd(a,b,c) {(c)[0]=(a)[0]+(b)[0];(c)[1]=(a)[1]+(b)[1];(c)[2]=(a)[2]+(b)[2];}
+//#define VectorCopy(a,b) {(b)[0]=(a)[0];(b)[1]=(a)[1];(b)[2]=(a)[2];}
+//#define VectorScale(a,b,c) {(c)[0]=(b)*(a)[0];(c)[1]=(b)*(a)[1];(c)[2]=(b)*(a)[2];}
 
 vec_t Q_rint (vec_t in);
 vec_t _DotProduct (vec3_t v1, vec3_t v2);

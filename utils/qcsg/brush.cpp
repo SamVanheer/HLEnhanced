@@ -715,7 +715,7 @@ restart:
 	for (f = h->faces ; f ; f=f->next)
 	{
 //		w = BaseWindingForIPlane (f->plane);
-		w = BaseWindingForPlane (f->plane->normal, f->plane->dist);
+		w = BaseWindingForPlane (f->plane->normal, static_cast<float>( f->plane->dist ));
 		for (f2 = h->faces ; f2 && w ; f2=f2->next)
 		{
 			if (f == f2)

@@ -72,9 +72,9 @@ void LoadEntities (void)
 			if( sscanf( s, "%lf %lf %lf", &v1, &v2, &v3) != 3 )
 				v2 = v3 = v1;
 
-			le->light[0] = v1;
-			le->light[1] = v2;
-			le->light[2] = v3;
+			le->light[0] = static_cast<vec_t>( v1 );
+			le->light[1] = static_cast<vec_t>( v2 );
+			le->light[2] = static_cast<vec_t>( v3 );
 		}
 		else
 		{
@@ -178,12 +178,12 @@ int main (int argc, char **argv)
 		}
 		else if (!strcmp(argv[i],"-dist"))
 		{
-			scaledist = atof (argv[i+1]);
+			scaledist = static_cast<float>( atof (argv[i+1]) );
 			i++;
 		}
 		else if (!strcmp(argv[i],"-range"))
 		{
-			rangescale = atof (argv[i+1]);
+			rangescale = static_cast<float>( atof (argv[i+1]) );
 			i++;
 		}
 		else if (!strcmp(argv[i],"-lowcolor"))

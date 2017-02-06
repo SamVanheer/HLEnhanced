@@ -517,7 +517,7 @@ void EmitPlanes (void)
 	for (i=0 ; i<nummapplanes ; i++, mp++, dp++)
 	{
 		VectorCopy ( mp->normal, dp->normal);
-		dp->dist = mp->dist;
+		dp->dist = static_cast<float>( mp->dist );
 		dp->type = mp->type;
 	}
 }

@@ -470,21 +470,21 @@ int TexinfoForBrushTexture (plane_t *plane, brush_texture_t *bt, vec3_t origin)
 
 		for (i=0 ; i<2 ; i++)
 			for (j=0 ; j<3 ; j++)
-				tx.vecs[i][j] = vecs[i][j] / bt->scale[i];
+				tx.vecs[i][j] = static_cast<float>( vecs[i][j] / bt->scale[i] );
 	}
 	else
 	{
-		tx.vecs[0][0] = bt->UAxis[0] / bt->scale[0];
-		tx.vecs[0][1] = bt->UAxis[1] / bt->scale[0];
-		tx.vecs[0][2] = bt->UAxis[2] / bt->scale[0];
+		tx.vecs[0][0] = static_cast<float>(bt->UAxis[0] / bt->scale[0] );
+		tx.vecs[0][1] = static_cast<float>(bt->UAxis[1] / bt->scale[0] );
+		tx.vecs[0][2] = static_cast<float>(bt->UAxis[2] / bt->scale[0] );
 
-		tx.vecs[1][0] = bt->VAxis[0] / bt->scale[1];
-		tx.vecs[1][1] = bt->VAxis[1] / bt->scale[1];
-		tx.vecs[1][2] = bt->VAxis[2] / bt->scale[1];
+		tx.vecs[1][0] = static_cast<float>(bt->VAxis[0] / bt->scale[1] );
+		tx.vecs[1][1] = static_cast<float>(bt->VAxis[1] / bt->scale[1] );
+		tx.vecs[1][2] = static_cast<float>(bt->VAxis[2] / bt->scale[1] );
 	}
 
-	tx.vecs[0][3] = bt->shift[0] + DotProduct( origin, tx.vecs[0] );
-	tx.vecs[1][3] = bt->shift[1] + DotProduct( origin, tx.vecs[1] );
+	tx.vecs[0][3] = static_cast<float>(bt->shift[0] + DotProduct( origin, tx.vecs[0] ) );
+	tx.vecs[1][3] = static_cast<float>(bt->shift[1] + DotProduct( origin, tx.vecs[1] ) );
 
 	//
 	// find the texinfo

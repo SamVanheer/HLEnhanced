@@ -467,7 +467,7 @@ void	WriteBSPFile (char *filename)
 
 int ArrayUsage( char *szItem, int items, int maxitems, int itemsize )
 {
-	float	percentage = maxitems ? items * 100.0 / maxitems : 0.0;
+	float	percentage = maxitems ? items * 100.0f / maxitems : 0.0f;
 
     printf("%-12s  %7i/%-7i  %7i/%-7i  (%4.1f%%)", 
 		   szItem, items, maxitems, items * itemsize, maxitems * itemsize, percentage );
@@ -484,7 +484,7 @@ int ArrayUsage( char *szItem, int items, int maxitems, int itemsize )
 
 int GlobUsage( char *szItem, int itemstorage, int maxstorage )
 {
-	float	percentage = maxstorage ? itemstorage * 100.0 / maxstorage : 0.0;
+	float	percentage = maxstorage ? itemstorage * 100.0f / maxstorage : 0.0f;
     printf("%-12s     [variable]    %7i/%-7i  (%4.1f%%)", 
 		   szItem, itemstorage, maxstorage, percentage );
 	if ( percentage > 80.0 )
@@ -690,7 +690,7 @@ vec_t	FloatForKey (entity_t *ent, char *key)
 	char	*k;
 	
 	k = ValueForKey (ent, key);
-	return atof(k);
+	return static_cast<vec_t>( atof(k) );
 }
 
 void 	GetVectorForKey (entity_t *ent, char *key, vec3_t vec)
@@ -702,8 +702,8 @@ void 	GetVectorForKey (entity_t *ent, char *key, vec3_t vec)
 // scanf into doubles, then assign, so it is vec_t size independent
 	v1 = v2 = v3 = 0;
 	sscanf (k, "%lf %lf %lf", &v1, &v2, &v3);
-	vec[0] = v1;
-	vec[1] = v2;
-	vec[2] = v3;
+	vec[0] = static_cast<vec_t>( v1 );
+	vec[1] = static_cast<vec_t>( v2 );
+	vec[2] = static_cast<vec_t>( v3 );
 }
 

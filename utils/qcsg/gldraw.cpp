@@ -140,13 +140,13 @@ void DrawWinding (winding_t *w)
 	glColor4f (0,0,0,0.5);
 	glBegin (GL_LINE_LOOP);
 	for (i=0 ; i<w->numpoints ; i++)
-		glVertex3f (w->p[i][0],w->p[i][1],w->p[i][2] );
+		glVertex3f ( static_cast<GLfloat>( w->p[i][0] ), static_cast<GLfloat>( w->p[i][1] ), static_cast<GLfloat>( w->p[i][2] ) );
 	glEnd ();
 
 	glColor4f (0,1,0,0.3f);
 	glBegin (GL_POLYGON);
 	for (i=0 ; i<w->numpoints ; i++)
-		glVertex3f (w->p[i][0],w->p[i][1],w->p[i][2] );
+		glVertex3f ( static_cast<GLfloat>( w->p[i][0] ), static_cast<GLfloat>( w->p[i][1] ), static_cast<GLfloat>( w->p[i][2] ) );
 	glEnd ();
 
 	glFlush ();
@@ -162,13 +162,13 @@ void DrawAuxWinding (winding_t *w)
 	glColor4f (0,0,0,0.5);
 	glBegin (GL_LINE_LOOP);
 	for (i=0 ; i<w->numpoints ; i++)
-		glVertex3f (w->p[i][0],w->p[i][1],w->p[i][2] );
+		glVertex3f ( static_cast<GLfloat>( w->p[i][0] ), static_cast<GLfloat>( w->p[i][1] ), static_cast<GLfloat>( w->p[i][2] ) );
 	glEnd ();
 
 	glColor4f (1,0,0,0.3f);
 	glBegin (GL_POLYGON);
 	for (i=0 ; i<w->numpoints ; i++)
-		glVertex3f (w->p[i][0],w->p[i][1],w->p[i][2] );
+		glVertex3f ( static_cast<GLfloat>( w->p[i][0] ), static_cast<GLfloat>( w->p[i][1] ), static_cast<GLfloat>( w->p[i][2] ) );
 	glEnd ();
 
 	glFlush ();

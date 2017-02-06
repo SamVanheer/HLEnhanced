@@ -1584,7 +1584,7 @@ void ResizeTexture( s_texture_t *ptexture )
 void Grab_Skin ( s_texture_t *ptexture )
 {
 	char	file1[1024];
-	int		time1;
+	time_t		time1;
 
 	sprintf (file1, "%s/%s", cdpartial, ptexture->name);
 	ExpandPathAndArchive (file1);
@@ -1596,10 +1596,10 @@ void Grab_Skin ( s_texture_t *ptexture )
 		{
 			sprintf (file1, "%s/%s", cdtexture[i], ptexture->name);
 			time1 = FileTime (file1);
-			if (time1 != -1)
+			if (time1 != INVALID_FILE_TIME )
 				break;
 		}
-		if (time1 == -1)
+		if (time1 == INVALID_FILE_TIME )
 			Error( "%s not found", file1);
 	}
 	else
@@ -2065,13 +2065,13 @@ int Grab_Nodes( s_node_t *pnodes )
 
 void Grab_Studio ( s_model_t *pmodel )
 {
-	int		time1;
+	time_t		time1;
 	char	cmd[1024];
 	int		option;
 
 	sprintf (filename, "%s/%s.smd", cddir, pmodel->name);
 	time1 = FileTime (filename);
-	if (time1 == -1)
+	if (time1 == INVALID_FILE_TIME )
 		Error ("%s doesn't exist", filename);
 
 	printf ("grabbing %s\n", filename);
@@ -2402,7 +2402,7 @@ void Shift_Animation( s_animation_t *panim)
 
 void Option_Animation ( char *name, s_animation_t *panim )
 {
-	int		time1;
+	time_t		time1;
 	char	cmd[1024];
 	int		option;
 
@@ -2410,7 +2410,7 @@ void Option_Animation ( char *name, s_animation_t *panim )
 
 	sprintf (filename, "%s/%s.smd", cddir, panim->name);
 	time1 = FileTime (filename);
-	if (time1 == -1)
+	if (time1 == INVALID_FILE_TIME )
 		Error ("%s doesn't exist", filename);
 
 	printf ("grabbing %s\n", filename);

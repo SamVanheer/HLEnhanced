@@ -396,7 +396,7 @@ void LoadPortals (char *name)
 			, &v[0], &v[1], &v[2]) != 3)
 				Error ("LoadPortals: reading portal %i", i);
 			for (k=0 ; k<3 ; k++)
-				w->points[j][k] = v[k];
+				w->points[j][k] = static_cast<vec_t>( v[k] );
 		}
 		fscanf (f, "\n");
 		

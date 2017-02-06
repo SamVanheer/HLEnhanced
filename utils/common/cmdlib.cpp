@@ -313,12 +313,12 @@ FileTime
 returns -1 if not present
 ============
 */
-int	FileTime (char *path)
+time_t	FileTime (char *path)
 {
 	struct	stat	buf;
 	
 	if (stat (path,&buf) == -1)
-		return -1;
+		return INVALID_FILE_TIME;
 	
 	return buf.st_mtime;
 }
