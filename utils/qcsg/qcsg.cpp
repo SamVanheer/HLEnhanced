@@ -50,7 +50,7 @@ bface_t *NewFaceFromFace (bface_t *in)
 {
 	bface_t	*newf;
 	
-	newf = malloc (sizeof(bface_t));
+	newf = reinterpret_cast<bface_t*>( malloc (sizeof(bface_t)) );
 	memset (newf, 0, sizeof(newf));
 	newf->contents = in->contents;
 	newf->texinfo = in->texinfo;
@@ -720,7 +720,7 @@ void BoundWorld (void)
 main
 ============
 */
-extern char qproject[];
+extern "C" char qproject[];
 
 int main (int argc, char **argv)
 {

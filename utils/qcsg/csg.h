@@ -18,11 +18,6 @@
 
 #include <windows.h>
 
-#ifdef __cplusplus
-extern "C"
-{
-#endif
-
 #ifndef DOUBLEVEC_T
 #error you must add -dDOUBLEVEC_T to the project!
 #endif
@@ -106,40 +101,42 @@ extern	side_t	brushsides[MAX_MAP_SIDES];
 extern	qboolean	noclip;
 extern	qboolean	wadtextures;
 
-int			nWadInclude;
-char		*pszWadInclude[];
+extern int			nWadInclude;
+extern char		*pszWadInclude[];
 
 void 	LoadMapFile (char *filename);
 
 //=============================================================================
 
-// textures.c
+// textures.cpp
 
 extern int nummiptex;
 void WriteMiptex (void);
 int TexinfoForBrushTexture (plane_t *plane, brush_texture_t *bt, vec3_t origin);
+int	FindMiptex( char *name );
 
 //=============================================================================
 
-// brush.c
+// brush.cpp
 
 void FindGCD (int *v);
 
 brush_t *Brush_LoadEntity (entity_t *ent, int hullnum);
 int	PlaneTypeForNormal (vec3_t normal);
+int BrushContents( brush_t* b );
 
 void CreateBrush (int brushnum);
 
 //=============================================================================
 
-// csg.c
+// csg.cpp
 
 bface_t *NewFaceFromFace (bface_t *in);
 extern qboolean	onlyents;
 
 //=============================================================================
 
-// draw.c
+// draw.cpp
 
 extern vec3_t	draw_mins, draw_maxs;
 extern	qboolean	drawflag;
@@ -147,6 +144,14 @@ extern	qboolean	drawflag;
 void Draw_ClearWindow (void);
 void DrawWinding (winding_t *w);
 
-#ifdef __cplusplus
-}
-#endif
+//=============================================================================
+
+// hullfile.cpp
+
+void CheckHullFile( qboolean hullfile, char *filename );
+
+//=============================================================================
+
+// map.cpp
+
+void TextureAxisFromPlane( plane_t *pln, vec3_t xv, vec3_t yv );

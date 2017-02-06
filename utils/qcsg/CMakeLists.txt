@@ -9,13 +9,13 @@ add_sources(
 	${BSPLIB_SRCS}
 	${THREADS_SRCS}
 	${POLYLIB_SRCS}
-	brush.c
+	brush.cpp
 	csg.h
 	gldraw.cpp
-	hullfile.c
-	map.c
-	qcsg.c
-	textures.c
+	hullfile.cpp
+	map.cpp
+	qcsg.cpp
+	textures.cpp
 )
 
 preprocess_sources()
