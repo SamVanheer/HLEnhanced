@@ -1196,8 +1196,6 @@ RadWorld
 */
 void RadWorld (void)
 {
-	int	i;
-
 	MakeBackplanes ();
 	MakeParents (0, -1);
 	MakeTnodes (&dmodels[0]);
@@ -1233,7 +1231,7 @@ void RadWorld (void)
 		// spread light around
 		BounceLight ();
 
-		for( i=0; i < num_patches; i++ )
+		for( unsigned int i=0; i < num_patches; i++ )
 			if ( !VectorCompare( patches[i].directlight, vec3_origin ) )
 				VectorSubtract( patches[i].totallight, patches[i].directlight, patches[i].totallight );
 	}
