@@ -8,9 +8,9 @@ add_sources(
 	${SHARED_UTIL_SRCS}
 	${WADLIB_SRCS}
 	${LBMLIB_SRCS}
-	qlumpy.c
+	qlumpy.cpp
 	qlumpy.h
-	quakegrb.c
+	quakegrb.cpp
 )
 
 preprocess_sources()

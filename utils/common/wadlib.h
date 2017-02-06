@@ -14,6 +14,11 @@
 // wad reading
 //
 
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+
 #define	CMP_NONE		0
 #define	CMP_LZSS		1
 
@@ -61,3 +66,6 @@ void	NewWad (char *pathname, qboolean bigendien);
 void	AddLump (char *name, void *buffer, int length, int type, int compress);
 void	WriteWad (int wad3);
 
+#ifdef __cplusplus
+}
+#endif
