@@ -11,6 +11,8 @@
 
 #include "csg.h"
 
+#include "Platform.h"
+
 typedef struct
 {
 	char		identification[4];		// should be WAD2/WAD3

@@ -10,6 +10,8 @@
 
 #include "qrad.h"
 
+#include "Platform.h"
+
 #define	HALFBIT
 
 extern char		source[MAX_PATH];

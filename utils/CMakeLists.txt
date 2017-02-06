@@ -13,6 +13,7 @@ endif()
 
 set( SHARED_UTIL_INCLUDES
 	${CMAKE_CURRENT_SOURCE_DIR}/common
+	${CMAKE_SOURCE_DIR}/common
 )
 
 #Common code shared between all tools.

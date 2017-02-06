@@ -13,6 +13,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "Platform.h"
+
 
 char	**ppszFiles = NULL;
 int		nFiles = 0;

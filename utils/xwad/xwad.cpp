@@ -8,6 +8,8 @@
 //#include <sys/file.h>
 #include <stdarg.h>
 
+#include "Platform.h"
+
 #include "cmdlib.h"
 
 #include "wadlib.h"

@@ -24,6 +24,8 @@
 #include <sys/stat.h>
 #include <math.h>
 
+#include "Platform.h"
+
 #include "archtypes.h"
 #include "cmdlib.h"
 #include "lbmlib.h"
@@ -623,7 +625,7 @@ void SimplifyModel (void)
 	{
 		for (k = 0; k < numbones; k++)
 		{
-			if (strcmpi( bonetable[k].name, hitgroup[j].name) == 0)
+			if (stricmp( bonetable[k].name, hitgroup[j].name) == 0)
 			{
 				bonetable[k].group = hitgroup[j].group;
 				break;
@@ -715,7 +717,7 @@ void SimplifyModel (void)
 		{
 			for (k = 0; k < numbones; k++)
 			{
-				if (strcmpi( bonetable[k].name, hitbox[j].name) == 0)
+				if (stricmp( bonetable[k].name, hitbox[j].name) == 0)
 				{
 					hitbox[j].bone = k;
 					break;
@@ -2857,7 +2859,7 @@ int Cmd_Controller (void)
 {
 	if (GetToken (false))
 	{
-		if (!strcmpi("mouth",token))
+		if (!stricmp("mouth",token))
 		{
 			bonecontroller[numbonecontrollers].index = 4;
 		}

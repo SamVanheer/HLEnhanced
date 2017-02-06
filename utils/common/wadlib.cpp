@@ -23,6 +23,8 @@
 #ifdef NeXT
 #include <libc.h>
 #endif
+#include "Platform.h"
+
 #include "cmdlib.h"
 #include "wadlib.h"
 

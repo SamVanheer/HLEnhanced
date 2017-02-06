@@ -23,7 +23,6 @@ clear_sources()
 
 target_include_directories( ${UTIL_NAME} PRIVATE
 	${SHARED_UTIL_INCLUDES}
-	${CMAKE_SOURCE_DIR}/common
 	${CMAKE_SOURCE_DIR}/public/math
 	${CMAKE_CURRENT_SOURCE_DIR}
 	${EXTERNAL_DIR}/SDL2/include

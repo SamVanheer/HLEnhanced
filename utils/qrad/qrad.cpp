@@ -12,6 +12,8 @@
 
 #include "qrad.h"
 
+#include "Platform.h"
+
 
 /*
 

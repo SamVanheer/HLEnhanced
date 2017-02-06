@@ -25,7 +25,6 @@ clear_sources()
 
 target_include_directories( ${UTIL_NAME} PRIVATE
 	${SHARED_UTIL_INCLUDES}
-	${CMAKE_SOURCE_DIR}/common
 	${CMAKE_SOURCE_DIR}/public
 	${CMAKE_SOURCE_DIR}/game/server
 	${CMAKE_SOURCE_DIR}/public/math
