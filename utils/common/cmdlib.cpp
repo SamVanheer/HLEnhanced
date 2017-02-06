@@ -605,9 +605,9 @@ void    StripExtension (char *path)
 Extract file parts
 ====================
 */
-void ExtractFilePath (char *path, char *dest)
+void ExtractFilePath (const char *path, char *dest)
 {
-	char    *src;
+	const char    *src;
 
 	src = path + strlen(path) - 1;
 

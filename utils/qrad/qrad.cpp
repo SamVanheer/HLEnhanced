@@ -1513,8 +1513,7 @@ int main (int argc, char **argv)
 		if ( !FS_FileExists( global_lights ) )
 		{
 			// try looking in the directory we were run from
-			GetModuleFileName( NULL, global_lights, sizeof( global_lights ) );
-			ExtractFilePath( global_lights, global_lights );
+			ExtractFilePath( argv[ 0 ], global_lights );
 			strcat( global_lights, "lights.rad" );
 		}
 	}

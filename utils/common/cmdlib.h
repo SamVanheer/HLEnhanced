@@ -91,7 +91,7 @@ void 	DefaultPath (char *path, char *basepath);
 void 	StripFilename (char *path);
 void 	StripExtension (char *path);
 
-void 	ExtractFilePath (char *path, char *dest);
+void 	ExtractFilePath (const char *path, char *dest);
 void 	ExtractFileBase (char *path, char *dest);
 void	ExtractFileExtension (char *path, char *dest);
 
