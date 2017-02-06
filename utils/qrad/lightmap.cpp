@@ -799,10 +799,10 @@ int				numdlights;
 FindTargetEntity
 ==================
 */
-entity_t *FindTargetEntity (char *target)
+entity_t *FindTargetEntity (const char *target)
 {
 	int		i;
-	char	*n;
+	const char	*n;
 
 	for (i=0 ; i<num_entities ; i++)
 	{
@@ -828,8 +828,8 @@ void CreateDirectLights (void)
 	dleaf_t	*leaf;
 	int		leafnum;
 	entity_t	*e, *e2;
-	char	*name;
-	char	*target;
+	const char	*name;
+	const char	*target;
 	float	angle;
 	vec3_t	dest;
 
@@ -868,7 +868,7 @@ void CreateDirectLights (void)
 	//
 	for (i=0 ; i<(unsigned)num_entities ; i++)
 	{
-		char *pLight;
+		const char *pLight;
 		double r, g, b, scaler;
 		float	l1;
 		int argCnt;

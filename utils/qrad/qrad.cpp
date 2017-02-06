@@ -453,7 +453,7 @@ void MakePatchForFace (int fn, winding_t *w)
 entity_t *EntityForModel (int modnum)
 {
 	int		i;
-	char	*s;
+	const char	*s;
 	char	name[16];
 
 	sprintf (name, "*%i", modnum);
@@ -482,7 +482,7 @@ void MakePatches (void)
 	dmodel_t	*mod;
 	vec3_t		origin;
 	entity_t	*ent;
-	char		*s;
+	const char		*s;
 
 	ParseEntities ();
 	qprintf ("%i faces\n", numfaces);

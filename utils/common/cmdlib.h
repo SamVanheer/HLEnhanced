@@ -51,8 +51,8 @@ extern char **myargv;
 void COM_FixSlashes( char *pname );
 char *strupr (char *in);
 char *strlower (char *in);
-int Q_strncasecmp (char *s1, char *s2, int n);
-int Q_strcasecmp (char *s1, char *s2);
+int Q_strncasecmp (const char *s1, const char *s2, int n);
+int Q_strcasecmp (const char *s1, const char *s2);
 void Q_getwd (char *out);
 
 int filelength (FILE *f);
@@ -75,7 +75,7 @@ char *ExpandPathAndArchive (char *path);
 
 double I_FloatTime (void);
 
-NORETURN void	Error (char *error, ...);
+NORETURN void	Error (const char *error, ...);
 int		CheckParm (char *check);
 
 FILE	*SafeOpenWrite (char *filename);

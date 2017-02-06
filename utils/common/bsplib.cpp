@@ -465,7 +465,7 @@ void	WriteBSPFile (char *filename)
 #define ENTRIES(a)		(sizeof(a)/sizeof(*(a)))
 #define ENTRYSIZE(a)	(sizeof(*(a)))
 
-int ArrayUsage( char *szItem, int items, int maxitems, int itemsize )
+int ArrayUsage( const char *szItem, int items, int maxitems, int itemsize )
 {
 	float	percentage = maxitems ? items * 100.0f / maxitems : 0.0f;
 
@@ -482,7 +482,7 @@ int ArrayUsage( char *szItem, int items, int maxitems, int itemsize )
 	return items * itemsize;
 }
 
-int GlobUsage( char *szItem, int itemstorage, int maxstorage )
+int GlobUsage( const char *szItem, int itemstorage, int maxstorage )
 {
 	float	percentage = maxstorage ? itemstorage * 100.0f / maxstorage : 0.0f;
     printf("%-12s     [variable]    %7i/%-7i  (%4.1f%%)", 
@@ -675,7 +675,7 @@ void 	SetKeyValue (entity_t *ent, char *key, char *value)
 	ep->value = copystring(value);
 }
 
-char 	*ValueForKey (entity_t *ent, char *key)
+const char 	*ValueForKey (entity_t *ent, char *key)
 {
 	epair_t	*ep;
 	
@@ -687,7 +687,7 @@ char 	*ValueForKey (entity_t *ent, char *key)
 
 vec_t	FloatForKey (entity_t *ent, char *key)
 {
-	char	*k;
+	const char	*k;
 	
 	k = ValueForKey (ent, key);
 	return static_cast<vec_t>( atof(k) );
@@ -695,7 +695,7 @@ vec_t	FloatForKey (entity_t *ent, char *key)
 
 void 	GetVectorForKey (entity_t *ent, char *key, vec3_t vec)
 {
-	char	*k;
+	const char	*k;
 	double	v1, v2, v3;
 
 	k = ValueForKey (ent, key);

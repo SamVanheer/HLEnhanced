@@ -286,7 +286,7 @@ node_t *FillOutside (node_t *node, qboolean leakfile)
 	qboolean	inside;
 	qboolean	ret;
 	vec3_t		origin;
-	char		*cl;
+	const char		*cl;
 
 	qprintf ("----- FillOutside ----\n");
 

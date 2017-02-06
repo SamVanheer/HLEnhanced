@@ -43,7 +43,7 @@ LoadEntities
 */
 void LoadEntities (void)
 {
-	char 		*s, *s2;
+	const char 		*s, *s2;
 	entity_t	*e;
 	lightentity_t	*le;
 	int			i, j;

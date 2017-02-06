@@ -556,7 +556,7 @@ SetLightStyles
 void SetLightStyles (void)
 {
 	int		stylenum;
-	char	*t;
+	const char	*t;
 	entity_t	*e;
 	int		i, j;
 	char	value[10];

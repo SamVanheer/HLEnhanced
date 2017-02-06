@@ -68,7 +68,7 @@ Error
 For abnormal program terminations
 =================
 */
-void Error (char *error, ...)
+void Error (const char *error, ...)
 {
 	va_list argptr;
 
@@ -352,7 +352,7 @@ skipwhite:
 }
 
 
-int Q_strncasecmp (char *s1, char *s2, int n)
+int Q_strncasecmp (const char *s1, const char *s2, int n)
 {
 	int		c1, c2;
 	
@@ -380,7 +380,7 @@ int Q_strncasecmp (char *s1, char *s2, int n)
 	return -1;
 }
 
-int Q_strcasecmp (char *s1, char *s2)
+int Q_strcasecmp (const char *s1, const char *s2)
 {
 	//TODO magic number - Solokiller
 	return Q_strncasecmp (s1, s2, 99999);

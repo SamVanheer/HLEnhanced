@@ -284,7 +284,7 @@ void WriteMiptex(void)
 	int		i, len, texsize, totaltexsize = 0;
 	byte	*data;
 	dmiptexlump_t	*l;
-	char	*path;
+	const char	*path;
 	char	fullpath[1024];
 	int		start;
 

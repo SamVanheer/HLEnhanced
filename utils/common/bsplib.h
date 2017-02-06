@@ -321,7 +321,7 @@ void	ParseEntities (void);
 void	UnparseEntities (void);
 
 void 	SetKeyValue (entity_t *ent, char *key, char *value);
-char 	*ValueForKey (entity_t *ent, char *key);
+const char 	*ValueForKey (entity_t *ent, char *key);
 // will return "" if not present
 
 vec_t	FloatForKey (entity_t *ent, char *key);
