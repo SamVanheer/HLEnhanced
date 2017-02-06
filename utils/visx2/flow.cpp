@@ -81,7 +81,6 @@ winding_t	*ChopWinding (winding_t *in, pstack_t *stack, plane_t *split)
 	vec_t	*p1, *p2;
 	vec3_t	mid;
 	winding_t	*neww;
-	int		maxpts;
 
 	counts[0] = counts[1] = counts[2] = 0;
 
@@ -408,7 +407,6 @@ void RecursiveLeafFlow (int leafnum, threaddata_t *thread, pstack_t *prevstack)
 	leaf_t 		*leaf;
 	int			i, j;
 	long		*test, *might, *vis, more;
-	int			pnum;
 
 	c_chains++;
 
@@ -442,7 +440,7 @@ void RecursiveLeafFlow (int leafnum, threaddata_t *thread, pstack_t *prevstack)
 			continue;	// can't possibly see it
 		}
 #if 0
-		pnum = p - portals;
+		int pnum = p - portals;
 		if ( (thread->fullportal[pnum>>3] & (1<<(pnum&7)) ) )
 		{
 			c_fullskip++;

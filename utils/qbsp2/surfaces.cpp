@@ -133,10 +133,7 @@ int TexelSize( face_t *f )
 	float		mins, maxs;
 	vec_t		v;
 	int			i, smax, tmax;
-	dplane_t	plane;
-	face_t		*front, *back, *next;
 	texinfo_t	*tex;
-	vec3_t		temp;
 
 // special (non-surface cached) faces don't need subdivision
 	if ( f->texturenum > numtexinfo )
@@ -215,22 +212,19 @@ static	vec3_t	hash_min, hash_scale;
 static	void InitHash (void)
 {
 	vec3_t	size;
-	vec_t	volume;
-	vec_t	scale;
 	int		newsize[2];
-	int		i;
 	
 	memset (hashverts, 0, sizeof(hashverts));
 
-	for (i=0 ; i<3 ; i++)
+	for (int i=0 ; i<3 ; i++)
 	{
 		hash_min[i] = -8000;
 		size[i] = 16000;
 	}
 
-	volume = size[0]*size[1];
+	const vec_t volume = size[0]*size[1];
 	
-	scale = sqrt(volume / NUM_HASH);
+	const vec_t scale = static_cast<vec_t>( sqrt(volume / NUM_HASH) );
 
 	newsize[0] = static_cast<int>( size[0] / scale );
 	newsize[1] = static_cast<int>( size[1] / scale );

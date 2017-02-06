@@ -417,7 +417,6 @@ byte AveragePixels (int count)
 	float 	dr, dg, db;
 	float 	bestdistortion, distortion;
 	int		bestcolor;
-	byte	*pal;
 	
 	vis = 0;
 	r = g = b = 0;
@@ -658,12 +657,11 @@ PALETTE GRABBING
 
 void GrabPalette16( void )
 {
-	int i;
-
 	// Write out palette in 16bit mode
 	*(unsigned short *) lump_p = 256;	// palette size
 	lump_p += sizeof(short);
 
+	//TODO: the 256 and 768 magic numbers should be defined and documented so people know what they mean (indexed palette) - Solokiller
 	memcpy( lump_p, lbmpalette, 768 );
 	lump_p += 768;
 }
@@ -690,7 +688,6 @@ void GrabFont( void )
 {
 	int		x, y, y2, xl, x2, yl, xh, yh, i, j;
 	int		index, offset;
-	int		width;
 	int		iCurX;	// current x in destination
 	int		iMaxX;  // max x in destination
 	
@@ -826,6 +823,7 @@ getout:
 	// JAY: Round up to the next power of 2 for GL
 	offset = header->height * header->rowheight;
 
+	//TODO: magic numbers - Solokiller
 	y = (offset>128)?256:(offset>64)?128:(offset>32)?64:(offset>16)?32:16;
 	if ( offset != y )
 	{

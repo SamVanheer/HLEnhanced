@@ -243,8 +243,6 @@ BaseWindingForIPlane
 */
 winding_t *BaseWindingForIPlane (plane_t *p)
 {
-	int		i, x;
-	vec_t	max, v;
 	winding_t	*w;
 	int		org[3], vup[3], vright[3];
 
@@ -387,7 +385,6 @@ AddBrushPlane
 */
 void AddBrushPlane (expand_t *ex, plane_t *plane)
 {
-	int		i;
 	plane_t	*pl;
 	bface_t	*f, *nf;
 	brushhull_t	*h;
@@ -423,10 +420,8 @@ vertexes can be put on the front side
 void TestAddPlane (expand_t *ex, plane_t *plane)
 {
 	int		i, j, c, t;
-	vec_t	d;
 	vec_t	*corner;
 	plane_t	flip;
-	vec3_t	inv;
 	int		counts[3];
 	plane_t	*pl;
 	bface_t	*f, *nf;
@@ -551,9 +546,8 @@ void AddHullEdge (expand_t *ex, vec3_t p1, vec3_t p2)
 	int		pt1, pt2;
 	int		i;
 	int		a, b, c, d, e;
-	vec3_t	edgevec, planeorg, planevec;
+	vec3_t	edgevec, planevec;
 	plane_t	plane;
-	vec_t	l;
 	
 	pt1 = AddHullPoint (ex, p1);
 	pt2 = AddHullPoint (ex, p2);
@@ -612,7 +606,7 @@ ExpandBrush
 */
 void ExpandBrush (brush_t *b, int hullnum)
 {
-	int		i, x, s;
+	int		x, s;
 	int		corner;
 	bface_t	*brush_faces, *f, *nf;
 	plane_t	*p, plane;
@@ -798,7 +792,6 @@ qboolean MakeBrushPlanes (brush_t *b)
 	int		i, j;
 	int		planenum;
 	side_t	*s;
-	int		contents;
 	bface_t	*f;
 	vec3_t	origin;
 
@@ -912,9 +905,7 @@ BrushContents
 */
 int	BrushContents (brush_t *b)
 {
-	char		*name;
 	int			contents;
-	bface_t		*f;
 	side_t		*s;
 	int			i;
 

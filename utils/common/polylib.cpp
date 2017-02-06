@@ -163,15 +163,11 @@ WindingCenter
 */
 void	WindingCenter (winding_t *w, vec3_t center)
 {
-	int		i;
-	vec3_t	d1, d2, cross;
-	float	scale;
-
 	VectorCopy (vec3_origin, center);
-	for (i=0 ; i<w->numpoints ; i++)
+	for (int i=0 ; i<w->numpoints ; i++)
 		VectorAdd (w->p[i], center, center);
 
-	scale = 1.0/w->numpoints;
+	const float scale = static_cast<float>( 1.0/w->numpoints );
 	VectorScale (center, scale, center);
 }
 
