@@ -149,7 +149,7 @@ void CalcAmbientSounds (void)
 				if (vol < 0)
 					vol = 0;
 			}
-			leaf->ambient_level[j] = vol*255;
+			leaf->ambient_level[j] = static_cast<byte>( vol*255 );
 		}
 	}
 }

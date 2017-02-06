@@ -55,6 +55,7 @@ wedge_t	*wedge_hash[NUM_HASH];
 
 static	vec3_t	hash_min, hash_scale;
 
+//TODO: looks a lot like the InitHash in surfaces.cpp - Solokiller
 static	void InitHash (vec3_t mins, vec3_t maxs)
 {
 	vec3_t	size;
@@ -70,20 +71,20 @@ static	void InitHash (vec3_t mins, vec3_t maxs)
 	
 	scale = sqrt(volume / NUM_HASH);
 
-	newsize[0] = size[0] / scale;
-	newsize[1] = size[1] / scale;
+	newsize[0] = static_cast<int>( size[0] / scale );
+	newsize[1] = static_cast<int>( size[1] / scale );
 
 	hash_scale[0] = newsize[0] / size[0];
 	hash_scale[1] = newsize[1] / size[1];
-	hash_scale[2] = newsize[1];
+	hash_scale[2] = static_cast<vec_t>( newsize[1] );
 }
 
 static	unsigned HashVec (vec3_t vec)
 {
 	unsigned	h;
 
-	h =	hash_scale[0] * (vec[0] - hash_min[0]) * hash_scale[2]
-		+ hash_scale[1] * (vec[1] - hash_min[1]);
+	h =	static_cast<unsigned>( hash_scale[0] * (vec[0] - hash_min[0]) * hash_scale[2]
+		+ hash_scale[1] * (vec[1] - hash_min[1]) );
 	if ( h >= NUM_HASH)
 		return NUM_HASH - 1;
 	return h;

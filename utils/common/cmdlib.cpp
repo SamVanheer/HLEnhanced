@@ -263,7 +263,7 @@ double I_FloatTime (void)
 	
 	time (&t);
 	
-	return t;
+	return static_cast<double>( t );
 #if 0
 // more precise, less portable
 	struct timeval tp;

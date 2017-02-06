@@ -143,7 +143,7 @@ void RunThreadsOn (int workcnt, qboolean showpacifier, void(*func)(int))
 	int		i;
 	int		start, end;
 
-	start = I_FloatTime ();
+	start = static_cast<int>( I_FloatTime () );
 	dispatch = 0;
 	workcount = workcnt;
 	oldf = -1;
@@ -169,7 +169,7 @@ void RunThreadsOn (int workcnt, qboolean showpacifier, void(*func)(int))
 	DeleteCriticalSection (&crit);
 
 	threaded = false;
-	end = I_FloatTime ();
+	end = static_cast<int>( I_FloatTime () );
 	if (pacifier)
 		printf (" (%i)\n", end-start);
 }

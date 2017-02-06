@@ -39,7 +39,7 @@ void Draw_DrawFace (face_t *f)
 		glVertex3f (f->pts[i][0], f->pts[i][1], f->pts[i][2]);
 	glEnd ();
 
-	glColor4f (0,1,0,0.3);
+	glColor4f (0,1,0,0.3f);
 	glBegin (GL_POLYGON);
 	for (i=0 ; i<f->numpoints ; i++)
 		glVertex3f (f->pts[i][0], f->pts[i][1], f->pts[i][2]);
@@ -92,11 +92,11 @@ void Draw_ClearWindow (void)
 		InitWindow ();
 	}
 
-	glClearColor (1,0.8,0.8,0);
+	glClearColor (1,0.8f,0.8f,0);
 	glClear (GL_COLOR_BUFFER_BIT);
 
-	w = (draw_maxs[0] - draw_mins[0]);
-	h = (draw_maxs[1] - draw_mins[1]);
+	w = static_cast<int>(draw_maxs[0] - draw_mins[0]);
+	h = static_cast<int>(draw_maxs[1] - draw_mins[1]);
 
 	mx = draw_mins[0] + w/2;
 	my = draw_mins[1] + h/2;

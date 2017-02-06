@@ -255,17 +255,17 @@ winding_t *BaseWindingForIPlane (plane_t *p)
 	if (!p->inormal[1] && !p->inormal[2])
 	{
 		vup[2] = 8192;
-		vright[1] = 8192*p->normal[0];
+		vright[1] = static_cast<int>( 8192*p->normal[0] );
 	}
 	else if (!p->inormal[0] && !p->inormal[2])
 	{
 		vup[2] = 8192;
-		vright[0] = -8192*p->normal[1];
+		vright[0] = static_cast<int>( -8192*p->normal[1] );
 	}
 	else if (!p->inormal[0] && !p->inormal[1])
 	{
 		vup[1] = 8192;
-		vright[0] = 8192*p->normal[2];
+		vright[0] = static_cast<int>( 8192*p->normal[2] );
 	}
 	else
 	{
@@ -450,7 +450,7 @@ void TestAddPlane (expand_t *ex, plane_t *plane)
 	{
 		t = 0;
 		for (j=0 ; j<3 ; j++)
-			t += (corner[j] - plane->iorigin[j]) * plane->inormal[j];
+			t += static_cast<int>(corner[j] - plane->iorigin[j]) * plane->inormal[j];
 		if (t < 0)
 		{
 			if (counts[0])
@@ -585,15 +585,15 @@ void AddHullEdge (expand_t *ex, vec3_t p1, vec3_t p2)
 			for (e=0 ; e<=1 ; e++)
 			{
 				VectorCopy (p1, plane.iorigin);
-				plane.iorigin[b] += hull_size[ex->hullnum][d][b];
-				plane.iorigin[c] += hull_size[ex->hullnum][e][c];
+				plane.iorigin[b] += static_cast<int>(hull_size[ex->hullnum][d][b] );
+				plane.iorigin[c] += static_cast<int>(hull_size[ex->hullnum][e][c] );
 				
 				VectorCopy (vec3_origin, planevec);
 				planevec[a] = 1;
 				
-				plane.inormal[0] = planevec[1]*edgevec[2] - planevec[2]*edgevec[1];
-				plane.inormal[1] = planevec[2]*edgevec[0] - planevec[0]*edgevec[2];
-				plane.inormal[2] = planevec[0]*edgevec[1] - planevec[1]*edgevec[0];
+				plane.inormal[0] = static_cast<int>(planevec[1]*edgevec[2] - planevec[2]*edgevec[1] );
+				plane.inormal[1] = static_cast<int>(planevec[2]*edgevec[0] - planevec[0]*edgevec[2] );
+				plane.inormal[2] = static_cast<int>(planevec[0]*edgevec[1] - planevec[1]*edgevec[0] );
 
 				if (!plane.inormal[0] && !plane.inormal[1] && !plane.inormal[2])
 					continue;	// degenerate
@@ -643,12 +643,12 @@ void ExpandBrush (brush_t *b, int hullnum)
 		for (x=0 ; x<3 ; x++)
 		{
 			if (p->normal[x] > 0)
-				corner = hull_size[hullnum][1][x];
+				corner = static_cast<int>( hull_size[hullnum][1][x] );
 			else if (p->normal[x] < 0)
-				corner = - hull_size[hullnum][0][x];
+				corner = static_cast<int>( - hull_size[hullnum][0][x] );
 			else
 				corner = 0;
-			iorigin[x] += p->normal[x]*corner;
+			iorigin[x] += static_cast<int>( p->normal[x]*corner );
 		}
 		nf = reinterpret_cast<bface_t*>( malloc(sizeof(*nf)) );
 		memset (nf, 0, sizeof(*nf));

@@ -83,7 +83,7 @@ void LoadEntities (void)
 			le->light[2] = DEFAULTLIGHTLEVEL;
 		}
 
-		le->style = FloatForKey (e, "style");
+		le->style = static_cast<int>( FloatForKey (e, "style") );
 		le->angle = FloatForKey (e, "angle");
 		GetVectorForKey (e, "origin", le->origin);
 

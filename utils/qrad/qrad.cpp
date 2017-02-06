@@ -148,7 +148,7 @@ void ReadLightFile (char *filename)
 	char	scan[128];
 	short	argCnt;
 	vec_t	intensity;
-	int		i = 1.0, j, file_texlights = 0;
+	int		i = 1, j, file_texlights = 0;
 
 	f = fopen (filename, "r");
 	if (!f)
@@ -1148,7 +1148,7 @@ readtransfers(char *transferfile, long numpatches)
 		}
 		_close( handle );
 		time(&end);
-		printf("%10.3fMB] (%d)\n",totalbytes/(1024.0*1024.0), end-start);
+		printf("%10.3fMB] (%d)\n",totalbytes/(1024.0*1024.0), static_cast<int>( end-start ) );
 	}
 
 	if (readpatches != numpatches )

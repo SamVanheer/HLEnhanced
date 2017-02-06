@@ -1054,10 +1054,15 @@ for ( l = 0; l < numleafs; l++ )
 GatherSampleLight
 =============
 */
+//Disable the warnings for this one case only. - Solokiller
+#pragma warning( push )
+#pragma warning( disable: 4305 )
+#pragma warning( disable: 4838 )
 #define NUMVERTEXNORMALS	162
 float	r_avertexnormals[NUMVERTEXNORMALS][3] = {
 #include "..\..\engine\anorms.h"
 };
+#pragma warning( pop )
 
 #define VectorMaximum(a) ( max( (a)[0], max( (a)[1], (a)[2] ) ) )
 
@@ -1182,6 +1187,7 @@ void GatherSampleLight (vec3_t pos, byte *pvs, vec3_t normal, vec3_t *sample, by
 				continue;
 
 			// search back to see if we can hit a sky brush
+			//TODO: magic number - Solokiller
 			VectorScale( r_avertexnormals[j], -10000, delta );
 			VectorAdd( pos, delta, delta );
 			if (TestLine_r (0, pos, delta) != CONTENTS_SKY)

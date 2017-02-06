@@ -652,7 +652,7 @@ void CheckWinding (winding_t *w)
 		CrossProduct (facenormal, dir, edgenormal);
 		VectorNormalize (edgenormal);
 		edgedist = DotProduct (p1, edgenormal);
-		edgedist += ON_EPSILON;
+		edgedist += static_cast<vec_t>( ON_EPSILON );
 		
 	// all other points must be on front side
 		for (j=0 ; j<w->numpoints ; j++)

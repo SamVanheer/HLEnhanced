@@ -149,7 +149,7 @@ int TexelSize( face_t *f )
 	if ( tex->flags & TEX_SPECIAL)
 		return 0;
 
-
+	//TODO: these constant, change them to something less breakable (and find similar ones) - Solokiller
 	mins = 999999;
 	maxs = -999999;
 		
@@ -161,7 +161,7 @@ int TexelSize( face_t *f )
 		if (v > maxs)
 			maxs = v;
 	}
-	smax = maxs - mins;
+	smax = static_cast<int>( maxs - mins );
 
 	mins = 999999;
 	maxs = -999999;
@@ -174,7 +174,7 @@ int TexelSize( face_t *f )
 		if (v > maxs)
 			maxs = v;
 	}
-	tmax = maxs - mins;
+	tmax = static_cast<int>( maxs - mins );
 
 	return smax * tmax;
 }
@@ -232,12 +232,12 @@ static	void InitHash (void)
 	
 	scale = sqrt(volume / NUM_HASH);
 
-	newsize[0] = size[0] / scale;
-	newsize[1] = size[1] / scale;
+	newsize[0] = static_cast<int>( size[0] / scale );
+	newsize[1] = static_cast<int>( size[1] / scale );
 
 	hash_scale[0] = newsize[0] / size[0];
 	hash_scale[1] = newsize[1] / size[1];
-	hash_scale[2] = newsize[1];
+	hash_scale[2] = static_cast<vec_t>( newsize[1] );
 	
 	hvert_p = hvertex;
 }
@@ -246,8 +246,8 @@ static	unsigned HashVec (vec3_t vec)
 {
 	unsigned	h;
 	
-	h =	hash_scale[0] * (vec[0] - hash_min[0]) * hash_scale[2]
-		+ hash_scale[1] * (vec[1] - hash_min[1]);
+	h =	static_cast<unsigned>( hash_scale[0] * (vec[0] - hash_min[0]) * hash_scale[2]
+		+ hash_scale[1] * (vec[1] - hash_min[1]) );
 	if ( h >= NUM_HASH)
 		return NUM_HASH - 1;
 	return h;

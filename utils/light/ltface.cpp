@@ -205,8 +205,8 @@ void CalcFaceExtents (lightinfo_t *l)
 		mins[i] = floor(mins[i]/16);
 		maxs[i] = ceil(maxs[i]/16);
 
-		l->texmins[i] = mins[i];
-		l->texsize[i] = maxs[i] - mins[i];
+		l->texmins[i] = static_cast<int>( mins[i] );
+		l->texsize[i] = static_cast<int>( maxs[i] - mins[i] );
 		if (l->texsize[i] > 17)
 			Error ("Bad surface extents");
 	}
@@ -255,8 +255,8 @@ void CalcPoints (lightinfo_t *l)
 	{
 		h = l->texsize[1]+1;
 		w = l->texsize[0]+1;
-		starts = l->texmins[0]*16;
-		startt = l->texmins[1]*16;
+		starts = static_cast<vec_t>( l->texmins[0]*16 );
+		startt = static_cast<vec_t>( l->texmins[1]*16 );
 		step = 16;
 	}
 
@@ -666,7 +666,7 @@ void LightFace (int surfnum)
 						total[ j ] *= clampfactor;
 
 						if( total[j] > clamp)
-							total[j] = clamp;
+							total[j] = static_cast<vec_t>( clamp );
 						else if (total[j] < 0)
 							Error ("light < 0");
 
@@ -675,7 +675,7 @@ void LightFace (int surfnum)
 				}
 				else
 				{
-					int intensity = total[ 0 ] + total[ 1 ] + total[ 2 ];
+					int intensity = static_cast<int>( total[ 0 ] + total[ 1 ] + total[ 2 ] );
 					if( intensity > 255 )
 						intensity = 255;
 					else if( intensity < 0 )

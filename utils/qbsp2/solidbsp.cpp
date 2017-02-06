@@ -180,7 +180,7 @@ surface_t *ChoosePlaneFromList (surface_t *surfaces, vec3_t mins, vec3_t maxs)
 //
 	bestvalue = 99999;
 	bestsurface = NULL;
-	bestdistribution = 9e30;
+	bestdistribution = static_cast<vec_t>( 9e30 ); //TODO: replace with DBL_MAX or something? - Solokiller
 	
 	for (p=surfaces ; p ; p=p->next)
 	{
@@ -247,7 +247,7 @@ surface_t *ChoosePlaneFromList (surface_t *surfaces, vec3_t mins, vec3_t maxs)
 		//
 		// currently the best!
 		//
-			bestvalue = k;
+			bestvalue = static_cast<vec_t>( k );
 			bestsurface = p;
 		}
 
