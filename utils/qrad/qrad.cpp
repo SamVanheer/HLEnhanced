@@ -1110,7 +1110,7 @@ readtransfers(char *transferfile, long numpatches)
 					if ( (bytesread = fread(&patch->numtransfers, 1, sizeof(patch->numtransfers), handle))
 					  == sizeof(patch->numtransfers) )
 					{
-						if ( patch->transfers = reinterpret_cast<transfer_t*>( calloc(patch->numtransfers, sizeof(patch->transfers[0])) ) )
+						if ( ( patch->transfers = reinterpret_cast<transfer_t*>( calloc(patch->numtransfers, sizeof(patch->transfers[0])) ) ) != nullptr )
 						{
 							totalbytes += bytesread;
 

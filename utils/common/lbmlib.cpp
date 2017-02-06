@@ -239,7 +239,7 @@ done:
 #endif
 }
 
-int LoadBMP (const char* szFile, BYTE** ppbBits, BYTE** ppbPalette)
+int LoadBMP (const char* szFile, byte** ppbBits, byte** ppbPalette)
 {
 	int i, rc = 0;
 	FILE *pfile = NULL;
@@ -247,7 +247,7 @@ int LoadBMP (const char* szFile, BYTE** ppbBits, BYTE** ppbPalette)
 	BITMAPINFOHEADER bmih;
 	RGBQUAD rgrgbPalette[256];
 	ULONG cbBmpBits;
-	BYTE* pbBmpBits;
+	byte* pbBmpBits;
 	byte  *pb, *pbPal = NULL;
 	ULONG cbPalBytes;
 	ULONG biTrueWidth;
@@ -328,7 +328,7 @@ int LoadBMP (const char* szFile, BYTE** ppbBits, BYTE** ppbPalette)
 	if (fread(pb, cbBmpBits, 1/*count*/, pfile) != 1)
 		{ rc = -7; goto GetOut; }
 
-	pbBmpBits = reinterpret_cast<BYTE*>( malloc(cbBmpBits) );
+	pbBmpBits = reinterpret_cast<byte*>( malloc(cbBmpBits) );
 
 	// data is actually stored with the width being rounded up to a multiple of 4
 	biTrueWidth = (bmih.biWidth + 3) & ~3;

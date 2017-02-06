@@ -1462,7 +1462,8 @@ void Grab_BMP ( char *filename, s_texture_t *ptexture )
 {
 	int		result;
 
-	if (result = LoadBMP(filename, &ptexture->ppicture, (byte **)&ptexture->ppal )) {
+	if ( ( result = LoadBMP(filename, &ptexture->ppicture, (byte **)&ptexture->ppal ) ) != 0 )
+	{
 		Error("error %d reading BMP image \"%s\"\n", result, filename );
 	}
 
