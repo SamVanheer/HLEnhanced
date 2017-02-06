@@ -345,7 +345,7 @@ int CopyLump (int lump, void *dest, int size)
 LoadBSPFile
 =============
 */
-void	LoadBSPFile (char *filename)
+void	LoadBSPFile (const char *filename)
 {
 	int			i;
 	
@@ -426,7 +426,7 @@ WriteBSPFile
 Swaps the bsp file in place, so it should not be referenced again
 =============
 */
-void	WriteBSPFile (char *filename)
+void	WriteBSPFile (const char *filename)
 {		
 	header = &outheader;
 	memset (header, 0, sizeof(dheader_t));
@@ -465,7 +465,7 @@ void	WriteBSPFile (char *filename)
 #define ENTRIES(a)		(sizeof(a)/sizeof(*(a)))
 #define ENTRYSIZE(a)	(sizeof(*(a)))
 
-ArrayUsage( char *szItem, int items, int maxitems, int itemsize )
+ArrayUsage( const char *szItem, int items, int maxitems, int itemsize )
 {
 	float	percentage = maxitems ? items * 100.0 / maxitems : 0.0;
 
@@ -482,7 +482,7 @@ ArrayUsage( char *szItem, int items, int maxitems, int itemsize )
 	return items * itemsize;
 }
 
-GlobUsage( char *szItem, int itemstorage, int maxstorage )
+GlobUsage( const char *szItem, int itemstorage, int maxstorage )
 {
 	float	percentage = maxstorage ? itemstorage * 100.0 / maxstorage : 0.0;
     printf("%-12s     [variable]    %7i/%-7i  (%4.1f%%)", 
@@ -657,7 +657,7 @@ void UnparseEntities (void)
 
 
 
-void 	SetKeyValue (entity_t *ent, char *key, char *value)
+void 	SetKeyValue (entity_t *ent, const char *key, const char *value)
 {
 	epair_t	*ep;
 	
@@ -675,7 +675,7 @@ void 	SetKeyValue (entity_t *ent, char *key, char *value)
 	ep->value = copystring(value);
 }
 
-char 	*ValueForKey (entity_t *ent, char *key)
+const char 	*ValueForKey (entity_t *ent, const char *key)
 {
 	epair_t	*ep;
 	
@@ -685,7 +685,7 @@ char 	*ValueForKey (entity_t *ent, char *key)
 	return "";
 }
 
-vec_t	FloatForKey (entity_t *ent, char *key)
+vec_t	FloatForKey (entity_t *ent, const char *key)
 {
 	char	*k;
 	
@@ -693,7 +693,7 @@ vec_t	FloatForKey (entity_t *ent, char *key)
 	return atof(k);
 }
 
-void 	GetVectorForKey (entity_t *ent, char *key, vec3_t vec)
+void 	GetVectorForKey (entity_t *ent, const char *key, vec3_t vec)
 {
 	char	*k;
 	double	v1, v2, v3;

@@ -68,6 +68,16 @@ elseif( UNIX )
 	set( SDL2_LIBNAME ${EXTERNAL_DIR}/SDL2/lib/libSDL2-2.0.so.0 )
 endif()
 
+find_package( OpenGL )
+
+if( NOT OPENGL_FOUND )
+	MESSAGE( FATAL_ERROR "OpenGL must be installed" )
+endif()
+
+if( NOT OPENGL_GLU_FOUND )
+	MESSAGE( FATAL_ERROR "GLU must be installed" )
+endif()
+
 add_subdirectory( bspinfo )
 add_subdirectory( light )
 add_subdirectory( makefont )

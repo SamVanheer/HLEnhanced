@@ -11,21 +11,20 @@
 // updates:
 // 1-4-99	fixed AdvanceFrame wraping bug
 
-#include <windows.h>
-
-#include <gl\gl.h>
-#include <gl\glu.h>
+#include <GL/gl.h>
+#include <GL/glu.h>
 
 #pragma warning( disable : 4244 ) // double to float
 
 
 ////////////////////////////////////////////////////////////////////////
 
+#include "cmdlib.h"
 #include "mathlib.h"
 #undef DotProduct
 #include "vector.h"
 #include "../../public/steam/steamtypes.h" // defines int32, required by studio.h
-#include "..\..\engine\studio.h"
+#include "../../engine/studio.h"
 #include "mdlviewer.h"
 
 

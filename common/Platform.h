@@ -36,6 +36,7 @@
 #define strnicmp _strnicmp
 #define alloca _alloca
 #define unlink _unlink
+#define stat _stat
 
 //Older versions of Visual Studio (< VS2015) didn't define these. - Solokiller
 #if _MSC_VER < 1900

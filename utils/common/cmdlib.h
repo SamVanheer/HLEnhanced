@@ -15,6 +15,8 @@
 
 #include "Platform.h"
 
+#include <cstdint>
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -38,6 +40,12 @@ typedef int qboolean;
 #endif
 
 typedef unsigned char byte;
+#endif
+
+//TODO: remove this once all dependencies are gone - Solokiller
+#ifndef WIN32
+#define TRUE 1
+#define FALSE 0
 #endif
 
 // the dec offsetof macro doesn't work very well...
@@ -76,18 +84,18 @@ char *ExpandPathAndArchive (char *path);
 double I_FloatTime (void);
 
 NORETURN void	Error (const char *error, ...);
-int		CheckParm (char *check);
+int		CheckParm (const char *check);
 
-FILE	*SafeOpenWrite (char *filename);
-FILE	*SafeOpenRead (char *filename);
+FILE	*SafeOpenWrite (const char *filename);
+FILE	*SafeOpenRead (const char *filename);
 void	SafeRead (FILE *f, void *buffer, int count);
 void	SafeWrite (FILE *f, void *buffer, int count);
 
-int		LoadFile (char *filename, void **bufferptr);
-void	SaveFile (char *filename, void *buffer, int count);
+int		LoadFile (const char *filename, void **bufferptr);
+void	SaveFile (const char *filename, void *buffer, int count);
 
-void 	DefaultExtension (char *path, char *extension);
-void 	DefaultPath (char *path, char *basepath);
+void 	DefaultExtension (char *path, const char *extension);
+void 	DefaultPath (char *path, const char *basepath);
 void 	StripFilename (char *path);
 void 	StripExtension (char *path);
 
@@ -113,7 +121,7 @@ char *COM_Parse (char *data);
 extern	char		com_token[1024];
 extern	qboolean	com_eof;
 
-char *copystring(char *s);
+char *copystring(const char *s);
 
 
 void CRC_Init(unsigned short *crcvalue);
@@ -128,7 +136,7 @@ extern	char			archivedir[1024];
 
 
 extern	qboolean verbose;
-void qprintf (char *format, ...);
+void qprintf (const char *format, ...);
 
 
 typedef struct
@@ -146,5 +154,22 @@ typedef struct
 
 
 void ListPak(char* pakname);
+
+//Newer compilers might define _rotr as a macro. - Solokiller
+#if !defined( _WIN32 ) && !defined( _rotr )
+template<class T>
+inline  T _rotr( T x, uint8_t r )
+{
+	asm( "rorl %1,%0" : "+r" ( x ) : "c" ( r ) );
+	return x;
+}
+
+template<class T>
+inline  T _rotl( T x, uint8_t r )
+{
+	asm( "roll %1,%0" : "+r" ( x ) : "c" ( r ) );
+	return x;
+}
+#endif
 
 #endif

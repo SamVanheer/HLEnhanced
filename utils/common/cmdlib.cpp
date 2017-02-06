@@ -84,7 +84,7 @@ void Error (const char *error, ...)
 
 // only printf if in verbose mode
 qboolean verbose = false;
-void qprintf (char *format, ...)
+void qprintf (const char *format, ...)
 {
 	va_list argptr;
 
@@ -183,7 +183,7 @@ char *ExpandPathAndArchive (char *path)
 }
 
 
-char *copystring(char *s)
+char *copystring(const char *s)
 {
 	char	*b;
 	b = reinterpret_cast<char*>( malloc(strlen(s)+1) );
@@ -225,11 +225,12 @@ double I_FloatTime (void)
 
 void Q_getwd (char *out)
 {
+	//TODO: should avoid unsafe copying of strings here. - Solokiller
 #ifdef WIN32
    _getcwd (out, 256);
    strcat (out, "\\");
 #else
-   getwd (out);
+   getcwd (out, 256);
 #endif
 }
 
@@ -429,7 +430,7 @@ Checks for the given parameter in the program's command line arguments
 Returns the argument number (1 to argc-1) or 0 if not present
 =================
 */
-int CheckParm (char *check)
+int CheckParm (const char *check)
 {
 	int             i;
 
@@ -463,7 +464,7 @@ int filelength (FILE *f)
 }
 
 
-FILE *SafeOpenWrite (char *filename)
+FILE *SafeOpenWrite (const char *filename)
 {
 	FILE	*f;
 
@@ -475,7 +476,7 @@ FILE *SafeOpenWrite (char *filename)
 	return f;
 }
 
-FILE *SafeOpenRead (char *filename)
+FILE *SafeOpenRead (const char *filename)
 {
 	FILE	*f;
 
@@ -508,7 +509,7 @@ void SafeWrite (FILE *f, void *buffer, int count)
 LoadFile
 ==============
 */
-int    LoadFile (char *filename, void **bufferptr)
+int    LoadFile (const char *filename, void **bufferptr)
 {
 	FILE	*f;
 	int    length;
@@ -531,7 +532,7 @@ int    LoadFile (char *filename, void **bufferptr)
 SaveFile
 ==============
 */
-void    SaveFile (char *filename, void *buffer, int count)
+void    SaveFile (const char *filename, void *buffer, int count)
 {
 	FILE	*f;
 
@@ -542,7 +543,7 @@ void    SaveFile (char *filename, void *buffer, int count)
 
 
 
-void DefaultExtension (char *path, char *extension)
+void DefaultExtension (char *path, const char *extension)
 {
 	char    *src;
 //
@@ -562,7 +563,7 @@ void DefaultExtension (char *path, char *extension)
 }
 
 
-void DefaultPath (char *path, char *basepath)
+void DefaultPath (char *path, const char *basepath)
 {
 	char    temp[128];
 

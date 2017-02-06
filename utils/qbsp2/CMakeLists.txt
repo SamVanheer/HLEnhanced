@@ -44,6 +44,7 @@ target_include_directories( ${UTIL_NAME} PRIVATE
 	${SHARED_UTIL_INCLUDES}
 	${CMAKE_CURRENT_SOURCE_DIR}
 	${EXTERNAL_DIR}/SDL2/include
+	${OPENGL_INCLUDE_DIR}
 )
 
 target_compile_definitions( ${UTIL_NAME} PRIVATE
@@ -53,14 +54,9 @@ target_compile_definitions( ${UTIL_NAME} PRIVATE
 if( ENABLE_3D_DRAWING )
 	target_link_libraries( ${UTIL_NAME} PRIVATE
 		${SDL2}
+		${OPENGL_gl_LIBRARY}
+		${OPENGL_glu_LIBRARY}
 	)
-
-	if( MSVC )
-		target_link_libraries( ${UTIL_NAME} PRIVATE
-			opengl32.lib
-			glu32.lib
-		)
-	endif()
 	
 	if( MSVC )
 		foreach( CONFIG in LISTS ${CMAKE_CONFIGURATION_TYPES} )

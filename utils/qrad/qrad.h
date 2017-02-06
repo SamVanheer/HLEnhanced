@@ -8,6 +8,7 @@
 *
 ****/
 
+#include <cstdint>
 
 #include "cmdlib.h"
 #include "mathlib.h"
@@ -17,13 +18,13 @@
 
 #ifdef WIN32
 #include <windows.h>
+#include <direct.h>
 #endif
 
 #include <sys/types.h>
 #include <sys/stat.h>
 
 #include <fcntl.h>
-#include <direct.h>
 #include <ctype.h>
 
 typedef enum
@@ -110,7 +111,7 @@ void MakeShadowSplits (void);
 
 //==============================================
 
-_int64 getfreespace(char *filepath);
+int64_t getfreespace(char *filepath);
 long getfilesize(char *filename);
 time_t getfiletime(char *filename);
 
@@ -127,7 +128,7 @@ extern  float maxlight;
 extern	unsigned numbounce;
 extern	directlight_t	*directlights[MAX_MAP_LEAFS];
 extern	byte	nodehit[MAX_MAP_NODES];
-extern  float	gamma;
+extern  float	g_gamma;
 extern	float	indirect_sun;
 extern	float	smoothing_threshold;
 

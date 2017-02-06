@@ -14,16 +14,15 @@
 ////////////////////////////////////////////////////////////////////////
 #include <stdio.h>
 
-#include <windows.h>
+#include <GL/gl.h>
+#include <GL/glu.h>
 
-#include <gl\gl.h>
-#include <gl\glu.h>
-
+#include "cmdlib.h"
 #include "mathlib.h"
 #undef DotProduct
 #include "vector.h"
 #include "../../public/steam/steamtypes.h" // defines int32, required by studio.h
-#include "..\..\engine\studio.h"
+#include "../../engine/studio.h"
 #include "mdlviewer.h"
 
 #pragma warning( disable : 4244 ) // double to float

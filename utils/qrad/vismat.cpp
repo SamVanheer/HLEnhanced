@@ -10,6 +10,10 @@
 
 #include "qrad.h"
 
+#ifndef WIN32
+#include <sys/statvfs.h>
+#endif
+
 #include "Platform.h"
 
 #include "MinMax.h"
@@ -17,8 +21,8 @@
 #define	HALFBIT
 
 extern char		source[MAX_PATH];
-extern char		vismatfile[_MAX_PATH];
-extern char		incrementfile[_MAX_PATH];
+extern char		vismatfile[MAX_PATH];
+extern char		incrementfile[MAX_PATH];
 extern qboolean	incremental;
 
 /*
@@ -257,9 +261,9 @@ time_t
 getfiletime(char *filename)
 {
 	time_t			filetime = 0;
-	struct _stat	filestat;
+	struct stat	filestat;
 
-	if ( _stat(filename, &filestat) == 0 )
+	if ( stat(filename, &filestat) == 0 )
 		filetime = max( filestat.st_mtime, filestat.st_ctime );
 
 	return filetime;
@@ -275,9 +279,9 @@ long
 getfilesize(char *filename)
 {
 	long			size = 0;
-	struct _stat	filestat;
+	struct stat	filestat;
 
-	if ( _stat(filename, &filestat) == 0 )
+	if ( stat(filename, &filestat) == 0 )
 		size = filestat.st_size;
 
 	return size;
@@ -326,10 +330,12 @@ getfreespace
 ==============
 */
 
-_int64
+int64_t
 getfreespace(char *filename)
 {
-	_int64				freespace = 0;
+	int64_t				freespace = 0;
+
+#ifdef WIN32
 	int					drive = 0;
 	struct _diskfree_t	df;
 
@@ -344,6 +350,19 @@ getfreespace(char *filename)
 		freespace *= df.sectors_per_cluster;
 		freespace *= df.bytes_per_sector;
 	}
+#else
+	//TODO: not 100% sure this will work. - Solokiller
+	struct statvfs vfs;
+	char dir[ MAX_PATH ];
+
+	ExtractFilePath( filename, dir );
+
+	if( statvfs( dir, &vfs ) == 0 )
+	{
+		freespace = vfs.f_bavail;
+		freespace *= vfs.f_bsize;
+	}
+#endif
 
 	return freespace;
 }
@@ -361,7 +380,7 @@ putfiledata(char *filename, char *buffer, int buffersize)
 	long			size = 0;
 	FILE*			handle;
 
-	if ( getfreespace(filename) >= (_int64)(buffersize - getfilesize(filename)) )
+	if ( getfreespace(filename) >= (int64_t)(buffersize - getfilesize(filename)) )
 	{
 		if ( (handle = fopen( filename, "wb" )) != NULL )
 		{
@@ -464,7 +483,7 @@ SaveIncremental(char *filename)
 		}
 	}
 	else
-		printf("Insufficient disk space(%ld) for incremental file[%s]'!\n",
+		printf("Insufficient disk space(%d) for incremental file[%s]'!\n",
 				expected_size, filename );
 
 	return size;

@@ -292,8 +292,8 @@ int FastChecksum(void *buffer, int bytes);
 void DecompressVis (byte *in, byte *decompressed);
 int CompressVis (byte *vis, byte *dest);
 
-void	LoadBSPFile (char *filename);
-void	WriteBSPFile (char *filename);
+void	LoadBSPFile (const char *filename);
+void	WriteBSPFile (const char *filename);
 void	PrintBSPFileSizes (void);
 
 //===============
@@ -320,12 +320,12 @@ extern	entity_t	entities[MAX_MAP_ENTITIES];
 void	ParseEntities (void);
 void	UnparseEntities (void);
 
-void 	SetKeyValue (entity_t *ent, char *key, char *value);
-const char 	*ValueForKey (entity_t *ent, char *key);
+void 	SetKeyValue (entity_t *ent, const char *key, const char *value);
+const char 	*ValueForKey (entity_t *ent, const char *key);
 // will return "" if not present
 
-vec_t	FloatForKey (entity_t *ent, char *key);
-void 	GetVectorForKey (entity_t *ent, char *key, vec3_t vec);
+vec_t	FloatForKey (entity_t *ent, const char *key);
+void 	GetVectorForKey (entity_t *ent, const char *key, vec3_t vec);
 
 epair_t *ParseEpair (void);
 

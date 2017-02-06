@@ -345,7 +345,7 @@ int CopyLump (int lump, void *dest, int size)
 LoadBSPFile
 =============
 */
-void	LoadBSPFile (char *filename)
+void	LoadBSPFile (const char *filename)
 {
 	int			i;
 	
@@ -426,7 +426,7 @@ WriteBSPFile
 Swaps the bsp file in place, so it should not be referenced again
 =============
 */
-void	WriteBSPFile (char *filename)
+void	WriteBSPFile (const char *filename)
 {		
 	header = &outheader;
 	memset (header, 0, sizeof(dheader_t));
@@ -657,7 +657,7 @@ void UnparseEntities (void)
 
 
 
-void 	SetKeyValue (entity_t *ent, char *key, char *value)
+void 	SetKeyValue (entity_t *ent, const char *key, const char *value)
 {
 	epair_t	*ep;
 	
@@ -675,7 +675,7 @@ void 	SetKeyValue (entity_t *ent, char *key, char *value)
 	ep->value = copystring(value);
 }
 
-const char 	*ValueForKey (entity_t *ent, char *key)
+const char 	*ValueForKey (entity_t *ent, const char *key)
 {
 	epair_t	*ep;
 	
@@ -685,7 +685,7 @@ const char 	*ValueForKey (entity_t *ent, char *key)
 	return "";
 }
 
-vec_t	FloatForKey (entity_t *ent, char *key)
+vec_t	FloatForKey (entity_t *ent, const char *key)
 {
 	const char	*k;
 	
@@ -693,7 +693,7 @@ vec_t	FloatForKey (entity_t *ent, char *key)
 	return static_cast<vec_t>( atof(k) );
 }
 
-void 	GetVectorForKey (entity_t *ent, char *key, vec3_t vec)
+void 	GetVectorForKey (entity_t *ent, const char *key, vec3_t vec)
 {
 	const char	*k;
 	double	v1, v2, v3;

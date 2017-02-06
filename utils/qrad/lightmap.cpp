@@ -1053,7 +1053,7 @@ GatherSampleLight
 #pragma warning( disable: 4838 )
 #define NUMVERTEXNORMALS	162
 float	r_avertexnormals[NUMVERTEXNORMALS][3] = {
-#include "..\..\engine\anorms.h"
+#include "../../engine/anorms.h"
 };
 #pragma warning( pop )
 
@@ -1706,9 +1706,9 @@ void FinalLightFace (int facenum)
 			}
 
 			// gamma adjust
-			if (gamma != 1.0)
+			if (g_gamma != 1.0)
 				for( i=0; i<3; i++ )
-					lb[i] = (float)pow( lb[i] / 256.0f, gamma ) * 256.0f;
+					lb[i] = (float)pow( lb[i] / 256.0f, g_gamma ) * 256.0f;
 
 			dlightdata[f->lightofs + k*fl->numsamples*3 + j*3] = (unsigned char)lb[0];
 			dlightdata[f->lightofs + k*fl->numsamples*3 + j*3 + 1] = (unsigned char)lb[1];

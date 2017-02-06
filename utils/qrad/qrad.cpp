@@ -58,10 +58,10 @@ char		designer_lights[MAX_PATH] = "";
 char		level_lights[MAX_PATH] = "";
 
 char		transferfile[MAX_PATH] = "";
-char		vismatfile[_MAX_PATH] = "";
-char		incrementfile[_MAX_PATH] = "";
+char		vismatfile[MAX_PATH] = "";
+char		incrementfile[MAX_PATH] = "";
 qboolean	incremental = 0;
-float		gamma = 0.5;
+float		g_gamma = 0.5;
 float		indirect_sun = 1.0;
 qboolean	extra = false;
 float		smoothing_threshold = 0; // default: cos(45.0*(Q_PI/180)); 
@@ -1420,7 +1420,7 @@ int main (int argc, char **argv)
 		{
 			if ( ++i < argc )
 			{
-				gamma = (float)atof (argv[i]);
+				g_gamma = (float)atof (argv[i]);
 			}
 			else
 			{
