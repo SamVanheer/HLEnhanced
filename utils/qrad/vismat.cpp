@@ -478,7 +478,6 @@ BuildVisMatrix
 void BuildVisMatrix (void)
 {
 	int		c;
-    HANDLE h;
 
 #ifdef HALFBIT
 	c = ((num_patches+1)*(((num_patches+1)+15)/16));
@@ -488,9 +487,7 @@ void BuildVisMatrix (void)
 
 	qprintf ("visibility matrix: %5.1f megs\n", c/(1024*1024.0));
 
-    if ( h = GlobalAlloc( GMEM_FIXED | GMEM_ZEROINIT, c ) )
-		vismatrix = reinterpret_cast<byte*>( GlobalLock( h ) );
-	else
+    if ( ( vismatrix = reinterpret_cast<byte*>( calloc( 1, c ) ) ) == nullptr )
 		Error ("vismatrix too big");
 	
 	strcpy(vismatfile, source);
@@ -513,9 +510,7 @@ void FreeVisMatrix (void)
 {
 	if ( vismatrix )
 	{
-		HANDLE h = GlobalHandle(vismatrix);
-		GlobalUnlock(h);
-		GlobalFree(h);
+		free( vismatrix );
 		vismatrix = NULL;
 	}
 }

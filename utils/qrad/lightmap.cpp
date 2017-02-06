@@ -148,22 +148,16 @@ AllocTriangulation
 */
 triangulation_t	*AllocTriangulation (dplane_t *plane)
 {
-	triangulation_t	*t = NULL;
+	triangulation_t	*t = reinterpret_cast<triangulation_t*>( calloc( 1, sizeof( triangulation_t ) ) );
 
+	if( !t )
+		Error( "Cannot alloc triangulation memory!" );
 
-    HANDLE h;
-	if ( h = GlobalAlloc( GMEM_FIXED | GMEM_ZEROINIT, sizeof(triangulation_t) ) )
-	{
-		t = reinterpret_cast<triangulation_t*>( GlobalLock( h ) );
+	t->numpoints = 0;
+	t->numedges = 0;
+	t->numtris = 0;
 
-		t->numpoints = 0;
-		t->numedges = 0;
-		t->numtris = 0;
-
-		t->plane = plane;
-	}
-	else
-		Error("Cannot alloc triangulation memory!");
+	t->plane = plane;
 
 	return t;
 }
@@ -175,12 +169,9 @@ FreeTriangulation
 */
 void FreeTriangulation (triangulation_t *tr)
 {
-    HANDLE h = GlobalHandle(tr);
-    
-	if ( h )
+	if ( tr )
 	{
-		GlobalUnlock(h);
-		GlobalFree(h);
+		free( tr );
 	}
 	else
 		Error("Cannot free triangulation memory!");
