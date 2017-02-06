@@ -8,9 +8,9 @@ add_sources(
 	${SHARED_UTIL_SRCS}
 	${BSPLIB_SRCS}
 	${THREADS_SRCS}
-	flow.c
-	soundpvs.c
-	vis.c
+	flow.cpp
+	soundpvs.cpp
+	vis.cpp
 	vis.h
 )
 

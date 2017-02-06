@@ -10,6 +10,8 @@
 
 #include "vis.h"
 
+#include "threads.h"
+
 int		c_fullskip;
 int		c_chains;
 int		c_portalskip, c_leafskip;
@@ -556,7 +558,7 @@ void PortalFlow (portal_t *p)
 		Error ("PortalFlow: reflowed");
 	p->status = stat_working;
 	
-	p->visbits = malloc (bitbytes);
+	p->visbits = reinterpret_cast<byte*>( malloc (bitbytes) );
 	memset (p->visbits, 0, bitbytes);
 
 	memset (&data, 0, sizeof(data));
@@ -628,7 +630,7 @@ void BasePortalVis (int threadnum)
 			break;
 		p = portals+i;
 
-		p->mightsee = malloc (bitbytes);
+		p->mightsee = reinterpret_cast<byte*>( malloc (bitbytes) );
 		memset (p->mightsee, 0, bitbytes);
 		
 		memset (portalsee, 0, numportals*2);
