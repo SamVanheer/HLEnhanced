@@ -13,6 +13,7 @@
 #include "cmdlib.h"
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <io.h>
 
 #ifdef WIN32
 #include <direct.h>
@@ -306,11 +307,16 @@ void Q_mkdir (char *path)
 		Error ("mkdir %s: %s",path, strerror(errno));
 }
 
+bool FS_FileExists( const char* pszFilename )
+{
+	return _access( pszFilename, 0x04 ) != -1;
+}
+
 /*
 ============
 FileTime
 
-returns -1 if not present
+returns INVALID_FILE_TIME if not present
 ============
 */
 time_t	FileTime (char *path)

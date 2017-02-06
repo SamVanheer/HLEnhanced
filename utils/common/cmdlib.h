@@ -13,6 +13,8 @@
 #ifndef __CMDLIB__
 #define __CMDLIB__
 
+#include "Platform.h"
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -20,8 +22,6 @@
 #include <ctype.h>
 #include <time.h>
 #include <stdarg.h>
-
-#include "Platform.h"
 
 #ifndef __CMDUTIL__
 #define __CMDUTIL__
@@ -56,6 +56,8 @@ int Q_strcasecmp (char *s1, char *s2);
 void Q_getwd (char *out);
 
 int filelength (FILE *f);
+
+bool FS_FileExists( const char* pszFilename );
 
 const time_t INVALID_FILE_TIME = time_t( -1 );
 

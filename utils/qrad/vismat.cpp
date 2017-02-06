@@ -293,20 +293,20 @@ long
 getfiledata(char *filename, char *buffer, int buffersize)
 {
 	long			size = 0;
-	int				handle;
+	FILE*			handle;
 	time_t			start,end;
 	time(&start);
 
-	if ( (handle = _open( filename, _O_RDONLY | _O_BINARY )) != -1 )
+	if ( (handle = fopen( filename, "rb" )) != NULL )
 	{
 		int			bytesread;
 		printf("%-20s Restoring [%-13s - ", "BuildVisMatrix:", filename );
-		while( ( bytesread = _read( handle, buffer, min( 32*1024L, buffersize - size ) ) ) > 0 )
+		while( ( bytesread = fread( buffer, 1, min( 32*1024L, buffersize - size ), handle ) ) > 0 )
 		{
 			size += bytesread;
 			buffer += bytesread;
 		}
-		_close( handle );
+		fclose( handle );
 		time(&end);
 		printf("%10.3fMB] (%d)\n",size/(1024.0*1024.0), static_cast<int>( end-start ));
 	}
@@ -359,15 +359,15 @@ long
 putfiledata(char *filename, char *buffer, int buffersize)
 {
 	long			size = 0;
-	int				handle;
+	FILE*			handle;
 
 	if ( getfreespace(filename) >= (_int64)(buffersize - getfilesize(filename)) )
 	{
-		if ( (handle = _open( filename, _O_WRONLY | _O_BINARY | _O_CREAT | _O_TRUNC, _S_IREAD | _S_IWRITE )) != -1 )
+		if ( (handle = fopen( filename, "wb" )) != NULL )
 		{
 			int			byteswritten;
 			qprintf("Writing [%s] with new saved qrad data", filename );
-			while( ( byteswritten = _write( handle, buffer, min( 32*1024L, buffersize - size ) ) ) > 0 )
+			while( ( byteswritten = fwrite( buffer, 1, min( 32*1024L, buffersize - size ), handle ) ) > 0 )
 			{
 				size += byteswritten;
 				buffer += byteswritten;
@@ -376,7 +376,7 @@ putfiledata(char *filename, char *buffer, int buffersize)
 			}
 			qprintf("(%d)\n", size );
 			
-			_close( handle );
+			fclose( handle );
 		}
 	}
 	else
@@ -397,25 +397,25 @@ IsIncremental(char *filename)
 {
 	qboolean		status = false;
 	int				sum;
-	int				handle;
+	FILE*			handle;
 
-	if ( (handle = _open( filename, _O_RDONLY | _O_BINARY )) != -1 )
+	if ( (handle = fopen( filename, "rb" )) != NULL )
 	{
-		if ( _read( handle, &sum, sizeof(sum) ) == sizeof(sum) && sum == dmodels_checksum
-		  && _read( handle, &sum, sizeof(sum) ) == sizeof(sum) && sum == dvertexes_checksum
-		  && _read( handle, &sum, sizeof(sum) ) == sizeof(sum) && sum == dplanes_checksum
-		  && _read( handle, &sum, sizeof(sum) ) == sizeof(sum) && sum == dleafs_checksum
-		  && _read( handle, &sum, sizeof(sum) ) == sizeof(sum) && sum == dnodes_checksum
-		  && _read( handle, &sum, sizeof(sum) ) == sizeof(sum) && sum == texinfo_checksum
-		  && _read( handle, &sum, sizeof(sum) ) == sizeof(sum) && sum == dclipnodes_checksum
-		  && _read( handle, &sum, sizeof(sum) ) == sizeof(sum) && sum == dfaces_checksum
-		  && _read( handle, &sum, sizeof(sum) ) == sizeof(sum) && sum == dmarksurfaces_checksum
-		  && _read( handle, &sum, sizeof(sum) ) == sizeof(sum) && sum == dsurfedges_checksum
-		  && _read( handle, &sum, sizeof(sum) ) == sizeof(sum) && sum == dedges_checksum
-		  && _read( handle, &sum, sizeof(sum) ) == sizeof(sum) && sum == dtexdata_checksum
-		  && _read( handle, &sum, sizeof(sum) ) == sizeof(sum) && sum == dvisdata_checksum )
+		if ( fread( &sum, 1, sizeof(sum), handle ) == sizeof(sum) && sum == dmodels_checksum
+		  && fread( &sum, 1, sizeof(sum), handle ) == sizeof(sum) && sum == dvertexes_checksum
+		  && fread( &sum, 1, sizeof(sum), handle ) == sizeof(sum) && sum == dplanes_checksum
+		  && fread( &sum, 1, sizeof(sum), handle ) == sizeof(sum) && sum == dleafs_checksum
+		  && fread( &sum, 1, sizeof(sum), handle ) == sizeof(sum) && sum == dnodes_checksum
+		  && fread( &sum, 1, sizeof(sum), handle ) == sizeof(sum) && sum == texinfo_checksum
+		  && fread( &sum, 1, sizeof(sum), handle ) == sizeof(sum) && sum == dclipnodes_checksum
+		  && fread( &sum, 1, sizeof(sum), handle ) == sizeof(sum) && sum == dfaces_checksum
+		  && fread( &sum, 1, sizeof(sum), handle ) == sizeof(sum) && sum == dmarksurfaces_checksum
+		  && fread( &sum, 1, sizeof(sum), handle ) == sizeof(sum) && sum == dsurfedges_checksum
+		  && fread( &sum, 1, sizeof(sum), handle ) == sizeof(sum) && sum == dedges_checksum
+		  && fread( &sum, 1, sizeof(sum), handle ) == sizeof(sum) && sum == dtexdata_checksum
+		  && fread( &sum, 1, sizeof(sum), handle ) == sizeof(sum) && sum == dvisdata_checksum )
 			status = true;
-		_close( handle );
+		fclose( handle );
 	}
 
 	return status;
@@ -431,28 +431,28 @@ int
 SaveIncremental(char *filename)
 {
 	long			size = 0;
-	int				handle;
+	FILE*			handle;
 	int				expected_size = 13*sizeof(int);
 
 	if ( getfreespace(filename) >= expected_size )
 	{
-		if ( (handle = _open( filename, _O_WRONLY | _O_BINARY | _O_CREAT | _O_TRUNC, _S_IREAD | _S_IWRITE )) != -1 )
+		if ( (handle = fopen( filename, "wb" )) != NULL )
 		{
 			qprintf("Writing [%s] with new saved qrad data", filename );
 			
-			if ( _write( handle, &dmodels_checksum, sizeof(int) ) == sizeof(int) && (size += sizeof(int))
-			  && _write( handle, &dvertexes_checksum, sizeof(int) ) == sizeof(int) && (size += sizeof(int))
-			  && _write( handle, &dplanes_checksum, sizeof(int) ) == sizeof(int) && (size += sizeof(int))
-			  && _write( handle, &dleafs_checksum, sizeof(int) ) == sizeof(int) && (size += sizeof(int))
-			  && _write( handle, &dnodes_checksum, sizeof(int) ) == sizeof(int) && (size += sizeof(int))
-			  && _write( handle, &texinfo_checksum, sizeof(int) ) == sizeof(int) && (size += sizeof(int))
-			  && _write( handle, &dclipnodes_checksum, sizeof(int) ) == sizeof(int) && (size += sizeof(int))
-			  && _write( handle, &dfaces_checksum, sizeof(int) ) == sizeof(int) && (size += sizeof(int))
-			  && _write( handle, &dmarksurfaces_checksum, sizeof(int) ) == sizeof(int) && (size += sizeof(int))
-			  && _write( handle, &dsurfedges_checksum, sizeof(int) ) == sizeof(int) && (size += sizeof(int))
-			  && _write( handle, &dedges_checksum, sizeof(int) ) == sizeof(int) && (size += sizeof(int))
-			  && _write( handle, &dtexdata_checksum, sizeof(int) ) == sizeof(int) && (size += sizeof(int))
-			  && _write( handle, &dvisdata_checksum, sizeof(int) ) == sizeof(int) && (size += sizeof(int)) )
+			if ( fwrite( &dmodels_checksum, 1, sizeof(int), handle ) == sizeof(int) && (size += sizeof(int))
+			  && fwrite( &dvertexes_checksum, 1, sizeof(int), handle ) == sizeof(int) && (size += sizeof(int))
+			  && fwrite( &dplanes_checksum, 1, sizeof(int), handle ) == sizeof(int) && (size += sizeof(int))
+			  && fwrite( &dleafs_checksum, 1, sizeof(int), handle ) == sizeof(int) && (size += sizeof(int))
+			  && fwrite( &dnodes_checksum, 1, sizeof(int), handle ) == sizeof(int) && (size += sizeof(int))
+			  && fwrite( &texinfo_checksum, 1, sizeof(int), handle ) == sizeof(int) && (size += sizeof(int))
+			  && fwrite( &dclipnodes_checksum, 1, sizeof(int), handle ) == sizeof(int) && (size += sizeof(int))
+			  && fwrite( &dfaces_checksum, 1, sizeof(int), handle ) == sizeof(int) && (size += sizeof(int))
+			  && fwrite( &dmarksurfaces_checksum, 1, sizeof(int), handle ) == sizeof(int) && (size += sizeof(int))
+			  && fwrite( &dsurfedges_checksum, 1, sizeof(int), handle ) == sizeof(int) && (size += sizeof(int))
+			  && fwrite( &dedges_checksum, 1, sizeof(int), handle ) == sizeof(int) && (size += sizeof(int))
+			  && fwrite( &dtexdata_checksum, 1, sizeof(int), handle ) == sizeof(int) && (size += sizeof(int))
+			  && fwrite( &dvisdata_checksum, 1, sizeof(int), handle ) == sizeof(int) && (size += sizeof(int)) )
 			{
 				qprintf("(%d)\n", size );
 			}
@@ -460,7 +460,7 @@ SaveIncremental(char *filename)
 			{
 				qprintf("...failed!");
 			}
-			_close( handle );
+			fclose( handle );
 		}
 	}
 	else
@@ -529,15 +529,15 @@ touchfile
 void
 TouchFile(char *filename)
 {
-	int handle;
-	if ( (handle = _open( filename, _O_RDWR | _O_BINARY  )) != -1 )
+	FILE* handle;
+	if ( (handle = fopen( filename, "rb+" )) != NULL )
 	{
 		char	bytebuffer;
 		qprintf("Updating saved qrad data <%s> with current time.\n", filename);
-		_read( handle, &bytebuffer, sizeof(bytebuffer));
-		_lseek(handle,0,SEEK_SET);
-		_write( handle, &bytebuffer, sizeof(bytebuffer));
-		_close( handle );
+		fread( &bytebuffer, 1, sizeof(bytebuffer), handle);
+		fseek(handle,0,SEEK_SET);
+		fwrite( &bytebuffer, 1, sizeof(bytebuffer), handle );
+		fclose( handle );
 	}
 }
 

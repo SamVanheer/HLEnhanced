@@ -1023,18 +1023,18 @@ writetransfers
 long
 writetransfers(char *transferfile, long total_patches)
 {
-	int		handle;
+	FILE*	handle;
 	long	writtenpatches = 0, writtentransfers = 0, totalbytes = 0;
 	int		spacerequired = sizeof(long) + total_patches * sizeof(long) + total_transfer * sizeof(transfer_t);
 
 	if ( spacerequired - getfilesize(transferfile) < getfreespace(transferfile) )
 	{
-		if ( (handle = _open( transferfile, _O_WRONLY | _O_BINARY | _O_CREAT | _O_TRUNC, _S_IREAD | _S_IWRITE )) != -1 )
+		if ( (handle = fopen( transferfile, "wb" )) != NULL )
 		{
 			unsigned			byteswritten;
 			qprintf("Writing [%s] with new saved qrad data", transferfile );
 			
-			if ( (byteswritten = _write(handle, &total_patches, sizeof(total_patches))) == sizeof(total_patches) )
+			if ( (byteswritten = fwrite(&total_patches, 1, sizeof(total_patches), handle)) == sizeof(total_patches) )
 			{
 				patch_t			*patch;
 
@@ -1042,13 +1042,13 @@ writetransfers(char *transferfile, long total_patches)
 
 				for( patch = patches; total_patches-- > 0; patch++ )
 				{
-					if ( (byteswritten = _write(handle, &patch->numtransfers, sizeof(patch->numtransfers)))
+					if ( (byteswritten = fwrite(&patch->numtransfers, 1, sizeof(patch->numtransfers), handle))
 					  == sizeof(patch->numtransfers) )
 					{
 						totalbytes += byteswritten;
 
 						if ( patch->numtransfers && 
-							 (byteswritten = _write(handle, patch->transfers, patch->numtransfers*sizeof(transfer_t)))
+							 (byteswritten = fwrite(patch->transfers, 1, patch->numtransfers*sizeof(transfer_t), handle))
 						      == patch->numtransfers*sizeof(transfer_t) )
 						{
 							totalbytes += byteswritten;
@@ -1065,7 +1065,7 @@ writetransfers(char *transferfile, long total_patches)
 
 			qprintf("(%d)\n", totalbytes );
 			
-			_close( handle );
+			fclose( handle );
 		}
 	}
 	else
@@ -1085,18 +1085,18 @@ readtransfers
 long
 readtransfers(char *transferfile, long numpatches)
 {
-	int		handle;
+	FILE*	handle;
 	long	readpatches = 0, readtransfers = 0, totalbytes = 0;
 	time_t	start, end;
 	time(&start);
-	if ( (handle = _open( transferfile, _O_RDONLY | _O_BINARY )) != -1 )
+	if ( (handle = fopen( transferfile, "rb" )) != NULL )
 	{
 		long			filepatches;
 		unsigned long	bytesread;
 
 		printf("%-20s Restoring [%-13s - ", "MakeAllScales:", transferfile );
 		
-		if ( (bytesread = _read(handle, &filepatches, sizeof(filepatches))) == sizeof(filepatches) )
+		if ( (bytesread = fread(&filepatches, 1, sizeof(filepatches), handle)) == sizeof(filepatches) )
 		{
 			if ( filepatches == numpatches )
 			{
@@ -1107,7 +1107,7 @@ readtransfers(char *transferfile, long numpatches)
 
 				for( patch = patches; readpatches < numpatches; patch++ )
 				{
-					if ( (bytesread = _read(handle, &patch->numtransfers, sizeof(patch->numtransfers)))
+					if ( (bytesread = fread(&patch->numtransfers, 1, sizeof(patch->numtransfers), handle))
 					  == sizeof(patch->numtransfers) )
 					{
 						if ( patch->transfers = reinterpret_cast<transfer_t*>( calloc(patch->numtransfers, sizeof(patch->transfers[0])) ) )
@@ -1116,7 +1116,7 @@ readtransfers(char *transferfile, long numpatches)
 
 							if ( patch->numtransfers )
 							{
-								if ( (bytesread = _read(handle, patch->transfers, patch->numtransfers*sizeof(transfer_t)))
+								if ( (bytesread = fread(patch->transfers, 1, patch->numtransfers*sizeof(transfer_t), handle))
 								  == patch->numtransfers*sizeof(transfer_t) )
 									{
 										totalbytes += bytesread;
@@ -1147,7 +1147,7 @@ readtransfers(char *transferfile, long numpatches)
 			else
 				printf("\nIncorrect transfer patch count found!  Save file will now be rebuilt." );
 		}
-		_close( handle );
+		fclose( handle );
 		time(&end);
 		printf("%10.3fMB] (%d)\n",totalbytes/(1024.0*1024.0), static_cast<int>( end-start ) );
 	}
@@ -1506,11 +1506,11 @@ int main (int argc, char **argv)
 
 	// Set the required global lights filename
 	strcat( strcpy( global_lights, gamedir ), "lights.rad" );
-	if ( _access( global_lights, 0x04) == -1 ) 
+	if ( !FS_FileExists( global_lights ) )
 	{
 		// try looking in qproject
 		strcat( strcpy( global_lights, qproject ), "lights.rad" );
-		if ( _access( global_lights, 0x04) == -1 ) 
+		if ( !FS_FileExists( global_lights ) )
 		{
 			// try looking in the directory we were run from
 			GetModuleFileName( NULL, global_lights, sizeof( global_lights ) );
@@ -1521,7 +1521,7 @@ int main (int argc, char **argv)
 
 	// Set the optional level specific lights filename
 	DefaultExtension( strcpy( level_lights, source ), ".rad" );
-	if ( _access( level_lights, 0x04) == -1 ) *level_lights = 0;	
+	if ( !FS_FileExists( level_lights ) ) *level_lights = 0;
 
 	ReadLightFile(global_lights);							// Required
 	if ( *designer_lights ) ReadLightFile(designer_lights);	// Command-line
