@@ -13,11 +13,6 @@
 
 //TODO: bsplib seems to be a copy of this. Refactor. - Solokiller
 
-#ifdef __cplusplus
-extern "C"
-{
-#endif
-
 #define	MAX_MAP_HULLS		4
 
 #define	MAX_MAP_MODELS		400
@@ -336,8 +331,4 @@ void 	GetVectorForKey (entity_t *ent, char *key, vec3_t vec);
 
 epair_t *ParseEpair (void);
 
-#endif
-
-#ifdef __cplusplus
-}
 #endif

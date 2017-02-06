@@ -21,11 +21,6 @@
 #include <time.h>
 #include <stdarg.h>
 
-#ifdef __cplusplus
-extern "C"
-{
-#endif
-
 #ifndef __CMDUTIL__
 #define __CMDUTIL__
 #if !defined( _NOENUMQBOOL ) && !defined( __cplusplus )
@@ -146,7 +141,3 @@ typedef struct
 void ListPak(char* pakname);
 
 #endif
-#ifdef __cplusplus
-}
-#endif
-

@@ -12,41 +12,41 @@ set( SHARED_UTIL_INCLUDES
 
 #Common code shared between all tools.
 set( SHARED_UTIL_SRCS
-	${CMAKE_CURRENT_SOURCE_DIR}/common/cmdlib.c
+	${CMAKE_CURRENT_SOURCE_DIR}/common/cmdlib.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/common/cmdlib.h
-	${CMAKE_CURRENT_SOURCE_DIR}/common/mathlib.c
+	${CMAKE_CURRENT_SOURCE_DIR}/common/mathlib.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/common/mathlib.h
-	${CMAKE_CURRENT_SOURCE_DIR}/common/scriplib.c
+	${CMAKE_CURRENT_SOURCE_DIR}/common/scriplib.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/common/scriplib.h
 )
 
 set( BSPLIB_SRCS
-	${CMAKE_CURRENT_SOURCE_DIR}/common/bsplib.c
+	${CMAKE_CURRENT_SOURCE_DIR}/common/bsplib.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/common/bsplib.h
 )
 
 set( THREADS_SRCS
-	${CMAKE_CURRENT_SOURCE_DIR}/common/threads.c
+	${CMAKE_CURRENT_SOURCE_DIR}/common/threads.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/common/threads.h
 )
 
 set( WADLIB_SRCS
-	${CMAKE_CURRENT_SOURCE_DIR}/common/wadlib.c
+	${CMAKE_CURRENT_SOURCE_DIR}/common/wadlib.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/common/wadlib.h
 )
 
 set( POLYLIB_SRCS
-	${CMAKE_CURRENT_SOURCE_DIR}/common/polylib.c
+	${CMAKE_CURRENT_SOURCE_DIR}/common/polylib.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/common/polylib.h
 )
 
 set( LBMLIB_SRCS
-	${CMAKE_CURRENT_SOURCE_DIR}/common/lbmlib.c
+	${CMAKE_CURRENT_SOURCE_DIR}/common/lbmlib.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/common/lbmlib.h
 )
 
 set( TRILIB_SRCS
-	${CMAKE_CURRENT_SOURCE_DIR}/common/trilib.c
+	${CMAKE_CURRENT_SOURCE_DIR}/common/trilib.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/common/trilib.h
 )
 

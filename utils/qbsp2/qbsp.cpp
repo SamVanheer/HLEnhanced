@@ -936,7 +936,7 @@ main
 
 ==================
 */
-extern "C" char qproject[];
+extern char qproject[];
 
 int main (int argc, char **argv)
 {

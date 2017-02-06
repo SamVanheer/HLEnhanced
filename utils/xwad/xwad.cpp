@@ -21,7 +21,7 @@
 byte inbuffer[MAXLUMP];
 byte outbuffer[(640+320)*480];
 
-extern "C" FILE *wadhandle;
+extern FILE *wadhandle;
 
 
 int main (int argc, char **argv)

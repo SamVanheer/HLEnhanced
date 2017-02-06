@@ -14,7 +14,7 @@
 
 #define MAXLUMP		0x50000         // biggest possible lump
 
-extern "C" char qproject[];
+extern char qproject[];
 
 int				grabbed;
 

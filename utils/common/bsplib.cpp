@@ -88,8 +88,8 @@ int FastChecksum(void *buffer, int bytes)
 {
 	int	checksum = 0;
 
-	while( bytes-- )  
-		checksum = _rotl(checksum, 4) ^ *((char *)buffer)++;
+	for( char* pszBuffer = reinterpret_cast<char*>( buffer ); bytes--; ++pszBuffer )  
+		checksum = _rotl(checksum, 4) ^ *pszBuffer;
 
 	return checksum;
 }
@@ -465,7 +465,7 @@ void	WriteBSPFile (char *filename)
 #define ENTRIES(a)		(sizeof(a)/sizeof(*(a)))
 #define ENTRYSIZE(a)	(sizeof(*(a)))
 
-ArrayUsage( char *szItem, int items, int maxitems, int itemsize )
+int ArrayUsage( char *szItem, int items, int maxitems, int itemsize )
 {
 	float	percentage = maxitems ? items * 100.0 / maxitems : 0.0;
 
@@ -482,7 +482,7 @@ ArrayUsage( char *szItem, int items, int maxitems, int itemsize )
 	return items * itemsize;
 }
 
-GlobUsage( char *szItem, int itemstorage, int maxstorage )
+int GlobUsage( char *szItem, int itemstorage, int maxstorage )
 {
 	float	percentage = maxstorage ? itemstorage * 100.0 / maxstorage : 0.0;
     printf("%-12s     [variable]    %7i/%-7i  (%4.1f%%)", 
@@ -544,7 +544,7 @@ epair_t *ParseEpair (void)
 {
 	epair_t	*e;
 	
-	e = malloc (sizeof(epair_t));
+	e = reinterpret_cast<epair_t*>( malloc (sizeof(epair_t)) );
 	memset (e, 0, sizeof(epair_t));
 	
 	if (strlen(token) >= MAX_KEY-1)
@@ -668,7 +668,7 @@ void 	SetKeyValue (entity_t *ent, char *key, char *value)
 			ep->value = copystring(value);
 			return;
 		}
-	ep = malloc (sizeof(*ep));
+	ep = reinterpret_cast<epair_t*>( malloc (sizeof(*ep)) );
 	ep->next = ent->epairs;
 	ent->epairs = ep;
 	ep->key = copystring(key);

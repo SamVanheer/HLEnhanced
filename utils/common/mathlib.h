@@ -15,10 +15,6 @@
 
 #include <math.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 #ifdef DOUBLEVEC_T
 typedef double vec_t;
 #else
@@ -90,9 +86,5 @@ void AngleQuaternion( const vec3_t angles, vec4_t quaternion );
 void QuaternionMatrix( const vec4_t quaternion, float (*matrix)[4] );
 void QuaternionSlerp( const vec4_t p, vec4_t q, float t, vec4_t qt );
 
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif

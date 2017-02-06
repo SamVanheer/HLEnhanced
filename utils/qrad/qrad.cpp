@@ -1252,7 +1252,7 @@ main
 light modelfile
 ========
 */
-extern "C" char qproject[];
+extern char qproject[];
 int main (int argc, char **argv)
 {
 	int		i;
