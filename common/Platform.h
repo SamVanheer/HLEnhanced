@@ -28,6 +28,7 @@
 #include "winsani_out.h"
 
 #include <malloc.h> // _alloca
+#include <sys/stat.h>
 
 #define stricmp _stricmp
 #define strupr _strupr

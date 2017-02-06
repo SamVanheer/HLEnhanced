@@ -11,6 +11,8 @@
 // updates:
 // 1-4-99	fixed AdvanceFrame wraping bug
 
+#include "Platform.h"
+
 #include <GL/gl.h>
 #include <GL/glu.h>
 

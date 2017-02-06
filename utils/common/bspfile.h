@@ -322,7 +322,7 @@ extern	entity_t	entities[MAX_MAP_ENTITIES];
 void	ParseEntities (void);
 void	UnparseEntities (void);
 
-void 	SetKeyValue (entity_t *ent, const char *key, char *value);
+void 	SetKeyValue (entity_t *ent, const char *key, const char *value);
 const char 	*ValueForKey (entity_t *ent, const char *key);
 // will return "" if not present
 

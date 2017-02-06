@@ -11,6 +11,8 @@
 
 #include <stdio.h>
 
+#include "Platform.h"
+
 #include <GL/gl.h>
 #include <GL/glu.h>
 
