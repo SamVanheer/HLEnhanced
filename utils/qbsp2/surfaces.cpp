@@ -356,8 +356,8 @@ int GetEdge (vec3_t p1, vec3_t p2, face_t *f)
 		Error ("numedges == MAX_MAP_EDGES");
 	edge = &dedges[numedges];
 	numedges++;
-	edge->v[0] = v1;
-	edge->v[1] = v2;
+	edge->v[0] = static_cast<unsigned short>( v1 );
+	edge->v[1] = static_cast<unsigned short>( v2 );
 	edgefaces[i][0] = f;
 	
 	return i;

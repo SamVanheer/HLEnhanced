@@ -94,13 +94,13 @@ void TransparentByteImage( void )
 				firsttrans = i;
 		}
 		else
-			transtable[i] = i;
+			transtable[i] = static_cast<byte>( i );
 	}
 
 	// If there is some transparency, translate it
 	if ( firsttrans >= 0 ) {
 		if ( !IS_TRANSPARENT( (lbmpalette+(255*3)) ) )
-			transtable[255] = firsttrans;
+			transtable[255] = static_cast<byte>( firsttrans );
 		image = byteimage;
 		for ( j = 0; j < byteimageheight; j++ ) {
 			for ( i = 0; i < byteimagewidth; i++ ) {
@@ -286,7 +286,7 @@ void ParseScript (void)
 		memset (lumpname,0,sizeof(lumpname));			
 		strcpy (lumpname, token);
 		for (size=0 ; size<sizeof(lumpname) ; size++)
-			lumpname[size] = tolower(lumpname[size]);
+			lumpname[size] = static_cast<char>( tolower(lumpname[size]) );
 
 		//
 		// get the grab command

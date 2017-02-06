@@ -73,9 +73,9 @@ void Draw_SetupConsolePalette( unsigned char *pal )
 
 	for ( i = 0; i < 256; i++ )
 	{
-		pPalette[3 * i + 0 ] = i;
-		pPalette[3 * i + 1 ] = i;
-		pPalette[3 * i + 2 ] = i;
+		pPalette[3 * i + 0 ] = static_cast<unsigned char>( i );
+		pPalette[3 * i + 1 ] = static_cast<unsigned char>( i );
+		pPalette[3 * i + 2 ] = static_cast<unsigned char>( i );
 	}
 
 	// Set palette zero correctly
@@ -232,8 +232,8 @@ qfont_t *CreateConsoleFont( char *pszFont, int nPointSize, BOOL bItalic, BOOL bU
 
 				c = (char)( startchar + j * w + i );
 
-				pqf->fontinfo[ c ].charwidth = charwidth;
-				pqf->fontinfo[ c ].startoffset = y * w * charwidth + x;
+				pqf->fontinfo[ c ].charwidth = static_cast<short>( charwidth );
+				pqf->fontinfo[ c ].startoffset = static_cast<short>( y * w * charwidth + x );
 
 				bestwidth = 0;
 
@@ -356,7 +356,7 @@ qfont_t *CreateConsoleFont( char *pszFont, int nPointSize, BOOL bItalic, BOOL bU
 				}
 				
 				// Store off width
-				pqf->fontinfo[ c ].charwidth = bestwidth;
+				pqf->fontinfo[ c ].charwidth = static_cast<short>( bestwidth );
 			}
 		}
 	}

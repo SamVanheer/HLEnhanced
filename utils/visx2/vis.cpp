@@ -190,7 +190,7 @@ int CompressRow (byte *vis, byte *dest)
 				break;
 			else
 				rep++;
-		*dest_p++ = rep;
+		*dest_p++ = static_cast<byte>( rep );
 		j--;
 	}
 	

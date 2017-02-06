@@ -1163,7 +1163,7 @@ void GatherSampleLight (vec3_t pos, byte *pvs, vec3_t normal, vec3_t *sample, by
 					}
 					
 					if ( styles[style_index] == 255 )
-						styles[style_index] = l->style;
+						styles[style_index] = static_cast<byte>( l->style );
 
 					VectorAdd( sample[style_index], add, sample[style_index] );
 				}
@@ -1210,7 +1210,7 @@ void GatherSampleLight (vec3_t pos, byte *pvs, vec3_t normal, vec3_t *sample, by
 			}
 			
 			if ( styles[style_index] == 255 )
-				styles[style_index] = sky_used->style;
+				styles[style_index] = static_cast<byte>( sky_used->style );
 
 			VectorAdd( sample[style_index], total, sample[style_index] );
 		}

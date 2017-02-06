@@ -112,7 +112,7 @@ byte    bitplanes[9][BPLANESIZE];       // max size 1024 by 9 bit planes
 
 void MungeBitPlanes8 (int width, byte *dest)
 {
-	*dest=width;	// shut up the compiler warning
+	*dest= static_cast<byte>( width );	// shut up the compiler warning
 	Error ("MungeBitPlanes8 not rewritten!");
 #if 0
 asm     les     di,[dest]
@@ -152,7 +152,7 @@ done:
 
 void MungeBitPlanes4 (int width, byte *dest)
 {
-	*dest=width;	// shut up the compiler warning
+	*dest= static_cast<byte>( width );	// shut up the compiler warning
 	Error ("MungeBitPlanes4 not rewritten!");
 #if 0
 
@@ -186,7 +186,7 @@ done:
 
 void MungeBitPlanes2 (int width, byte *dest)
 {
-	*dest=width;	// shut up the compiler warning
+	*dest= static_cast<byte>( width );	// shut up the compiler warning
 	Error ("MungeBitPlanes2 not rewritten!");
 #if 0
 asm     les     di,[dest]
@@ -215,7 +215,7 @@ done:
 
 void MungeBitPlanes1 (int width, byte *dest)
 {
-	*dest=width;	// shut up the compiler warning
+	*dest= static_cast<byte>( width );	// shut up the compiler warning
 	Error ("MungeBitPlanes1 not rewritten!");
 #if 0
 asm     les     di,[dest]
@@ -367,7 +367,7 @@ int WriteBMPfile (char *szFile, byte *pbBits, int width, int height, byte *pbPal
 	RGBQUAD rgrgbPalette[256];
 	ULONG cbBmpBits;
 	BYTE* pbBmpBits;
-	byte  *pb, *pbPal = NULL;
+	byte  *pb;
 	ULONG cbPalBytes;
 	ULONG biTrueWidth;
 

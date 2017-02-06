@@ -148,8 +148,8 @@ void ReadLightFile (char *filename)
 {
 	FILE	*f;
 	char	scan[128];
-	short	argCnt;
-	int		i = 1, j, file_texlights = 0;
+	int	argCnt;
+	int		j, file_texlights = 0;
 
 	f = fopen (filename, "r");
 	if (!f)
@@ -295,8 +295,6 @@ void BaseLightForFace( dface_t *f, vec3_t light, vec3_t reflectivity )
 	miptex_t	*mt;
 	int			ofs;
 
-	long		samples = 0;
-
 	//
 	// check for light emited by texture
 	//
@@ -308,6 +306,7 @@ void BaseLightForFace( dface_t *f, vec3_t light, vec3_t reflectivity )
 	LightForTexture (mt->name, light);
 
 #ifdef TEXTURE_REFLECTIVITY
+	long		samples = 0;
 	long		sum[ 3 ];
 
 	// Average up the texture pixels' color for an average reflectivity
@@ -401,7 +400,7 @@ void MakePatchForFace (int fn, winding_t *w)
 		for (j=0 ; j<f->numedges ; j++)
 		{
 			int edge = dsurfedges[ f->firstedge + j ];
-			int edge2 = dsurfedges[ j==f->numedges-1 ? f->firstedge : f->firstedge + j + 1 ];
+			//int edge2 = dsurfedges[ j==f->numedges-1 ? f->firstedge : f->firstedge + j + 1 ];
 
 			if (edge > 0)
 			{
@@ -762,7 +761,7 @@ void MakeScales (int threadnum)
 			if (!trans)
 				continue;
 			all_transfers->transfer = (unsigned short)trans;
-			all_transfers->patch = j;
+			all_transfers->patch = static_cast<unsigned short>( j );
 			all_transfers++;
 			patch->numtransfers++;
 			count++;
@@ -893,7 +892,7 @@ void SwapTransfersTask (int patchnum)
 			t2 += m;
 			transfer = t2->transfer;
 			t2->transfer = t->transfer;
-			t->transfer = transfer;
+			t->transfer = static_cast<unsigned short>( transfer );
 			break;
 		}
 

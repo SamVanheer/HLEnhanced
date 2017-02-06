@@ -57,7 +57,7 @@ void CleanupName (char *in, char *out)
 		if (!in[i])
 			break;
 			
-		out[i] = toupper(in[i]);
+		out[i] = static_cast<char>( toupper(in[i]) );
 	}
 	
 	for ( ; i< 16 ; i++ )
@@ -255,9 +255,9 @@ void AddAnimatingTextures (void)
 		for (j=0 ; j<20 ; j++)
 		{
 			if (j < 10)
-				name[1] = '0'+j;
+				name[1] = static_cast<char>( '0'+j );
 			else
-				name[1] = 'A'+j-10;		// alternate animation
+				name[1] = static_cast<char>( 'A'+j-10 );		// alternate animation
 			
 
 		// see if this name exists in the wadfile

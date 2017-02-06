@@ -119,16 +119,16 @@ void ProcessMFRMBlock( HANDLE hf, movieblockheader_t *pHeader )
 				if( frame.depth == 15 )
 				{
 					unsigned short nc = *(short *) hp;
-					pRGB->r = ( nc & 0x7c00 ) >> 7;
-					pRGB->g = ( nc & 0x03e0 ) >> 2;
-					pRGB->b = ( nc & 0x001f ) << 3;
+					pRGB->r = static_cast<byte>( ( nc & 0x7c00 ) >> 7 );
+					pRGB->g = static_cast<byte>( ( nc & 0x03e0 ) >> 2 );
+					pRGB->b = static_cast<byte>( ( nc & 0x001f ) << 3 );
 				}
 				else if ( frame.depth == 16 )
 				{
 					unsigned short nc = *(short *) hp;
-					pRGB->r = ( nc & 0xf800 ) >> 8;
-					pRGB->g = ( nc & 0x07e0 ) >> 3;
-					pRGB->b = ( nc & 0x001f ) << 3;
+					pRGB->r = static_cast<byte>( ( nc & 0xf800 ) >> 8 );
+					pRGB->g = static_cast<byte>( ( nc & 0x07e0 ) >> 3 );
+					pRGB->b = static_cast<byte>( ( nc & 0x001f ) << 3 );
 				}
 			}
 			hp -= rowbytes;

@@ -334,7 +334,7 @@ COM_Parse
 */
 char *COM_Parse (char *data)
 {
-	int		c;
+	char	c;
 	int		len;
 	
 	len = 0;
@@ -436,6 +436,7 @@ int Q_strncasecmp (char *s1, char *s2, int n)
 
 int Q_strcasecmp (char *s1, char *s2)
 {
+	//TODO magic number - Solokiller
 	return Q_strncasecmp (s1, s2, 99999);
 }
 
@@ -446,7 +447,7 @@ char *strupr (char *start)
 	in = start;
 	while (*in)
 	{
-		*in = toupper(*in);
+		*in = static_cast<char>( toupper(*in) );
 		in++;
 	}
 	return start;
@@ -458,7 +459,7 @@ char *strlower (char *start)
 	in = start;
 	while (*in)
 	{
-		*in = tolower(*in);
+		*in = static_cast<char>( tolower(*in) );
 		in++;
 	}
 	return start;

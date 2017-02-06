@@ -43,7 +43,7 @@ int WriteClipNodes_r (node_t *node)
 		Error ("WriteClipNodes_r: odd planenum");
 	cn->planenum = node->planenum;
 	for (i=0 ; i<2 ; i++)
-		cn->children[i] = WriteClipNodes_r(node->children[i]);
+		cn->children[i] = static_cast<short>( WriteClipNodes_r(node->children[i]) );
 	
 	free (node);
 	return c;
@@ -91,7 +91,7 @@ void WriteDrawLeaf (node_t *node)
 //
 // write the marksurfaces
 //
-	leaf_p->firstmarksurface = nummarksurfaces;
+	leaf_p->firstmarksurface = static_cast<unsigned short>( nummarksurfaces );
 	
 	for (fp=node->markfaces ; *fp ; fp++)
 	{
@@ -99,7 +99,7 @@ void WriteDrawLeaf (node_t *node)
 		f = *fp;
 		do
 		{
-			dmarksurfaces[nummarksurfaces] =  f->outputnumber;
+			dmarksurfaces[nummarksurfaces] = static_cast<unsigned short>( f->outputnumber );
 			if (nummarksurfaces >= MAX_MAP_MARKSURFACES)
 				Error ("nummarksurfaces == MAX_MAP_MARKSURFACES");
 			nummarksurfaces++;
@@ -108,7 +108,7 @@ void WriteDrawLeaf (node_t *node)
 	}
 	free (node->markfaces);
 	
-	leaf_p->nummarksurfaces = nummarksurfaces - leaf_p->firstmarksurface;
+	leaf_p->nummarksurfaces = static_cast<unsigned short>( nummarksurfaces - leaf_p->firstmarksurface );
 }
 
 /*
@@ -132,8 +132,8 @@ void WriteFace (face_t *f)
 	df->planenum = f->planenum & (~1);
 	df->side = f->planenum & 1;
 	df->firstedge = numsurfedges;
-	df->numedges = f->numpoints;
-	df->texinfo = f->texturenum;
+	df->numedges = static_cast<short>( f->numpoints );
+	df->texinfo = static_cast<short>( f->texturenum );
 	for (i=0 ; i<f->numpoints ; i++)
 	{
 		e = GetEdge (f->pts[i], f->pts[(i+1)%f->numpoints], f);
@@ -167,12 +167,12 @@ void WriteDrawNodes_r (node_t *node)
 	if (node->planenum & 1)
 		Error ("WriteDrawNodes_r: odd planenum");
 	n->planenum = node->planenum;
-	n->firstface = numfaces;
+	n->firstface = static_cast<unsigned short>( numfaces );
 
 	for (f=node->faces ; f ; f=f->next)
 		WriteFace (f);
 
-	n->numfaces = numfaces - n->firstface;
+	n->numfaces = static_cast<unsigned short>( numfaces - n->firstface );
 
 	//
 	// recursively output the other nodes
@@ -185,13 +185,13 @@ void WriteDrawNodes_r (node_t *node)
 				n->children[i] = -1;
 			else
 			{
-				n->children[i] = -(numleafs + 1);
+				n->children[i] = static_cast<short>( -(numleafs + 1) );
 				WriteDrawLeaf (node->children[i]);
 			}
 		}
 		else
 		{
-			n->children[i] = numnodes;	
+			n->children[i] = static_cast<short>( numnodes );
 			WriteDrawNodes_r (node->children[i]);
 		}
 	}

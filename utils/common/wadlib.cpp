@@ -98,7 +98,7 @@ void CleanupName (char *in, char *out)
 		if (!in[i])
 			break;
 			
-		out[i] = toupper(in[i]);
+		out[i] = static_cast<char>( toupper(in[i]) );
 	}
 	
 	for ( ; i<sizeof( ((lumpinfo_t *)0)->name ); i++ )
@@ -297,8 +297,8 @@ void	AddLump (char *name, void *buffer, int length, int type, int compress)
 	ofs = ftell(outwad);
 	info->filepos = wadlong(ofs);
 	info->size = info->disksize = wadlong(length);
-	info->type = type;
-	info->compression = compress;
+	info->type = static_cast<char>( type );
+	info->compression = static_cast<char>( compress );
 	
 // FIXME: do compression
 

@@ -589,7 +589,7 @@ void LightFace (int surfnum)
 // save out the values
 //
 	for (i=0 ; i <MAXLIGHTMAPS ; i++)
-		f->styles[i] = l.lightstyles[i];
+		f->styles[i] = static_cast<byte>( l.lightstyles[i] );
 
 	if( hicolor )
 		lightmapsize = size*l.numlightstyles*3;
