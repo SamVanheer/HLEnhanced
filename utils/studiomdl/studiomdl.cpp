@@ -2024,7 +2024,7 @@ int Grab_Nodes( s_node_t *pnodes )
 	int index;
 	char name[1024];
 	int parent;
-	int numbones = 0;
+	int numnodebones = 0;
 	int i;
 
 	while (fgets( line, sizeof( line ), input ) != NULL) 
@@ -2042,7 +2042,7 @@ int Grab_Nodes( s_node_t *pnodes )
 			
 			strcpyn( pnodes[index].name, name );
 			pnodes[index].parent = parent;
-			numbones = index;
+			numnodebones = index;
 			// check for mirrored bones;
 			for (i = 0; i < nummirrored; i++)
 			{
@@ -2056,7 +2056,7 @@ int Grab_Nodes( s_node_t *pnodes )
 		}
 		else 
 		{
-			return numbones + 1;
+			return numnodebones + 1;
 		}
 	}
 	Error( "Unexpected EOF at line %d\n", linecount );
@@ -2449,7 +2449,7 @@ void Option_Animation ( char *name, s_animation_t *panim )
 }
 
 
-int Option_Deform ( s_sequence_t *psequence )
+int Option_Deform ( s_sequence_t *pDeformSequence )
 {
 	return 0;
 }

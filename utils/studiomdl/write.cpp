@@ -277,7 +277,7 @@ void WriteSequenceInfo( )
 }
 
 
-byte *WriteAnimations( byte *pData, byte *pStart, int group )
+byte *WriteAnimations( int group )
 {
 	int i, j, k;
 	int	q, n;
@@ -552,7 +552,7 @@ void WriteFile (void)
 
 		pData = pStart + sizeof( studioseqhdr_t ); 
 
-		pData = WriteAnimations( pData, pStart, i );
+		pData = WriteAnimations( i );
 
 		ExtractFileBase( groupname, localname );
 		sprintf( sequencegroup[i].name, "models\\%s.mdl", localname );
@@ -623,7 +623,7 @@ void WriteFile (void)
 	printf("bones     %6d bytes (%d)\n", pData - pStart - total, numbones );
 	total = pData - pStart;
 
-	pData = WriteAnimations( pData, pStart, 0 );
+	pData = WriteAnimations( 0 );
 
 	WriteSequenceInfo( );
 	printf("sequences %6d bytes (%d frames) [%d:%02d]\n", pData - pStart - total, totalframes, (int)totalseconds / 60, (int)totalseconds % 60 );
