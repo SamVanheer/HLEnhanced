@@ -10,6 +10,8 @@
 
 #include "qrad.h"
 
+#include "MinMax.h"
+
 typedef struct
 {
 	dface_t		*faces[2];

@@ -12,6 +12,8 @@
 
 #include "Platform.h"
 
+#include "MinMax.h"
+
 #define	HALFBIT
 
 extern char		source[MAX_PATH];
@@ -299,7 +301,7 @@ getfiledata(char *filename, char *buffer, int buffersize)
 	{
 		int			bytesread;
 		printf("%-20s Restoring [%-13s - ", "BuildVisMatrix:", filename );
-		while( ( bytesread = _read( handle, buffer, min( 32*1024, buffersize - size ) ) ) > 0 )
+		while( ( bytesread = _read( handle, buffer, min( 32*1024L, buffersize - size ) ) ) > 0 )
 		{
 			size += bytesread;
 			buffer += bytesread;
@@ -365,7 +367,7 @@ putfiledata(char *filename, char *buffer, int buffersize)
 		{
 			int			byteswritten;
 			qprintf("Writing [%s] with new saved qrad data", filename );
-			while( ( byteswritten = _write( handle, buffer, min( 32*1024, buffersize - size ) ) ) > 0 )
+			while( ( byteswritten = _write( handle, buffer, min( 32*1024L, buffersize - size ) ) ) > 0 )
 			{
 				size += byteswritten;
 				buffer += byteswritten;

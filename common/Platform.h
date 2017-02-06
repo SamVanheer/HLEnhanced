@@ -147,4 +147,10 @@ inline constexpr size_t _ArraySizeof( const T ( & )[ SIZE ] )
 */
 #define OFFSETOF( type, member ) ( ( size_t ) ( &reinterpret_cast<type*>( 100000 )->member ) - 100000 )
 
+#ifndef DISABLE_CXX11_ATTRIBUTES
+#define NORETURN [[noreturn]]
+#else
+#define NORETURN
+#endif
+
 #endif //COMMON_PLATFORM_H

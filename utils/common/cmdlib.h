@@ -21,6 +21,8 @@
 #include <time.h>
 #include <stdarg.h>
 
+#include "Platform.h"
+
 #ifndef __CMDUTIL__
 #define __CMDUTIL__
 #if !defined( _NOENUMQBOOL ) && !defined( __cplusplus )
@@ -71,7 +73,7 @@ char *ExpandPathAndArchive (char *path);
 
 double I_FloatTime (void);
 
-void	Error (char *error, ...);
+NORETURN void	Error (char *error, ...);
 int		CheckParm (char *check);
 
 FILE	*SafeOpenWrite (char *filename);
