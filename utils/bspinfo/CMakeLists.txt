@@ -7,7 +7,7 @@ set( UTIL_NAME bspinfo )
 add_sources(
 	${SHARED_UTIL_SRCS}
 	${BSPLIB_SRCS}
-	bspinfo.c
+	bspinfo.cpp
 )
 
 preprocess_sources()
