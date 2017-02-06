@@ -59,6 +59,15 @@ set( TRILIB_SRCS
 #Directory to use when generating filters for Visual Studio.
 set( ROOT_FILTER_DIR ${CMAKE_CURRENT_SOURCE_DIR} )
 
+#Used by multiple tools so it's defined here.
+if( WIN32 )
+	set( SDL2_LIBNAME ${EXTERNAL_DIR}/SDL2/lib/SDL2.dll )
+elseif( APPLE )
+	set( SDL2_LIBNAME ${EXTERNAL_DIR}/SDL2/lib/libSDL2-2.0.0.dylib )
+elseif( UNIX )
+	set( SDL2_LIBNAME ${EXTERNAL_DIR}/SDL2/lib/libSDL2-2.0.so.0 )
+endif()
+
 add_subdirectory( bspinfo )
 add_subdirectory( light )
 add_subdirectory( makefont )
