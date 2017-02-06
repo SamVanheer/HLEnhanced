@@ -8,7 +8,7 @@ add_sources(
 	${SHARED_UTIL_SRCS}
 	${LBMLIB_SRCS}
 	${WADLIB_SRCS}
-	xwad.c
+	xwad.cpp
 )
 
 preprocess_sources()
