@@ -4,7 +4,6 @@
 		<!-- Required HTML tags for Bootstrap 4 -->
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<meta http-equiv="X-UA-compatible" content="IE=edge">
 
 		<!-- Bootstrap 4 CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
@@ -14,11 +13,11 @@
 	</head>
 	<body>
 		<!-- Navigation bar -->
-		<nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
-			<a class="navbar-brand" href="#">Half-Life: Enhanced</a>
-			<button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"></button>
-			<div class="collapse navbar-toggleable-md" id="navbarResponsive">
-				<ul class="nav navbar-nav">
+		<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+			<a class="navbar-brand" href="index.htm">Half-Life: Enhanced</a>
+			<div class="collapse navbar-collapse" id="navbarCollapse">
+				<ul class="navbar-nav mr-auto">
 					<li class="nav-item">
 						<a class="nav-link" href="index.htm">Home</a>
 					</li>
@@ -45,45 +44,46 @@
 
 		<!-- Content -->
 		<div class="container">
-			<div class="starter-template">
-				<h1>Documentation</h1>
-				<p class="lead">Learn how to work with Half-Life: Enhanced to empower your Half-Life 1 mods and maps.</p>
+			<h1>Documentation</h1>
+			<p class="lead">Learn how to work with Half-Life: Enhanced to empower your Half-Life 1 mods and maps.</p>
 
-				<h2>Half-Life: Enhanced's documentation</h2>
-				<ul class="list-group">
-					<li class="list-group-item"><a href="docs/index.html">Doxygen (for programmers) - maybe be outdated</a></li>
-					<li class="list-group-item"><a href="https://github.com/SamVanheer/HLEnhanced/wiki">GitHub's wiki</a></li>
-				</ul>
+			<h2>Half-Life: Enhanced's documentation</h2>
+			<ul class="list-group">
+				<li class="list-group-item"><a href="docs/index.html">Doxygen (for programmers) - maybe be outdated</a></li>
+				<li class="list-group-item"><a href="https://github.com/SamVanheer/HLEnhanced/wiki">GitHub's wiki</a></li>
+			</ul>
 
-				<p><!-- This is evil --></p>
+			<!-- This is an evil spacer -->
+			<p><br></p>
 
-				<h2>Other documentation</h2>
-				<ul class="list-group">
-					<li class="list-group-item"><a href="https://github.com/SamVanheer/GoldSourceRebuild">Gold Source Rebuild @ GitHub - A work in progress reversed engineered version of the Gold Source engine by Solokiller</a></li>
-					<li class="list-group-item"><a href="http://www.angelcode.com/angelscript/sdk/docs/manual/">Angelscript's documentation (the scripting engine used within Half-Life Enhanced)</a></li>
-					<li class="list-group-item"><a href="http://forums.svencoop.com/showthread.php/43228-A-very-technical-explanation-regarding-the-engine">Solokiller's technical explanation of the Half-Life 1 engine on Sven Coop forums</a></li>
-					<li class="list-group-item"><a href="http://twhl.info/wiki.php?sub=1">The Whole Half-Life's entity guide (all Half-Life 1 entities detailed)</a></li>
-					<li class="list-group-item"><a href="http://twhl.info/tutorial.php?cat=1">The Whole Half-Life's tutorials (most of them cover Half-Life 1 mapping and programming)</a></li>
-					<li class="list-group-item"><a href="http://twhl.info/articulator.php">The Whole Half-Life's VERC archive</a></li>
-				</ul>
+			<h2>Other documentation</h2>
+			<ul class="list-group">
+				<li class="list-group-item"><a href="https://github.com/SamVanheer/GoldSourceRebuild">Gold Source Rebuild @ GitHub - A work in progress reversed engineered version of the Gold Source engine by Solokiller</a></li>
+				<li class="list-group-item"><a href="http://www.angelcode.com/angelscript/sdk/docs/manual/">Angelscript's documentation (the scripting engine used within Half-Life Enhanced)</a></li>
+				<li class="list-group-item"><a href="http://forums.svencoop.com/showthread.php/43228-A-very-technical-explanation-regarding-the-engine">Solokiller's technical explanation of the Half-Life 1 engine on Sven Coop forums</a></li>
+				<li class="list-group-item"><a href="http://twhl.info/wiki.php?sub=1">The Whole Half-Life's entity guide (all Half-Life 1 entities detailed)</a></li>
+				<li class="list-group-item"><a href="http://twhl.info/tutorial.php?cat=1">The Whole Half-Life's tutorials (most of them cover Half-Life 1 mapping and programming)</a></li>
+				<li class="list-group-item"><a href="http://twhl.info/articulator.php">The Whole Half-Life's VERC archive</a></li>
+			</ul>
 
-				<p>You want to add your own or other documentation related to Half-Life: Enhanced and/or Half-Life 1 modding that could be interesting? Feel free to add it through GitHub!</p>
-
-				<p><br><!-- This is evil --></p>
-			</div>
+			<p>You want to add your own or other documentation related to Half-Life: Enhanced and/or Half-Life 1 modding that could be interesting? Feel free to add it through GitHub!</p>
 		</div>
 
 		<!-- Footer -->
 		<footer class="footer">
 			<div class="container">
-				<span class="text-muted">Powered by <a href="http://v4-alpha.getbootstrap.com/">Bootstrap V4</a>, hosted by <a href="https://pages.github.com/">GitHub Pages</a>.<br>
-				Half-Life is a trademarked property of <a href="http://www.valvesoftware.com/">Valve Corporation</a>.</span>
+				<span class="text-muted">Powered by <a href="http://v4-alpha.getbootstrap.com/">Bootstrap V4</a>, hosted by <a href="https://pages.github.com/">GitHub Pages</a>. Half-Life is a trademarked property of <a href="http://www.valvesoftware.com/">Valve Corporation</a>.</span>
 			</div>
 		</footer>
+
+		<!-- This is an evil spacer -->
+		<p><br></p>
 
 		<!-- Bootstrap 4 JS -->
 		<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+		<script src="https://v4-alpha.getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
 	</body>
 </html>
