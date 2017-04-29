@@ -1,20 +1,26 @@
-/* This is just a copy/paste from the starter and sticky footer templates of Bootstrap V4 */
-body {
-	padding-top: 5rem;
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+	position: relative;
+	min-height: 100%;
 }
-.starter-template {
-	padding: 3rem 1.5rem;
-	text-align: center;
+body {
+	/* Margin bottom by footer height */
+	margin-bottom: 60px;
 }
 .footer {
-	position: fixed; /* Shepard : Was absolute, changed to fixed to make sure footer really stick to the bottom */
+	position: absolute;
 	bottom: 0;
 	width: 100%;
 	/* Set the fixed height of the footer here */
 	height: 60px;
-	line-height: 30px; /* Vertically center the text there - Shepard : Leave some space for the HL1 copyright notice. */
+	line-height: 30px; /* Vertically center the text there */
 	background-color: #F5F5F5;
-	font-size: 12px; /* Shepard : reduce the text size for mobiles */
+}
+@media (max-width: 720px) {
+	.footer {
+		font-size: 8px;
+	}
 }
 button a {
 	color: #FFFFFF;
