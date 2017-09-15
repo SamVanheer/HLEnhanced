@@ -23,9 +23,35 @@
 #define		BARNEY_AE_SHOOT		( 3 )
 #define		BARNEY_AE_HOLSTER	( 4 )
 
-#define	BARNEY_BODY_GUNHOLSTERED	0
-#define	BARNEY_BODY_GUNDRAWN		1
-#define BARNEY_BODY_GUNGONE			2
+enum BarneyBodyGroup
+{
+	BARNEY_BODYGROUP_GUN = 1
+};
+
+/**
+*	@brief Submodels for the barney gun body group
+*/
+enum BarneyGunSubModel
+{
+	BARNEY_BODY_GUNHOLSTERED	= 0,
+	BARNEY_BODY_GUNDRAWN		= 1,
+	BARNEY_BODY_GUNGONE			= 2,
+};
+
+/**
+*	@brief Barney gun states
+*	TODO: should generalize this to cover all monsters - Solokiller
+*/
+enum class BarneyGunState
+{
+	HOLSTERED = 0,
+	DRAWN,
+
+	/**
+	*	@brief Dropped while dying or perhaps stolen
+	*/
+	GONE
+};
 
 class CBarney : public CTalkMonster
 {
@@ -63,7 +89,7 @@ public:
 	void TraceAttack( const CTakeDamageInfo& info, Vector vecDir, TraceResult *ptr ) override;
 	void Killed( const CTakeDamageInfo& info, GibAction gibAction ) override;
 
-	bool	m_fGunDrawn;
+	BarneyGunState m_GunState;
 	float	m_painTime;
 	float	m_checkAttackTime;
 	bool	m_lastAttackCheck;

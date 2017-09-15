@@ -30,7 +30,7 @@
 #include "CBarney.h"
 
 BEGIN_DATADESC( CBarney )
-	DEFINE_FIELD( m_fGunDrawn, FIELD_BOOLEAN ),
+	DEFINE_FIELD( m_GunState, FIELD_INTEGER ),
 	DEFINE_FIELD( m_painTime, FIELD_TIME ),
 	DEFINE_FIELD( m_checkAttackTime, FIELD_TIME ),
 	DEFINE_FIELD( m_lastAttackCheck, FIELD_BOOLEAN ),
@@ -314,14 +314,14 @@ void CBarney::HandleAnimEvent( AnimEvent_t& event )
 
 	case BARNEY_AE_DRAW:
 		// barney's bodygroup switches here so he can pull gun from holster
-		pev->body = BARNEY_BODY_GUNDRAWN;
-		m_fGunDrawn = true;
+		SetBodygroup( BARNEY_BODYGROUP_GUN, BARNEY_BODY_GUNDRAWN );
+		m_GunState = BarneyGunState::DRAWN;
 		break;
 
 	case BARNEY_AE_HOLSTER:
 		// change bodygroup to replace gun in holster
-		pev->body = BARNEY_BODY_GUNHOLSTERED;
-		m_fGunDrawn = false;
+		SetBodygroup( BARNEY_BODYGROUP_GUN, BARNEY_BODY_GUNHOLSTERED );
+		m_GunState = BarneyGunState::HOLSTERED;
 		break;
 
 	default:
@@ -347,8 +347,8 @@ void CBarney::Spawn()
 	m_flFieldOfView = VIEW_FIELD_WIDE; // NOTE: we need a wide field of view so npc will notice player and say hello
 	m_MonsterState = MONSTERSTATE_NONE;
 
-	pev->body = 0; // gun in holster
-	m_fGunDrawn = false;
+	SetBodygroup( BARNEY_BODYGROUP_GUN, BARNEY_BODY_GUNHOLSTERED ); // gun in holster
+	m_GunState = BarneyGunState::HOLSTERED;
 
 	m_afCapability = bits_CAP_HEAR | bits_CAP_TURN_HEAD | bits_CAP_DOORS_GROUP;
 
@@ -539,12 +539,13 @@ void CBarney::TraceAttack( const CTakeDamageInfo& info, Vector vecDir, TraceResu
 
 void CBarney::Killed( const CTakeDamageInfo& info, GibAction gibAction )
 {
-	if( pev->body < BARNEY_BODY_GUNGONE )
+	if( m_GunState != BarneyGunState::GONE )
 	{// drop the gun!
 		Vector vecGunPos;
 		Vector vecGunAngles;
 
-		pev->body = BARNEY_BODY_GUNGONE;
+		SetBodygroup( BARNEY_BODYGROUP_GUN, BARNEY_BODY_GUNGONE );
+		m_GunState = BarneyGunState::GONE;
 
 		GetAttachment( 0, vecGunPos, vecGunAngles );
 
@@ -641,7 +642,7 @@ Schedule_t *CBarney::GetSchedule()
 				return GetScheduleOfType( SCHED_SMALL_FLINCH );
 
 			// wait for one schedule to draw gun
-			if( !m_fGunDrawn )
+			if( m_GunState == BarneyGunState::HOLSTERED )
 				return GetScheduleOfType( SCHED_ARM_WEAPON );
 
 			if( HasConditions( bits_COND_HEAVY_DAMAGE ) )
