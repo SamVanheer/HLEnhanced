@@ -35,6 +35,8 @@ add_sources(
 	CTriggerMultiple.cpp
 	CTriggerOnce.h
 	CTriggerOnce.cpp
+	CTriggerPlayerFreeze.cpp
+	CTriggerPlayerFreeze.h
 	CTriggerPush.h
 	CTriggerPush.cpp
 	CTriggerRandom.h
