@@ -109,14 +109,12 @@ void CFuncTrain::Activate( void )
 
 void CFuncTrain::OverrideReset( void )
 {
-	CBaseEntity	*pTarg;
-
 	// Are we moving?
 	if( pev->velocity != g_vecZero && pev->nextthink != 0 )
 	{
 		pev->target = pev->message;
 		// now find our next target
-		pTarg = GetNextTarget();
+		CBaseEntity* pTarg = GetNextTarget();
 		if( !pTarg )
 		{
 			pev->nextthink = 0;

@@ -41,6 +41,8 @@ add_sources(
 	CSpiral.cpp
 	CSprite.h
 	CSprite.cpp
+	CSpriteTrain.cpp
+	CSpriteTrain.h
 	CWreckage.h
 	CWreckage.cpp
 )
