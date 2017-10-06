@@ -1,0 +1,135 @@
+{
+"classname" "worldspawn"
+"classname" "worldspawn"
+"sounds" "1"
+"MaxRange" "4096"
+"mapversion" "220"
+"wad" "\program files (x86)\steam\steamapps\common\half-life\valve\decals.wad;\program files (x86)\steam\steamapps\common\half-life\valve\halflife.wad;\program files (x86)\steam\steamapps\common\half-life\valve\liquids.wad;\program files (x86)\steam\steamapps\common\half-life\valve\xeno.wad;\users\sam\downloads\hl\vluzacn_zhlt_v34\tools\zhlt.wad;\program files (x86)\steam\steamapps\common\half-life\valve\barney.wad;\program files (x86)\steam\steamapps\common\half-life\valve\op4ctf.wad;\program files (x86)\steam\steamapps\common\half-life\valve\opfor.wad"
+{
+( 0 1024 0 ) ( 1024 1024 0 ) ( 1024 0 0 ) OUT_PAV3 [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1 
+( 0 0 -16 ) ( 1024 0 -16 ) ( 1024 1024 -16 ) NULL [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1 
+( 0 1024 0 ) ( 0 0 0 ) ( 0 0 -16 ) NULL [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1 
+( 1024 1024 -16 ) ( 1024 0 -16 ) ( 1024 0 0 ) NULL [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1 
+( 1024 1024 0 ) ( 0 1024 0 ) ( 0 1024 -16 ) NULL [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1 
+( 1024 0 -16 ) ( 0 0 -16 ) ( 0 0 0 ) NULL [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1 
+}
+{
+( -16 1024 256 ) ( 0 1024 256 ) ( 0 0 256 ) NULL [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1 
+( -16 0 0 ) ( 0 0 0 ) ( 0 1024 0 ) NULL [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1 
+( -16 1024 256 ) ( -16 0 256 ) ( -16 0 0 ) NULL [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1 
+( 0 1024 0 ) ( 0 0 0 ) ( 0 0 256 ) OUT_WALL7F [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1 
+( 0 1024 256 ) ( -16 1024 256 ) ( -16 1024 0 ) NULL [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1 
+( 0 0 0 ) ( -16 0 0 ) ( -16 0 256 ) NULL [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1 
+}
+{
+( 0 0 256 ) ( 1024 0 256 ) ( 1024 -16 256 ) NULL [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1 
+( 0 -16 0 ) ( 1024 -16 0 ) ( 1024 0 0 ) NULL [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1 
+( 0 0 256 ) ( 0 -16 256 ) ( 0 -16 0 ) NULL [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1 
+( 1024 0 0 ) ( 1024 -16 0 ) ( 1024 -16 256 ) NULL [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1 
+( 1024 0 256 ) ( 0 0 256 ) ( 0 0 0 ) OUT_WALL7F [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1 
+( 1024 -16 0 ) ( 0 -16 0 ) ( 0 -16 256 ) NULL [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1 
+}
+{
+( 1024 1024 256 ) ( 1040 1024 256 ) ( 1040 0 256 ) NULL [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1 
+( 1024 0 0 ) ( 1040 0 0 ) ( 1040 1024 0 ) NULL [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1 
+( 1024 1024 256 ) ( 1024 0 256 ) ( 1024 0 0 ) OUT_WALL7F [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1 
+( 1040 1024 0 ) ( 1040 0 0 ) ( 1040 0 256 ) NULL [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1 
+( 1040 1024 256 ) ( 1024 1024 256 ) ( 1024 1024 0 ) NULL [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1 
+( 1040 0 0 ) ( 1024 0 0 ) ( 1024 0 256 ) NULL [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1 
+}
+{
+( 0 1040 256 ) ( 1024 1040 256 ) ( 1024 1024 256 ) NULL [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1 
+( 0 1024 0 ) ( 1024 1024 0 ) ( 1024 1040 0 ) NULL [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1 
+( 0 1040 256 ) ( 0 1024 256 ) ( 0 1024 0 ) NULL [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1 
+( 1024 1040 0 ) ( 1024 1024 0 ) ( 1024 1024 256 ) NULL [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1 
+( 1024 1040 256 ) ( 0 1040 256 ) ( 0 1040 0 ) NULL [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1 
+( 1024 1024 0 ) ( 0 1024 0 ) ( 0 1024 256 ) OUT_WALL7F [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1 
+}
+{
+( 0 1024 272 ) ( 1024 1024 272 ) ( 1024 0 272 ) NULL [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1 
+( 0 0 256 ) ( 1024 0 256 ) ( 1024 1024 256 ) SKY [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1 
+( 0 1024 272 ) ( 0 0 272 ) ( 0 0 256 ) NULL [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1 
+( 1024 1024 256 ) ( 1024 0 256 ) ( 1024 0 272 ) NULL [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1 
+( 1024 1024 272 ) ( 0 1024 272 ) ( 0 1024 256 ) NULL [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1 
+( 1024 0 256 ) ( 0 0 256 ) ( 0 0 272 ) NULL [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1 
+}
+}
+{
+"classname" "info_player_deathmatch"
+"angles" "0 0 0"
+"origin" "64 64 40"
+}
+{
+"classname" "light_environment"
+"angles" "0 60 0"
+"_fade" "1.0"
+"_light" "255 255 128 200"
+"pitch" "-60"
+"origin" "128 128 16"
+}
+{
+"classname" "info_player_start"
+"angles" "0 0 0"
+"origin" "56 64 40"
+}
+{
+"classname" "func_button"
+"spawnflags" "33"
+"rendercolor" "0 0 0"
+"angles" "0 0 0"
+"speed" "100"
+"wait" "4"
+"sounds" "9"
+"target" "train_mm"
+{
+( 56 200 64 ) ( 72 200 64 ) ( 72 184 64 ) +0BUTTON1 [ 1 0 0 32 ] [ 0 -1 0 -32 ] 0 1 1 
+( 56 184 0 ) ( 72 184 0 ) ( 72 200 0 ) +0BUTTON1 [ 1 0 0 32 ] [ 0 -1 0 -32 ] 0 1 1 
+( 56 200 64 ) ( 56 184 64 ) ( 56 184 0 ) +0BUTTON1 [ 0 1 0 32 ] [ 0 0 -1 -32 ] 0 1 1 
+( 72 200 0 ) ( 72 184 0 ) ( 72 184 64 ) +0BUTTON1 [ 0 1 0 32 ] [ 0 0 -1 -32 ] 0 1 1 
+( 72 200 64 ) ( 56 200 64 ) ( 56 200 0 ) +0BUTTON1 [ 1 0 0 32 ] [ 0 0 -1 -32 ] 0 1 1 
+( 72 184 0 ) ( 56 184 0 ) ( 56 184 64 ) +0BUTTON1 [ 1 0 0 32 ] [ 0 0 -1 -32 ] 0 1 1 
+}
+}
+{
+"classname" "multi_manager"
+"targetname" "train_mm"
+"train" "0"
+"origin" "64 192 72"
+}
+{
+"classname" "env_spritetrain"
+"model" "sprites/glow01.spr"
+"speed" "192"
+"target" "train01"
+"targetname" "train"
+"origin" "128 192 64"
+}
+{
+"classname" "path_corner"
+"spawnflags" "1"
+"angles" "0 0 0"
+"targetname" "train01"
+"target" "train02"
+"origin" "256 256 64"
+}
+{
+"classname" "path_corner"
+"angles" "0 0 0"
+"targetname" "train02"
+"target" "train03"
+"origin" "768 256 64"
+}
+{
+"classname" "path_corner"
+"spawnflags" "1"
+"angles" "0 0 0"
+"targetname" "train03"
+"target" "train04"
+"origin" "768 768 64"
+}
+{
+"classname" "path_corner"
+"angles" "0 0 0"
+"targetname" "train04"
+"origin" "256 768 64"
+}
