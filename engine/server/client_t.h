@@ -3,20 +3,20 @@
 
 #include <cstdint>
 
+#include "extdll.h"
+#include "util.h"
+#include "com_model.h"
+#include "EngineDefs.h"
+#include "FileSystem.h"
+#include "progs.h"
+#include "sizebuf.h"
+#include "usercmd.h"
+
+
 //Dummy version to make sure client_t is the right size.
 struct netchan_t
 {
 	byte dummy[ 0x2414 ];
-};
-
-//Dummy version to make sure client_t is the right size.
-struct sizebuf_t
-{
-	const char* buffername;
-	short flags;
-	byte* data;
-	int maxsize;
-	int cursize;
 };
 
 struct client_frame_t
@@ -78,7 +78,7 @@ struct client_t
 	double svtimebase;
 
 	sizebuf_t datagram;
-	byte datagram_buf[ 4000 ];
+	byte datagram_buf[ MAX_DATAGRAM ];
 
 	double connection_started;
 	double next_messagetime;
@@ -96,7 +96,7 @@ struct client_t
 	int userid;
 	USERID_t network_userid;
 
-	char userinfo[ 256 ];
+	char userinfo[ MAX_INFO_STRING ];
 	qboolean sendinfo;
 	float sendinfo_time;
 
