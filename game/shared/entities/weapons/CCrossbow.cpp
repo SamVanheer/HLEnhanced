@@ -189,20 +189,19 @@ void CCrossbow::FireBolt()
 	pBolt->SetAbsAngles( anglesAim );
 	pBolt->SetOwner( m_pPlayer );
 
-	Vector vecAVelocity;
-
 	if (m_pPlayer->GetWaterLevel() == WATERLEVEL_HEAD)
 	{
-		vecAVelocity = vecDir * BOLT_WATER_VELOCITY;
+		pBolt->SetAbsVelocity( vecDir * BOLT_WATER_VELOCITY );
 		pBolt->SetSpeed( BOLT_WATER_VELOCITY );
 	}
 	else
 	{
-		vecAVelocity = vecDir * BOLT_AIR_VELOCITY;
+		pBolt->SetAbsVelocity( vecDir * BOLT_AIR_VELOCITY );
 		pBolt->SetSpeed( BOLT_AIR_VELOCITY );
 	}
-	vecAVelocity.z = 10;
 
+	Vector vecAVelocity = pBolt->GetAngularVelocity();
+	vecAVelocity.z = 10;
 	pBolt->SetAngularVelocity( vecAVelocity );
 #endif
 

@@ -13,7 +13,7 @@ bool CBasePlayerWeapon::AddToPlayer( CBasePlayer *pPlayer )
 {
 	m_pPlayer = pPlayer;
 
-	GetWeapons().AddFlags( 1 << m_iId );
+	pPlayer->GetWeapons().AddFlags( 1 << m_iId );
 
 	return AddWeapon();
 }
