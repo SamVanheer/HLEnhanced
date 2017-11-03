@@ -41,6 +41,7 @@ add_sources(
 	screenfade.h
 	Sequence.h
 	simple_checksum.h
+	sizebuf.h
 	steam_util.h
 	StringUtils.h
 	StringUtils.cpp
