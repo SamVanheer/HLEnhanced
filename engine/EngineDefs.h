@@ -1,0 +1,28 @@
+#ifndef ENGINE_ENGINEDEFS_H
+#define ENGINE_ENGINEDEFS_H
+
+#define MAX_LIGHTSTYLES 64
+
+/**
+*	For ForceUnmodified
+*/
+#define MAX_CONSISTENCY 512
+#define MAX_MODELS 512
+#define MAX_EVENTS 256
+#define MAX_SOUNDS 512
+#define MAX_GENERIC 512
+
+/**
+*	Player spray paint.
+*/
+#define MAX_DECALS 256
+
+#define MAX_RESOURCES ( MAX_MODELS + MAX_SOUNDS + MAX_DECALS )
+
+#define MAX_DATAGRAM 4000
+
+#define MAX_MULTICAST 1024
+
+#define MAX_SIGNON 32768
+
+#endif //ENGINE_ENGINEDEFS_H
