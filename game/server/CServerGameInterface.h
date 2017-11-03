@@ -3,10 +3,12 @@
 
 #include <memory>
 
+#include "interface.h"
 #include "CBaseGameInterface.h"
 #include "server/IServerGameInterface.h"
 
 class CServerConfig;
+class IEngineInfo;
 
 /**
 *	The server's representation of itself.
@@ -81,5 +83,7 @@ private:
 };
 
 extern CServerGameInterface g_Server;
+
+IEngineInfo& EngineInfo();
 
 #endif //GAME_SERVER_CSERVERGAMEINTERFACE_H

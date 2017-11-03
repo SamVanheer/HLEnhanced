@@ -17,6 +17,8 @@
 #include "nodes/CTestHull.h"
 
 #include "engine/CServerEngineHacks.h"
+#include "engine/server/IEngineInfo.h"
+#include "engine/server/Server.h"
 
 #if USE_ANGELSCRIPT
 #include "Angelscript/CHLASServerManager.h"
@@ -39,10 +41,28 @@ void Host_Say( CBasePlayer* pPlayer, const bool bTeamOnly );
 
 CServerGameInterface g_Server;
 
+namespace
+{
+IEngineInfo* g_pEngineInfo = nullptr;
+}
+
+IEngineInfo& EngineInfo()
+{
+	return *g_pEngineInfo;
+}
+
 bool CServerGameInterface::LibInit( CreateInterfaceFn* pFactories, size_t uiNumFactories )
 {
 	if( !InitializeCommon( pFactories, uiNumFactories ) )
 		return false;
+
+	g_pEngineInfo = reinterpret_cast<IEngineInfo*>( InitializeInterface( ENGINEINFO_INTERFACE_VERSION, pFactories, uiNumFactories ) );
+
+	if( !g_pEngineInfo )
+	{
+		UTIL_ServerPrintf( "Couldn't get engine info\n" );
+		return false;
+	}
 
 	EntityClassifications().Initialize();
 
