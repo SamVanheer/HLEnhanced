@@ -71,9 +71,9 @@ const char* ParseMapDataCallback( const char* pszBuffer, bool& bError )
 	return pszBuffer;
 }
 
-bool CClientGameInterface::Initialize()
+bool CClientGameInterface::LibInit( CreateInterfaceFn* pFactories, size_t uiNumFactories )
 {
-	if( !InitializeCommon() )
+	if( !InitializeCommon( pFactories, uiNumFactories ) )
 		return false;
 
 	//Init ASAP so functions like AlertMessage get set up.
@@ -84,10 +84,13 @@ bool CClientGameInterface::Initialize()
 		return false;
 #endif
 
+	if( !PostInit() )
+		return false;
+
 	return true;
 }
 
-void CClientGameInterface::Shutdown()
+void CClientGameInterface::LibShutdown()
 {
 #if USE_ANGELSCRIPT
 	g_ASManager.Shutdown();

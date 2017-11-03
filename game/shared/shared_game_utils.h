@@ -4,6 +4,7 @@
 #include "Color.h"
 
 #include "FileSystem.h"
+#include "FileSystemHelpers.h"
 
 #include "CHashStringPool.h"
 
@@ -36,11 +37,6 @@ const size_t NUM_STATIC_BUFFERS = 4;
 extern DLL_GLOBAL const Vector g_vecZero;
 
 extern cvar_t* g_pDeveloper;
-
-/**
-*	Global filesystem instance.
-*/
-extern IFileSystem* g_pFileSystem;
 
 class CBaseEntity;
 

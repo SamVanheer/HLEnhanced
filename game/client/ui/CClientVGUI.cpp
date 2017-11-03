@@ -19,6 +19,8 @@
 #include "hud/CHudViewport.h"
 #endif
 
+#include "CClientGameInterface.h"
+
 #include "KeyValuesCompat.h"
 
 #include "CClientVGUI.h"
@@ -67,6 +69,12 @@ void CClientVGUI::Initialize( CreateInterfaceFn* pFactories, int iNumFactories )
 
 	//4 factories to use.
 	assert( static_cast<size_t>( iNumFactories ) >= NUM_FACTORIES - 1 );
+
+	if( !g_Client.LibInit( pFactories, iNumFactories ) )
+	{
+		//Not much can be done here
+		return;
+	}
 
 	m_FactoryList[ 0 ] = Sys_GetFactoryThis();
 

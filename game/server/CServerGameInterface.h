@@ -4,29 +4,22 @@
 #include <memory>
 
 #include "CBaseGameInterface.h"
+#include "server/IServerGameInterface.h"
 
 class CServerConfig;
 
 /**
 *	The server's representation of itself.
 */
-class CServerGameInterface : public CBaseGameInterface
+class CServerGameInterface : public CBaseGameInterface, public IServerGameInterface
 {
 public:
 	CServerGameInterface() = default;
 	~CServerGameInterface() = default;
 
-	/**
-	*	Initializes the server.
-	*	@return true on success, false on failure.
-	*/
-	bool Initialize();
+	bool LibInit( CreateInterfaceFn* pFactories, size_t uiNumFactories ) override;
 
-	/**
-	*	Shuts down the server.
-	*	Should be called even if Initialize returned false.
-	*/
-	void Shutdown();
+	void LibShutdown() override;
 
 	/**
 	*	Called whenever an entity is created. Used to detect when a new map has started. - Solokiller

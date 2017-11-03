@@ -3,6 +3,8 @@
 
 #include "CBaseGameInterface.h"
 
+struct cl_entity_t;
+
 /**
 *	The client's representation of itself.
 */
@@ -21,7 +23,7 @@ public:
 	*	Initializes the client.
 	*	@return true on success, false on failure.
 	*/
-	bool Initialize();
+	bool LibInit( CreateInterfaceFn* pFactories, size_t uiNumFactories );
 
 	bool ConnectionEstablished();
 
@@ -29,7 +31,7 @@ public:
 	*	Shuts down the client.
 	*	Should be called even if Initialize returned false.
 	*/
-	void Shutdown();
+	void LibShutdown();
 
 	void Frame( double flTime );
 

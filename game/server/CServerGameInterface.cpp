@@ -16,6 +16,8 @@
 #include "nodes/Nodes.h"
 #include "nodes/CTestHull.h"
 
+#include "engine/CServerEngineHacks.h"
+
 #if USE_ANGELSCRIPT
 #include "Angelscript/CHLASServerManager.h"
 #include "Angelscript/ScriptAPI/ASEvents.h"
@@ -37,9 +39,9 @@ void Host_Say( CBasePlayer* pPlayer, const bool bTeamOnly );
 
 CServerGameInterface g_Server;
 
-bool CServerGameInterface::Initialize()
+bool CServerGameInterface::LibInit( CreateInterfaceFn* pFactories, size_t uiNumFactories )
 {
-	if( !InitializeCommon() )
+	if( !InitializeCommon( pFactories, uiNumFactories ) )
 		return false;
 
 	EntityClassifications().Initialize();
@@ -51,17 +53,22 @@ bool CServerGameInterface::Initialize()
 	}
 #endif
 
+	if( !PostInit() )
+		return false;
+
 	//Await first entity creation to start up. - Solokiller
 	m_bMapStartedLoading = true;
 
 	return true;
 }
 
-void CServerGameInterface::Shutdown()
+void CServerGameInterface::LibShutdown()
 {
 #if USE_ANGELSCRIPT
 	g_ASManager.Shutdown();
 #endif
+
+	EngineHacks().Shutdown();
 
 	ShutdownCommon();
 }
@@ -512,6 +519,15 @@ void CServerGameInterface::ClientUserInfoChanged( edict_t* pEntity, char* infobu
 
 void CServerGameInterface::WorldInit()
 {
+	//Earliest opportunity to do this
+	if( !EngineHacks().Initialize() )
+	{
+		UTIL_ServerPrintf( "Failed to initialize server hacks, exiting\n" );
+		SERVER_COMMAND( "exit\n" );
+		SERVER_EXECUTE();
+		return;
+	}
+
 	//Reload the server cfg file so the latest version can be used. - Solokiller
 	m_ServerConfig = std::make_unique<CServerConfig>();
 

@@ -3037,7 +3037,10 @@ void PM_Init( playermove_t *ppmove )
 
 	PM_CreateStuckTable();
 
-	g_MaterialsList.LoadFromFile( "sound/materials.txt" );
-
 	pm_shared_initialized = true;
+}
+
+void PM_PostInit()
+{
+	g_MaterialsList.LoadFromFile( "sound/materials.txt" );
 }

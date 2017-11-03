@@ -22,23 +22,14 @@ protected:
 	*	Initializes common code.
 	*	@return true on success, false on failure.
 	*/
-	bool InitializeCommon();
+	bool InitializeCommon( CreateInterfaceFn* pFactories, size_t uiNumFactories );
+
+	bool PostInit();
 
 	/**
 	*	Shuts down common code.
 	*/
 	void ShutdownCommon();
-
-	/**
-	*	Initializes the filesystem pointer.
-	*	@return true on success, false on failure.
-	*/
-	bool InitFileSystem();
-
-	/**
-	*	Shuts down the filesystem.
-	*/
-	void ShutdownFileSystem();
 
 private:
 	CBaseGameInterface( const CBaseGameInterface& ) = delete;

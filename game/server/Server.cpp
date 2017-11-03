@@ -16,11 +16,12 @@
 #include "eiface.h"
 #include "util.h"
 
-#include "UserMessages.h"
+#include "interface.h"
 
 #include "CServerGameInterface.h"
-
+#include "FileSystemHelpers.h"
 #include "Server.h"
+#include "UserMessages.h"
 
 cvar_t g_DummyCvar = { "_not_a_real_cvar_", "0" };
 
@@ -582,6 +583,8 @@ cvar_t	sk_player_leg3	= { "sk_player_leg3","1" };
 
 void ShutdownGame()
 {
+	FileSystem_FreeModule();
+
 	//No other way to signal failure. - Solokiller
 	SERVER_COMMAND( "quit\n" );
 }
@@ -1148,13 +1151,36 @@ void GameDLLInit( void )
 
 	SERVER_COMMAND( "exec skill.cfg\n" );
 
-	if( !g_Server.Initialize() )
+	if( !FileSystem_LoadModule() )
+	{
+		UTIL_ServerPrintf( "Couldn't load filesystem module\n" );
+		ShutdownGame();
+		return;
+	}
+
+	auto pFSFactory = Sys_GetFactory( FileSystem_GetModule() );
+
+	if( !pFSFactory )
+	{
+		UTIL_ServerPrintf( "Couldn't get filesystem factory\n" );
+		ShutdownGame();
+		return;
+	}
+
+	CreateInterfaceFn factories[] = 
+	{
+		Sys_GetFactoryThis(),
+		pFSFactory
+	};
+
+	if( !g_Server.LibInit( factories, ARRAYSIZE( factories ) ) )
 	{
 		ShutdownGame();
+		return;
 	}
 }
 
 void GameDLLShutdown()
 {
-	g_Server.Shutdown();
+	g_Server.LibShutdown();
 }

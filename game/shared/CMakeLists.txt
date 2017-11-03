@@ -18,6 +18,8 @@ add_sources(
 	enginecallback.h
 	EntityClasses.cpp
 	EntityClasses.h
+	FileSystemHelpers.cpp
+	FileSystemHelpers.h
 	extdll.h
 	GameConstants.h
 	HudColors.h

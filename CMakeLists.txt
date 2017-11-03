@@ -429,6 +429,8 @@ add_sources( "${SHARED_SRCS}" )
 
 #Add in the server directories
 add_subdirectory( game/server )
+add_subdirectory( ${CMAKE_SOURCE_DIR}/engine/server )
+add_subdirectory( ${CMAKE_SOURCE_DIR}/game/shared/server )
 
 preprocess_sources()
 

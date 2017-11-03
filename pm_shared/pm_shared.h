@@ -21,6 +21,12 @@
 #pragma once
 
 void PM_Init( playermove_t *ppmove );
+
+/**
+*	@brief Called after game initialization, lets the physics code do post-init stuff that needs interfaces set up during init time
+*/
+void PM_PostInit();
+
 void PM_Move ( playermove_t *ppmove, int server );
 
 /**

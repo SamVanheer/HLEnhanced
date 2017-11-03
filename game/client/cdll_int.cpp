@@ -160,9 +160,6 @@ int DLLEXPORT Initialize( cl_enginefunc_t *pEnginefuncs, int iVersion )
 	//TODO: use a dynamically allocated instance - Solokiller
 	Hud().SetHud( &gHUD );
 
-	if( !g_Client.Initialize() )
-		return false;
-
 	// get tracker interface, if any
 	return true;
 }
@@ -177,7 +174,7 @@ void DLLEXPORT HUD_Shutdown( void )
 
 	CL_UnloadParticleMan();
 
-	g_Client.Shutdown();
+	g_Client.LibShutdown();
 
 	Hud().SetHud( nullptr );
 }
