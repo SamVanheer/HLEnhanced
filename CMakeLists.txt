@@ -133,7 +133,7 @@ else()
 		)
 	endif()
 
-	if( UNIX )
+	if( UNIX AND NOT APPLE )
 		#Define LINUX so code can check for it.
 		#Define _LINUX for Source SDK dependencies.
 		set( SHARED_DEFS
