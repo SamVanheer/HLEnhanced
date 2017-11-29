@@ -1,10 +1,11 @@
 ###################################################
 #                                                 #
 #                                                 #
-#	Half-Life Enhanced CMake build file           #
+#       Half-Life Enhanced CMake build file       #
 #                                                 #
 #                                                 #
 ###################################################
+
 cmake_minimum_required( VERSION 3.6 )
 
 include( cmake/InputFilesList.cmake )
@@ -19,7 +20,7 @@ set( MSVC_RUNTIME "static" )
 
 configure_msvc_runtime()
 
-set(variables
+set( variables
   CMAKE_C_FLAGS_DEBUG
   CMAKE_C_FLAGS_MINSIZEREL
   CMAKE_C_FLAGS_RELEASE
@@ -29,11 +30,11 @@ set(variables
   CMAKE_CXX_FLAGS_RELEASE
   CMAKE_CXX_FLAGS_RELWITHDEBINFO
 )
-message(STATUS "Initial build flags:")
-foreach(variable ${variables})
-  message(STATUS "  '${variable}': ${${variable}}")
+message( STATUS "Initial build flags:" )
+foreach( variable ${variables})
+  message( STATUS "  '${variable}': ${${variable}}" )
 endforeach()
-message(STATUS "")
+message( STATUS "" )
 
 #C++14 support
 set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y" )
@@ -44,12 +45,10 @@ if( UNIX )
 endif()
 
 #Get the steam/steamapps/common directory
-set( STEAMCOMMON "$ENV{SteamCommon}" CACHE PATH "Steam common directory path" )
+set( STEAMCOMMON "$ENV{SteamCommon}" CACHE PATH "Steam common directory path." )
 
 if( "${STEAMCOMMON}" STREQUAL "" )
-
-	MESSAGE( FATAL_ERROR "Unable to get Steam common directory path" )
-
+	MESSAGE( FATAL_ERROR "Unable to get Steam common directory path!" )
 endif()
 
 #Base dir for game outputs
@@ -60,15 +59,15 @@ MESSAGE( STATUS "Base Game Path: ${GAME_BASE_PATH}" )
 
 set( EXTERNAL_DIR ${CMAKE_SOURCE_DIR}/external )
 
-set( USE_ANGELSCRIPT "0" CACHE BOOL "Whether to include Angelscript" )
-set( USE_AS_SQL "0" CACHE BOOL "Whether to include Angelscript SQL APIs" )
-set( USE_OPFOR "0" CACHE BOOL "Whether to include Opposing Force related stuff" )
-set( USE_VGUI2 "0" CACHE BOOL "Whether to include VGUI2 features" )
+set( USE_ANGELSCRIPT "0" CACHE BOOL "Whether to include Angelscript." )
+set( USE_AS_SQL "0" CACHE BOOL "Whether to include Angelscript SQL APIs (requires Angelscript to be enabled)." )
+set( USE_OPFOR "0" CACHE BOOL "Whether to include game stuff related to Opposing Force." )
+set( USE_VGUI2 "0" CACHE BOOL "Whether to include VGUI2 features." )
 
 #Some libraries that we use don't come with .a files (import libraries) for Cygwin compilation (Unix Makefiles on Windows).
 #This isn't really supported, and since we only use Makefiles on Windows for the compile_commands.json file right now this isn't really an issue.
 #Should we choose to support Cygwin we will need the import libraries though.
-set( CLANG_DB_BUILD OFF CACHE BOOL "Whether this is a Clang database build. If enabled, some settings are disabled in order to function on Windows" )
+set( CLANG_DB_BUILD OFF CACHE BOOL "Whether this is a Clang database build. If enabled, some settings are disabled in order to function on Windows." )
 
 if( NOT USE_ANGELSCRIPT AND USE_AS_SQL )
 	MESSAGE( STATUS "Forcing USE_AS_SQL to off due to no Angelscript usage" )
@@ -106,8 +105,7 @@ if( CLANG_DB_BUILD )
 endif()
 
 #Shared preprocessor definitions
-set( SHARED_DEFS 
-)
+set( SHARED_DEFS )
 
 if( MSVC )
 	set( SHARED_DEFS
@@ -115,7 +113,7 @@ if( MSVC )
 		_CRT_SECURE_NO_WARNINGS
 		_SCL_SECURE_NO_WARNINGS
 	)
-	
+
 	set( LINUX_32BIT_FLAG "" )
 else()
 	#All non-MSVC targets need this. That includes Cygwin and Mingw.
@@ -156,8 +154,7 @@ set( SHARED_GAME_DEFS
 )
 
 #Shared linker flags
-set( SHARED_GAME_LINKER_FLAGS
-)
+set( SHARED_GAME_LINKER_FLAGS )
 
 if( MSVC )
 	#Set Windows subsystem
@@ -219,7 +216,7 @@ set( SHARED_INCLUDE_PATHS
 	${CMAKE_SOURCE_DIR}  #Should ideally get rid of this.
 )
 
-#keyvalues and utility are temporary until the code between these repositories can be shared. - Solokiller
+#Keyvalues and utility are temporary until the code between these repositories can be shared. - Solokiller
 add_subdirectory( common )
 add_subdirectory( engine )
 add_subdirectory( game/shared )
@@ -230,7 +227,7 @@ add_subdirectory( shared/engine )
 add_subdirectory( utility )
 
 #Save the shares sources into SHARED_SRCS
-get_property(SHARED_SRCS GLOBAL PROPERTY SRCS_LIST)
+get_property( SHARED_SRCS GLOBAL PROPERTY SRCS_LIST )
 
 clear_sources()
 
@@ -349,9 +346,7 @@ endif()
 
 
 if( USE_VGUI2 )
-	set( VGUI2_LIBS
-		vgui2_controls
-	)
+	set( VGUI2_LIBS vgui2_controls )
 else()
 	set( VGUI2_LIBS "" )
 endif()
@@ -365,7 +360,7 @@ endif()
 
 #Link with client dependencies
 if( USE_ANGELSCRIPT )
-	target_link_libraries( client 
+	target_link_libraries( client
 		optimized ${ANGELSCRIPTUTILS}
 		debug ${ANGELSCRIPTUTILSD}
 		optimized ${ANGELSCRIPTLIB}
@@ -373,7 +368,7 @@ if( USE_ANGELSCRIPT )
 	)
 endif()
 
-target_link_libraries( client 
+target_link_libraries( client
 	vgui
 	${VGUI2_LIBS}
 	${CLIENT_PLAT_LIBS}
@@ -465,7 +460,7 @@ if( USE_AS_SQL AND NOT CLANG_DB_BUILD )
 		set( LIBS_TO_COPY ${LIBS_TO_COPY} "${EXTERNAL_DIR}/SQLite/lib/sqlite3.dll" )
 	else()
 		#Copy the sqlite3 library so the exe can get to it
-		#Copy the mariadb library so the exe can get to it		
+		#Copy the mariadb library so the exe can get to it
 		set( LIBS_TO_COPY ${LIBS_TO_COPY} "${EXTERNAL_DIR}/SQLite/lib/libsqlite3.so" "${EXTERNAL_DIR}/MariaDB/lib/libmariadb.so.2" )
 	endif()
 endif()
@@ -508,14 +503,14 @@ endif()
 
 #Link with server dependencies
 if( USE_AS_SQL AND NOT CLANG_DB_BUILD )
-	target_link_libraries( hl 
+	target_link_libraries( hl
 		optimized ${ASSQL}
 		debug ${ASSQLD}
 	)
 endif()
 
 if( USE_ANGELSCRIPT )
-	target_link_libraries( hl 
+	target_link_libraries( hl
 		optimized ${ANGELSCRIPTUTILS}
 		debug ${ANGELSCRIPTUTILSD}
 		optimized ${ANGELSCRIPTLIB}
@@ -524,14 +519,14 @@ if( USE_ANGELSCRIPT )
 endif()
 
 if( USE_AS_SQL AND NOT CLANG_DB_BUILD )
-	target_link_libraries( hl 
+	target_link_libraries( hl
 		${SQLITE3}
 		optimized ${MARIADB}
 		debug ${MARIADBD}
 	)
 endif()
 
-target_link_libraries( hl 
+target_link_libraries( hl
 	${DELAYIMP}
 	Threads::Threads
 	${SERVER_PLAT_LIBS}
@@ -555,7 +550,7 @@ if( MSVC )
 	else()
 		set( SQL_DLL_DELAYLOAD )
 	endif()
-	
+
 	#Copy the def file so it's local to the binary directory
 	file( COPY ${CMAKE_SOURCE_DIR}/hl.def DESTINATION ${CMAKE_BINARY_DIR} )
 
@@ -573,7 +568,7 @@ endif()
 
 #SQL libraries are delay loaded to keep them in the game directory.
 set_target_properties( hl PROPERTIES
-	COMPILE_FLAGS "${LINUX_32BIT_FLAG} ${WARNING_LEVEL_STRICTEST}" 
+	COMPILE_FLAGS "${LINUX_32BIT_FLAG} ${WARNING_LEVEL_STRICTEST}"
 	LINK_FLAGS "${SHARED_GAME_LINKER_FLAGS} ${SERVER_LINK_FLAGS} ${LINUX_32BIT_FLAG}"
 )
 
