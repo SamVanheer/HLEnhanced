@@ -338,7 +338,7 @@ if( NOT CLANG_DB_BUILD )
 		set( SDL2_NAME "${CMAKE_SHARED_LIBRARY_PREFIX}SDL2${CMAKE_STATIC_LIBRARY_SUFFIX}" )
 	endif()
 
-	find_library( SDL2 ${SDL2_NAME} PATHS lib/public/ external/SDL2/lib "${STEAMCOMMON}/Half-Life/" )
+	find_library( SDL2 ${SDL2_NAME} PATHS external/SDL2/lib/ lib/public/ "${STEAMCOMMON}/Half-Life/" NO_CMAKE_SYSTEM_PATH )
 else()
 	set( SDL2 )
 endif()
