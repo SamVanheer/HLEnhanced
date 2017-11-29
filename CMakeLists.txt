@@ -312,7 +312,7 @@ target_compile_definitions( client PRIVATE
 
 #Find client dependencies
 if( UNIX )
-	if ( ${CMAKE_SYSTEM_NAME} MATCHES "Darwin" )
+	if ( APPLE )
 		set( VGUI1_NAME "vgui.dylib" )
 	else()
 		set( VGUI1_NAME "vgui.so" )
@@ -329,7 +329,7 @@ set_property( TARGET vgui PROPERTY IMPORTED_IMPLIB ${CMAKE_SOURCE_DIR}/utils/vgu
 
 if( NOT CLANG_DB_BUILD )
 	if( UNIX )
-		if ( ${CMAKE_SYSTEM_NAME} MATCHES "Darwin" )
+		if ( APPLE )
 			set( SDL2_NAME "libSDL2-2.0.0.dylib" )
 		else()
 			set( SDL2_NAME "libSDL2-2.0.so.0" )
