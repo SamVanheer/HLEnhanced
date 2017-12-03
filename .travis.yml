@@ -5,37 +5,37 @@ language: c
 sudo: required
 dist: trusty
 
-# Linux - add the Ubuntu restricted tool chain to install GCC 6 package and the standard C library.
+# Linux - add the Ubuntu restricted tool chain to install GCC 7 package and the standard C library.
 addons:
   apt:
     sources:
     - ubuntu-toolchain-r-test
     packages:
     - linux-libc-dev
-    - gcc-6-multilib
-    - g++-6-multilib
+    - gcc-7-multilib
+    - g++-7-multilib
 
 matrix:
   allow_failures:
     # We allow all Mac builds to fail since we don't have a real Mac to test them.
     - os: osx
   include:
-    # Ubuntu 14.04 Trusty Tahr amd64 (Linux) GCC 6
+    # Ubuntu 14.04 Trusty Tahr amd64 (Linux) GCC 7
     # Everything disabled
     - os: linux
-      env: COMPILER=gcc-6 BUILD_RULES="-DUSE_OPFOR=0 -DUSE_ANGELSCRIPT=0 -DUSE_AS_SQL=0"
-    # Ubuntu 14.04 Trusty Tahr amd64 (Linux) GCC 6
+      env: BUILD_RULES="-DUSE_OPFOR=0 -DUSE_ANGELSCRIPT=0 -DUSE_AS_SQL=0"
+    # Ubuntu 14.04 Trusty Tahr amd64 (Linux) GCC 7
     # Opposing Force
     - os: linux
-      env: COMPILER=gcc-6 BUILD_RULES="-DUSE_OPFOR=1 -DUSE_ANGELSCRIPT=0 -DUSE_AS_SQL=0"
-    # Ubuntu 14.04 Trusty Tahr amd64 (Linux) GCC 6
+      env: BUILD_RULES="-DUSE_OPFOR=1 -DUSE_ANGELSCRIPT=0 -DUSE_AS_SQL=0"
+    # Ubuntu 14.04 Trusty Tahr amd64 (Linux) GCC 7
     # Opposing Force + AngelScript
     - os: linux
-      env: COMPILER=gcc-6 BUILD_RULES="-DUSE_OPFOR=1 -DUSE_ANGELSCRIPT=1 -DUSE_AS_SQL=0"
-    # Ubuntu 14.04 Trusty Tahr amd64 (Linux) GCC 6
+      env: BUILD_RULES="-DUSE_OPFOR=1 -DUSE_ANGELSCRIPT=1 -DUSE_AS_SQL=0"
+    # Ubuntu 14.04 Trusty Tahr amd64 (Linux) GCC 7
     # Opposing Force + AngelScript + MariaDB
     - os: linux
-      env: COMPILER=gcc-6 BUILD_RULES="-DUSE_OPFOR=1 -DUSE_ANGELSCRIPT=1 -DUSE_AS_SQL=1 -DMARIADB=${TRAVIS_BUILD_DIR}/external/MariaDB/lib/libmariadb.so.2 -DSQLITE3=${TRAVIS_BUILD_DIR}/external/SQLite/lib/libsqlite3.so"
+      env: BUILD_RULES="-DUSE_OPFOR=1 -DUSE_ANGELSCRIPT=1 -DUSE_AS_SQL=1 -DMARIADB=${TRAVIS_BUILD_DIR}/external/MariaDB/lib/libmariadb.so.2 -DSQLITE3=${TRAVIS_BUILD_DIR}/external/SQLite/lib/libsqlite3.so"
     # Mac OS X
     # Everything disabled
     - os: osx
@@ -85,8 +85,8 @@ before_script:
 script:
   # Just execute the cmake and make commands.
   - |
-    if [[ "${COMPILER}" == "gcc-6" ]]; then
-      cmake -DCMAKE_CXX_COMPILER="g++-6" -DCMAKE_C_COMPILER="gcc-6" -DSTEAMCOMMON=${STEAMCOMMON_DIR} -DSDL2=${TRAVIS_BUILD_DIR}/external/SDL2/lib/libSDL2-2.0.so.0 ${BUILD_RULES} ..
+    if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then
+      cmake -DCMAKE_CXX_COMPILER="g++-7" -DCMAKE_C_COMPILER="gcc-7" -DSTEAMCOMMON=${STEAMCOMMON_DIR} -DSDL2=${TRAVIS_BUILD_DIR}/external/SDL2/lib/libSDL2-2.0.so.0 ${BUILD_RULES} ..
     else
       cmake -DSTEAMCOMMON=${STEAMCOMMON_DIR} -DSDL2=${TRAVIS_BUILD_DIR}/external/SDL2/lib/libSDL2-2.0.0.dylib ${BUILD_RULES} ..
     fi
