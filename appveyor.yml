@@ -18,8 +18,8 @@ environment:
 
 before_build:
   # Use the latest version of CMake
-  - ps: Write-Host "=== (1/4) Downloading CMake 3.9.1 ZIP for Windows 64 bits ===" -foregroundcolor green
-  - ps: wget https://cmake.org/files/v3.9/cmake-3.9.1-win64-x64.zip -OutFile cmake.zip
+  - ps: Write-Host "=== (1/4) Downloading CMake 3.10.0 ZIP for Windows 64 bits ===" -foregroundcolor green
+  - ps: wget https://cmake.org/files/v3.10/cmake-3.10.0-win64-x64.zip -OutFile cmake.zip
   - ps: Write-Host "=== (2/4) Installing CMake ===" -foregroundcolor green
   - cmd: 7z x cmake.zip -o"." -y
   # Create the build directory and a fake Steam common directory
@@ -30,7 +30,7 @@ before_build:
 build_script:
   - cd build
   - ps: Write-Host "===  (4/4) Building ===" -foregroundcolor green
-  - ..\cmake-3.9.1-win64-x64\bin\cmake.exe -DSTEAMCOMMON=..\fake_steamcommon %BUILD_RULES% -G"Visual Studio 14 2015" -Tv140_xp ..
+  - ..\cmake-3.10.0-win64-x64\bin\cmake.exe -DSTEAMCOMMON=..\fake_steamcommon %BUILD_RULES% -G"Visual Studio 14 2015" -Tv140_xp ..
   - msbuild HLEnhanced.sln /t:Rebuild /p:Configuration=%CONFIGURATION% /m /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
 
 # If one job fail, mark the build as failed
@@ -44,6 +44,5 @@ test: off
 deploy: off
 
 notifications:
-
   - provider: Webhook
     url: https://webhooks.gitter.im/e/185665791c29d56ea7a1
