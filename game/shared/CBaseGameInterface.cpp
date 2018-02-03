@@ -10,13 +10,14 @@
 
 #include "interface.h"
 #include "FileSystem.h"
+
 #include "logging/CLogSystem.h"
+#include "xml/CXMLManager.h"
 
 #include "CBaseGameInterface.h"
 
 CSysModule* g_pFileSystemModule = nullptr;
 IFileSystem* g_pFileSystem = nullptr;
-
 namespace
 {
 CBaseGameInterface* g_pInstance = nullptr;
@@ -63,11 +64,18 @@ bool CBaseGameInterface::InitializeCommon()
 		return false;
 	}
 
+	if( !xml::XMLManager().Initialize() )
+	{
+		return false;
+	}
+
 	return true;
 }
 
 void CBaseGameInterface::ShutdownCommon()
 {
+	xml::XMLManager().Shutdown();
+
 	logging::LogSystem().Shutdown();
 
 	g_pDeveloper = nullptr;

@@ -162,7 +162,7 @@ private:
 	HSPRITE		m_hsprPlayer;
 	HSPRITE		m_hsprCamera;
 	HSPRITE		m_hsprPlayerDead;
-	HSPRITE		m_hsprViewcone;
+	//HSPRITE		m_hsprViewcone;
 	HSPRITE		m_hsprUnkownMap;
 	HSPRITE		m_hsprBeam;
 	HSPRITE		m_hCrosshair;

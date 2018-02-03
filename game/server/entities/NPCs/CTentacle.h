@@ -121,7 +121,8 @@ public:
 	void Killed( const CTakeDamageInfo& info, GibAction gibAction ) override;
 
 	MONSTERSTATE GetIdealState() override { return MONSTERSTATE_IDLE; };
-	bool CanPlaySequence( const bool fDisregardState ) const { return true; }
+	//Unused overload of CBaseMonster method, uncomment if needed - Solokiller
+	//bool CanPlaySequence( const bool fDisregardState ) const { return true; }
 
 	EntityClassification_t GetClassification() override;
 

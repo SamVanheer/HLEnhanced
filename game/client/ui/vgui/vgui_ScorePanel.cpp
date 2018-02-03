@@ -129,9 +129,9 @@ ScorePanel::ScorePanel(int x,int y,int wide,int tall) : Panel(x,y,wide,tall)
 	for(int i=0; i < NUM_COLUMNS; i++)
 	{
 		if (g_ColumnInfo[i].m_pTitle && g_ColumnInfo[i].m_pTitle[0] == '#')
-			m_HeaderLabels[i].setText( Localize().BufferedLocaliseTextString(g_ColumnInfo[i].m_pTitle));
+			m_HeaderLabels[i].setHeaderText( Localize().BufferedLocaliseTextString(g_ColumnInfo[i].m_pTitle));
 		else if(g_ColumnInfo[i].m_pTitle)
-			m_HeaderLabels[i].setText(g_ColumnInfo[i].m_pTitle);
+			m_HeaderLabels[i].setHeaderText(g_ColumnInfo[i].m_pTitle);
 
 		int xwide = g_ColumnInfo[i].m_Width;
 		if (ScreenWidth >= 640)
@@ -594,7 +594,7 @@ void ScorePanel::FillGrid()
 
 			if (m_iIsATeam[row] == TEAM_BLANK)
 			{
-				pLabel->setText(" ");
+				pLabel->setHeaderText(" ");
 				continue;
 			}
 			else if ( m_iIsATeam[row] == TEAM_YES )
@@ -842,7 +842,7 @@ void ScorePanel::FillGrid()
 				}
 			}
 
-			pLabel->setText(sz);
+			pLabel->setHeaderText(sz);
 		}
 	}
 

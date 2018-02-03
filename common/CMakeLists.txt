@@ -54,3 +54,4 @@ add_sources(
 )
 
 add_subdirectory( logging )
+add_subdirectory( xml )

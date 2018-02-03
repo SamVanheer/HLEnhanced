@@ -124,7 +124,7 @@ CTeamMenuPanel::CTeamMenuPanel(int iTrans, int iRemoveMe, int x,int y,int wide,i
 		if (i == 5)
 		{
 			m_pButtons[5]->setBoundKey( '5' );
-			m_pButtons[5]->setText( Localize().BufferedLocaliseTextString("#Team_AutoAssign") );
+			m_pButtons[5]->setButtonText( Localize().BufferedLocaliseTextString("#Team_AutoAssign") );
 			m_pButtons[5]->setVisible( true );
 		}
 
@@ -183,7 +183,7 @@ void CTeamMenuPanel::Update( void )
 		{
 			if ( i <= gViewPort->GetNumberOfTeams() )
 			{
-				m_pButtons[i]->setText( gViewPort->GetTeamName(i) );
+				m_pButtons[i]->setButtonText( gViewPort->GetTeamName(i) );
 
 				// bound key replacement
 				char sz[32]; 

@@ -74,6 +74,17 @@ void ShutdownInput();
 void EV_HookEvents();
 void IN_Commands();
 
+#ifdef WIN32
+#include "DelayLoad.h"
+
+//See DelayHook in DelayLoad.cpp
+HMODULE DelayLoad_LoadDelayLoadLib( unsigned dliNotify, PDelayLoadInfo pdli )
+{
+	//No client specific libraries yet
+	return nullptr;
+}
+#endif
+
 /*
 ================================
 HUD_GetHullBounds

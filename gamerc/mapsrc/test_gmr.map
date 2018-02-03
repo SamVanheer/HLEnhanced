@@ -1,11 +1,11 @@
 {
 "classname" "worldspawn"
 "classname" "worldspawn"
-"global_model_replacement" "models/test_gmr/Test.txt"
+"global_model_replacement" "models/test_gmr/Test.xml"
 "sounds" "1"
 "MaxRange" "4096"
 "mapversion" "220"
-"wad" "\program files (x86)\steam\steamapps\common\sven co-op\svencoop\halflife.wad;\program files (x86)\steam\steamapps\common\sven co-op\svencoop\zhlt.wad;\program files (x86)\steam\steamapps\common\half-life\hlenhanced\cs_office.wad;\program files (x86)\steam\steamapps\common\half-life\hlenhanced\de_piranesi.wad"
+"wad" "\program files (x86)\steam\steamapps\common\half-life\valve\decals.wad;\program files (x86)\steam\steamapps\common\half-life\valve\halflife.wad;\program files (x86)\steam\steamapps\common\half-life\valve\liquids.wad;\program files (x86)\steam\steamapps\common\half-life\valve\xeno.wad;\users\sam\downloads\hl\vluzacn_zhlt_v34\tools\zhlt.wad;\program files (x86)\steam\steamapps\common\half-life\valve\barney.wad;\program files (x86)\steam\steamapps\common\half-life\valve\op4ctf.wad;\program files (x86)\steam\steamapps\common\half-life\valve\opfor.wad"
 {
 ( 0 1024 0 ) ( 1024 1024 0 ) ( 1024 0 0 ) OUT_PAV3 [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1 
 ( 0 0 -16 ) ( 1024 0 -16 ) ( 1024 1024 -16 ) NULL [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1 

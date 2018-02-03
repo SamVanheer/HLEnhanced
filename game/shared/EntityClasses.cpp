@@ -551,7 +551,7 @@ void CEntityClassificationsManager::WriteToFile( const char* pszFilename ) const
 			++uiNumAliases;
 	}
 
-	fprintf( pFile, "\n%u aliases\n", uiNumAliases );
+	fprintf( pFile, "\n%u aliases\n", static_cast<unsigned int>( uiNumAliases ) );
 
 	for( const auto& classification : m_ClassMap )
 	{

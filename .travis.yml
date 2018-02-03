@@ -14,7 +14,21 @@ addons:
     - linux-libc-dev
     - gcc-7-multilib
     - g++-7-multilib
+    - libcurl4-openssl-dev:i386
+    - libpthread-stubs0-dev:i386
 
+env:
+  global:
+    - COMPILER_VERSION_C=gcc-6
+    - COMPILER_VERSION_CXX=g++-6
+    - DEPENDENCIES_DIR="${TRAVIS_BUILD_DIR}/dependencies"
+
+# Disable the cache for now; this isn't working quite as expected (and it's in beta)
+#cache:
+#  directories:
+#      - ${DEPENDENCIES_DIR}/xercesc/install/include
+#      - ${DEPENDENCIES_DIR}/xercesc/install/lib
+    
 matrix:
   allow_failures:
     # We allow all Mac builds to fail since we don't have a real Mac to test them.
@@ -69,27 +83,41 @@ install:
       CMAKE_URL="http://www.cmake.org/files/v3.10/cmake-3.10.0-Linux-x86_64.tar.gz"
       mkdir cmake && travis_retry wget --no-check-certificate --quiet -O - ${CMAKE_URL} | tar --strip-components=1 -xz -C cmake
       export PATH=${DEPS_DIR}/cmake/bin:${PATH}
-      ln -s ${TRAVIS_BUILD_DIR}/lib/public/vgui.so ${STEAMCOMMON_DIR}/Half-Life/vgui.so
     else
       CMAKE_URL="http://www.cmake.org/files/v3.10/cmake-3.10.0-Darwin-x86_64.tar.gz"
       mkdir cmake && travis_retry wget --no-check-certificate --quiet -O - ${CMAKE_URL} | tar --strip-components=1 -xz -C cmake
       export PATH=${DEPS_DIR}/cmake/CMake.app/Contents/bin:${PATH}
-      ln -s ${TRAVIS_BUILD_DIR}/lib/public/vgui.dylib ${STEAMCOMMON_DIR}/Half-Life/vgui.dylib
+    fi
+
+  - |
+    if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then
+      COMPILER_SETTINGS="-DCMAKE_CXX_COMPILER=${COMPILER_VERSION_CXX} -DCMAKE_C_COMPILER=${COMPILER_VERSION_C}"
     fi
 
 before_script:
   # Move to build directory.
   - cd ${TRAVIS_BUILD_DIR}
+    
+  - |
+    if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then
+      # Use a toolchain file to force a 32 bit environment
+      COMPILER_SETTINGS="${COMPILER_SETTINGS} -DCMAKE_TOOLCHAIN_FILE=${TRAVIS_BUILD_DIR}/cmake/Linux_32bit_toolchain.cmake"
+    fi
+    
+  - bash ${TRAVIS_BUILD_DIR}/travis_install_dependencies.sh ${DEPENDENCIES_DIR} "${COMPILER_SETTINGS}"
+  
   - mkdir build && cd build
 
 script:
-  # Just execute the cmake and make commands.
-  - |
-    if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then
-      cmake -DCMAKE_CXX_COMPILER="g++-7" -DCMAKE_C_COMPILER="gcc-7" -DSTEAMCOMMON=${STEAMCOMMON_DIR} -DSDL2=${TRAVIS_BUILD_DIR}/external/SDL2/lib/libSDL2-2.0.so.0 ${BUILD_RULES} ..
-    else
-      cmake -DSTEAMCOMMON=${STEAMCOMMON_DIR} -DSDL2=${TRAVIS_BUILD_DIR}/external/SDL2/lib/libSDL2-2.0.0.dylib ${BUILD_RULES} ..
-    fi
+  # Just execute the cmake and make commands
+  # Use the local vgui library
+  # TODO: SDL should be found by CMake at all times, this needs fixing - Solokiller
+  - >
+    cmake ${COMPILER_SETTINGS} -DCMAKE_CXX_FLAGS="${CMAKE_CXX_FLAGS} -m32" -DCMAKE_C_FLAGS="${CMAKE_C_FLAGS} -m32"
+    -DSTEAMCOMMON=${STEAMCOMMON_DIR} ${BUILD_RULES}
+    -Dvgui_DIR="${TRAVIS_BUILD_DIR}/lib/public"
+    -DXercesC_DIR="${DEPENDENCIES_DIR}/xercesc/install/lib/cmake/XercesC"
+    ..
   - make
 
 notifications:

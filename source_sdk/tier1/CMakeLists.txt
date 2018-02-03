@@ -6,6 +6,10 @@
 #                                                 #
 ###################################################
 
+include( InputFilesList )
+include( MSVCRuntime )
+include( WinXPSupport )
+
 add_sources(
 	bitbuf.cpp
 	byteswap.cpp
@@ -46,7 +50,14 @@ add_subdirectory( ${CMAKE_SOURCE_DIR}/source_sdk/public source_sdk/public )
 
 preprocess_sources()
 
-include_directories(
+add_library( tier1 STATIC ${PREP_SRCS} )
+
+#Needs static CRT to avoid alloc issues.
+configure_msvc_runtime( tier1 STATIC )
+
+check_winxp_support( tier1 )
+
+target_include_directories( tier1 PRIVATE
 	${CMAKE_SOURCE_DIR}/source_sdk/public
 	${CMAKE_SOURCE_DIR}/source_sdk/public/tier1
 	${CMAKE_SOURCE_DIR}/source_sdk/common
@@ -55,20 +66,18 @@ include_directories(
 	${CMAKE_SOURCE_DIR}
 )
 
-add_library( tier1 STATIC ${PREP_SRCS} )
-
 target_compile_definitions( tier1 PRIVATE
 	${SHARED_DEFS}
 	TIER1_STATIC_LIB
 	NO_MALLOC_OVERRIDE
 )
 
-set_target_properties( tier1 
-	PROPERTIES COMPILE_FLAGS "${LINUX_32BIT_FLAG} ${WARNING_LEVEL_STRICTEST}" 
-	LINK_FLAGS "${LINUX_32BIT_FLAG}" )
+set_target_properties( tier1 PROPERTIES
+	COMPILE_FLAGS "${WARNING_LEVEL_STRICTEST}" 
+)
 	
-	#No lib prefix
-SET_TARGET_PROPERTIES( tier1 PROPERTIES PREFIX "" )
+#No lib prefix
+set_target_properties( tier1 PROPERTIES PREFIX "" )
 
 #Create filters
 create_source_groups( "${CMAKE_SOURCE_DIR}" )

@@ -2,14 +2,63 @@
 #define GAME_SERVER_CONFIG_CSERVERCONFIG_H
 
 #include <memory>
+#include <string>
 
-#include "KeyValues.h"
+#include <xercesc/util/XercesDefs.hpp>
+
+#include "UtlVector.h"
+
+#include "EntityClasses.h"
+
+XERCES_CPP_NAMESPACE_BEGIN
+
+class DOMNode;
+
+XERCES_CPP_NAMESPACE_END
 
 /**
 *	Parses a server config file and stores off persistent data.
 */
 class CServerConfig
 {
+private:
+	//TODO: should have general use structures for these things - Solokiller
+	struct CCVarData
+	{
+		std::string m_szName;
+		std::string m_szValue;
+	};
+
+	struct CEntityClass
+	{
+		std::string m_szName;
+		Relationship m_DefaultSourceRelationship = R_NO;
+		Relationship m_DefaultTargetRelationship = R_NO;
+	};
+
+	struct CEntityClassAlias
+	{
+		std::string m_szSource;
+		std::string m_szTarget;
+	};
+
+	struct CEntityRelationship
+	{
+		std::string m_szSource;
+		std::string m_szTarget;
+		Relationship m_Relationship;
+		bool m_bBiDirectional = false;
+	};
+
+	struct CEntityClasses
+	{
+		bool m_bReset = false;
+
+		CUtlVector<CEntityClass> m_Classes;
+		CUtlVector<CEntityClassAlias> m_Aliases;
+		CUtlVector<CEntityRelationship> m_Relationships;
+	};
+
 public:
 	CServerConfig() = default;
 	~CServerConfig() = default;
@@ -24,8 +73,6 @@ public:
 
 	const char* GetFilename() const { return m_szFilename; }
 
-	bool IsLoaded() const { return m_KeyValues != nullptr; }
-
 	/**
 	*	Processes all CVars specified by this file.
 	*/
@@ -37,9 +84,13 @@ public:
 	void ProcessEntityClassifications();
 
 private:
+	void ParseEntityClassifications( const char* pszFilename, const xercesc::DOMNode& entClassData );
+
+private:
 	char m_szFilename[ MAX_PATH ] = {};
 
-	std::unique_ptr<KeyValues, KeyValuesDeleter> m_KeyValues;
+	CUtlVector<CCVarData> m_CVars;
+	CEntityClasses m_EntityClasses;
 
 private:
 	CServerConfig( const CServerConfig& ) = delete;

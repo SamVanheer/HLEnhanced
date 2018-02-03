@@ -73,23 +73,13 @@ CMap::~CMap()
 void CMap::LoadMapConfig()
 {
 	m_MapConfig = std::make_unique<CServerConfig>();
-
-	char szGameDir[ MAX_PATH ];
 	char szConfigName[ MAX_PATH ];
 
-	if( UTIL_GetGameDir( szGameDir, sizeof( szGameDir ) ) )
-	{
-		V_sprintf_safe( szConfigName, "%s/maps/%s.txt", szGameDir, STRING( gpGlobals->mapname ) );
+	V_sprintf_safe( szConfigName, "maps/%s.xml", STRING( gpGlobals->mapname ) );
 
-		if( !m_MapConfig->Parse( szConfigName, nullptr, true ) )
-		{
-			m_MapConfig.reset();
-		}
-	}
-	else
+	if( !m_MapConfig->Parse( szConfigName, nullptr, true ) )
 	{
-		//TODO: should just cache the dir once and use a library-local global to track it. - Solokiller
-		Alert( at_error, "Couldn't get game directory\n" );
+		m_MapConfig.reset();
 	}
 }
 

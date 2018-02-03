@@ -10,7 +10,7 @@ END_DATADESC()
 
 LINK_ENTITY_TO_CLASS( blood_splat, CBloodSplat );
 
-void CBloodSplat::Spawn( CBaseEntity* pOwner )
+void CBloodSplat::CreateSplat( CBaseEntity* pOwner )
 {
 	SetAbsOrigin( pOwner->GetAbsOrigin() + Vector( 0, 0, 32 ) );
 	SetAbsAngles( pOwner->GetViewAngle() );

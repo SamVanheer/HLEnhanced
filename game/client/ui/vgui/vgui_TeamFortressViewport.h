@@ -171,7 +171,7 @@ public:
 	  {
 		  	Init();
 			
-			setText( text );
+			setButtonText( text );
 	  }
 		
 	virtual void paintBackground()
@@ -280,8 +280,8 @@ public:
 class TeamFortressViewport : public Panel
 {
 private:
-	vgui::Cursor* _cursorNone;
-	vgui::Cursor* _cursorArrow;
+	//vgui::Cursor* _cursorNone;
+	//vgui::Cursor* _cursorArrow;
 
 	int			 m_iInitialized;
 
@@ -314,8 +314,8 @@ private:
 	//  Command Menu Team buttons
 	CommandButton *m_pTeamButtons[6];
 	CommandButton *m_pDisguiseButtons[5];
-	BuildButton   *m_pBuildButtons[3];
-	BuildButton   *m_pBuildActiveButtons[3];
+	//BuildButton   *m_pBuildButtons[3];
+	//BuildButton   *m_pBuildActiveButtons[3];
 
 	bool		m_bAllowSpectators;
 
@@ -1017,7 +1017,11 @@ class CClassMenuPanel : public CMenuPanel
 {
 private:
 	CTransparentPanel	*m_pClassInfoPanel[PC_LASTCLASS];
+#ifdef _TFC
 	Label				*m_pPlayers[PC_LASTCLASS];
+	enum { STRLENMAX_PLAYERSONTEAM = 128 };
+	char m_sPlayersOnTeamString[STRLENMAX_PLAYERSONTEAM];
+#endif
 	ClassButton			*m_pButtons[PC_LASTCLASS];
 	CommandButton		*m_pCancelButton;
 	ScrollPanel			*m_pScrollPanel;
@@ -1025,9 +1029,6 @@ private:
 	CImageLabel			*m_pClassImages[MAX_TEAMS][PC_LASTCLASS];
 
 	int					m_iCurrentInfo;
-
-	enum { STRLENMAX_PLAYERSONTEAM = 128 };
-	char m_sPlayersOnTeamString[STRLENMAX_PLAYERSONTEAM];
 
 public:
 	CClassMenuPanel(int iTrans, int iRemoveMe, int x,int y,int wide,int tall);

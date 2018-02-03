@@ -70,7 +70,7 @@ public:
 
 private:
 	HSPRITE m_hSprite;
-	HSPRITE m_hDamage;
+	//HSPRITE m_hDamage;
 
 	int m_iDmgHeight, m_iDmgWidth;
 	

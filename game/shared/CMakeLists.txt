@@ -15,6 +15,8 @@ add_sources(
 	Damage.h
 	DefaultClassifications.cpp
 	DefaultClassifications.h
+	DelayLoad.cpp
+	DelayLoad.h
 	enginecallback.h
 	EntityClasses.cpp
 	EntityClasses.h

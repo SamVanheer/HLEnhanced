@@ -6,6 +6,10 @@
 #                                                 #
 ###################################################
 
+include( InputFilesList )
+include( MSVCRuntime )
+include( WinXPSupport )
+
 add_sources(
 	AnimatingImagePanel.cpp
 	AnimationController.cpp
@@ -74,7 +78,14 @@ add_subdirectory( ${CMAKE_SOURCE_DIR}/source_sdk/vgui2/src source_sdk/vgui2/src 
 
 preprocess_sources()
 
-include_directories(
+add_library( vgui2_controls STATIC ${PREP_SRCS} )
+
+#Needs static CRT to avoid alloc issues.
+configure_msvc_runtime( vgui2_controls STATIC )
+
+check_winxp_support( vgui2_controls )
+
+target_include_directories( vgui2_controls PRIVATE
 	${CMAKE_SOURCE_DIR}/source_sdk/common
 	${CMAKE_SOURCE_DIR}/source_sdk/public
 	${CMAKE_SOURCE_DIR}/source_sdk/public/html
@@ -84,19 +95,17 @@ include_directories(
 	${CMAKE_SOURCE_DIR}
 )
 
-add_library( vgui2_controls STATIC ${PREP_SRCS} )
-
 target_compile_definitions( vgui2_controls PRIVATE
 	${SHARED_DEFS}
 	NO_MALLOC_OVERRIDE
 )
 
-set_target_properties( vgui2_controls 
-	PROPERTIES COMPILE_FLAGS "${LINUX_32BIT_FLAG} ${WARNING_LEVEL_STRICTEST}" 
-	LINK_FLAGS "${LINUX_32BIT_FLAG}" )
+set_target_properties( vgui2_controls PROPERTIES
+	COMPILE_FLAGS "${WARNING_LEVEL_STRICTEST}" 
+)
 	
-	#No lib prefix
-SET_TARGET_PROPERTIES( vgui2_controls PROPERTIES PREFIX "" )
+#No lib prefix
+set_target_properties( vgui2_controls PROPERTIES PREFIX "" )
 
 #Create filters
 create_source_groups( "${CMAKE_SOURCE_DIR}" )

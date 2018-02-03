@@ -102,7 +102,6 @@ public:
 	unsigned short m_usEgonStop;
 
 private:
-	float				m_shootTime;
 	EGON_FIREMODE		m_fireMode;
 	int					m_fireState;
 	float				m_shakeTime;

@@ -153,7 +153,7 @@ public:
 		_gap += XRES(5);
 	}
 
-	virtual void setText(const char* text)
+	virtual void setHeaderText(const char* text)
 	{
 		// strip any non-alnum characters from the end
 		char buf[512];

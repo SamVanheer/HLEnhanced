@@ -517,40 +517,16 @@ void CvarValue2( const edict_t *pEnt, int requestID, const char *cvarName, const
 }
 
 #ifdef WIN32
-//See post VS 2015 update 3 delayimp.h for the reason why this has to be defined. - Solokiller
-#define DELAYIMP_INSECURE_WRITABLE_HOOKS
-#include <delayimp.h>
+#include "DelayLoad.h"
 
-FARPROC WINAPI DelayHook(
-	unsigned        dliNotify,
-	PDelayLoadInfo  pdli
-	)
+//See DelayHook in DelayLoad.cpp
+HMODULE DelayLoad_LoadDelayLoadLib( unsigned dliNotify, PDelayLoadInfo pdli )
 {
-	if( dliNotify == dliNotePreLoadLibrary )
+	if( strcmp( pdli->szDll, "sqlite3.dll" ) == 0 )
 	{
-		if( strcmp( pdli->szDll, "sqlite3.dll" ) == 0 )
-		{
-			char szGameDir[ MAX_PATH ];
-			char szPath[ MAX_PATH ];
-
-			if( !UTIL_GetGameDir( szGameDir, sizeof( szGameDir ) ) )
-				return nullptr;
-
-			const int iResult = snprintf( szPath, sizeof( szPath ), "%s/%s", szGameDir, pdli->szDll );
-
-			if( iResult < 0 || static_cast<size_t>( iResult ) >= sizeof( szPath ) )
-				return nullptr;
-
-			HMODULE hLib = LoadLibraryA( szPath );
-
-			return ( FARPROC ) hLib;
-		}
+		return DelayLoad_LoadGameLib( pdli->szDll );
 	}
 
 	return nullptr;
 }
-
-ExternC PfnDliHook __pfnDliNotifyHook2 = DelayHook;
-
-ExternC PfnDliHook   __pfnDliFailureHook2 = nullptr;
 #endif

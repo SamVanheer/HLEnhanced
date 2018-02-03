@@ -24,7 +24,7 @@ CGib* CGib::GibCreate( const char* szGibModel )
 {
 	auto pGib = static_cast<CGib*>( UTIL_CreateNamedEntity( "gib" ) );
 
-	pGib->Spawn( szGibModel );
+	pGib->CreateGib( szGibModel );
 
 	return pGib;
 }
@@ -32,7 +32,7 @@ CGib* CGib::GibCreate( const char* szGibModel )
 //
 // Throw a chunk
 //
-void CGib::Spawn( const char *szGibModel )
+void CGib::CreateGib( const char *szGibModel )
 {
 	SetMoveType( MOVETYPE_BOUNCE );
 	SetFriction( 0.55 ); // deading the bounce a bit

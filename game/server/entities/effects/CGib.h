@@ -26,7 +26,7 @@ public:
 
 	static CGib* GibCreate( const char* szGibModel );
 
-	void Spawn( const char *szGibModel );
+	void CreateGib( const char *szGibModel );
 	void BounceGibTouch( CBaseEntity *pOther );
 	void StickyGibTouch( CBaseEntity *pOther );
 	void WaitTillLand( void );

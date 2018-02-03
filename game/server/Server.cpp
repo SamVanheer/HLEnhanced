@@ -56,12 +56,12 @@ cvar_t  mp_chattime = {"mp_chattime","10", FCVAR_SERVER };
 //Whether to use the new way to check for impulse commands (unaffected by weapon state) - Solokiller
 cvar_t	sv_new_impulse_check = { "sv_new_impulse_check", "0", FCVAR_SERVER };
 
-cvar_t	server_cfg = { "server_cfg", "server/default_server_config.txt", FCVAR_SERVER | FCVAR_UNLOGGED };
+cvar_t	server_cfg = { "server_cfg", "server/default_server_config.xml", FCVAR_SERVER | FCVAR_UNLOGGED };
 
-cvar_t	as_plugin_list_file = { "as_plugin_list_file", "default_plugins.txt", FCVAR_SERVER | FCVAR_UNLOGGED };
+cvar_t	as_plugin_list_file = { "as_plugin_list_file", "default_plugins.xml", FCVAR_SERVER | FCVAR_UNLOGGED };
 
 //Config file that contains the MySQL settings to use for default connections.
-cvar_t	as_mysql_config = { "as_mysql_config", "server/default_mysql_config.txt", FCVAR_SERVER | FCVAR_UNLOGGED };
+cvar_t	as_mysql_config = { "as_mysql_config", "server/default_mysql_config.xml", FCVAR_SERVER | FCVAR_UNLOGGED };
 
 // Engine Cvars
 cvar_t 	*g_psv_gravity = NULL;

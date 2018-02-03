@@ -7,9 +7,17 @@ platform: Win32
 # Build in Release configuration only
 configuration:
   - Release
+  
+cache:
+  # Cache dependencies so we don't rebuild them all the time. The cache should only need to be invalidated if we change versions, which is done in this file as well
+  - dependencies/xercesc/install/cmake -> appveyor.yml
+  - dependencies/xercesc/install/include -> appveyor.yml
+  - dependencies/xercesc/install/lib -> appveyor.yml
 
 # Build with all those possible configurations
 environment:
+  COMPILER_VERSION: Visual Studio 14 2015
+  COMPILER_TOOLSET: v140_xp
   matrix:
     - BUILD_RULES: -DUSE_OPFOR=0 -DUSE_ANGELSCRIPT=0 -DUSE_AS_SQL=0
     - BUILD_RULES: -DUSE_OPFOR=1 -DUSE_ANGELSCRIPT=0 -DUSE_AS_SQL=0
@@ -18,20 +26,25 @@ environment:
 
 before_build:
   # Use the latest version of CMake
-  - ps: Write-Host "=== (1/4) Downloading CMake 3.10.0 ZIP for Windows 64 bits ===" -foregroundcolor green
-  - ps: wget https://cmake.org/files/v3.10/cmake-3.10.0-win64-x64.zip -OutFile cmake.zip
-  - ps: Write-Host "=== (2/4) Installing CMake ===" -foregroundcolor green
-  - cmd: 7z x cmake.zip -o"." -y
+  - ps: Write-Host "=== (1/5) Downloading CMake 3.10.0 ZIP for Windows 64 bits ===" -foregroundcolor green
+  - ps: wget https://cmake.org/files/v3.10/cmake-3.10.0-win64-x64.zip -OutFile cmake_files.zip
+  - ps: Write-Host "=== (2/5) Installing CMake ===" -foregroundcolor green
+  - cmd: 7z x cmake_files.zip -o"." -y
+  # Rename this so we don't have the version number used everywhere
+  - ps: Rename-Item cmake-3.10.0-win64-x64 cmake_install
+  # Handle dependencies
+  - ps: .\appveyor_install_dependencies.ps1
   # Create the build directory and a fake Steam common directory
-  - ps: Write-Host "=== (3/4) Creating build and fake Steam common directory ===" -foregroundcolor green
-  - md build
+  - ps: Write-Host "=== (4/5) Creating build and fake Steam common directory ===" -foregroundcolor green
+  - md build_hlenhanced
   - md fake_steamcommon
 
 build_script:
-  - cd build
-  - ps: Write-Host "===  (4/4) Building ===" -foregroundcolor green
-  - ..\cmake-3.10.0-win64-x64\bin\cmake.exe -DSTEAMCOMMON=..\fake_steamcommon %BUILD_RULES% -G"Visual Studio 14 2015" -Tv140_xp ..
-  - msbuild HLEnhanced.sln /t:Rebuild /p:Configuration=%CONFIGURATION% /m /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
+  # Build HLEnhanced
+  - cd build_hlenhanced
+  - ps: Write-Host "=== (5/5) Building HLEnhanced ===" -foregroundcolor green
+  - ..\cmake_install\bin\cmake.exe -DXercesC_DIR=%APPVEYOR_BUILD_FOLDER%\dependencies\xercesc\install\cmake -DSTEAMCOMMON=..\fake_steamcommon %BUILD_RULES% -G"%COMPILER_VERSION%" -T%COMPILER_TOOLSET% ..
+  - ..\cmake_install\bin\cmake.exe --build . --clean-first --config %CONFIGURATION%
 
 # If one job fail, mark the build as failed
 matrix:

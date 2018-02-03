@@ -233,7 +233,7 @@ public:
 	// Invoke the function
 	virtual void				Dispatch( void );
 private:
-	virtual void				Create( char const *pName, FnCommandCallback callback, 
+	virtual void				CreateCommand( char const *pName, FnCommandCallback callback, 
 									char const *pHelpString = 0, int flags = 0, FnCommandCompletionCallback completionFunc = 0 );
 
 	// Call this function when executing the command
@@ -319,7 +319,7 @@ private:
 	virtual bool				ClampValue( float& value );
 	virtual void				ChangeStringValue( char const *tempVal );
 
-	virtual void				Create( char const *pName, char const *pDefaultValue, int flags = 0,
+	virtual void				CreateConVar( char const *pName, char const *pDefaultValue, int flags = 0,
 									char const *pHelpString = 0, bool bMin = false, float fMin = 0.0,
 									bool bMax = false, float fMax = false, FnChangeCallback callback = 0 );
 

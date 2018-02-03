@@ -1275,7 +1275,7 @@ void TeamFortressViewport::UpdateSpectatorPanel()
 		}
 
 		m_pSpectatorPanel->m_BottomMainLabel->setText( "%s", pBottomText );
-		m_pSpectatorPanel->m_BottomMainButton->setText( pBottomText );
+		m_pSpectatorPanel->m_BottomMainButton->setButtonText( pBottomText );
 
 		
 		// update extra info field
@@ -1923,14 +1923,14 @@ void TeamFortressViewport::MsgFunc_TeamNames(const char *pszName, int iSize, voi
 
 		// Set the team name buttons
 		if (m_pTeamButtons[i])
-			m_pTeamButtons[i]->setText( m_sTeamNames[teamNum] );
+			m_pTeamButtons[i]->setButtonText( m_sTeamNames[teamNum] );
 
 		// range check this value...m_pDisguiseButtons[5];
 		if ( teamNum < 5 )
 		{
 			// Set the disguise buttons
 			if ( m_pDisguiseButtons[teamNum] )
-				m_pDisguiseButtons[teamNum]->setText( m_sTeamNames[teamNum] );
+				m_pDisguiseButtons[teamNum]->setButtonText( m_sTeamNames[teamNum] );
 		}
 	}
 

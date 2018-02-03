@@ -574,13 +574,10 @@ int CHalfLifeMultiplay :: IPointsForKill( CBasePlayer *pAttacker, CBasePlayer *p
 void CHalfLifeMultiplay::PlayerKilled( CBasePlayer* pVictim, const CTakeDamageInfo& info )
 {
 	auto pKiller = info.GetAttacker();
-	auto pInflictor = info.GetInflictor();
+	//auto pInflictor = info.GetInflictor();
 
 	ASSERT( pKiller );
-	ASSERT( pInflictor );
-
-	//Prevents an unreferenced var warning, inflictor needs to be asserted so can't remove it - Solokiller
-	pInflictor = pInflictor;
+	ASSERT( info.GetInflictor() );
 
 	DeathNotice( pVictim, info );
 
