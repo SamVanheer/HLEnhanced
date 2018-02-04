@@ -19,8 +19,8 @@ addons:
 
 env:
   global:
-    - COMPILER_VERSION_C=gcc-6
-    - COMPILER_VERSION_CXX=g++-6
+    - COMPILER_VERSION_C=gcc-7
+    - COMPILER_VERSION_CXX=g++-7
     - DEPENDENCIES_DIR="${TRAVIS_BUILD_DIR}/dependencies"
 
 # Disable the cache for now; this isn't working quite as expected (and it's in beta)
@@ -112,12 +112,20 @@ script:
   # Just execute the cmake and make commands
   # Use the local vgui library
   # TODO: SDL should be found by CMake at all times, this needs fixing - Solokiller
-  - >
-    cmake ${COMPILER_SETTINGS} -DCMAKE_CXX_FLAGS="${CMAKE_CXX_FLAGS} -m32" -DCMAKE_C_FLAGS="${CMAKE_C_FLAGS} -m32"
-    -DSTEAMCOMMON=${STEAMCOMMON_DIR} ${BUILD_RULES}
-    -Dvgui_DIR="${TRAVIS_BUILD_DIR}/lib/public"
-    -DXercesC_DIR="${DEPENDENCIES_DIR}/xercesc/install/lib/cmake/XercesC"
-    ..
+  - |
+    if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then
+      cmake ${COMPILER_SETTINGS} -DCMAKE_CXX_FLAGS="${CMAKE_CXX_FLAGS} -m32" -DCMAKE_C_FLAGS="${CMAKE_C_FLAGS} -m32"
+      -DSTEAMCOMMON=${STEAMCOMMON_DIR} ${BUILD_RULES}
+      -Dvgui_DIR="${TRAVIS_BUILD_DIR}/lib/public"
+      -DXercesC_DIR="${DEPENDENCIES_DIR}/xercesc/install/lib/cmake/XercesC"
+      ..
+    else
+      cmake -DCMAKE_CXX_FLAGS="${CMAKE_CXX_FLAGS} -m32" -DCMAKE_C_FLAGS="${CMAKE_C_FLAGS} -m32"
+      -DSTEAMCOMMON=${STEAMCOMMON_DIR} ${BUILD_RULES}
+      -Dvgui_DIR="${TRAVIS_BUILD_DIR}/lib/public"
+      -DXercesC_DIR="${DEPENDENCIES_DIR}/xercesc/install/lib/cmake/XercesC"
+      ..
+    fi
   - make
 
 notifications:
