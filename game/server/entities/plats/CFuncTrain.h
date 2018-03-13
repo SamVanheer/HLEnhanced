@@ -63,6 +63,7 @@ public:
 	void Next( void );
 
 	entvars_t	*m_pevCurrentTarget;
+	//TODO: never used, remove - Solokiller
 	int			m_sounds;
 	bool		m_activated;
 };
