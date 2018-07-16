@@ -35,29 +35,21 @@ matrix:
     - os: osx
   include:
     # Ubuntu 14.04 Trusty Tahr amd64 (Linux) GCC 6
-    # Everything disabled
+    # Half-Life + Angelscript + Angelscript SQL
     - os: linux
       env: COMPILER=gcc-6 BUILD_RULES="-DGAME_BASE=GAME_HL1 -DUSE_ANGELSCRIPT=0 -DUSE_AS_SQL=0"
     # Ubuntu 14.04 Trusty Tahr amd64 (Linux) GCC 6
-    # Opposing Force
-    - os: linux
-      env: COMPILER=gcc-6 BUILD_RULES="-DGAME_BASE=GAME_HL1 -DUSE_ANGELSCRIPT=0 -DUSE_AS_SQL=0"
-    # Ubuntu 14.04 Trusty Tahr amd64 (Linux) GCC 6
-    # Opposing Force + AngelScript
-    - os: linux
-      env: COMPILER=gcc-6 BUILD_RULES="-GAME_BASE=GAME_OPFOR -DUSE_ANGELSCRIPT=1 -DUSE_AS_SQL=0"
-    # Ubuntu 14.04 Trusty Tahr amd64 (Linux) GCC 6
-    # Opposing Force + AngelScript + MariaDB
+    # Opposing Force + Angelscript + Angelscript SQL
     - os: linux
       env: COMPILER=gcc-6 BUILD_RULES="-DGAME_BASE=GAME_OPFOR -DUSE_ANGELSCRIPT=1 -DUSE_AS_SQL=1 -DMARIADB=${TRAVIS_BUILD_DIR}/external/MariaDB/lib/libmariadb.so.2 -DSQLITE3=${TRAVIS_BUILD_DIR}/external/SQLite/lib/libsqlite3.so"
-    # Mac OS X Mavericks 10.9.5 (Xcode 6.1)
-    # Everything disabled
+    # macOS Sierra 10.12.6 (Xcode 8.3.3)
+    # Half-Life + Angelscript + Angelscript SQL
     - os: osx
-      env: BUILD_RULES="-DGAME_BASE=GAME_HL1 -DUSE_ANGELSCRIPT=0 -DUSE_AS_SQL=0"
-    # Mac OS X Mavericks 10.9.5 (Xcode 6.1)
-    # Opposing Force
+      env: BUILD_RULES="-DGAME_BASE=GAME_HL1 -DUSE_ANGELSCRIPT=1 -DUSE_AS_SQL=1"
+    # macOS Sierra 10.12.6 (Xcode 8.3.3)
+    # Opposing Force + Angelscript + Angelscript SQL
     - os: osx
-      env: BUILD_RULES="-DGAME_BASE=GAME_OPFOR -DUSE_ANGELSCRIPT=0 -DUSE_AS_SQL=0"
+      env: BUILD_RULES="-DGAME_BASE=GAME_OPFOR -DUSE_ANGELSCRIPT=1 -DUSE_AS_SQL=1"
     # TODO: Add other OS X build matrix when AngelScript and MariaDB OS X binaries are built
 
 before_install:
