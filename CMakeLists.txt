@@ -1,7 +1,7 @@
 ###################################################
 #                                                 #
 #                                                 #
-#	Half-Life Enhanced CMake build file           #
+#       Half-Life Enhanced CMake build file       #
 #                                                 #
 #                                                 #
 ###################################################
@@ -52,8 +52,11 @@ set( EXTERNAL_DIR ${CMAKE_SOURCE_DIR}/external )
 
 option( USE_ANGELSCRIPT "Whether to include Angelscript" )
 option( USE_AS_SQL "Whether to include Angelscript SQL APIs" )
-option( USE_OPFOR "Whether to include Opposing Force related stuff" )
 option( USE_VGUI2 "Whether to include VGUI2 features" )
+
+set( GAME_BASE "GAME_HL1" CACHE STRING "Select the game you wish to base yourself upon." )
+set( GAMES "GAME_HL1;GAME_OPFOR" )
+set_property( CACHE GAME_BASE PROPERTY STRINGS ${GAMES} )
 
 #Some libraries that we use don't come with .a files (import libraries) for Cygwin compilation (Unix Makefiles on Windows).
 #This isn't really supported, and since we only use Makefiles on Windows for the compile_commands.json file right now this isn't really an issue.
@@ -67,8 +70,12 @@ endif()
 
 ternary( USE_ANGELSCRIPT_DEFINE USE_ANGELSCRIPT 1 0 )
 ternary( USE_AS_SQL_DEFINE USE_AS_SQL 1 0 )
-ternary( USE_OPFOR_DEFINE USE_OPFOR 1 0 )
 ternary( USE_VGUI2_DEFINE USE_VGUI2 1 0 )
+if( GAME_BASE STREQUAL "GAME_OPFOR" )
+	set( USE_OPFOR_DEFINE 1 )
+else()
+	set( USE_OPFOR_DEFINE 0 )
+endif()
 
 if( CLANG_DB_BUILD )
 	message( STATUS "Exporting Compile Commands" )
@@ -119,7 +126,7 @@ set( SHARED_GAME_DEFS
 	CLIENT_WEAPONS
 	NO_MALLOC_OVERRIDE
 	USE_ANGELSCRIPT=${USE_ANGELSCRIPT_DEFINE}
-	USE_OPFOR=${USE_OPFOR_DEFINE}
+	GAME_OPFOR=${USE_OPFOR_DEFINE}
 )
 
 #Shared linker flags
