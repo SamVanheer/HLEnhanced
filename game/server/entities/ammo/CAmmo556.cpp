@@ -12,7 +12,9 @@
 *   without written permission from Valve LLC.
 *
 ****/
-#if USE_OPFOR
+
+#ifdef GAME_OPFOR
+
 #include "extdll.h"
 #include "util.h"
 #include "cbase.h"
@@ -42,4 +44,4 @@ bool CAmmo556::AddAmmo( CBaseEntity* pOther )
 	return UTIL_GiveAmmoToPlayer( this, pOther, AMMO_556_GIVE, "556" );
 }
 
-#endif //USE_OPFOR
+#endif // GAME_OPFOR

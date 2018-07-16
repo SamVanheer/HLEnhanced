@@ -1,4 +1,5 @@
-#if USE_OPFOR
+#ifdef GAME_OPFOR
+
 /***
 *
 *	Copyright (c) 1996-2001, Valve LLC. All rights reserved.
@@ -490,4 +491,5 @@ void CDisplacer::AltFireThink()
 	}
 #endif
 }
-#endif //USE_OPFOR
+
+#endif // GAME_OPFOR

@@ -1,4 +1,3 @@
-#if USE_OPFOR
 /***
 *
 *	Copyright (c) 1996-2001, Valve LLC. All rights reserved.
@@ -13,6 +12,9 @@
 *   without written permission from Valve LLC.
 *
 ****/
+
+#ifdef GAME_OPFOR
+
 #ifndef GAME_SERVER_ENTITIES_ROPE_CELECTRIFIEDWIRE_H
 #define GAME_SERVER_ENTITIES_ROPE_CELECTRIFIEDWIRE_H
 
@@ -80,5 +82,6 @@ private:
 	float m_flLastSparkTime;
 };
 
-#endif //GAME_SERVER_ENTITIES_ROPE_CELECTRIFIEDWIRE_H
-#endif //USE_OPFOR
+#endif // GAME_SERVER_ENTITIES_ROPE_CELECTRIFIEDWIRE_H
+
+#endif // GAME_OPFOR

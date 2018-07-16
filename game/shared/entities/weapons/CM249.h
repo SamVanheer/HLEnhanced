@@ -1,4 +1,3 @@
-#if USE_OPFOR
 /***
 *
 *	Copyright (c) 1996-2001, Valve LLC. All rights reserved.
@@ -13,10 +12,13 @@
 *   without written permission from Valve LLC.
 *
 ****/
+
+#ifdef GAME_OPFOR
+
 #ifndef GAME_SHARED_ENTITIES_WEAPONS_CM249_H
 #define GAME_SHARED_ENTITIES_WEAPONS_CM249_H
 
-enum M249Anum
+enum M249Anim
 {
 	M249_SLOWIDLE = 0,
 	M249_IDLE2,
@@ -81,6 +83,7 @@ private:
 
 	unsigned short m_usFireM249;
 };
-#endif //GAME_SHARED_ENTITIES_WEAPONS_CM249_H
 
-#endif //USE_OPFOR
+#endif // GAME_SHARED_ENTITIES_WEAPONS_CM249_H
+
+#endif // GAME_OPFOR

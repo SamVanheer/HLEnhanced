@@ -152,7 +152,7 @@ private:
 	cvar_t* plrDmgSatchel;
 	cvar_t* plrDmgTripmine;
 
-#if USE_OPFOR
+#ifdef GAME_OPFOR
 	cvar_t* plrDmgKnife;
 	cvar_t* plrDmgPipewrench;
 	cvar_t* plrDmgGrapple;
@@ -533,7 +533,7 @@ public:
 		return plrDmgTripmine->value;
 	}
 
-#if USE_OPFOR
+#ifdef GAME_OPFOR
 	float GetPlrDmgKnife() const
 	{
 		return plrDmgKnife->value;

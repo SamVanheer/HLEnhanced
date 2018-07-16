@@ -1,4 +1,3 @@
-#if USE_OPFOR
 /***
 *
 *	Copyright (c) 1996-2001, Valve LLC. All rights reserved.
@@ -13,6 +12,9 @@
 *   use or distribution of this code by or to any unlicensed person is illegal.
 *
 ****/
+
+#ifdef GAME_OPFOR
+
 #ifndef GAME_SERVER_ENTITIES_WEAPONS_CBARNACLEGRAPPLETIP_H
 #define GAME_SERVER_ENTITIES_WEAPONS_CBARNACLEGRAPPLETIP_H
 
@@ -68,5 +70,6 @@ private:
 	Vector m_vecOriginOffset;
 };
 
-#endif //GAME_SERVER_ENTITIES_WEAPONS_CBARNACLEGRAPPLETIP_H
-#endif //USE_OPFOR
+#endif // GAME_SERVER_ENTITIES_WEAPONS_CBARNACLEGRAPPLETIP_H
+
+#endif // GAME_OPFOR

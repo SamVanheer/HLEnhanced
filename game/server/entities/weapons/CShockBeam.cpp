@@ -1,4 +1,3 @@
-#if USE_OPFOR
 /***
 *
 *	Copyright (c) 1996-2001, Valve LLC. All rights reserved.
@@ -13,6 +12,9 @@
 *   without written permission from Valve LLC.
 *
 ****/
+
+#ifdef GAME_OPFOR
+
 #include "extdll.h"
 #include "util.h"
 #include "cbase.h"
@@ -268,4 +270,5 @@ CShockBeam* CShockBeam::CreateShockBeam( const Vector& vecOrigin, const Vector& 
 
 	return pBeam;
 }
-#endif //USE_OPFOR
+
+#endif // GAME_OPFOR

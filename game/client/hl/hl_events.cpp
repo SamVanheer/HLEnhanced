@@ -52,7 +52,7 @@ void Game_HookEvents( void )
 	gEngfuncs.pfnHookEvent( "events/firehornet.sc",				EV_HornetGunFire );
 	gEngfuncs.pfnHookEvent( "events/tripfire.sc",				EV_TripmineFire );
 	gEngfuncs.pfnHookEvent( "events/snarkfire.sc",				EV_SnarkFire );
-#if USE_OPFOR
+#ifdef GAME_OPFOR
 	gEngfuncs.pfnHookEvent( "events/knife.sc",					EV_Knife );
 	gEngfuncs.pfnHookEvent( "events/pipewrench.sc",				EV_Pipewrench );
 	gEngfuncs.pfnHookEvent( "events/sniper.sc",					EV_SniperRifle );

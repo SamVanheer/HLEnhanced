@@ -1,4 +1,3 @@
-#if USE_OPFOR
 /***
 *
 *	Copyright (c) 1996-2001, Valve LLC. All rights reserved.
@@ -13,7 +12,10 @@
 *   without written permission from Valve LLC.
 *
 ****/
+
+#ifdef GAME_OPFOR
 #ifndef GAME_SHARED_ENTITIES_WEAPONS_CDISPLACER_H
+#define GAME_SHARED_ENTITIES_WEAPONS_CDISPLACER_H
 
 enum DisplacerAnim
 {
@@ -85,5 +87,6 @@ private:
 	unsigned short m_usFireDisplacer;
 };
 
-#endif //GAME_SHARED_ENTITIES_WEAPONS_CDISPLACER_H
-#endif //USE_OPFOR
+#endif // GAME_SHARED_ENTITIES_WEAPONS_CDISPLACER_H
+
+#endif // GAME_OPFOR

@@ -586,7 +586,7 @@ static void RegisterScriptBullet( asIScriptEngine& engine )
 	engine.RegisterEnumValue( pszObjectName, "MONSTER_MP5", BULLET_MONSTER_MP5 );
 	engine.RegisterEnumValue( pszObjectName, "MONSTER_12MM", BULLET_MONSTER_12MM );
 
-#if USE_OPFOR
+#ifdef GAME_OPFOR
 	engine.RegisterEnumValue( pszObjectName, "PLAYER_556", BULLET_PLAYER_556 );
 	engine.RegisterEnumValue( pszObjectName, "PLAYER_762", BULLET_PLAYER_762 );
 	engine.RegisterEnumValue( pszObjectName, "PLAYER_DEAGLE", BULLET_PLAYER_DEAGLE );

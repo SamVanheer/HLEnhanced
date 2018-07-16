@@ -57,7 +57,7 @@ static int g_TracerCount[ MAX_CLIENTS ];
 #include "entities/weapons/CShotgun.h"
 #include "entities/weapons/CSqueak.h"
 #include "entities/weapons/CTripmine.h"
-#if USE_OPFOR
+#ifdef GAME_OPFOR
 #include "entities/weapons/CDesertEagle.h"
 #include "entities/weapons/CDisplacer.h"
 #include "entities/weapons/CKnife.h"
@@ -214,7 +214,7 @@ void EV_HLDM_DecalGunshot( pmtrace_t *pTrace, int iBulletType )
 		case BULLET_MONSTER_MP5:
 		case BULLET_PLAYER_BUCKSHOT:
 		case BULLET_PLAYER_357:
-#if USE_OPFOR
+#ifdef GAME_OPFOR
 		case BULLET_PLAYER_556:
 		case BULLET_PLAYER_762:
 		case BULLET_PLAYER_DEAGLE:
@@ -358,7 +358,7 @@ void EV_HLDM_FireBullets( int idx,
 				EV_HLDM_DecalGunshot( &tr, iBulletType );
 				
 				break;
-#if USE_OPFOR
+#ifdef GAME_OPFOR
 			case BULLET_PLAYER_556:
 				{
 					EV_HLDM_PlayTextureSound( idx, &tr, vecSrc, vecEnd, iBulletType );
@@ -1024,7 +1024,7 @@ void EV_Crowbar( event_args_t *args )
 //	   CROWBAR END 
 //======================
 
-#if USE_OPFOR
+#ifdef GAME_OPFOR
 //Only predict the miss sounds, hit sounds are still played 
 //server side, so players don't get the wrong idea.
 void EV_Knife( event_args_t* args )
@@ -1531,7 +1531,7 @@ void EV_TrainPitchAdjust( event_args_t *args )
 	}
 }
 
-#if USE_OPFOR
+#ifdef GAME_OPFOR
 void EV_SniperRifle( event_args_t* args )
 {
 	const int idx = args->entindex;

@@ -46,7 +46,7 @@ void RegisterAmmoTypes()
 	g_AmmoTypes.AddAmmoType( "Hand Grenade", HANDGRENADE_MAX_CARRY );
 	g_AmmoTypes.AddAmmoType( "Snarks", SNARK_MAX_CARRY );
 	g_AmmoTypes.AddAmmoType( "Hornets", HORNET_MAX_CARRY );
-#if USE_OPFOR
+#ifdef GAME_OPFOR
 	g_AmmoTypes.AddAmmoType( "762", NATO762_MAX_CARRY );
 	g_AmmoTypes.AddAmmoType( "556", NATO556_MAX_CARRY );
 	g_AmmoTypes.AddAmmoType( "shock_rounds", SHOCK_ROUNDS_MAX_CARRY );
@@ -154,7 +154,7 @@ void PrecacheWeapons()
 	// hornetgun
 	UTIL_PrecacheOtherWeapon( "weapon_hornetgun" );
 
-#if USE_OPFOR
+#ifdef GAME_OPFOR
 	// Knife
 	UTIL_PrecacheOtherWeapon( "weapon_knife" );
 

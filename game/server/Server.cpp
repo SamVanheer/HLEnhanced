@@ -433,7 +433,7 @@ cvar_t	sk_plr_tripmine_mp1 = { "sk_plr_tripmine_mp1","0" };
 cvar_t	sk_plr_tripmine_mp2 = { "sk_plr_tripmine_mp2","0" };
 cvar_t	sk_plr_tripmine_mp3 = { "sk_plr_tripmine_mp3","0" };
 
-#if USE_OPFOR
+#ifdef GAME_OPFOR
 // Knife whack
 cvar_t	sk_plr_knife1 = { "sk_plr_knife1","0" };
 cvar_t	sk_plr_knife2 = { "sk_plr_knife2","0" };
@@ -997,7 +997,7 @@ void GameDLLInit( void )
 	CVAR_REGISTER( &sk_plr_tripmine_mp2 );// {"sk_plr_tripmine_mp2","0"};
 	CVAR_REGISTER( &sk_plr_tripmine_mp3 );// {"sk_plr_tripmine_mp3","0"};
 
-#if USE_OPFOR
+#ifdef GAME_OPFOR
 	// Knife whack
 	CVAR_REGISTER( &sk_plr_knife1 );// {"sk_plr_knife1","0"};
 	CVAR_REGISTER( &sk_plr_knife2 );// {"sk_plr_knife2","0"};

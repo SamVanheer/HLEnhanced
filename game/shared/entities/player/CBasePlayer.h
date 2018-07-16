@@ -24,7 +24,7 @@
 
 struct WeaponHUDSprite;
 
-#if USE_OPFOR
+#ifdef GAME_OPFOR
 class CRope;
 #endif
 
@@ -108,7 +108,7 @@ enum PLAYER_ANIM
 	PLAYER_SUPERJUMP,
 	PLAYER_DIE,
 	PLAYER_ATTACK1,
-#if USE_OPFOR
+#ifdef GAME_OPFOR
 	PLAYER_GRAPPLE,
 #endif
 };
@@ -602,7 +602,7 @@ public:
 			m_afPhysicsFlags &= ~PFLAG_ONROPE;
 	}
 
-#if USE_OPFOR
+#ifdef GAME_OPFOR
 	CRope* GetRope() { return m_pRope; }
 
 	void SetRope( CRope* pRope )
