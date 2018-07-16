@@ -53,7 +53,7 @@ function CMake_GenerateBuildAndInstall( $generate_args, [string] $src_path = "sr
 	cd ..
 }
 
-Write-Host "=== (3/5) Downloading and Installing Dependencies ===" -foregroundcolor green
+Write-Host "=== (3/5) Downloading and installing dependencies ===" -foregroundcolor green
 
 # Install only if it wasn't cached
 if( !( Test-Path dependencies -pathType container ) )
@@ -75,7 +75,7 @@ if( !( Test-Path dependencies -pathType container ) )
 	Write-Host "[Dependency] Building XercesC" -foregroundcolor green
 	
 	# Acquire files
-	wget "http://www-us.apache.org/dist//xerces/c/3/sources/xerces-c-$XERCESC_VERSION.zip" -OutFile xercesc.zip
+	wget "https://archive.apache.org/dist/xerces/c/3/sources/xerces-c-$XERCESC_VERSION.zip" -OutFile xercesc.zip
 	cmd /c 7z x xercesc.zip -o"." -y
 	Rename-Item "xerces-c-$XERCESC_VERSION" src
   

@@ -26,12 +26,12 @@ environment:
 
 before_build:
   # Use the latest version of CMake
-  - ps: Write-Host "=== (1/5) Downloading CMake 3.9.1 ZIP for Windows 64 bits ===" -foregroundcolor green
-  - ps: wget https://cmake.org/files/v3.9/cmake-3.9.1-win64-x64.zip -OutFile cmake_files.zip
+  - ps: Write-Host "=== (1/5) Downloading CMake 3.11.4 ZIP for Windows 64 bits ===" -foregroundcolor green
+  - ps: wget https://cmake.org/files/v3.11/cmake-3.11.4-win64-x64.zip -OutFile cmake_files.zip
   - ps: Write-Host "=== (2/5) Installing CMake ===" -foregroundcolor green
   - cmd: 7z x cmake_files.zip -o"." -y
   # Rename this so we don't have the version number used everywhere
-  - ps: Rename-Item cmake-3.9.1-win64-x64 cmake_install
+  - ps: Rename-Item cmake-3.11.4-win64-x64 cmake_install
   
   # Handle dependencies
   - ps: .\appveyor_install_dependencies.ps1
@@ -59,6 +59,5 @@ test: off
 deploy: off
 
 notifications:
-
   - provider: Webhook
     url: https://webhooks.gitter.im/e/185665791c29d56ea7a1
