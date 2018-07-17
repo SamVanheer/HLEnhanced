@@ -104,6 +104,8 @@ script:
   # TODO: SDL should be found by CMake at all times, this needs fixing - Solokiller
   - >
     cmake ${COMPILER_SETTINGS} -DCMAKE_CXX_FLAGS="${CMAKE_CXX_FLAGS} -m32" -DCMAKE_C_FLAGS="${CMAKE_C_FLAGS} -m32"
+    -DCMAKE_MACOSX_BUNDLE=ON
+    -DCMAKE_XCODE_ATTRIBUTE_CODE_SIGNING_REQUIRED=ON
     -DSTEAMCOMMON=${STEAMCOMMON_DIR} ${BUILD_RULES}
     -Dvgui_DIR="${TRAVIS_BUILD_DIR}/lib/public"
     -DXercesC_DIR="${DEPENDENCIES_DIR}/xercesc/install/lib/cmake/XercesC"
