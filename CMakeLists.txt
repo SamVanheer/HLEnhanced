@@ -22,6 +22,12 @@ project( HLEnhanced )
 #C++14 support
 set( SHARED_COMPILER_FLAGS "-std=c++1y" )
 
+# Shepard - Might fix Travis not picking up the thread library
+if( APPLE )
+	set( CMAKE_MACOSX_BUNDLE ON )
+	set( CMAKE_XCODE_ATTRIBUTE_CODE_SIGNING_REQUIRED OFF )
+endif()
+
 if( CMAKE_CXX_COMPILER_ID MATCHES "Clang|GNU" )
 	# Always build as 32 bit
 	# Additional debug info for GDB.
