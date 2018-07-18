@@ -427,9 +427,11 @@ if( USE_AS_SQL AND NOT CLANG_DB_BUILD )
 		#Copy the sqlite3 dll so the exe can get to it
 		set( LIBS_TO_COPY ${LIBS_TO_COPY} "${EXTERNAL_DIR}/SQLite/lib/sqlite3.dll" )
 	else()
-		#Copy the sqlite3 library so the exe can get to it
-		#Copy the mariadb library so the exe can get to it		
-		set( LIBS_TO_COPY ${LIBS_TO_COPY} "${EXTERNAL_DIR}/SQLite/lib/libsqlite3.so" "${EXTERNAL_DIR}/MariaDB/lib/libmariadb.so.2" )
+		if( NOT APPLE )
+			#Copy the sqlite3 library so the exe can get to it
+			#Copy the mariadb library so the exe can get to it		
+			set( LIBS_TO_COPY ${LIBS_TO_COPY} "${EXTERNAL_DIR}/SQLite/lib/libsqlite3.so" "${EXTERNAL_DIR}/MariaDB/lib/libmariadb.so.2" )
+		endif()
 	endif()
 endif()
 
@@ -449,9 +451,14 @@ if( USE_AS_SQL AND NOT CLANG_DB_BUILD )
 		find_library( MARIADB "mariadbclient${CMAKE_STATIC_LIBRARY_SUFFIX}" PATHS external/MariaDB/lib/release NO_DEFAULT_PATH )
 		find_library( MARIADBD "mariadbclient${CMAKE_STATIC_LIBRARY_SUFFIX}" PATHS external/MariaDB/lib/debug NO_DEFAULT_PATH )
 	else()
-		#Never use the default install for these (could try to use 64 bit versions, which don't work for 32 bit builds).
-		find_library( SQLITE3 "${CMAKE_SHARED_LIBRARY_PREFIX}sqlite3${CMAKE_SHARED_LIBRARY_SUFFIX}" PATHS "${GAME_BASE_PATH}" NO_DEFAULT_PATH )
-		find_library( MARIADB "${CMAKE_SHARED_LIBRARY_PREFIX}mariadb.so.2" PATHS "${GAME_BASE_PATH}" NO_DEFAULT_PATH )
+		if( APPLE )
+			find_library( SQLITE3 "${CMAKE_SHARED_LIBRARY_PREFIX}sqlite3${CMAKE_SHARED_LIBRARY_SUFFIX}" )
+			find_library( MARIADB "${CMAKE_SHARED_LIBRARY_PREFIX}mariadb${CMAKE_SHARED_LIBRARY_SUFFIX}" )
+		else()
+			#Never use the default install for these (could try to use 64 bit versions, which don't work for 32 bit builds).
+			find_library( SQLITE3 "${CMAKE_SHARED_LIBRARY_PREFIX}sqlite3${CMAKE_SHARED_LIBRARY_SUFFIX}" PATHS "${GAME_BASE_PATH}" NO_DEFAULT_PATH )
+			find_library( MARIADB "${CMAKE_SHARED_LIBRARY_PREFIX}mariadb${CMAKE_SHARED_LIBRARY_SUFFIX}.2" PATHS "${GAME_BASE_PATH}" NO_DEFAULT_PATH )
+		endif()
 		set( MARIADBD ${MARIADB} )
 	endif()
 else()
