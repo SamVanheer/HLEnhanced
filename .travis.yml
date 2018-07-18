@@ -59,8 +59,9 @@ before_install:
       sudo apt-get -qq update
       sudo apt-get install -y linux-libc-dev:i386
     else
-      brew update
-      brew install mariadb-connector-c sqlite
+      brew update -v
+      brew upgrade sqlite -v
+      brew install mariadb-connector-c -v
     fi
 
 install:
