@@ -29,7 +29,12 @@ if( CMAKE_CXX_COMPILER_ID MATCHES "Clang|GNU" )
 endif()
 
 set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${SHARED_COMPILER_FLAGS}" )
-set( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${SHARED_COMPILER_FLAGS}" )
+# TODO - Investigate why it's not possible to add shared compiler flags to Mac
+if( APPLE )
+	set( CMAKE_C_FLAGS "${CMAKE_C_FLAGS}" )
+else()
+	set( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${SHARED_COMPILER_FLAGS}" )
+endif()
 
 unset( SHARED_COMPILER_FLAGS )
 
@@ -145,13 +150,14 @@ elseif( UNIX )
 		${SHARED_GAME_LINKER_FLAGS} "-mfpmath=387 -Werror=return-type -fvisibility=hidden "
 	)
 
-	if( APPLE )
-		set( SHARED_GAME_LINKER_FLAGS
-			${SHARED_GAME_LINKER_FLAGS} "-momit-leaf-frame-pointer -mtune=core2 "
-		)
-	else()
-		#Linux, Cygwin, etc.
-	endif()
+	# TODO - Investigate why this fails on Mac
+	#if( APPLE )
+	#	set( SHARED_GAME_LINKER_FLAGS
+	#		${SHARED_GAME_LINKER_FLAGS} "-momit-leaf-frame-pointer -mtune=core2 "
+	#	)
+	#else()
+	#	#Linux, Cygwin, etc.
+	#endif()
 endif()
 
 #Highest warning level and warnings as errors
