@@ -423,7 +423,7 @@ void CBasePlayer::SetAnimation( PLAYER_ANIM playerAnim )
 		}
 		break;
 
-#if USE_OPFOR
+#ifdef GAME_OPFOR
 	case PLAYER_GRAPPLE:
 		if( GetFlags().Any( FL_SWIM ) )
 		{

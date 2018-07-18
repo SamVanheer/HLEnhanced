@@ -1,4 +1,3 @@
-#if USE_OPFOR
 /***
 *
 *	Copyright (c) 1996-2001, Valve LLC. All rights reserved.
@@ -13,6 +12,9 @@
 *   without written permission from Valve LLC.
 *
 ****/
+
+#ifdef GAME_OPFOR
+
 #ifndef GAME_SHARED_ENTITIES_WEAPONS_CSPORELAUNCHER_H
 #define GAME_SHARED_ENTITIES_WEAPONS_CSPORELAUNCHER_H
 
@@ -77,5 +79,6 @@ private:
 	float m_flNextReload;
 };
 
-#endif //GAME_SHARED_ENTITIES_WEAPONS_CSPORELAUNCHER_H
-#endif //USE_OPFOR
+#endif // GAME_SHARED_ENTITIES_WEAPONS_CSPORELAUNCHER_H
+
+#endif // GAME_OPFOR

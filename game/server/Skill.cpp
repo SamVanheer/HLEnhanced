@@ -211,7 +211,7 @@ void skilldata_t::RefreshSkillData()
 	// Tripmine
 	plrDmgTripmine = GetSkillCvar( "sk_plr_tripmine" );
 
-#if USE_OPFOR
+#ifdef GAME_OPFOR
 	// Knife whack
 	plrDmgKnife = GetSkillCvar( "sk_plr_knife" );
 

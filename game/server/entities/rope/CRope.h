@@ -1,4 +1,3 @@
-#if USE_OPFOR
 /***
 *
 *	Copyright (c) 1996-2001, Valve LLC. All rights reserved.
@@ -13,6 +12,9 @@
 *   without written permission from Valve LLC.
 *
 ****/
+
+#ifdef GAME_OPFOR
+
 #ifndef GAME_SERVER_ENTITIES_ROPE_CROPE_H
 #define GAME_SERVER_ENTITIES_ROPE_CROPE_H
 
@@ -323,5 +325,6 @@ private:
 	bool m_bMakeSound;
 };
 
-#endif //GAME_SERVER_ENTITIES_ROPE_CROPE_H
-#endif //USE_OPFOR
+#endif // GAME_SERVER_ENTITIES_ROPE_CROPE_H
+
+#endif // GAME_OPFOR

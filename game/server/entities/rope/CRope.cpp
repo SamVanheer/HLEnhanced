@@ -1,4 +1,3 @@
-#if USE_OPFOR
 /***
 *
 *	Copyright (c) 1996-2001, Valve LLC. All rights reserved.
@@ -13,6 +12,9 @@
 *   without written permission from Valve LLC.
 *
 ****/
+
+#ifdef GAME_OPFOR
+
 #include <utility>
 
 #include "extdll.h"
@@ -1127,4 +1129,5 @@ Vector CRope::GetAttachedObjectsPosition() const
 
 	return vecResult;
 }
-#endif //USE_OPFOR
+
+#endif // GAME_OPFOR

@@ -240,7 +240,7 @@ void CClientPrediction::WeaponsPostThink( local_state_t *from, local_state_t *to
 	m_pPlayer->SetAmmoCount( "uranium", ( int ) from->client.ammo_cells );
 	m_pPlayer->SetAmmoCount( "Hornets", ( int ) from->client.vuser2[ 0 ] );
 	m_pPlayer->SetAmmoCount( "rockets", ( int ) from->client.ammo_rockets );
-#if USE_OPFOR
+#ifdef GAME_OPFOR
 	m_pPlayer->SetAmmoCount( "762", ( int ) from->client.vuser3[ 0 ] );
 	m_pPlayer->SetAmmoCount( "556", ( int ) from->client.vuser3[ 1 ] );
 	m_pPlayer->SetAmmoCount( "shock_rounds", ( int ) from->client.vuser3[ 2 ] );
@@ -331,7 +331,7 @@ void CClientPrediction::WeaponsPostThink( local_state_t *from, local_state_t *to
 	to->client.ammo_cells		= m_pPlayer->GetAmmoCount( "uranium" );
 	to->client.vuser2[ 0 ]		= m_pPlayer->GetAmmoCount( "Hornets" );
 	to->client.ammo_rockets		= m_pPlayer->GetAmmoCount( "rockets" );
-#if USE_OPFOR
+#ifdef GAME_OPFOR
 	to->client.vuser3[ 0 ]		= m_pPlayer->GetAmmoCount( "762" );
 	to->client.vuser3[ 1 ]		= m_pPlayer->GetAmmoCount( "556" );
 	to->client.vuser3[ 2 ]		= m_pPlayer->GetAmmoCount( "shock_rounds" );

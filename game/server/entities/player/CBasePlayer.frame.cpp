@@ -125,7 +125,7 @@ void CBasePlayer::PreThink()
 
 	if( bCheckVehicles )
 	{
-#if USE_OPFOR
+#ifdef GAME_OPFOR
 	//We're on a rope. - Solokiller
 	if( m_afPhysicsFlags & PFLAG_ONROPE && m_pRope )
 	{
@@ -961,7 +961,7 @@ void CBasePlayer::CheatImpulseCommands( int iImpulse )
 			GiveNamedItem( "weapon_snark" );
 			GiveNamedItem( "weapon_hornetgun" );
 
-#if USE_OPFOR
+#ifdef GAME_OPFOR
 			GiveNamedItem( "weapon_knife" );
 			GiveNamedItem( "weapon_pipewrench" );
 			GiveNamedItem( "weapon_grapple" );

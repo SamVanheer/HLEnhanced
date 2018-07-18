@@ -1,4 +1,3 @@
-#if USE_OPFOR
 /***
 *
 *	Copyright (c) 1996-2001, Valve LLC. All rights reserved.
@@ -13,6 +12,9 @@
 *   without written permission from Valve LLC.
 *
 ****/
+
+#ifdef GAME_OPFOR
+
 #ifndef GAME_SERVER_ENTITIES_WEAPONS_CDESERTEAGLELASER_H
 #define GAME_SERVER_ENTITIES_WEAPONS_CDESERTEAGLELASER_H
 
@@ -28,6 +30,6 @@ public:
 
 	static CDesertEagleLaser* CreateSpot();
 };
-#endif //GAME_SERVER_ENTITIES_WEAPONS_CDESERTEAGLELASER_H
+#endif // GAME_SERVER_ENTITIES_WEAPONS_CDESERTEAGLELASER_H
 
-#endif //USE_OPFOR
+#endif // GAME_OPFOR

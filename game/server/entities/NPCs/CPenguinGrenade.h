@@ -1,4 +1,3 @@
-#if USE_OPFOR
 /***
 *
 *	Copyright (c) 1996-2001, Valve LLC. All rights reserved.
@@ -13,6 +12,9 @@
 *   without written permission from Valve LLC.
 *
 ****/
+
+#ifdef GAME_OPFOR
+
 #ifndef GAME_SERVER_ENTITIES_NPCS_CPENGUINGRENADE_H
 #define GAME_SERVER_ENTITIES_NPCS_CPENGUINGRENADE_H
 
@@ -62,5 +64,6 @@ private:
 	EntityClassification_t  m_iMyClass = EntityClassifications().GetNoneId();
 };
 
-#endif //GAME_SERVER_ENTITIES_NPCS_CPENGUINGRENADE_H
-#endif //USE_OPFOR
+#endif // GAME_SERVER_ENTITIES_NPCS_CPENGUINGRENADE_H
+
+#endif // GAME_OPFOR

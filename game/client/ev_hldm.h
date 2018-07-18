@@ -45,7 +45,7 @@ void EV_SnarkFire( event_args_t *args );
 
 void EV_TrainPitchAdjust( event_args_t *args );
 
-#if USE_OPFOR
+#ifdef GAME_OPFOR
 void EV_Knife( event_args_t* args );
 void EV_Pipewrench( event_args_t *args );
 void EV_SniperRifle( event_args_t* args );

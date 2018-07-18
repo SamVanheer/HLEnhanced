@@ -1,7 +1,7 @@
 ###################################################
 #                                                 #
 #                                                 #
-#	Half-Life Enhanced CMake build file           #
+#       Half-Life Enhanced CMake build file       #
 #                                                 #
 #                                                 #
 ###################################################
@@ -29,7 +29,12 @@ if( CMAKE_CXX_COMPILER_ID MATCHES "Clang|GNU" )
 endif()
 
 set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${SHARED_COMPILER_FLAGS}" )
-set( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${SHARED_COMPILER_FLAGS}" )
+# TODO - Investigate why it's not possible to add shared compiler flags to Mac
+if( APPLE )
+	set( CMAKE_C_FLAGS "${CMAKE_C_FLAGS}" )
+else()
+	set( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${SHARED_COMPILER_FLAGS}" )
+endif()
 
 unset( SHARED_COMPILER_FLAGS )
 
@@ -52,8 +57,11 @@ set( EXTERNAL_DIR ${CMAKE_SOURCE_DIR}/external )
 
 option( USE_ANGELSCRIPT "Whether to include Angelscript" )
 option( USE_AS_SQL "Whether to include Angelscript SQL APIs" )
-option( USE_OPFOR "Whether to include Opposing Force related stuff" )
 option( USE_VGUI2 "Whether to include VGUI2 features" )
+
+set( GAME_BASE "GAME_HL1" CACHE STRING "Select the game you wish to base yourself upon." )
+set( GAMES "GAME_HL1;GAME_OPFOR" )
+set_property( CACHE GAME_BASE PROPERTY STRINGS ${GAMES} )
 
 #Some libraries that we use don't come with .a files (import libraries) for Cygwin compilation (Unix Makefiles on Windows).
 #This isn't really supported, and since we only use Makefiles on Windows for the compile_commands.json file right now this isn't really an issue.
@@ -67,7 +75,6 @@ endif()
 
 ternary( USE_ANGELSCRIPT_DEFINE USE_ANGELSCRIPT 1 0 )
 ternary( USE_AS_SQL_DEFINE USE_AS_SQL 1 0 )
-ternary( USE_OPFOR_DEFINE USE_OPFOR 1 0 )
 ternary( USE_VGUI2_DEFINE USE_VGUI2 1 0 )
 
 if( CLANG_DB_BUILD )
@@ -119,8 +126,11 @@ set( SHARED_GAME_DEFS
 	CLIENT_WEAPONS
 	NO_MALLOC_OVERRIDE
 	USE_ANGELSCRIPT=${USE_ANGELSCRIPT_DEFINE}
-	USE_OPFOR=${USE_OPFOR_DEFINE}
 )
+
+if( GAME_BASE STREQUAL "GAME_OPFOR" )
+	set( SHARED_GAME_DEFS ${SHARED_GAME_DEFS} "GAME_OPFOR" )
+endif()
 
 #Shared linker flags
 set( SHARED_GAME_LINKER_FLAGS
@@ -140,13 +150,14 @@ elseif( UNIX )
 		${SHARED_GAME_LINKER_FLAGS} "-mfpmath=387 -Werror=return-type -fvisibility=hidden "
 	)
 
-	if( APPLE )
-		set( SHARED_GAME_LINKER_FLAGS
-			${SHARED_GAME_LINKER_FLAGS} "-momit-leaf-frame-pointer -mtune=core2 "
-		)
-	else()
-		#Linux, Cygwin, etc.
-	endif()
+	# TODO - Investigate why this fails on Mac
+	#if( APPLE )
+	#	set( SHARED_GAME_LINKER_FLAGS
+	#		${SHARED_GAME_LINKER_FLAGS} "-momit-leaf-frame-pointer -mtune=core2 "
+	#	)
+	#else()
+	#	#Linux, Cygwin, etc.
+	#endif()
 endif()
 
 #Highest warning level and warnings as errors
@@ -416,9 +427,11 @@ if( USE_AS_SQL AND NOT CLANG_DB_BUILD )
 		#Copy the sqlite3 dll so the exe can get to it
 		set( LIBS_TO_COPY ${LIBS_TO_COPY} "${EXTERNAL_DIR}/SQLite/lib/sqlite3.dll" )
 	else()
-		#Copy the sqlite3 library so the exe can get to it
-		#Copy the mariadb library so the exe can get to it		
-		set( LIBS_TO_COPY ${LIBS_TO_COPY} "${EXTERNAL_DIR}/SQLite/lib/libsqlite3.so" "${EXTERNAL_DIR}/MariaDB/lib/libmariadb.so.2" )
+		if( NOT APPLE )
+			#Copy the sqlite3 library so the exe can get to it
+			#Copy the mariadb library so the exe can get to it		
+			set( LIBS_TO_COPY ${LIBS_TO_COPY} "${EXTERNAL_DIR}/SQLite/lib/libsqlite3.so" "${EXTERNAL_DIR}/MariaDB/lib/libmariadb.so.2" )
+		endif()
 	endif()
 endif()
 
@@ -438,9 +451,14 @@ if( USE_AS_SQL AND NOT CLANG_DB_BUILD )
 		find_library( MARIADB "mariadbclient${CMAKE_STATIC_LIBRARY_SUFFIX}" PATHS external/MariaDB/lib/release NO_DEFAULT_PATH )
 		find_library( MARIADBD "mariadbclient${CMAKE_STATIC_LIBRARY_SUFFIX}" PATHS external/MariaDB/lib/debug NO_DEFAULT_PATH )
 	else()
-		#Never use the default install for these (could try to use 64 bit versions, which don't work for 32 bit builds).
-		find_library( SQLITE3 "${CMAKE_SHARED_LIBRARY_PREFIX}sqlite3${CMAKE_SHARED_LIBRARY_SUFFIX}" PATHS "${GAME_BASE_PATH}" NO_DEFAULT_PATH )
-		find_library( MARIADB "${CMAKE_SHARED_LIBRARY_PREFIX}mariadb.so.2" PATHS "${GAME_BASE_PATH}" NO_DEFAULT_PATH )
+		if( APPLE )
+			find_library( SQLITE3 "${CMAKE_SHARED_LIBRARY_PREFIX}sqlite3${CMAKE_SHARED_LIBRARY_SUFFIX}" PATHS "/usr/local/lib/sqlite3" )
+			find_library( MARIADB "${CMAKE_SHARED_LIBRARY_PREFIX}mariadb${CMAKE_SHARED_LIBRARY_SUFFIX}" PATHS "/usr/local/lib/mariadb" )
+		else()
+			#Never use the default install for these (could try to use 64 bit versions, which don't work for 32 bit builds).
+			find_library( SQLITE3 "${CMAKE_SHARED_LIBRARY_PREFIX}sqlite3${CMAKE_SHARED_LIBRARY_SUFFIX}" PATHS "${GAME_BASE_PATH}" NO_DEFAULT_PATH )
+			find_library( MARIADB "${CMAKE_SHARED_LIBRARY_PREFIX}mariadb${CMAKE_SHARED_LIBRARY_SUFFIX}.2" PATHS "${GAME_BASE_PATH}" NO_DEFAULT_PATH )
+		endif()
 		set( MARIADBD ${MARIADB} )
 	endif()
 else()

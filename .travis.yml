@@ -35,29 +35,21 @@ matrix:
     - os: osx
   include:
     # Ubuntu 14.04 Trusty Tahr amd64 (Linux) GCC 6
-    # Everything disabled
+    # Half-Life + Angelscript + Angelscript SQL
     - os: linux
-      env: COMPILER=gcc-6 BUILD_RULES="-DUSE_OPFOR=0 -DUSE_ANGELSCRIPT=0 -DUSE_AS_SQL=0"
+      env: COMPILER=gcc-6 BUILD_RULES="-DGAME_BASE=GAME_HL1 -DUSE_ANGELSCRIPT=0 -DUSE_AS_SQL=0"
     # Ubuntu 14.04 Trusty Tahr amd64 (Linux) GCC 6
-    # Opposing Force
+    # Opposing Force + Angelscript + Angelscript SQL
     - os: linux
-      env: COMPILER=gcc-6 BUILD_RULES="-DUSE_OPFOR=1 -DUSE_ANGELSCRIPT=0 -DUSE_AS_SQL=0"
-    # Ubuntu 14.04 Trusty Tahr amd64 (Linux) GCC 6
-    # Opposing Force + AngelScript
-    - os: linux
-      env: COMPILER=gcc-6 BUILD_RULES="-DUSE_OPFOR=1 -DUSE_ANGELSCRIPT=1 -DUSE_AS_SQL=0"
-    # Ubuntu 14.04 Trusty Tahr amd64 (Linux) GCC 6
-    # Opposing Force + AngelScript + MariaDB
-    - os: linux
-      env: COMPILER=gcc-6 BUILD_RULES="-DUSE_OPFOR=1 -DUSE_ANGELSCRIPT=1 -DUSE_AS_SQL=1 -DMARIADB=${TRAVIS_BUILD_DIR}/external/MariaDB/lib/libmariadb.so.2 -DSQLITE3=${TRAVIS_BUILD_DIR}/external/SQLite/lib/libsqlite3.so"
-    # Mac OS X Mavericks 10.9.5 (Xcode 6.1)
-    # Everything disabled
+      env: COMPILER=gcc-6 BUILD_RULES="-DGAME_BASE=GAME_OPFOR -DUSE_ANGELSCRIPT=1 -DUSE_AS_SQL=1 -DMARIADB=${TRAVIS_BUILD_DIR}/external/MariaDB/lib/libmariadb.so.2 -DSQLITE3=${TRAVIS_BUILD_DIR}/external/SQLite/lib/libsqlite3.so"
+    # macOS Sierra 10.12.6 (Xcode 8.3.3)
+    # Half-Life + Angelscript + Angelscript SQL
     - os: osx
-      env: BUILD_RULES="-DUSE_OPFOR=0 -DUSE_ANGELSCRIPT=0 -DUSE_AS_SQL=0"
-    # Mac OS X Mavericks 10.9.5 (Xcode 6.1)
-    # Opposing Force
+      env: BUILD_RULES="-DGAME_BASE=GAME_HL1 -DUSE_ANGELSCRIPT=1 -DUSE_AS_SQL=1"
+    # macOS Sierra 10.12.6 (Xcode 8.3.3)
+    # Opposing Force + Angelscript + Angelscript SQL
     - os: osx
-      env: BUILD_RULES="-DUSE_OPFOR=1 -DUSE_ANGELSCRIPT=0 -DUSE_AS_SQL=0"
+      env: BUILD_RULES="-DGAME_BASE=GAME_OPFOR -DUSE_ANGELSCRIPT=1 -DUSE_AS_SQL=1"
     # TODO: Add other OS X build matrix when AngelScript and MariaDB OS X binaries are built
 
 before_install:
@@ -67,7 +59,9 @@ before_install:
       sudo apt-get -qq update
       sudo apt-get install -y linux-libc-dev:i386
     else
-      brew update
+      brew update -v
+      brew upgrade sqlite -v
+      brew install mariadb-connector-c -v
     fi
 
 install:
@@ -78,11 +72,11 @@ install:
   # Get the latest CMake version and Make symlinks so it can use VGUI properly
   - |
     if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then
-      CMAKE_URL="http://www.cmake.org/files/v3.9/cmake-3.9.1-Linux-x86_64.tar.gz"
+      CMAKE_URL="http://www.cmake.org/files/v3.11/cmake-3.11.4-Linux-x86_64.tar.gz"
       mkdir cmake && travis_retry wget --no-check-certificate --quiet -O - ${CMAKE_URL} | tar --strip-components=1 -xz -C cmake
       export PATH=${DEPS_DIR}/cmake/bin:${PATH}
     else
-      CMAKE_URL="http://www.cmake.org/files/v3.9/cmake-3.9.1-Darwin-x86_64.tar.gz"
+      CMAKE_URL="http://www.cmake.org/files/v3.11/cmake-3.11.4-Darwin-x86_64.tar.gz"
       mkdir cmake && travis_retry wget --no-check-certificate --quiet -O - ${CMAKE_URL} | tar --strip-components=1 -xz -C cmake
       export PATH=${DEPS_DIR}/cmake/CMake.app/Contents/bin:${PATH}
     fi
@@ -121,10 +115,9 @@ script:
 
 notifications:
   email: false
-  
   webhooks:
     urls:
       - https://webhooks.gitter.im/e/a764b8bf510b89cd4472
-    on_success: change  # options: [always|never|change] default: always
-    on_failure: always  # options: [always|never|change] default: always
-    on_start: never     # options: [always|never|change] default: always
+    on_success: change
+    on_failure: always
+    on_start: never

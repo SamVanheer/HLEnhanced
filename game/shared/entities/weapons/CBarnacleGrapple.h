@@ -1,4 +1,3 @@
-#if USE_OPFOR
 /***
 *
 *	Copyright (c) 1996-2001, Valve LLC. All rights reserved.
@@ -13,6 +12,9 @@
 *   use or distribution of this code by or to any unlicensed person is illegal.
 *
 ****/
+
+#ifdef GAME_OPFOR
+
 #ifndef GAME_SHARED_ENTITIES_WEAPONS_CBARNACLEGRAPPLE_H
 #define GAME_SHARED_ENTITIES_WEAPONS_CBARNACLEGRAPPLE_H
 
@@ -89,5 +91,6 @@ private:
 	bool m_bMomentaryStuck;
 };
 
-#endif //GAME_SHARED_ENTITIES_WEAPONS_CBARNACLEGRAPPLE_H
-#endif //USE_OPFOR
+#endif // GAME_SHARED_ENTITIES_WEAPONS_CBARNACLEGRAPPLE_H
+
+#endif // GAME_OPFOR

@@ -1,4 +1,3 @@
-#if USE_OPFOR
 /***
 *
 *	Copyright (c) 1996-2001, Valve LLC. All rights reserved.
@@ -13,6 +12,9 @@
 *   use or distribution of this code by or to any unlicensed person is illegal.
 *
 ****/
+
+#ifdef GAME_OPFOR
+
 #include "extdll.h"
 #include "util.h"
 #include "cbase.h"
@@ -316,4 +318,5 @@ void CBarnacleGrappleTip::SetPosition( const Vector& vecOrigin, const Vector& ve
 	SetAbsAngles( vecAngles );
 	SetOwner( pOwner );
 }
-#endif //USE_OPFOR
+
+#endif // GAME_OPFOR

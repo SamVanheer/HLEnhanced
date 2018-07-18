@@ -1,4 +1,3 @@
-#if USE_OPFOR
 /***
 *
 *	Copyright (c) 1996-2001, Valve LLC. All rights reserved.
@@ -13,6 +12,9 @@
 *   without written permission from Valve LLC.
 *
 ****/
+
+#ifdef GAME_OPFOR
+
 #ifndef GAME_SERVER_ENTITIES_TRIGGERS_CTRIGGERXENRETURN_H
 #define GAME_SERVER_ENTITIES_TRIGGERS_CTRIGGERXENRETURN_H
 
@@ -27,5 +29,6 @@ public:
 	void ReturnTouch( CBaseEntity* pOther );
 };
 
-#endif //GAME_SERVER_ENTITIES_TRIGGERS_CTRIGGERXENRETURN_H
-#endif //USE_OPFOR
+#endif // GAME_SERVER_ENTITIES_TRIGGERS_CTRIGGERXENRETURN_H
+
+#endif // GAME_OPFOR

@@ -85,7 +85,7 @@ void DecalGunshot( TraceResult *pTrace, int iBulletType )
 		case BULLET_MONSTER_MP5:
 		case BULLET_PLAYER_BUCKSHOT:
 		case BULLET_PLAYER_357:
-#if USE_OPFOR
+#ifdef GAME_OPFOR
 		case BULLET_PLAYER_556:
 		case BULLET_PLAYER_762:
 		case BULLET_PLAYER_DEAGLE:
@@ -165,7 +165,7 @@ void W_Precache()
 	UTIL_PrecacheOther( "ammo_gaussclip" );
 	UTIL_PrecacheOther( "ammo_rpgclip" );
 	UTIL_PrecacheOther( "ammo_crossbow" );
-#if USE_OPFOR
+#ifdef GAME_OPFOR
 	UTIL_PrecacheOther( "ammo_762" );
 	UTIL_PrecacheOther( "ammo_556" );
 #endif

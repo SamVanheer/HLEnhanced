@@ -12,10 +12,12 @@
 *   without written permission from Valve LLC.
 *
 ****/
+
+#ifdef GAME_OPFOR
+
 #ifndef GAME_SERVER_ENTITIES_AMMO_CAMMO556_H
 #define GAME_SERVER_ENTITIES_AMMO_CAMMO556_H
 
-#if USE_OPFOR
 class CAmmo556 : public CBasePlayerAmmo
 {
 public:
@@ -27,6 +29,7 @@ public:
 
 	bool AddAmmo( CBaseEntity* pOther ) override;
 };
-#endif //USE_OPFOR
 
-#endif //GAME_SERVER_ENTITIES_AMMO_CAMMO556_H
+#endif // GAME_SERVER_ENTITIES_AMMO_CAMMO556_H
+
+#endif // GAME_OPFOR

@@ -1,4 +1,3 @@
-#if USE_OPFOR
 /***
 *
 *	Copyright (c) 1996-2001, Valve LLC. All rights reserved.
@@ -13,6 +12,9 @@
 *   without written permission from Valve LLC.
 *
 ****/
+
+#ifdef GAME_OPFOR
+
 #include "extdll.h"
 #include "util.h"
 #include "cbase.h"
@@ -270,4 +272,5 @@ void CElectrifiedWire::DoLightning()
 		WRITE_BYTE( 255 );
 	MESSAGE_END();
 }
-#endif //USE_OPFOR
+
+#endif // GAME_OPFOR

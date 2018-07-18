@@ -1,4 +1,3 @@
-#if USE_OPFOR
 /***
 *
 *	Copyright (c) 1996-2001, Valve LLC. All rights reserved.
@@ -13,6 +12,9 @@
 *   without written permission from Valve LLC.
 *
 ****/
+
+#ifdef GAME_OPFOR
+
 #include "extdll.h"
 #include "util.h"
 #include "cbase.h"
@@ -324,4 +326,5 @@ void CDesertEagle::SetWeaponData( const weapon_data_t& data )
 
 	m_bLaserActive = data.iuser1 != 0;
 }
-#endif //USE_OPFOR
+
+#endif // GAME_OPFOR

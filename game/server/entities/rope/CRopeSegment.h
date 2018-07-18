@@ -1,4 +1,3 @@
-#if USE_OPFOR
 /***
 *
 *	Copyright (c) 1996-2001, Valve LLC. All rights reserved.
@@ -13,6 +12,9 @@
 *   without written permission from Valve LLC.
 *
 ****/
+
+#ifdef GAME_OPFOR
+
 #ifndef GAME_SERVER_ENTITIES_ROPE_CROPESEGMENT_H
 #define GAME_SERVER_ENTITIES_ROPE_CROPESEGMENT_H
 
@@ -85,5 +87,6 @@ private:
 	bool m_bCanBeGrabbed;
 };
 
-#endif //GAME_SERVER_ENTITIES_ROPE_CROPESEGMENT_H
-#endif //USE_OPFOR
+#endif // GAME_SERVER_ENTITIES_ROPE_CROPESEGMENT_H
+
+#endif // GAME_OPFOR
